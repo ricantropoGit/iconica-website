@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tu foto editada — Icónica</title>
-  <meta name="description" content="Revisa tu foto editada con Icónica. Si te gusta, compra las 3 imágenes de alta resolución." />
+  <title>Tu nueva imagen — Icónica</title>
+  <meta name="description" content="Tu retrato icónico está listo. Obtén las tres versiones en alta resolución, sin marca de agua." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,375 +13,392 @@
   <script src="https://js.stripe.com/v3/"></script>
 
   <style>
-    .payment {
-      min-height: 100vh;
-      background: #f5f5f5;
-      padding-top: 80px;
-      padding-bottom: 60px;
-    }
+    /* ====================================================================
+       PAYMENT — estilos específicos de la página (apoyados en los tokens
+       globales de styles.css)
+       ==================================================================== */
 
-    .payment__container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    /* ---- Hero a dos columnas ---- */
+    .reveal {
+      padding-block: 48px 72px;
     }
-
-    .payment__header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .payment__header h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #000;
-    }
-
-    .payment__header p {
-      font-size: 16px;
-      color: #666;
-    }
-
-    .payment__grid {
+    .reveal__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 48px;
+      grid-template-columns: 1fr;        /* móvil: una columna */
+      grid-template-areas:               /* móvil: texto → imagen → botones */
+        "copy"
+        "media"
+        "actions";
+      gap: 32px;
+      align-items: center;
     }
 
-    .payment__image-wrapper {
+    .reveal__copy   { grid-area: copy; }
+    .reveal__media  { grid-area: media; }
+    .reveal__actions { grid-area: actions; }
+
+    .reveal__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5em;
+      padding: .42em .9em;
+      background: #f1f1f1;
+      border-radius: 999px;
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .reveal__eyebrow::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-strong);
+    }
+
+    .reveal__title {
+      margin-top: 1.1rem;
+      font-size: clamp(1.85rem, 4.8vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+    .reveal__br { display: none; }   /* móvil: sin salto forzado, fluye natural */
+
+    .reveal__text {
+      margin-top: 1.2rem;
+      max-width: 46ch;
+      color: var(--ink-soft);
+      font-size: clamp(.94rem, 2.1vw, 1.05rem);
+      text-wrap: pretty;
+    }
+    .reveal__text strong { color: var(--ink); font-weight: 700; }
+
+    .reveal__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;          /* móvil: grupo centrado */
+    }
+    .reveal__buttons {
+      display: flex;
+      flex-wrap: nowrap;            /* siempre en una sola línea… */
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 360px;            /* …sin que el grupo crezca de más */
+    }
+    .reveal__buttons .btn {
+      flex: 1 1 0;                 /* mismo ancho: comparten el espacio disponible */
+      min-width: 0;
+      padding-inline: .9rem;
+    }
+    /* Solo cuando la columna queda demasiado estrecha: uno sobre otro */
+    @media (max-width: 360px) {
+      .reveal__buttons { flex-direction: column; max-width: none; }
+    }
+
+    /* La imagen ya trae la marca de agua impresa (no es HTML) */
+    .reveal__frame {
       position: relative;
-      background: white;
-      border: 1px solid #dedede;
-      border-radius: 12px;
+      border-radius: var(--r-md);
       overflow: hidden;
+      background: #111;
+      box-shadow: var(--shadow-md);
     }
-
-    .payment__image {
+    .reveal__img {
       width: 100%;
       height: auto;
       display: block;
-      background: #f5f5f5;
+      object-fit: cover;
     }
-
-    .payment__image.loading {
+    .reveal__img.is-loading {
       aspect-ratio: 1 / 1;
-      animation: pulse 1.5s ease-in-out infinite;
+      /*animation: revealPulse 1.5s ease-in-out infinite;*/
     }
-
-    @keyframes pulse {
+    @keyframes revealPulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      50% { opacity: .55; }
     }
 
-    .payment__aside {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .payment__package {
-      background: white;
-      border: 1px solid #dedede;
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-    }
-
-    .payment__package-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: #000;
-    }
-
-    .payment__package-list {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 24px;
-    }
-
-    .payment__package-item {
-      display: flex;
-      align-items: center;
-      padding: 8px 0;
-      font-size: 14px;
-      color: #333;
-    }
-
-    .payment__package-item::before {
-      content: "✓";
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      background: #e8f5e9;
-      border-radius: 50%;
-      margin-right: 12px;
-      flex-shrink: 0;
-      color: #4caf50;
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    .payment__price {
-      font-size: 48px;
-      font-weight: 700;
-      color: #000;
-      margin-bottom: 8px;
-    }
-
-    .payment__price-note {
-      font-size: 13px;
-      color: #999;
-      margin-bottom: 24px;
-    }
-
-    .payment__cta {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .payment__btn {
-      padding: 14px 24px;
-      border-radius: 8px;
-      border: none;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .payment__btn--primary {
-      background: #000;
-      color: white;
-    }
-
-    .payment__btn--primary:hover {
-      background: #333;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .payment__btn--secondary {
-      background: #f5f5f5;
-      color: #000;
-      border: 1px solid #dedede;
-    }
-
-    .payment__btn--secondary:hover {
-      background: #efefef;
-    }
-
-    .payment__divider {
-      text-align: center;
-      margin-bottom: 24px;
-      color: #999;
-      font-size: 13px;
-    }
-
-    .payment__feedback {
-      background: #fff8f0;
-      border: 1px solid #f0d4c0;
-      border-radius: 12px;
-      padding: 20px;
-      display: none;
-    }
-
-    .payment__feedback.is-active {
-      display: block;
-    }
-
-    .payment__feedback-title {
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #333;
-    }
-
-    .payment__feedback-textarea {
+    /* ---- Mensaje de error (Stripe / red) ---- */
+    .reveal__error {
+      margin-top: 0;
       width: 100%;
-      padding: 12px;
-      border: 1px solid #dedede;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 14px;
-      resize: vertical;
-      min-height: 100px;
-      margin-bottom: 12px;
-    }
-
-    .payment__feedback-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .payment__feedback-btn {
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: none;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .payment__feedback-btn--submit {
-      background: #d4a574;
-      color: white;
-    }
-
-    .payment__feedback-btn--submit:hover {
-      background: #c49060;
-    }
-
-    .payment__feedback-btn--cancel {
-      background: #f5f5f5;
-      color: #333;
-      border: 1px solid #dedede;
-    }
-
-    .payment__feedback-btn--cancel:hover {
-      background: #efefef;
-    }
-
-    .payment__error {
-      background: #fee;
-      border: 1px solid #f88;
-      border-radius: 8px;
-      padding: 12px;
-      color: #c33;
-      margin-bottom: 16px;
+      max-width: 46ch;
+      padding: 12px 14px;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      border-radius: var(--r-sm);
+      color: #b91c1c;
+      font-size: .9rem;
+      text-align: center;
       display: none;
     }
+    .reveal__error.is-active { display: block; }
 
-    .payment__error.is-active {
-      display: block;
-    }
-
-    @media (max-width: 1024px) {
-      .payment__grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .payment__header h1 {
-        font-size: 24px;
-      }
-
-      .payment__package {
-        padding: 24px;
-      }
-
-      .payment__price {
-        font-size: 36px;
-      }
-
-      .payment__btn {
-        padding: 12px 20px;
-        font-size: 14px;
-      }
-    }
-
+    /* ---- Spinner dentro de los botones ---- */
     .loading-spinner {
       display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255,255,255,0.3);
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.35);
       border-radius: 50%;
-      border-top-color: white;
-      animation: spin 0.8s linear infinite;
+      border-top-color: #fff;
+      animation: spin .8s linear infinite;
+    }
+    .btn--ghost .loading-spinner { border-color: rgba(10,10,10,.25); border-top-color: var(--ink); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---- Sección de feedback ---- */
+    .opinion {
+      background: #f4f4f4;
+      border-top: 1px solid var(--border);
+      padding-block: 72px;
+    }
+    .opinion__head { text-align: center; max-width: 44rem; margin-inline: auto; }
+    .opinion__title {
+      font-size: clamp(1.6rem, 4.8vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.06;
+      text-wrap: balance;
+    }
+    .opinion__lead {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: clamp(.94rem, 2.1vw, 1.05rem);
+      text-wrap: pretty;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .opinion__form {
+      max-width: 830px;
+      margin: 36px auto 0;
+    }
+    .opinion__textarea {
+      width: 100%;
+      min-height: 190px;
+      padding: 20px 22px;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      resize: vertical;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    .opinion__textarea::placeholder { color: #9ca3af; }
+    .opinion__textarea:focus {
+      outline: none;
+      border-color: #b9b9b9;
+      box-shadow: 0 0 0 3px rgba(0,0,0,.04);
+    }
+
+    .opinion__actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+    }
+    .opinion__submit {
+      min-width: 150px;
+      background: #333;
+      color: #fff;
+    }
+    .opinion__submit:hover { background: #1f1f1f; }
+
+    .opinion__thanks {
+      display: none;
+      margin-top: 18px;
+      text-align: center;
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+    .opinion__form.is-sent .opinion__thanks { display: block; }
+
+    /* ==================================================================
+       Hero a DOS columnas desde tablet (≥640px) — igual que el slider.
+       El texto queda a la izquierda y la imagen a la derecha.
+       ================================================================== */
+    @media (min-width: 688px) {
+      .reveal { padding-block: 72px 96px; }
+      .reveal__grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:           /* desktop: texto y botones a la izq, imagen a la der */
+          "copy   media"
+          "actions media";
+        grid-template-rows: auto 1fr;
+        gap: 28px 32px;
+        align-items: start;
+      }
+      .reveal__actions {
+        align-items: flex-start;      /* desktop: alineado a la izquierda */
+        margin-top: .6rem;
+      }
+      .reveal__buttons { justify-content: flex-start; }
+      .reveal__error { text-align: left; }
+      .reveal__br { display: inline; }   /* desktop: salto "tu / nueva imagen." */
+    }
+
+    @media (min-width: 1024px) {
+      .reveal__grid { gap: 28px 64px; }
+      .opinion { padding-block: 96px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===================== HEADER ===================== -->
+  <!-- ===================== HEADER / Sticky menu ===================== -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.html" class="brand" aria-label="Icónica — inicio">
+      <a href="index.html#hero" class="brand" aria-label="Icónica — inicio">
         <span class="brand__mark">I</span>
         <span>Icónica</span>
       </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html#hero">Inicio</a></li>
+          <li><a class="nav__link" href="index.html#galeria">Galería</a></li>
+          <li><a class="nav__link" href="index.html#como-funciona">Cómo funciona</a></li>
+          <li><a class="nav__link" href="index.html#cta">Sube tu foto</a></li>
+          <li><a class="nav__link" href="index.html#compara">Compara</a></li>
+          <li><a class="nav__link" href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Menú móvil colapsable -->
+    <div class="mobile-nav" id="mobile-nav">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="index.html#hero">Inicio</a></li>
+        <li><a class="mobile-nav__link" href="index.html#galeria">Galería</a></li>
+        <li><a class="mobile-nav__link" href="index.html#como-funciona">Cómo funciona</a></li>
+        <li><a class="mobile-nav__link" href="index.html#cta">Sube tu foto</a></li>
+        <li><a class="mobile-nav__link" href="index.html#compara">Compara</a></li>
+        <li><a class="mobile-nav__link" href="index.html#contacto">Contacto</a></li>
+      </ul>
     </div>
   </header>
 
-  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
-  <main class="payment">
-    <div class="payment__container">
+  <main>
 
-      <div class="payment__header">
-        <h1>Tu foto editada</h1>
-        <p>Así se vería tu retrato con la magia de Icónica</p>
-      </div>
+    <!-- ===================== HERO / Revelación a dos columnas ============ -->
+    <section class="reveal" data-screen-label="Revelación de imagen">
+      <div class="container">
+        <div class="reveal__grid">
 
-      <div class="payment__error" id="errorMessage"></div>
+          <!-- Columna izquierda: texto -->
+          <div class="reveal__copy">
+            <span class="reveal__eyebrow">Nuestra propuesta</span>
 
-      <div class="payment__grid">
-        <!-- Imagen editada -->
-        <div class="payment__image-wrapper">
-          <img id="editedPhoto" class="payment__image loading" alt="Tu foto editada con Icónica" />
-        </div>
+            <h1 class="reveal__title">Te presentamos tu<br class="reveal__br" />nueva imagen.</h1>
 
-        <!-- Panel de compra -->
-        <div class="payment__aside">
-          <div class="payment__package">
-            <h2 class="payment__package-title">Paquete Icónica</h2>
+            <p class="reveal__text">
+              El archivo ya está listo para su descarga <strong>sin la marca de agua</strong>.
+              <span class="hl">Obtén tu imagen por $50&nbsp;USD.</span>
+              La descarga incluye dos versiones adicionales con variaciones de expresión.
+            </p>
+          </div>
 
-            <ul class="payment__package-list">
-              <li class="payment__package-item">3 fotos de alta resolución</li>
-              <li class="payment__package-item">Resolución 2000x2000px</li>
-              <li class="payment__package-item">Formato PNG transparente</li>
-              <li class="payment__package-item">Descarga inmediata</li>
-              <li class="payment__package-item">Garantía de satisfacción</li>
-            </ul>
-
-            <div class="payment__price">$69 USD</div>
-            <div class="payment__price-note">Pago único, sin suscripción</div>
-
-            <div class="payment__cta">
-              <button class="payment__btn payment__btn--primary" id="purchaseBtn">
-                Comprar ahora
-              </button>
-              <div class="payment__divider">o</div>
-              <button class="payment__btn payment__btn--secondary" id="rejectBtn">
-                No me gustó
-              </button>
+          <!-- Columna derecha: imagen de prueba (la marca de agua viene impresa en el archivo) -->
+          <div class="reveal__media">
+            <div class="reveal__frame">
+              <img id="editedPhoto" class="reveal__img is-loading" alt="Tu retrato icónico con marca de agua" />
             </div>
           </div>
 
-          <!-- Formulario de feedback -->
-          <div class="payment__feedback" id="feedbackForm">
-            <div class="payment__feedback-title">Cuéntanos qué podríamos mejorar</div>
-            <textarea class="payment__feedback-textarea" id="feedbackText" placeholder="Tu opinión nos ayuda a mejorar..."></textarea>
-            <div class="payment__feedback-actions">
-              <button class="payment__feedback-btn payment__feedback-btn--submit" id="submitFeedbackBtn">
-                Enviar feedback
-              </button>
-              <button class="payment__feedback-btn payment__feedback-btn--cancel" id="cancelFeedbackBtn">
-                Cancelar
-              </button>
+          <!-- Acciones: en móvil van debajo de la imagen, centradas; en desktop bajo el texto -->
+          <div class="reveal__actions">
+            <div class="reveal__error" id="errorMessage"></div>
+            <div class="reveal__buttons">
+              <button class="btn btn--primary" id="purchaseBtn" type="button">Comprar Ahora</button>
+              <button class="btn btn--ghost" id="rejectBtn" type="button">No me gustó</button>
             </div>
           </div>
+
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- ===================== FEEDBACK / Queremos saber tu opinión ======== -->
+    <section class="opinion" id="feedback" data-screen-label="Feedback">
+      <div class="container">
+        <div class="opinion__head">
+          <h2 class="opinion__title">Queremos saber tu opinión.</h2>
+          <p class="opinion__lead">
+            Cuéntanos qué te pareció el ejercicio, qué mejorarías o
+            por qué piensas que no funcionó para ti.
+          </p>
+        </div>
+
+        <div class="opinion__form" id="feedbackForm">
+          <textarea class="opinion__textarea" id="feedbackText" placeholder="Deja aquí tu comentario…"></textarea>
+          <div class="opinion__actions">
+            <button class="btn opinion__submit" id="submitFeedbackBtn" type="button">Enviar</button>
+          </div>
+          <p class="opinion__thanks" id="feedbackThanks">¡Gracias! Tu comentario nos ayuda a mejorar.</p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <script src="js/paymentHandler.js"></script>
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" data-screen-label="Footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html#hero" class="brand">
+            <span class="brand__mark">I</span>
+            <span>Icónica</span>
+          </a>
+          <p class="footer__about">Transformamos tu retrato en una imagen icónica con inteligencia artificial. Tú decides si te convence.</p>
+        </div>
 
+        <div class="footer__col">
+          <h4>Servicio</h4>
+          <ul>
+            <li><a href="index.html#como-funciona">Cómo funciona</a></li>
+            <li><a href="index.html#galeria">Galería</a></li>
+            <li><a href="index.html#compara">Compara</a></li>
+            <li><a href="index.html#cta">Sube tu foto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Compañía</h4>
+          <ul>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Aviso de privacidad</a></li>
+            <li><a href="#">Términos de servicio</a></li>
+            <li><a href="#">Política de imagen</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © <span id="year"></span> Icónica. Todos los derechos reservados. · Diseño basado en la estética de AstroDeck.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/paymentHandler.js"></script>
 </body>
 </html>

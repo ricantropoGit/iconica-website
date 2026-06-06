@@ -36,7 +36,6 @@ function initializePaymentPage() {
   document.getElementById('submitFeedbackBtn').addEventListener('click', function() {
     handleSubmitFeedback(submissionId);
   });
-  document.getElementById('cancelFeedbackBtn').addEventListener('click', handleCancelFeedback);
 
   // Cargar datos de la sumisión
   loadSubmissionData(submissionId);
