@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Icónica — Eleva tu retrato a una imagen icónica</title>
+  <meta name="description" content="Transformamos tu foto incómoda en un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER / Sticky menu ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="brand" data-scroll aria-label="Icónica — inicio">
+        <span class="brand__mark">I</span>
+        <span>Icónica</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#hero" data-scroll>Inicio</a></li>
+          <li><a class="nav__link" href="#galeria" data-scroll>Galería</a></li>
+          <li><a class="nav__link" href="#como-funciona" data-scroll>Cómo funciona</a></li>
+          <li><a class="nav__link" href="#cta" data-scroll>Sube tu foto</a></li>
+          <li><a class="nav__link" href="#compara" data-scroll>Compara</a></li>
+          <li><a class="nav__link" href="#contacto" data-scroll>Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Menú móvil colapsable -->
+    <div class="mobile-nav" id="mobile-nav">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="#hero" data-scroll>Inicio</a></li>
+        <li><a class="mobile-nav__link" href="#galeria" data-scroll>Galería</a></li>
+        <li><a class="mobile-nav__link" href="#como-funciona" data-scroll>Cómo funciona</a></li>
+        <li><a class="mobile-nav__link" href="#cta" data-scroll>Sube tu foto</a></li>
+        <li><a class="mobile-nav__link" href="#compara" data-scroll>Compara</a></li>
+        <li><a class="mobile-nav__link" href="#contacto" data-scroll>Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero" data-screen-label="Hero">
+      <div class="container">
+        <h1 class="hero__title">Eleva tu retrato a<br />una imagen icónica.</h1>
+        <p class="hero__subtitle">
+          Si <em>"una imagen dice más que mil palabras"… </em><span class="hl">¿qué le estás diciendo al mundo con tu foto?</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== SLIDER / Galería ===================== -->
+    <section class="slider" id="galeria" data-autoplay="false" data-screen-label="Galería / Slider" aria-roledescription="carrusel" aria-label="Galería antes y después">
+      <div class="slider__viewport">
+        <div class="slider__track" id="sliderTrack">
+
+          <!-- Slide 1 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-1-antes.jpg" alt="Retrato original" />
+              <div class="ba__tag">
+                <span class="ba__caption">"¡Quiero caer bien, por favor!"</span>
+                <span class="ba__label">Original</span>
+                
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-1-despues.jpg" alt="Retrato optimizado" />
+              <div class="ba__tag">
+                <span class="ba__caption">"Yo soy el ingeniero para tu próximo proyecto."</span>
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-2-antes.jpg" alt="Retrato original" />
+              <div class="ba__tag">
+                <span class="ba__caption">"…de niña juegué con Barbies"</span>
+                <span class="ba__label">Original</span>
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-2-despues.jpg" alt="Retrato optimizado" />
+              <div class="ba__tag">
+                <span class="ba__caption">"Siempre voy por delante de la competencia."</span>
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-3-antes.jpg" alt="Retrato original" />
+              <div class="ba__tag">
+                <span class="ba__caption">"…la última y nos vamos!"</span>
+                <span class="ba__label">Original</span>
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-3-despues.jpg" alt="Retrato optimizado" />
+              <div class="ba__tag">
+                <span class="ba__caption">"Los abogados de tu contraparte me van a temer"</span>
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-4-antes.jpg" alt="Retrato original" />
+              <div class="ba__tag">
+                <span class="ba__caption">"uy! se me olvidó peinarme!"</span>
+                <span class="ba__label">Original</span>
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-4-despues.jpg" alt="Retrato optimizado" />
+              <div class="ba__tag">
+                <span class="ba__caption">"Conozco los puntos fuertes de tu empresa. ¡Vamos a potenciarlos!</span>
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-5-antes.jpg" alt="Retrato original" />
+              <div class="ba__tag">
+                <span class="ba__caption">"…el que no transa, no avanza"</span>
+                <span class="ba__label">Original</span>
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-5-despues.jpg" alt="Retrato optimizado" />
+              <div class="ba__tag">
+                <span class="ba__caption">Puedes confiar en mis servicios.</span>
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-6-antes.jpg" alt="Retrato original" />
+              <div class="ba__tag">
+                <span class="ba__caption">…me dicen la "dama de hierro".</span>
+                <span class="ba__label">Original</span>
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-6-despues.jpg" alt="Retrato optimizado" />
+              <div class="ba__tag">
+                <span class="ba__caption">"Estoy a tus órdenes para estudiar tu marca."</span>
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="slider__btn slider__btn--prev" id="sliderPrev" aria-label="Anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="slider__btn slider__btn--next" id="sliderNext" aria-label="Siguiente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <button class="slider__play" id="sliderPlay" aria-label="Pausar presentación">
+        <svg id="iconPause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
+        <svg id="iconPlay" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="7 4 20 12 7 20 7 4"></polygon></svg>
+      </button>
+      <div class="slider__dots" id="sliderDots" role="tablist" aria-label="Ir a la imagen"></div>
+    </section>
+
+    <!-- ===================== CÓMO FUNCIONA / Card grid ===================== -->
+    <section class="section" id="como-funciona" data-screen-label="Cómo funciona">
+      <div class="container">
+        <div class="steps__head">
+          <h2 class="steps__title">Envíanos esa foto incómoda que te atormenta</h2>
+          <p class="steps__lead">
+            Empleando únicamente <span class="hl">inteligencia artificial y generación sintética</span> de imágenes recibirás un ejercicio sin costo alguno en 24 hrs. Tú solo compras la imagen en alta resolución <span class="hl">si te convence el resultado</span>.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </div>
+            <span class="card__num">PASO 01</span>
+            <h3 class="card__title">Sube tu foto incómoda</h3>
+            <p class="card__text">Subes esa foto incómoda —o totalmente convencional— que quieres transformar. Sin requisitos técnicos, desde tu celular.</p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <span class="card__num">PASO 02</span>
+            <h3 class="card__title">Te hacemos un ejercicio</h3>
+            <p class="card__text">Hacemos un ejercicio de reinterpretación sin costo alguno que recibes en 24 hrs. Solo IA y generación sintética de imágenes.</p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </div>
+            <span class="card__num">PASO 03</span>
+            <h3 class="card__title">Solo pagas si te gusta</h3>
+            <p class="card__text">Si te convence, pagas <span class="card__price">$69 USD</span> que incluye tres versiones del mismo tema en alta resolución.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA oscura ===================== -->
+    <section class="section cta on-dark" id="cta" data-screen-label="CTA / Sube tu foto">
+      <div class="container">
+        <h2 class="cta__title">¿Estás listo/a para proyectar una imagen de experiencia, seguridad y poder?</h2>
+        <p class="cta__text">
+          <strong>Sube tu foto sin compromiso para ti.</strong> La seguridad de tu identidad y la de tu imagen está garantizada por nuestras políticas de servicio.
+        </p>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="#contacto" data-scroll>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            Sube tu foto
+          </a>
+          <a class="btn btn--ghost" href="#galeria" data-scroll>Ver ejemplos</a>
+        </div>
+        <p class="cta__note" id="uploadNote">Formatos JPG o PNG · El primer ejercicio es gratis.</p>
+      </div>
+    </section>
+
+    <!-- ===================== TABLA COMPARATIVA ===================== -->
+    <section class="section section--alt" id="compara" data-screen-label="Comparativa">
+      <div class="container">
+        <div class="compare__head">
+          <h2 class="compare__title">¡Compara!</h2>
+          <p class="compare__lead">Por qué un retrato icónico con Icónica supera a las alternativas de siempre.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th class="col-feature" scope="col"></th>
+                <th class="col-highlight brand-col" scope="col">Icónica<br /><span class="pill">Recomendado</span></th>
+                <th scope="col">Estudio fotográfico</th>
+                <th scope="col">Sitios tipo DYS*</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Sin sesión ni traslados</th>
+                <td class="col-highlight"><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="check">✓</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Entrega en 24 horas</th>
+                <td class="col-highlight"><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Primer ejercicio gratis</th>
+                <td class="col-highlight"><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Tres versiones en alta resolución</th>
+                <td class="col-highlight"><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Precio</th>
+                <td class="col-highlight"><strong>$50 USD</strong></td>
+                <td>$500+ USD</td>
+                <td>Tu tiempo <br />+ $20 a $30 USD</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACTO ===================== -->
+    <section class="section" id="contacto" data-screen-label="Contacto">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__info">
+            <h2 class="contact__title">Tu retrato icónico comienza aquí.</h2>
+            <p class="contact__lead">Sube tu foto. <span class="hl"> Si tienes algún comentario o sugerencia adicional sobre del tratamiento de tu imágen, coméntalo ahora</span>. El ejercicio de prueba no tiene ningun costo para ti, pero <span class="hl"> éste será generado con una marca de agua</span> que se retirará de los archivos finales una vez realizada tu compra.</p>
+
+            <ul class="contact__list">
+              <li class="contact__item">
+                <span class="contact__ico" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>
+                </span>
+                <span>
+                  <span class="contact__k">Email</span><br />
+                  <span class="contact__v">hola@iconica.studio</span>
+                </span>
+              </li>
+              <li class="contact__item">
+                <span class="contact__ico" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </span>
+                <span>
+                  <span class="contact__k">Sólo WhatsApp</span><br />
+                  <span class="contact__v">+52 56 3366 8185</span>
+                </span>
+              </li>
+              <li class="contact__item">
+                <span class="contact__ico" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </span>
+                <span>
+                  <span class="contact__k">Ubicación</span><br />
+                  <span class="contact__v">Ciudad de México · Servicio 100% en línea</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <!--<label for="f-photo">Tu foto <span class="req">*</span></label>-->
+              <input type="file" id="f-photo" name="photo" accept="image/*" class="upload-input" />
+              <label for="f-photo" class="dropzone" id="dropzone">
+                <span class="dropzone__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </span>
+                <span class="dropzone__text"><strong>Sube tu foto</strong> o arrástrala aquí</span>
+                <span class="dropzone__hint">JPG o PNG · Tu primer ejercicio es gratis</span>
+              </label>
+              <div class="dropzone__preview" id="dropzonePreview" hidden>
+                <span class="dropzone__thumb" id="dropzoneThumbWrap">
+                  <svg class="dropzone__thumb-ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"></path></svg>
+                  <img id="dropzoneThumb" alt="" />
+                </span>
+                <div class="dropzone__file">
+                  <span class="dropzone__name" id="dropzoneName">archivo.jpg</span>
+                  <button type="button" class="dropzone__remove" id="dropzoneRemove" aria-label="Quitar foto">Quitar</button>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-name">Nombre <span class="req">*</span></label>
+              <input type="text" id="f-name" name="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div class="field">
+              <label for="f-subject">Asunto</label>
+              <input type="text" id="f-subject" name="subject" placeholder="¿En qué te ayudamos?" />
+            </div>
+            <div class="field">
+              <label for="f-message">Mensaje <span class="req">*</span></label>
+              <textarea id="f-message" name="message" placeholder="¿Tienes alguna sugerencia en particular…?" required></textarea>
+            </div>
+            <p class="form__foot">* Campos obligatorios</p>
+            <div class="form__success" id="formSuccess">¡Gracias! Hemos recibido tu mensaje. Te respondemos muy pronto.</div>
+            <button type="submit" class="btn btn--primary">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" data-screen-label="Footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="brand" data-scroll>
+            <span class="brand__mark">I</span>
+            <span>Icónica</span>
+          </a>
+          <p class="footer__about">Transformamos tu retrato en una imagen icónica con inteligencia artificial. Tú decides si te convence.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Servicio</h4>
+          <ul>
+            <li><a href="#como-funciona" data-scroll>Cómo funciona</a></li>
+            <li><a href="#galeria" data-scroll>Galería</a></li>
+            <li><a href="#compara" data-scroll>Compara</a></li>
+            <li><a href="#cta" data-scroll>Sube tu foto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Compañía</h4>
+          <ul>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#contacto" data-scroll>Contacto</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Aviso de privacidad</a></li>
+            <li><a href="#">Términos de servicio</a></li>
+            <li><a href="#">Política de imagen</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        © <span id="year"></span> Icónica. Todos los derechos reservados. · Diseño basado en la estética de AstroDeck.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/formHandler.js"></script>
+</body>
+</html>

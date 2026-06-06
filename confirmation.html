@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu foto ha sido recibida — Icónica</title>
+  <meta name="description" content="Tu foto ha sido recibida correctamente. Recibirás noticias en 24-48 horas." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    .confirmation {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+    }
+
+    .confirmation__card {
+      max-width: 600px;
+      background: white;
+      border: 1px solid #dedede;
+      border-radius: 16px;
+      padding: 48px 32px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .confirmation__icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+      animation: bounce 0.6s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .confirmation__title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .confirmation__subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .confirmation__id-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .confirmation__id {
+      font-size: 24px;
+      font-weight: 600;
+      font-family: 'Courier New', monospace;
+      color: #333;
+      margin-bottom: 24px;
+      padding: 12px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      word-break: break-all;
+    }
+
+    .confirmation__message {
+      background: #f0f8ff;
+      border-left: 4px solid #0066cc;
+      padding: 16px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+      text-align: left;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .confirmation__checklist {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .confirmation__checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .confirmation__checklist-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      margin-right: 12px;
+      flex-shrink: 0;
+      color: #4caf50;
+      font-weight: 700;
+    }
+
+    .confirmation__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .confirmation__btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .confirmation__btn--primary {
+      background: #000;
+      color: white;
+    }
+
+    .confirmation__btn--primary:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    .confirmation__btn--secondary {
+      background: #f5f5f5;
+      color: #000;
+      border: 1px solid #dedede;
+    }
+
+    .confirmation__btn--secondary:hover {
+      background: #efefef;
+    }
+
+    @media (max-width: 640px) {
+      .confirmation__card {
+        padding: 32px 20px;
+      }
+
+      .confirmation__title {
+        font-size: 22px;
+      }
+
+      .confirmation__id {
+        font-size: 18px;
+      }
+
+      .confirmation__actions {
+        flex-direction: column;
+      }
+
+      .confirmation__btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="Icónica — inicio">
+        <span class="brand__mark">I</span>
+        <span>Icónica</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main class="confirmation">
+    <div class="confirmation__card">
+      <div class="confirmation__icon">✓</div>
+
+      <h1 class="confirmation__title">¡Gracias por tu envío!</h1>
+
+      <p class="confirmation__subtitle">
+        Recibimos tu foto correctamente. Nos pondremos en contacto en las próximas 24-48 horas.
+      </p>
+
+      <div class="confirmation__id-label">Tu ID de referencia</div>
+      <div class="confirmation__id" id="submissionId">---</div>
+
+      <div class="confirmation__message">
+        <strong>¿Qué sucede ahora?</strong>
+        <p style="margin-top: 8px; margin-bottom: 0;">
+          Nuestro equipo revisará tu foto y te enviará un ejercicio editado con Icónica. Tendrás 24 horas para revisar si te convence antes de decidir si compras las 3 fotos de alta resolución.
+        </p>
+      </div>
+
+      <div class="confirmation__checklist">
+        <div class="confirmation__checklist-item">
+          <div class="confirmation__checklist-icon">✓</div>
+          <div>
+            <strong>Foto recibida</strong><br>
+            <span style="color: #999; font-size: 13px;">Tu imagen está en nuestros servidores</span>
+          </div>
+        </div>
+        <div class="confirmation__checklist-item">
+          <div class="confirmation__checklist-icon">✓</div>
+          <div>
+            <strong>Email confirmado</strong><br>
+            <span style="color: #999; font-size: 13px;">Revisa tu bandeja de entrada</span>
+          </div>
+        </div>
+        <div class="confirmation__checklist-item">
+          <div class="confirmation__checklist-icon">✓</div>
+          <div>
+            <strong>Seguimiento garantizado</strong><br>
+            <span style="color: #999; font-size: 13px;">Usaremos tu ID para rastrear tu proyecto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="confirmation__actions">
+        <a href="index.html" class="confirmation__btn confirmation__btn--primary">
+          Volver al inicio
+        </a>
+        <a href="index.html#contacto" class="confirmation__btn confirmation__btn--secondary">
+          Contáctanos
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Extraer y mostrar el submissionId del URL
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var submissionId = params.get('id');
+      var email = params.get('email');
+
+      if (submissionId) {
+        // Tenemos ID directo
+        document.getElementById('submissionId').textContent = decodeURIComponent(submissionId);
+      } else if (email) {
+        // Tenemos email, buscar ID en Google Sheet
+        email = decodeURIComponent(email);
+
+        // Buscar el ID más reciente para este email en el Sheet
+        // Esto es temporal - se actualizará cuando Google Apps Script responda correctamente
+        fetch('/api/getSubmissionId?email=' + encodeURIComponent(email))
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.submissionId) {
+              document.getElementById('submissionId').textContent = data.submissionId;
+            } else {
+              // Si no encuentra, mostrar un ID genérico
+              var timestamp = Date.now().toString(36).toUpperCase();
+              document.getElementById('submissionId').textContent = 'ID-' + timestamp;
+            }
+          })
+          .catch(err => {
+            // Si hay error, mostrar timestamp como ID temporal
+            var timestamp = Date.now().toString(36).toUpperCase();
+            document.getElementById('submissionId').textContent = 'ID-' + timestamp;
+          });
+
+        var messageEl = document.querySelector('.confirmation__subtitle');
+        if (messageEl) {
+          messageEl.textContent = 'Tu solicitud fue recibida en ' + email + '. Recibirás un email de confirmación en los próximos momentos.';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
