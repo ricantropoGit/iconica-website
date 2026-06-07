@@ -220,15 +220,15 @@
 
     /* ==================================================================
        Hero a DOS columnas desde tablet (≥640px) — igual que el slider.
-       El texto queda a la izquierda y la imagen a la derecha.
+       La imagen queda a la izquierda y el texto + botones a la derecha.
        ================================================================== */
     @media (min-width: 688px) {
       .reveal { padding-block: 72px 96px; }
       .reveal__grid {
         grid-template-columns: 1fr 1fr;
-        grid-template-areas:           /* desktop: texto y botones a la izq, imagen a la der */
-          "copy   media"
-          "actions media";
+        grid-template-areas:           /* desktop: imagen a la izq, texto y botones a la der */
+          "media copy"
+          "media actions";
         grid-template-rows: auto 1fr;
         gap: 28px 32px;
         align-items: start;
