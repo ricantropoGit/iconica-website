@@ -79,10 +79,15 @@
     }
 
     .success__transaction-value {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       color: #333;
       font-family: 'Courier New', monospace;
+      /* El ID es una cadena continua sin espacios: forzamos el salto
+         por cualquier carácter para que no se desborde del recuadro. */
+      overflow-wrap: anywhere;
+      word-break: break-all;
+      line-height: 1.45;
     }
 
     .success__section {

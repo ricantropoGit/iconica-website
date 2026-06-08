@@ -62,13 +62,13 @@ function loadSubmissionData(submissionId) {
     console.log('✅ Foto de prueba cargada desde carpeta local');
     photoImg.src = localImagePath;
     photoImg.alt = 'Tu foto editada con Icónica';
-    photoImg.classList.remove('loading');
+    photoImg.classList.remove('is-loading');
   };
 
   testImg.onerror = function() {
     console.warn('⚠️ Foto de prueba no encontrada en /images/Prueba/');
     showPlaceholder();
-    photoImg.classList.remove('loading');
+    photoImg.classList.remove('is-loading');
   };
 
   // Iniciar carga
@@ -133,8 +133,16 @@ function handleRejectClick() {
   var feedbackForm = document.getElementById('feedbackForm');
   feedbackForm.classList.add('is-active');
 
-  // Scroll al formulario
-  feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  // Desplazar hasta el INICIO de la sección de feedback (no solo "lo
+  // mínimo"). Restamos la altura del header fijo para que el título
+  // "Queremos saber tu opinión." no quede tapado.
+  var section = document.getElementById('feedback') || feedbackForm;
+  var headerH = document.getElementById('header')
+    ? document.getElementById('header').offsetHeight
+    : 0;
+  var top = section.getBoundingClientRect().top + window.pageYOffset - headerH;
+
+  window.scrollTo({ top: top, behavior: 'smooth' });
 }
 
 // =====================================================================
