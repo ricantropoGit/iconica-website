@@ -3,7 +3,7 @@
 // Maneja la página de pago y compra de fotos editadas con Stripe
 // =====================================================================
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwokPxJhdEYiywcWHpz5Jf2KCRPKlCfcbhCJty4tLMcLEMImxDaWO5NY0xpRHlwqTY/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4SCc9Xgnj87_zyLsJDG_PKxroFKd1XpXK1P9W8wYzz155u8f7SPD6WgVxRWTCmo4/exec';
 const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Tdx5CHkkB1cJoaIo6myCrjXC9sSCjqvx7L2Ldkxq0WemURjDQ8nWTVtIATI95SG75EagtMLFX3JJt07CfI0OIpD00hq2gLWui';
 
 // Inicializar Stripe 

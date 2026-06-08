@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwokPxJhdEYiywcWHpz5Jf2KCRPKlCfcbhCJty4tLMcLEMImxDaWO5NY0xpRHlwqTY/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4SCc9Xgnj87_zyLsJDG_PKxroFKd1XpXK1P9W8wYzz155u8f7SPD6WgVxRWTCmo4/exec';
 
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
