@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu foto editada — Icónica</title>
+  <meta name="description" content="Revisa tu foto editada con Icónica. Si te gusta, compra las 3 imágenes de alta resolución." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <style>
+    .payment {
+      min-height: 100vh;
+      background: #f5f5f5;
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+
+    .payment__container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .payment__header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .payment__header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .payment__header p {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .payment__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .payment__image-wrapper {
+      position: relative;
+      background: white;
+      border: 1px solid #dedede;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .payment__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .payment__image.loading {
+      aspect-ratio: 1 / 1;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .payment__aside {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment__package {
+      background: white;
+      border: 1px solid #dedede;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .payment__package-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #000;
+    }
+
+    .payment__package-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+
+    .payment__package-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .payment__package-item::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      margin-right: 12px;
+      flex-shrink: 0;
+      color: #4caf50;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .payment__price {
+      font-size: 48px;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    .payment__price-note {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 24px;
+    }
+
+    .payment__cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .payment__btn {
+      padding: 14px 24px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .payment__btn--primary {
+      background: #000;
+      color: white;
+    }
+
+    .payment__btn--primary:hover {
+      background: #333;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .payment__btn--secondary {
+      background: #f5f5f5;
+      color: #000;
+      border: 1px solid #dedede;
+    }
+
+    .payment__btn--secondary:hover {
+      background: #efefef;
+    }
+
+    .payment__divider {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    .payment__feedback {
+      background: #fff8f0;
+      border: 1px solid #f0d4c0;
+      border-radius: 12px;
+      padding: 20px;
+      display: none;
+    }
+
+    .payment__feedback.is-active {
+      display: block;
+    }
+
+    .payment__feedback-title {
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #333;
+    }
+
+    .payment__feedback-textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #dedede;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+      resize: vertical;
+      min-height: 100px;
+      margin-bottom: 12px;
+    }
+
+    .payment__feedback-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .payment__feedback-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .payment__feedback-btn--submit {
+      background: #d4a574;
+      color: white;
+    }
+
+    .payment__feedback-btn--submit:hover {
+      background: #c49060;
+    }
+
+    .payment__feedback-btn--cancel {
+      background: #f5f5f5;
+      color: #333;
+      border: 1px solid #dedede;
+    }
+
+    .payment__feedback-btn--cancel:hover {
+      background: #efefef;
+    }
+
+    .payment__error {
+      background: #fee;
+      border: 1px solid #f88;
+      border-radius: 8px;
+      padding: 12px;
+      color: #c33;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .payment__error.is-active {
+      display: block;
+    }
+
+    @media (max-width: 1024px) {
+      .payment__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .payment__header h1 {
+        font-size: 24px;
+      }
+
+      .payment__package {
+        padding: 24px;
+      }
+
+      .payment__price {
+        font-size: 36px;
+      }
+
+      .payment__btn {
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="Icónica — inicio">
+        <span class="brand__mark">I</span>
+        <span>Icónica</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main class="payment">
+    <div class="payment__container">
+
+      <div class="payment__header">
+        <h1>Tu foto editada</h1>
+        <p>Así se vería tu retrato con la magia de Icónica</p>
+      </div>
+
+      <div class="payment__error" id="errorMessage"></div>
+
+      <div class="payment__grid">
+        <!-- Imagen editada -->
+        <div class="payment__image-wrapper">
+          <img id="editedPhoto" class="payment__image loading" alt="Tu foto editada con Icónica" />
+        </div>
+
+        <!-- Panel de compra -->
+        <div class="payment__aside">
+          <div class="payment__package">
+            <h2 class="payment__package-title">Paquete Icónica</h2>
+
+            <ul class="payment__package-list">
+              <li class="payment__package-item">3 fotos de alta resolución</li>
+              <li class="payment__package-item">Resolución 2000x2000px</li>
+              <li class="payment__package-item">Formato PNG transparente</li>
+              <li class="payment__package-item">Descarga inmediata</li>
+              <li class="payment__package-item">Garantía de satisfacción</li>
+            </ul>
+
+            <div class="payment__price">$69 USD</div>
+            <div class="payment__price-note">Pago único, sin suscripción</div>
+
+            <div class="payment__cta">
+              <button class="payment__btn payment__btn--primary" id="purchaseBtn">
+                Comprar ahora
+              </button>
+              <div class="payment__divider">o</div>
+              <button class="payment__btn payment__btn--secondary" id="rejectBtn">
+                No me gustó
+              </button>
+            </div>
+          </div>
+
+          <!-- Formulario de feedback -->
+          <div class="payment__feedback" id="feedbackForm">
+            <div class="payment__feedback-title">Cuéntanos qué podríamos mejorar</div>
+            <textarea class="payment__feedback-textarea" id="feedbackText" placeholder="Tu opinión nos ayuda a mejorar..."></textarea>
+            <div class="payment__feedback-actions">
+              <button class="payment__feedback-btn payment__feedback-btn--submit" id="submitFeedbackBtn">
+                Enviar feedback
+              </button>
+              <button class="payment__feedback-btn payment__feedback-btn--cancel" id="cancelFeedbackBtn">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/paymentHandler.js"></script>
+
+</body>
+</html>

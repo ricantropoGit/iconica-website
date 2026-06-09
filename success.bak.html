@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compra completada — Icónica</title>
+  <meta name="description" content="Tu compra ha sido procesada correctamente. Descarga tus fotos ahora." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    .success {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+    }
+
+    .success__card {
+      max-width: 600px;
+      background: white;
+      border: 1px solid #dedede;
+      border-radius: 16px;
+      padding: 48px 32px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .success__icon {
+      font-size: 80px;
+      margin-bottom: 24px;
+      animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .success__title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .success__subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .success__transaction {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .success__transaction-label {
+      font-size: 13px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .success__transaction-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      font-family: 'Courier New', monospace;
+    }
+
+    .success__section {
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .success__section-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #000;
+    }
+
+    .success__download-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .success__download-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background: #f9f9f9;
+      border: 1px solid #f0f0f0;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .success__download-item:hover {
+      background: #f5f5f5;
+      border-color: #dedede;
+    }
+
+    .success__download-item a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .success__download-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: #e8f5e9;
+      border-radius: 6px;
+      margin-right: 12px;
+      flex-shrink: 0;
+      color: #4caf50;
+      font-size: 16px;
+    }
+
+    .success__download-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .success__download-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .success__download-size {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .success__download-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      flex-shrink: 0;
+      color: #999;
+      transition: color 0.3s ease;
+    }
+
+    .success__download-item:hover .success__download-action {
+      color: #333;
+    }
+
+    .success__cta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .success__btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .success__btn--primary {
+      background: #000;
+      color: white;
+    }
+
+    .success__btn--primary:hover {
+      background: #333;
+      transform: translateY(-2px);
+    }
+
+    .success__btn--secondary {
+      background: #f5f5f5;
+      color: #000;
+      border: 1px solid #dedede;
+    }
+
+    .success__btn--secondary:hover {
+      background: #efefef;
+    }
+
+    .success__note {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      color: #78350f;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .success__note strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .success__card {
+        padding: 32px 20px;
+      }
+
+      .success__title {
+        font-size: 22px;
+      }
+
+      .success__icon {
+        font-size: 64px;
+      }
+
+      .success__btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="Icónica — inicio">
+        <span class="brand__mark">I</span>
+        <span>Icónica</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===================== CONTENIDO PRINCIPAL ===================== -->
+  <main class="success">
+    <div class="success__card">
+      <div class="success__icon">🎉</div>
+
+      <h1 class="success__title">¡Compra completada!</h1>
+
+      <p class="success__subtitle">
+        Tus fotos Icónica están listas para descargar. Gracias por tu confianza.
+      </p>
+
+      <div class="success__transaction">
+        <div class="success__transaction-label">Número de transacción</div>
+        <div class="success__transaction-value" id="transactionId">---</div>
+      </div>
+
+      <div class="success__section">
+        <h2 class="success__section-title">Descarga tus fotos</h2>
+        <ul class="success__download-list" id="downloadList">
+          <li class="success__download-item">
+            <a href="#">
+              <div class="success__download-icon">📷</div>
+              <div class="success__download-info">
+                <div class="success__download-name">Foto 1 — Profesional</div>
+                <div class="success__download-size">2000×2000px • PNG</div>
+              </div>
+              <div class="success__download-action">↓</div>
+            </a>
+          </li>
+          <li class="success__download-item">
+            <a href="#">
+              <div class="success__download-icon">📷</div>
+              <div class="success__download-info">
+                <div class="success__download-name">Foto 2 — Ambiente</div>
+                <div class="success__download-size">2000×2000px • PNG</div>
+              </div>
+              <div class="success__download-action">↓</div>
+            </a>
+          </li>
+          <li class="success__download-item">
+            <a href="#">
+              <div class="success__download-icon">📷</div>
+              <div class="success__download-info">
+                <div class="success__download-name">Foto 3 — Artística</div>
+                <div class="success__download-size">2000×2000px • PNG</div>
+              </div>
+              <div class="success__download-action">↓</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="success__note">
+        <strong>✉️ Revisa tu email</strong>
+        También hemos enviado los enlaces de descarga a tu correo. Los enlaces permanecerán activos durante 30 días.
+      </div>
+
+      <div class="success__cta">
+        <a href="index.html" class="success__btn success__btn--primary">
+          Volver al inicio
+        </a>
+        <a href="index.html#contacto" class="success__btn success__btn--secondary">
+          Compartir feedback
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwokPxJhdEYiywcWHpz5Jf2KCRPKlCfcbhCJty4tLMcLEMImxDaWO5NY0xpRHlwqTY/exec';
+
+    // Extraer información de la transacción del URL
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      // Stripe regresa el identificador de la sesión en `session_id`.
+      // Mantenemos `transaction` como respaldo por compatibilidad.
+      var transactionId = params.get('session_id') || params.get('transaction');
+      var submissionId = params.get('id');
+
+      if (transactionId) {
+        document.getElementById('transactionId').textContent = decodeURIComponent(transactionId);
+      }
+
+      // Cargar fotos editadas si tenemos submissionId
+      if (submissionId) {
+        loadEditedPhotos(submissionId);
+      } else {
+        console.warn('No submissionId found in URL parameters');
+        // Mostrar mensaje de error si no hay submissionId
+        showNoPhotosMessage();
+      }
+    });
+
+    // Cargar las fotos editadas desde Google Apps Script
+    function loadEditedPhotos(submissionId) {
+      console.log('Cargando fotos editadas para submissionId:', submissionId);
+
+      var payload = {
+        action: 'getEditedPhotos',
+        submissionId: submissionId
+      };
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Respuesta de getEditedPhotos:', data);
+
+          if (data.success && data.photos && data.photos.length > 0) {
+            populateDownloadList(data.photos);
+          } else {
+            console.warn('No photos found for submissionId:', submissionId);
+            showNoPhotosMessage();
+          }
+        })
+        .catch(error => {
+          console.error('Error loading photos:', error);
+          showErrorMessage('Error al cargar tus fotos. Intenta de nuevo más tarde.');
+        });
+    }
+
+    // Poblar la lista de descargas con las fotos reales
+    function populateDownloadList(photos) {
+      var downloadList = document.getElementById('downloadList');
+      downloadList.innerHTML = ''; // Limpiar items de placeholder
+
+      photos.forEach(function(photo, index) {
+        var listItem = document.createElement('li');
+        listItem.className = 'success__download-item';
+
+        var link = document.createElement('a');
+        link.href = photo.downloadUrl;
+        link.download = photo.name;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+
+        // Icono
+        var icon = document.createElement('div');
+        icon.className = 'success__download-icon';
+        icon.textContent = '📷';
+
+        // Información
+        var info = document.createElement('div');
+        info.className = 'success__download-info';
+
+        var name = document.createElement('div');
+        name.className = 'success__download-name';
+        name.textContent = photo.name.replace(/^[^_]*_/, ''); // Quitar submissionId del nombre
+
+        var size = document.createElement('div');
+        size.className = 'success__download-size';
+        size.textContent = '2000×2000px • PNG';
+
+        info.appendChild(name);
+        info.appendChild(size);
+
+        // Acción
+        var action = document.createElement('div');
+        action.className = 'success__download-action';
+        action.textContent = '↓';
+
+        link.appendChild(icon);
+        link.appendChild(info);
+        link.appendChild(action);
+
+        listItem.appendChild(link);
+        downloadList.appendChild(listItem);
+      });
+
+      console.log('✓ Lista de descargas actualizada con', photos.length, 'fotos');
+    }
+
+    // Mostrar mensaje cuando no hay fotos
+    function showNoPhotosMessage() {
+      var downloadList = document.getElementById('downloadList');
+      downloadList.innerHTML = '<div style="padding: 20px; text-align: center; color: #999; background: #f9f9f9; border-radius: 6px;">Las fotos aún no están disponibles. Por favor, intenta de nuevo en unos momentos.</div>';
+    }
+
+    // Mostrar mensaje de error
+    function showErrorMessage(message) {
+      var downloadList = document.getElementById('downloadList');
+      downloadList.innerHTML = '<div style="padding: 20px; text-align: center; color: #d32f2f; background: #ffebee; border-radius: 6px;">' + message + '</div>';
+    }
+  </script>
+
+</body>
+</html>

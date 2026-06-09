@@ -49,19 +49,10 @@
   function headerOffset() {
     return (header ? header.offsetHeight : 0);
   }
-  function scrollToTarget(target, align) {
-    var rect = target.getBoundingClientRect();
-    var top;
-    if (align === 'bottom') {
-      // Detener el scroll cuando el FONDO de la sección coincide con el
-      // fondo del viewport (la sección queda al pie de la pantalla).
-      top = rect.bottom + window.scrollY - window.innerHeight;
-    } else {
-      // Por defecto: el TOPE de la sección queda bajo el header sticky.
-      top = rect.top + window.scrollY - headerOffset();
-    }
+  function scrollToTarget(target) {
+    var top = target.getBoundingClientRect().top + window.scrollY - headerOffset();
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+    window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
   }
   document.querySelectorAll('[data-scroll]').forEach(function (link) {
     link.addEventListener('click', function (e) {
@@ -70,7 +61,7 @@
       var target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      scrollToTarget(target, link.getAttribute('data-scroll-align'));
+      scrollToTarget(target);
       history.replaceState(null, '', id);
     });
   });
@@ -116,6 +107,8 @@
      ================================================================== */
   var track = document.getElementById('sliderTrack');
   if (track) {
+    var realSlides = Array.prototype.slice.call(track.children);
+    var count = realSlides.length;
     var prevBtn = document.getElementById('sliderPrev');
     var nextBtn = document.getElementById('sliderNext');
     var playBtn = document.getElementById('sliderPlay');
@@ -130,20 +123,40 @@
     var sliderEl = track.closest('.slider');
     var AUTOPLAY = !(sliderEl && sliderEl.getAttribute('data-autoplay') === 'false');
 
-    // En móvil el carrusel muestra UNA imagen por slide (antes y después,
-    // intercaladas, empezando por par-1-antes). En ≥640px se mantienen los
-    // pares en dos columnas, exactamente como antes.
-    var MOBILE_MQ = window.matchMedia('(max-width: 639.98px)');
-    // Markup original (6 pares) guardado para poder reconstruir al cambiar de layout.
-    var originalHTML = track.innerHTML;
-
-    // Estado del carrusel — se recalcula en cada reconstrucción.
-    var count = 0, index = 0, hasClones = false, animating = false, dots = [];
+    // --- Loop infinito: clonamos el último al inicio y el primero al final ---
+    // Así, al pasar del último al primero (o viceversa) el movimiento continúa
+    // en la misma dirección; luego saltamos sin animación al slide real
+    // equivalente, evitando el "rebobinado" visual.
+    var hasClones = count > 1;
+    if (hasClones) {
+      var firstClone = realSlides[0].cloneNode(true);
+      var lastClone = realSlides[count - 1].cloneNode(true);
+      firstClone.setAttribute('aria-hidden', 'true');
+      lastClone.setAttribute('aria-hidden', 'true');
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, realSlides[0]);
+    }
+    // Con clones, los slides reales ocupan las posiciones 1..count.
+    var index = hasClones ? 1 : 0;   // posición física dentro del track
+    var animating = false;
+    track.style.transition = TRANSITION;
 
     function realIndex() {
       if (!hasClones) return index;
       return (index - 1 + count) % count;
     }
+
+    // Dots — uno por slide real
+    var dots = realSlides.map(function (_, i) {
+      var b = document.createElement('button');
+      b.className = 'slider__dot' + (i === 0 ? ' is-active' : '');
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Imagen ' + (i + 1));
+      b.addEventListener('click', function () { goTo(hasClones ? i + 1 : i); restart(); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
     function position() {
       track.style.transform = 'translateX(' + (-index * 100) + '%)';
     }
@@ -152,6 +165,7 @@
       dots.forEach(function (d, i) { d.classList.toggle('is-active', i === r); });
     }
     function render() { position(); paintDots(); }
+
     function goTo(i) {
       if (animating) return;
       animating = true;
@@ -160,66 +174,6 @@
     }
     function next() { goTo(index + 1); }
     function prev() { goTo(index - 1); }
-
-    // Construye los slides del track según el ancho:
-    //  • Móvil  : cada imagen (.ba) es su propio slide → par-1-antes va primero.
-    //  • ≥640px : cada par original (.slide) ocupa un slide en dos columnas.
-    function buildTrack() {
-      track.innerHTML = originalHTML;
-      if (MOBILE_MQ.matches) {
-        var bas = Array.prototype.slice.call(track.querySelectorAll('.ba'));
-        track.innerHTML = '';
-        bas.forEach(function (ba) {
-          var s = document.createElement('div');
-          s.className = 'slide';
-          s.appendChild(ba);
-          track.appendChild(s);
-        });
-      }
-    }
-
-    // (Re)inicializa el carrusel: arma slides, clones de loop, dots y posición.
-    function setupCarousel() {
-      if (timer) { clearInterval(timer); timer = null; }
-      dotsWrap.innerHTML = '';
-      track.style.transition = 'none';
-
-      buildTrack();
-
-      var realSlides = Array.prototype.slice.call(track.children);
-      count = realSlides.length;
-      hasClones = count > 1;
-
-      // Loop infinito: clon del último al inicio y del primero al final.
-      if (hasClones) {
-        var firstClone = realSlides[0].cloneNode(true);
-        var lastClone = realSlides[count - 1].cloneNode(true);
-        firstClone.setAttribute('aria-hidden', 'true');
-        lastClone.setAttribute('aria-hidden', 'true');
-        track.appendChild(firstClone);
-        track.insertBefore(lastClone, realSlides[0]);
-      }
-      index = hasClones ? 1 : 0;
-      animating = false;
-
-      // Dots — uno por slide real.
-      dots = realSlides.map(function (_, i) {
-        var b = document.createElement('button');
-        b.className = 'slider__dot' + (i === 0 ? ' is-active' : '');
-        b.setAttribute('role', 'tab');
-        b.setAttribute('aria-label', 'Imagen ' + (i + 1));
-        b.addEventListener('click', function () { goTo(hasClones ? i + 1 : i); restart(); });
-        dotsWrap.appendChild(b);
-        return b;
-      });
-
-      // Posición inicial SIN animación (evita un deslizamiento al cargar).
-      render();
-      void track.offsetWidth;
-      track.style.transition = TRANSITION;
-
-      if (AUTOPLAY) start(); else stop();
-    }
 
     // Al terminar la animación, si caímos en un clon saltamos sin transición
     // al slide real correspondiente.
@@ -284,18 +238,17 @@
       if (e.key === 'ArrowLeft') { prev(); restart(); }
     });
 
-    // Reconstruye el carrusel al cruzar el breakpoint móvil/desktop.
-    var wasMobile = MOBILE_MQ.matches;
-    function onBreakpoint() {
-      if (MOBILE_MQ.matches !== wasMobile) {
-        wasMobile = MOBILE_MQ.matches;
-        setupCarousel();
-      }
+    // Posición inicial SIN animación (evita un deslizamiento al cargar)
+    track.style.transition = 'none';
+    render();
+    void track.offsetWidth;
+    track.style.transition = TRANSITION;
+    // Solo arranca el avance automático si AUTOPLAY está activo.
+    if (AUTOPLAY) {
+      start();
+    } else {
+      stop();   // deja el slider en pausa, con los controles manuales disponibles
     }
-    if (MOBILE_MQ.addEventListener) MOBILE_MQ.addEventListener('change', onBreakpoint);
-    else if (MOBILE_MQ.addListener) MOBILE_MQ.addListener(onBreakpoint);
-
-    setupCarousel();
   }
 
   /* ==================================================================

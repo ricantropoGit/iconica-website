@@ -212,19 +212,7 @@ ul { list-style: none; padding: 0; }
 /* ==========================================================================
    HERO
    ========================================================================== */
-.hero {
-  position: relative;
-  /* Abre a pantalla completa: viewport menos la altura del header sticky.
-     svh evita el salto con la barra del navegador en móvil. */
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100svh - var(--header-h));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-block: 48px 104px;
-}
+.hero { padding-block: 56px 40px; text-align: center; }
 .hero__title {
   font-weight: 800;
   letter-spacing: -.035em;
@@ -234,62 +222,10 @@ ul { list-style: none; padding: 0; }
 }
 .hero__subtitle {
   margin: 1.4rem auto 0;
-  max-width: 38ch;
+  max-width: 40ch;
   font-size: clamp(1.05rem, 4.2vw, 1.5rem);
+  font-style: italic;
   color: var(--ink-soft);
-  text-wrap: pretty;
-}
-
-/* Ancla "Saber más" — flecha que baja al slider */
-.hero__scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 30px;
-  transform: translateX(-50%);
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  color: var(--ink-soft);
-  transition: color .18s ease;
-}
-.hero__scroll:hover { color: var(--ink); }
-.hero__scroll-arrow { animation: heroScrollBounce 1.9s ease-in-out infinite; }
-.hero__scroll-label {
-  font-size: .72rem;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-@keyframes heroScrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(6px); }
-}
-
-/* ==========================================================================
-   INTRO / Pregunta (sección entre hero y slider)
-   ========================================================================== */
-.intro {
-  text-align: center;
-  /* Padding contenido: deja respirar la pregunta sin robarle pantalla al
-     slider. ~30px en móvil → ~50px en laptop, escalando con el viewport. */
-  padding-block: clamp(30px, 4.5vw, 52px);
-  background: var(--bg-dark);
-  color: #fff;
-  scroll-margin-top: var(--header-h);
-}
-.intro__title {
-  font-size: clamp(1.5rem, 5.2vw, 2.7rem);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  line-height: 1.06;
-  text-wrap: balance;
-}
-.intro__title em { font-style: italic; }
-.intro__subtitle {
-  margin-top: .7rem;
-  color: #a3a3a3;
-  font-size: clamp(1rem, 3.2vw, 1.3rem);
   text-wrap: pretty;
 }
 
@@ -305,7 +241,7 @@ ul { list-style: none; padding: 0; }
 .slide {
   flex: 0 0 100%;
   display: grid;
-  grid-template-columns: 1fr;          /* móvil: una columna, una imagen por slide */
+  grid-template-columns: 1fr;          /* móvil: una columna */
 }
 .ba {                                   /* before/after cell */
   position: relative;
@@ -348,48 +284,44 @@ ul { list-style: none; padding: 0; }
 
 .ba__caption { color: #fff; font-size: .92rem; font-style: italic; line-height: normal;}
 
-/* Controles — barra compacta centrada en la parte superior de la imagen.
-   Fondo oscuro translúcido + desenfoque para que los iconos se lean tanto
-   sobre fondos claros como oscuros. */
-.slider__controls {
+/* Controles */
+.slider__btn {
   position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 7;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.42);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,.18);
-}
-.slider__btn,
-.slider__play {
-  width: 32px; height: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px; height: 46px;
   display: grid; place-items: center;
-  border: 0;
-  background: transparent;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.28);
   border-radius: 50%;
   color: #fff;
-  cursor: pointer;
-  opacity: 1;
-  transition: background .18s ease;
+  z-index: 5;
+  transition: background .2s ease;
 }
-.slider__btn svg { width: 16px; height: 16px; }
-.slider__play svg { width: 16px; height: 16px; }
-.slider__btn:hover,
-.slider__play:hover { background: rgba(255,255,255,.2); }
-/* Móvil (una columna): se omiten los dots — son demasiados y resultan
-   redundantes. Reaparecen a partir de tablet (≥640px). */
+.slider__btn:hover { background: rgba(255,255,255,.28); }
+.slider__btn--prev { left: 14px; }
+.slider__btn--next { right: 14px; }
+.slider__play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 54px; height: 54px;
+  display: grid; place-items: center;
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 50%;
+  color: #fff;
+  z-index: 6;
+  opacity: 0;
+  transition: opacity .2s ease, background .2s ease;
+}
+.slider:hover .slider__play { opacity: 1; }
+.slider__play:hover { background: rgba(0,0,0,.7); }
 .slider__dots {
-  display: none;
   position: absolute;
   left: 50%; bottom: 14px;
   transform: translateX(-50%);
+  display: flex;
   gap: 8px;
   z-index: 5;
 }
@@ -689,43 +621,6 @@ ul { list-style: none; padding: 0; }
 @media (min-width: 640px) {
   .section { padding-block: 80px; }
   .slide { grid-template-columns: 1fr 1fr; }   /* antes/después en 2 columnas */
-
-  /* Dos columnas (tablet/desktop): se recuperan los controles originales —
-     flechas grandes a los lados y play/pausa centrado que aparece al hover.
-     La barra compacta superior solo aplica al layout de una columna (móvil). */
-  .slider__controls {
-    display: contents;          /* deshace la barra: los botones vuelven a posicionarse solos */
-  }
-  .slider__btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 46px; height: 46px;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.28);
-    z-index: 5;
-    transition: background .2s ease;
-  }
-  .slider__btn:hover { background: rgba(255,255,255,.28); }
-  .slider__btn--prev { left: 14px; }
-  .slider__btn--next { right: 14px; }
-  .slider__btn svg { width: 18px; height: 18px; }
-
-  .slider__play {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    width: 54px; height: 54px;
-    background: rgba(0,0,0,.45);
-    border: 1px solid rgba(255,255,255,.4);
-    z-index: 6;
-    opacity: 0;
-    transition: opacity .2s ease, background .2s ease;
-  }
-  .slider:hover .slider__play { opacity: 1; }
-  .slider__play:hover { background: rgba(0,0,0,.7); }
-  .slider__play svg { width: 20px; height: 20px; }
-  .slider__dots { display: flex; }   /* ≥640px: vuelven los dots */
   .cards { grid-template-columns: repeat(3, 1fr); }
   .card { border-top: 0; border-left: 1px solid var(--border); }
   .card:first-child { border-left: 0; }
@@ -738,19 +633,18 @@ ul { list-style: none; padding: 0; }
   :root { --header-h: 72px; --gutter: 32px; }
   .nav { display: block; }
   .hamburger { display: none; }
-  .hero { padding-block: 56px 116px; }
+  .hero { padding-block: 90px 60px; }
   .section { padding-block: 100px; }
   .ba { aspect-ratio: 1 / 1; }
 }
 
 /* —— Desktop ≥ 1280px —— */
 @media (min-width: 1280px) {
-  .hero { padding-block: 64px 120px; }
+  .hero { padding-block: 110px 72px; }
 }
 
 /* Respeta usuarios con reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
-  .hero__scroll-arrow { animation: none; }
 }

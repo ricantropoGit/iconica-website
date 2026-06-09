@@ -77,47 +77,6 @@
     }
     .reveal__text strong { color: var(--ink); font-weight: 700; }
 
-    /* ---- Lista de beneficios (checks verdes) ---- */
-    .reveal__list {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 42ch;
-    }
-    .reveal__item {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 12px;
-      align-items: start;
-      color: var(--ink-soft);
-      font-size: clamp(.95rem, 2.1vw, 1.05rem);
-      line-height: 1.45;
-      text-wrap: pretty;
-    }
-    .reveal__item strong { color: var(--ink); font-weight: 700; }
-    .reveal__check {
-      width: 22px; height: 22px;
-      margin-top: .1em;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--accent-soft);
-      color: var(--accent-strong);
-    }
-    .reveal__check svg { width: 14px; height: 14px; display: block; }
-
-    /* ---- Precio ---- */
-    .reveal__price {
-      margin-top: 1.6rem;
-      font-size: clamp(2.2rem, 6vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -.03em;
-      line-height: 1;
-      color: var(--ink);
-    }
-    .reveal__price-cur { font-weight: 800; }
-
     .reveal__actions {
       display: flex;
       flex-direction: column;
@@ -142,9 +101,7 @@
       .reveal__buttons { flex-direction: column; max-width: none; }
     }
 
-    /* La imagen ya trae la marca de agua impresa (no es HTML).
-       Sin proporción forzada: la imagen define su propia altura y la
-       columna se ajusta a ella; el ancho llena la columna. */
+    /* La imagen ya trae la marca de agua impresa (no es HTML) */
     .reveal__frame {
       position: relative;
       border-radius: var(--r-md);
@@ -156,13 +113,11 @@
       width: 100%;
       height: auto;
       display: block;
-    }
-    /* Skeleton mientras carga: reserva una proporción vertical para que
-       el layout no salte. Al cargar se retira la clase y manda la imagen. */
-    .reveal__img.is-loading {
-      aspect-ratio: 3 / 4;
       object-fit: cover;
-      animation: revealPulse 1.5s ease-in-out infinite;
+    }
+    .reveal__img.is-loading {
+      aspect-ratio: 1 / 1;
+      /*animation: revealPulse 1.5s ease-in-out infinite;*/
     }
     @keyframes revealPulse {
       0%, 100% { opacity: 1; }
@@ -345,28 +300,11 @@
 
             <h1 class="reveal__title">Te presentamos tu<br class="reveal__br" />nueva imagen.</h1>
 
-            <ul class="reveal__list">
-              <li class="reveal__item">
-                <span class="reveal__check" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.2 3.2L15 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span>Los archivos <strong>ya están listos para su</strong> <span class="hl">descarga sin la marca de agua</span></span>
-              </li>
-              <li class="reveal__item">
-                <span class="reveal__check" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.2 3.2L15 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span><strong>Se incluyen tres versiones</strong> con cambios sutiles de expresión para tu elección</span>
-              </li>
-              <li class="reveal__item">
-                <span class="reveal__check" aria-hidden="true">
-                  <svg viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.2 3.2L15 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span>Resolución de 2000 x 2000 pixels</span>
-              </li>
-            </ul>
-
-            <p class="reveal__price">$59 <span class="reveal__price-cur">USD</span></p>
+            <p class="reveal__text">
+              El archivo ya está listo para su descarga <strong>sin la marca de agua</strong>.
+              <span class="hl">Obtén tu imagen por $50&nbsp;USD.</span>
+              La descarga incluye dos versiones adicionales con variaciones de expresión.
+            </p>
           </div>
 
           <!-- Columna derecha: imagen de prueba (la marca de agua viene impresa en el archivo) -->
