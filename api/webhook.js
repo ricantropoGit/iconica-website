@@ -107,12 +107,24 @@ export default async function handler(req, res) {
   console.log(`📨 [Webhook] Tipo: ${event.type}, ID: ${event.id}`);
 
   // -------------------------------------------------------------------
+  // Solo procesamos checkout.session.completed. El endpoint live también
+  // está suscrito a charge.succeeded, cuyo objeto (Charge) no trae
+  // metadata.submissionId ni email del cliente en los campos que usamos —
+  // reenviarlo a Apps Script generaría llamadas con datos vacíos.
+  // Respondemos 200 igualmente para que Stripe no reintente el evento.
+  // -------------------------------------------------------------------
+  if (event.type !== 'checkout.session.completed') {
+    console.log(`⏭️ [Webhook] Evento ignorado (no se procesa): ${event.type}`);
+    return res.status(200).json({ received: true, ignored: event.type });
+  }
+
+  // -------------------------------------------------------------------
   // PASO 4: Reenviar a Google Apps Script y ESPERAR la respuesta.
   // En Vercel el patrón "fire-and-forget" no es confiable: una vez que
   // se envía la respuesta a Stripe, el runtime puede congelar la función
   // antes de que termine el fetch. Por eso esperamos ANTES de responder.
   // -------------------------------------------------------------------
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4SCc9Xgnj87_zyLsJDG_PKxroFKd1XpXK1P9W8wYzz155u8f7SPD6WgVxRWTCmo4/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz61yAQ67vRq1hz0-OErxZhzgtDUpFFeaOfWhcIuP9WpNBrrjp9rokz7IWLJ_oekRs/exec';
 
   const obj = event.data?.object || {};
   const essentialData = {

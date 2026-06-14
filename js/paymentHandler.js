@@ -3,8 +3,8 @@
 // Maneja la página de pago y compra de fotos editadas con Stripe
 // =====================================================================
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4SCc9Xgnj87_zyLsJDG_PKxroFKd1XpXK1P9W8wYzz155u8f7SPD6WgVxRWTCmo4/exec';
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Tdx5CHkkB1cJoaIo6myCrjXC9sSCjqvx7L2Ldkxq0WemURjDQ8nWTVtIATI95SG75EagtMLFX3JJt07CfI0OIpD00hq2gLWui';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz61yAQ67vRq1hz0-OErxZhzgtDUpFFeaOfWhcIuP9WpNBrrjp9rokz7IWLJ_oekRs/exec';
+const STRIPE_PUBLISHABLE_KEY = 'pk_live_51Tdx53HgQnamIvcbwffd6SehuYPEnyoB8cY7VM5jHnjNYyFFnrO3w6bmSdLs8Uq0cnKcQeWxd5S0j7KbhfmA7uUF00ERntvOtc';
 
 // Inicializar Stripe 
 var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
@@ -49,13 +49,10 @@ function loadSubmissionData(submissionId) {
 
   var photoImg = document.getElementById('editedPhoto');
 
-  // Cargar desde carpeta local /images/Prueba/
-  // Formato esperado: /images/Prueba/[SUBMISSIONID].jpg
+  // 1er intento: carpeta local /images/Prueba/ (instantáneo; respaldo
+  // para fotos publicadas con el flujo anterior)
   var localImagePath = '/images/Prueba/' + submissionId + '.jpg';
 
-  console.log('Intentando cargar desde:', localImagePath);
-
-  // Crear una imagen temporal para verificar si existe
   var testImg = new Image();
 
   testImg.onload = function() {
@@ -66,13 +63,41 @@ function loadSubmissionData(submissionId) {
   };
 
   testImg.onerror = function() {
-    console.warn('⚠️ Foto de prueba no encontrada en /images/Prueba/');
-    showPlaceholder();
-    photoImg.classList.remove('is-loading');
+    console.log('ℹ️ Sin copia local; pidiendo la foto a Drive vía Apps Script');
+    loadPreviewFromDrive(submissionId, photoImg);
   };
 
   // Iniciar carga
   testImg.src = localImagePath;
+}
+
+// =====================================================================
+// Pedir la foto de prueba a Apps Script, que la lee del folder "Prueba"
+// de Drive y la regresa como base64 (Drive no permite incrustar
+// imágenes con enlaces directos).
+// =====================================================================
+function loadPreviewFromDrive(submissionId, photoImg) {
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({ action: 'getPreviewPhoto', submissionId: submissionId })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success && data.base64) {
+        console.log('✅ Foto de prueba recibida desde Drive');
+        photoImg.src = 'data:' + (data.mimeType || 'image/jpeg') + ';base64,' + data.base64;
+        photoImg.alt = 'Tu foto editada con Icónica';
+      } else {
+        console.warn('⚠️ Foto de prueba no encontrada en Drive:', data.error);
+        showPlaceholder();
+      }
+      photoImg.classList.remove('is-loading');
+    })
+    .catch(error => {
+      console.error('Error al pedir la foto a Apps Script:', error);
+      showPlaceholder();
+      photoImg.classList.remove('is-loading');
+    });
 }
 
 // =====================================================================

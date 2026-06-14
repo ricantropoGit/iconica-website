@@ -278,6 +278,17 @@
       if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restart(); }
     });
 
+    // Móvil: tocar el área de la imagen pausa o reanuda el carrusel.
+    // Se excluyen las flechas prev/next (que navegan) y el propio botón
+    // play/pausa (que ya alterna por su handler). Un swipe no dispara click,
+    // así que solo un toque limpio activa esto.
+    vp.addEventListener('click', function (e) {
+      if (!MOBILE_MQ.matches) return;
+      if (e.target.closest('.slider__btn')) return;   // prev/next: solo navegan
+      if (e.target.closest('.slider__play')) return;  // play: ya alterna por sí mismo
+      playing ? stop() : start();
+    });
+
     // Teclado
     document.getElementById('galeria').addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { next(); restart(); }

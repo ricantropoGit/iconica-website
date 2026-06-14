@@ -156,17 +156,40 @@
       width: 100%;
       height: auto;
       display: block;
+      transition: opacity .35s ease;
     }
-    /* Skeleton mientras carga: reserva una proporción vertical para que
-       el layout no salte. Al cargar se retira la clase y manda la imagen. */
+    /* Mientras carga: reserva la proporción para que el layout no salte
+       y oculta el <img> por completo — sin src, el navegador pintaría su
+       icono de "imagen rota". El marco oscuro + spinner toman su lugar,
+       y al llegar la foto entra con un fundido suave. */
     .reveal__img.is-loading {
       aspect-ratio: 3 / 4;
       object-fit: cover;
-      animation: revealPulse 1.5s ease-in-out infinite;
+      opacity: 0;
     }
-    @keyframes revealPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .55; }
+    /* Spinner centrado en el marco mientras la foto viaja desde Drive.
+       Vive solo mientras la imagen tenga .is-loading; al llegar la foto
+       el JS quita la clase y el spinner desaparece con ella. */
+    .reveal__frame:has(.reveal__img.is-loading)::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 44px; height: 44px;
+      margin: -32px 0 0 -22px;
+      border: 3px solid rgba(255,255,255,.25);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    .reveal__frame:has(.reveal__img.is-loading)::before {
+      content: 'Cargando tu retrato…';
+      position: absolute;
+      top: calc(50% + 24px);
+      left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,.7);
+      font-size: .9rem;
+      letter-spacing: .02em;
     }
 
     /* ---- Mensaje de error (Stripe / red) ---- */
@@ -372,7 +395,9 @@
           <!-- Columna derecha: imagen de prueba (la marca de agua viene impresa en el archivo) -->
           <div class="reveal__media">
             <div class="reveal__frame">
-              <img id="editedPhoto" class="reveal__img is-loading" alt="Tu retrato icónico con marca de agua" />
+              <!-- alt vacío a propósito: el JS lo asigna al cargar la foto; con alt
+     lleno y sin src, el navegador pinta un icono de imagen rota -->
+<img id="editedPhoto" class="reveal__img is-loading" alt="" />
             </div>
           </div>
 

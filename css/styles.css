@@ -351,38 +351,56 @@ ul { list-style: none; padding: 0; }
 /* Controles — barra compacta centrada en la parte superior de la imagen.
    Fondo oscuro translúcido + desenfoque para que los iconos se lean tanto
    sobre fondos claros como oscuros. */
+/* Móvil (una columna): mismos controles que tablet/desktop —
+   flechas prev/next en los extremos izquierdo y derecho, centradas
+   verticalmente, y play/pausa centrado arriba que aparece al hover.
+   El play se separa del borde superior la misma distancia (12px) que
+   las flechas de sus bordes laterales. */
 .slider__controls {
+  display: contents;          /* los botones se posicionan solos sobre la imagen */
+}
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.28);
+  background: rgba(255,255,255,.12);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  z-index: 7;
+  transition: background .18s ease;
+}
+.slider__btn svg { width: 16px; height: 16px; }
+.slider__btn:hover { background: rgba(255,255,255,.28); }
+.slider__btn--prev { left: 12px; }
+.slider__btn--next { right: 12px; }
+
+.slider__play {
   position: absolute;
   top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 7;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.42);
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.4);
+  background: rgba(0,0,0,.45);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,.18);
-}
-.slider__btn,
-.slider__play {
-  width: 32px; height: 32px;
-  display: grid; place-items: center;
-  border: 0;
-  background: transparent;
   border-radius: 50%;
   color: #fff;
   cursor: pointer;
-  opacity: 1;
-  transition: background .18s ease;
+  z-index: 7;
+  opacity: 0;
+  transition: opacity .2s ease, background .2s ease;
 }
-.slider__btn svg { width: 16px; height: 16px; }
 .slider__play svg { width: 16px; height: 16px; }
-.slider__btn:hover,
-.slider__play:hover { background: rgba(255,255,255,.2); }
+.slider:hover .slider__play { opacity: 1; }
+.slider__play:hover { background: rgba(0,0,0,.7); }
 /* Móvil (una columna): se omiten los dots — son demasiados y resultan
    redundantes. Reaparecen a partir de tablet (≥640px). */
 .slider__dots {
@@ -452,7 +470,7 @@ ul { list-style: none; padding: 0; }
   color: var(--accent-strong);
 }
 .card__title { margin-top: 4px; font-size: 1.18rem; font-weight: 700; letter-spacing: -.01em; }
-.card__text { margin-top: 8px; color: var(--muted); font-size: .96rem; }
+.card__text { margin-top: 8px; color: var(--muted); font-size: .96rem; line-height: normal; }
 .card__price { color: var(--ink); font-weight: 700; }
 
 /* ==========================================================================
@@ -530,6 +548,44 @@ ul { list-style: none; padding: 0; }
 .check { color: var(--accent-strong); font-weight: 700; }
 .dash { color: #c4c4c4; }
 
+/* Notas numeradas bajo la tabla — sangría francesa (número a la izquierda,
+   texto indentado). Se oculta en móvil. */
+
+.note {
+  font-variant-position: super;
+  font-weight: 300;
+  }
+.compare-notes {
+  list-style: none;
+  counter-reset: note;
+  margin-top: 26px;
+  display: grid;
+  gap: 8px;
+  padding-left: unset;
+}
+.compare-notes li {
+  counter-increment: note;
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: .7rem;
+  line-height: 1.3;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.compare-notes li::before {
+  content: counter(note) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  text-align: left;
+  /*font-weight: 600;*/
+  color: var(--ink-soft);
+}
+/*@media (max-width: 639.98px) {
+  .compare-notes { display: none; }
+}*/
+
 /* ==========================================================================
    CONTACTO
    ========================================================================== */
@@ -545,7 +601,9 @@ ul { list-style: none; padding: 0; }
   border: 1px solid var(--border);
   border-radius: var(--r-md);
   color: var(--ink);
-}
+  position: relative;
+  top: 8px;
+  }
 .contact__k { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .contact__v { font-size: .98rem; color: var(--ink); }
 
@@ -673,9 +731,9 @@ ul { list-style: none; padding: 0; }
 .footer__col a { font-size: .95rem; color: var(--ink-soft); transition: color .15s ease; }
 .footer__col a:hover { color: var(--ink); }
 .footer__bottom {
-  margin-top: 48px;
+  /*margin-top: 48px;
   padding-top: 24px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border);*/
   text-align: center;
   color: var(--muted);
   font-size: .82rem;
@@ -725,7 +783,7 @@ ul { list-style: none; padding: 0; }
   .slider:hover .slider__play { opacity: 1; }
   .slider__play:hover { background: rgba(0,0,0,.7); }
   .slider__play svg { width: 20px; height: 20px; }
-  .slider__dots { display: flex; }   /* ≥640px: vuelven los dots */
+  .slider__dots { display: flex; bottom: 5px; }   /* ≥640px: vuelven los dots, más abajo para no encimar con .ba__tag */
   .cards { grid-template-columns: repeat(3, 1fr); }
   .card { border-top: 0; border-left: 1px solid var(--border); }
   .card:first-child { border-left: 0; }
@@ -754,3 +812,4 @@ ul { list-style: none; padding: 0; }
   * { transition: none !important; }
   .hero__scroll-arrow { animation: none; }
 }
+

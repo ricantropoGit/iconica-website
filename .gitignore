@@ -30,7 +30,14 @@ out/
 # Temporary files
 *.tmp
 *.bak
+*.bak*
 ~*
+
+# Backend de Apps Script — contiene la sk_live de Stripe; nunca al repo
+Code.gs
+
+# Config local de Claude Code — puede capturar secretos dentro de permisos
+.claude/settings.local.json
 
 # OS
 Thumbs.db

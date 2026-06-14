@@ -1,0 +1,16 @@
+# Backend de Apps Script — contiene la llave secreta de Stripe. NUNCA publicar.
+Code.gs
+
+# Documentación interna del proyecto (no debe servirse en el sitio)
+*.md
+
+# Copias de respaldo locales (payment.bak.html, index.bak2.html, etc.)
+*.bak*
+
+# Entorno y sistema — mantener SIEMPRE excluidos
+.env*
+.DS_Store
+node_modules
+.git
+.vercel
+.claude
