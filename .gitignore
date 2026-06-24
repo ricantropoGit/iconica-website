@@ -39,6 +39,9 @@ Code.gs
 # Config local de Claude Code — puede capturar secretos dentro de permisos
 .claude/settings.local.json
 
+# Carpeta de archivos no esenciales (respaldos y docs) — fuera del repo
+VARIOS/
+
 # OS
 Thumbs.db
 .vercel

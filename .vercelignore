@@ -7,6 +7,9 @@ Code.gs
 # Copias de respaldo locales (payment.bak.html, index.bak2.html, etc.)
 *.bak*
 
+# Carpeta de archivos no esenciales (respaldos y docs movidos) — no publicar
+VARIOS/
+
 # Entorno y sistema — mantener SIEMPRE excluidos
 .env*
 .DS_Store

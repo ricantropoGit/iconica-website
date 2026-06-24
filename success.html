@@ -453,5 +453,19 @@
     }
   </script>
 
+  <!-- Vercel Web Analytics (sin cookies). Para excluir tus pruebas en este
+       navegador: abre ?va-disable=1 (apagar) o ?va-disable=0 (reactivar). -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      if (p.get('va-disable') === '1') localStorage.setItem('va-disable', '1');
+      if (p.get('va-disable') === '0') localStorage.removeItem('va-disable');
+      if (localStorage.getItem('va-disable') !== '1') {
+        var s = document.createElement('script');
+        s.defer = true; s.src = '/_vercel/insights/script.js';
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
 </body>
 </html>

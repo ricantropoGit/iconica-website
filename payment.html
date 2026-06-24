@@ -389,7 +389,7 @@
               </li>
             </ul>
 
-            <p class="reveal__price">$59 <span class="reveal__price-cur">USD</span></p>
+            <p class="reveal__price">$967 <span class="reveal__price-cur">MXN</span></p>
           </div>
 
           <!-- Columna derecha: imagen de prueba (la marca de agua viene impresa en el archivo) -->
@@ -440,7 +440,7 @@
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer" data-screen-label="Footer">
     <div class="container">
-      <div class="footer__grid">
+      <!--<div class="footer__grid">
         <div class="footer__brand">
           <a href="index.html#hero" class="brand">
             <span class="brand__mark">I</span>
@@ -477,15 +477,29 @@
             <li><a href="#">Política de imagen</a></li>
           </ul>
         </div>
-      </div>
+      </div>-->
 
       <div class="footer__bottom">
-        © <span id="year"></span> Icónica. Todos los derechos reservados. · Diseño basado en la estética de AstroDeck.
+        © <span id="year"></span> Icónica. Todos los derechos reservados.
       </div>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/paymentHandler.js"></script>
+  <!-- Vercel Web Analytics (sin cookies). Para excluir tus pruebas en este
+       navegador: abre ?va-disable=1 (apagar) o ?va-disable=0 (reactivar). -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      if (p.get('va-disable') === '1') localStorage.setItem('va-disable', '1');
+      if (p.get('va-disable') === '0') localStorage.removeItem('va-disable');
+      if (localStorage.getItem('va-disable') !== '1') {
+        var s = document.createElement('script');
+        s.defer = true; s.src = '/_vercel/insights/script.js';
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
 </body>
 </html>

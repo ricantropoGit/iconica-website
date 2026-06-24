@@ -199,7 +199,7 @@
       <h1 class="confirmation__title">¡Gracias por tu envío!</h1>
 
       <p class="confirmation__subtitle">
-        Recibimos tu foto correctamente. Nos pondremos en contacto en las próximas 24-48 horas.
+        Recibimos tu foto correctamente. Nos pondremos en contacto en las próximas 24 horas.
       </p>
 
       <div class="confirmation__id-label">Tu ID de referencia</div>
@@ -208,7 +208,7 @@
       <div class="confirmation__message">
         <strong>¿Qué sucede ahora?</strong>
         <p style="margin-top: 8px; margin-bottom: 0;">
-          Nuestro equipo revisará tu foto y te enviará un ejercicio editado con Icónica. Tendrás 24 horas para revisar si te convence antes de decidir si compras las 3 fotos de alta resolución.
+          Un director de arte asignado revisará tu foto y te enviará una liga hacia una página con tu imagen optimizada. Tendrás 48 horas para revisarla antes de decidir si te convence. De lo contrario, tu imagen se borrará de nuestros servidores para proteger tu privacidad.
         </p>
       </div>
 
@@ -288,5 +288,19 @@
     });
   </script>
 
+  <!-- Vercel Web Analytics (sin cookies). Para excluir tus pruebas en este
+       navegador: abre ?va-disable=1 (apagar) o ?va-disable=0 (reactivar). -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      if (p.get('va-disable') === '1') localStorage.setItem('va-disable', '1');
+      if (p.get('va-disable') === '0') localStorage.removeItem('va-disable');
+      if (localStorage.getItem('va-disable') !== '1') {
+        var s = document.createElement('script');
+        s.defer = true; s.src = '/_vercel/insights/script.js';
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
 </body>
 </html>

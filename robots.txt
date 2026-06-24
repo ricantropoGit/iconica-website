@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iconica24.com/sitemap.xml

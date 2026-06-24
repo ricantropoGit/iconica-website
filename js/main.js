@@ -124,7 +124,7 @@
     var dotsWrap = document.getElementById('sliderDots');
     var playing = true;
     var timer = null;
-    var INTERVAL = 5000;
+    var INTERVAL = 10000;
     var TRANSITION = 'transform .55s cubic-bezier(.65,.05,.36,1)';
     // Autoplay configurable desde el HTML: <section class="slider" data-autoplay="false">
     var sliderEl = track.closest('.slider');
@@ -263,10 +263,6 @@
     prevBtn.addEventListener('click', function () { prev(); restart(); });
     playBtn.addEventListener('click', function () { playing ? stop() : start(); });
 
-    // Pausa al pasar el cursor
-    track.parentElement.addEventListener('mouseenter', function () { if (playing && timer) { clearInterval(timer); timer = null; } });
-    track.parentElement.addEventListener('mouseleave', function () { if (playing && !timer) { timer = setInterval(next, INTERVAL); } });
-
     // Swipe táctil
     var startX = 0, dx = 0, dragging = false;
     var vp = track.parentElement;
@@ -278,14 +274,11 @@
       if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restart(); }
     });
 
-    // Móvil: tocar el área de la imagen pausa o reanuda el carrusel.
-    // Se excluyen las flechas prev/next (que navegan) y el propio botón
-    // play/pausa (que ya alterna por su handler). Un swipe no dispara click,
-    // así que solo un toque limpio activa esto.
-    vp.addEventListener('click', function (e) {
-      if (!MOBILE_MQ.matches) return;
-      if (e.target.closest('.slider__btn')) return;   // prev/next: solo navegan
-      if (e.target.closest('.slider__play')) return;  // play: ya alterna por sí mismo
+    // Clic en el área de imágenes (el track) pausa o reanuda el carrusel
+    // (toggle), en móvil y escritorio. Los controles —flechas, botón play/pausa
+    // y puntos— viven FUERA del track (son sus hermanos), así que conservan su
+    // propia función sin pausar. Un swipe no dispara click, solo un toque limpio.
+    track.addEventListener('click', function () {
       playing ? stop() : start();
     });
 

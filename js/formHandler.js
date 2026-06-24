@@ -196,7 +196,15 @@ function showErrorMessage(message) {
     `;
 
     var form = document.getElementById('contactForm');
-    form.parentNode.insertBefore(errorDiv, form);
+    var submitBtn = form.querySelector('button[type="submit"]');
+    // Insertar DENTRO del form, justo antes del botón "Enviar" — así el aviso
+    // queda en la columna del formulario y NO rompe la retícula de 2 columnas
+    // (antes se insertaba como hermano del form → se volvía 3ª celda del grid).
+    if (submitBtn) {
+      form.insertBefore(errorDiv, submitBtn);
+    } else {
+      form.appendChild(errorDiv);
+    }
   }
 
   errorDiv.textContent = message;
