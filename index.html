@@ -4,7 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Icónica — Optimización de retratos con inteligencia artificial</title>
-  <meta name="description" content="Transformamos tu foto incómoda en un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+  <meta name="description" content="Transformamos tu foto incómoda a un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph — previsualización al compartir el link (LinkedIn, WhatsApp, Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://iconica24.com/" />
+  <meta property="og:title" content="¿Qué le está diciendo tu foto de perfil al mundo?" />
+  <meta property="og:description" content="Transformamos tu foto incómoda en un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+  <meta property="og:image" content="https://iconica24.com/images/Maqueta01b.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
+  <meta property="og:image:alt" content="Ejemplos de retratos optimizados con Icónica" />
+  <meta property="og:locale" content="es_MX" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="¿Qué le está diciendo tu foto de perfil al mundo?" />
+  <meta name="twitter:description" content="Transformamos tu foto incómoda en un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+  <meta name="twitter:image" content="https://iconica24.com/images/Maqueta01b.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,11 +46,12 @@
       <nav class="nav" aria-label="Navegación principal">
         <ul class="nav__list">
           <li><a class="nav__link" href="#hero" data-scroll>Inicio</a></li>
-          <li><a class="nav__link" href="#galeria" data-scroll>Galería</a></li>
+          <!--<li><a class="nav__link" href="#galeria" data-scroll>Galería</a></li>-->
           <li><a class="nav__link" href="#como-funciona" data-scroll>Cómo funciona</a></li>
-          <li><a class="nav__link" href="#cta" data-scroll>Sube tu foto</a></li>
+          <!--<li><a class="nav__link" href="#cta" data-scroll>Sube tu foto</a></li>-->
+          <li><a class="nav__link" href="#precios" data-scroll>Precio</a></li>
           <li><a class="nav__link" href="#compara" data-scroll>Compara</a></li>
-          <li><a class="nav__link" href="#contacto" data-scroll>Contacto</a></li>
+          <li><a class="nav__link" href="#contacto" data-scroll>Sube tu foto</a></li>
         </ul>
       </nav>
 
@@ -41,11 +64,12 @@
     <div class="mobile-nav" id="mobile-nav">
       <ul class="mobile-nav__list">
         <li><a class="mobile-nav__link" href="#hero" data-scroll>Inicio</a></li>
-        <li><a class="mobile-nav__link" href="#galeria" data-scroll>Galería</a></li>
+        <!--<li><a class="mobile-nav__link" href="#galeria" data-scroll>Galería</a></li>-->
         <li><a class="mobile-nav__link" href="#como-funciona" data-scroll>Cómo funciona</a></li>
-        <li><a class="mobile-nav__link" href="#cta" data-scroll>Sube tu foto</a></li>
+        <!--<li><a class="mobile-nav__link" href="#cta" data-scroll>Sube tu foto</a></li>-->
+        <li><a class="mobile-nav__link" href="#precios" data-scroll>Precio</a></li>
         <li><a class="mobile-nav__link" href="#compara" data-scroll>Compara</a></li>
-        <li><a class="mobile-nav__link" href="#contacto" data-scroll>Contacto</a></li>
+        <li><a class="mobile-nav__link" href="#contacto" data-scroll>Sube tu foto</a></li>
       </ul>
     </div>
   </header>
@@ -54,16 +78,15 @@
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="hero" data-screen-label="Hero">
       <div class="container">
-        <h1 class="hero__title">¿Qué le está diciendo tu foto de perfil al mundo?</h1>
-        <!--<h1 class="hero__title">Eleva tu retrato a<br />una imagen icónica.</h1>-->
+        <!--<h1 class="hero__title">¿Qué le está diciendo tu foto de perfil al mundo?</h1>-->
+           <h1 class="hero__title">Convierte tu "selfie" en una<br />foto profesional de estudio.</h1>
         <p class="hero__subtitle">
-          Comparte tu "cara de foto", y <span class="hl">en 24&nbsp;hrs. recibirás un ejercicio sin ningún costo</span> con la expresión de tu rostro optimizada.
+          Entrega en 24&nbsp;hrs. <span class="hl">Sólo pagas si te convence.</span>
         </p>
-        <!--<p class="hero__subtitle">Comparte tu foto, y <span class="hl">en 24&nbsp;hrs. recibirás un ejercicio</span> sin ningún costo.</p>-->
       </div>
 
       <!-- Ancla "scroll to slider" -->
-      <a class="hero__scroll" href="#intro" data-scroll data-scroll-align="bottom" aria-label="Saber más">
+      <a class="hero__scroll" href="#galeria" data-scroll aria-label="Saber más">
         <svg class="hero__scroll-arrow" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         <span class="hero__scroll-label">[ Ver ejemplos ]</span>
       </a>
@@ -74,110 +97,127 @@
       <div class="slider__viewport">
         <div class="slider__track" id="sliderTrack">
 
-          <!-- Slide 1 -->
+          <!-- Slide 1 · par-7 -->
           <div class="slide">
             <div class="ba">
-              <img src="images/par-1-antes.jpg" alt="Retrato original" />
+              <img src="images/par-7-antes.webp" alt="Retrato original" fetchpriority="high" />
               <div class="ba__tag">
-                <span class="ba__caption">"¡Quiero caer bien, por favor!"</span>
+                <!--<span class="ba__caption">"Tengo la experiencia que tu consejo directivo necesita."</span>-->
                 <span class="ba__label">Original</span>
-                
               </div>
             </div>
             <div class="ba">
-              <img src="images/par-1-despues.jpg" alt="Retrato optimizado" />
+              <img src="images/par-7-despues.webp" alt="Retrato optimizado" fetchpriority="high" />
               <div class="ba__tag">
-                <span class="ba__caption">"Yo soy el ingeniero para tu próximo proyecto."</span>
+                <!--<span class="ba__caption">"Tengo la experiencia que tu consejo directivo necesita."</span>-->
                 <span class="ba__label">Optimizada</span>
               </div>
             </div>
           </div>
 
-          <!-- Slide 2 -->
+          <!-- Slide 2 · par-8 -->
           <div class="slide">
             <div class="ba">
-              <img src="images/par-2-antes.jpg" alt="Retrato original" />
+              <img src="images/par-8-antes.webp" alt="Retrato original" fetchpriority="high" />
               <div class="ba__tag">
-                <span class="ba__caption">"…de niña juegué con Barbies"</span>
+                <!--<span class="ba__caption">"Entiendo a tu cliente mejor que tu competencia."</span>-->
                 <span class="ba__label">Original</span>
               </div>
             </div>
             <div class="ba">
-              <img src="images/par-2-despues.jpg" alt="Retrato optimizado" />
+              <img src="images/par-8-despues.webp" alt="Retrato optimizado" fetchpriority="high" />
               <div class="ba__tag">
-                <span class="ba__caption">"Siempre voy por delante de la competencia."</span>
+                <!--<span class="ba__caption">"Entiendo a tu cliente mejor que tu competencia."</span>-->
                 <span class="ba__label">Optimizada</span>
               </div>
             </div>
           </div>
 
-          <!-- Slide 3 -->
+          <!-- Slide 3 · par-9 -->
           <div class="slide">
             <div class="ba">
-              <img src="images/par-3-antes.jpg" alt="Retrato original" />
+              <img src="images/par-9-antes.webp" alt="Retrato original" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">"…la última y nos vamos!"</span>
+                <!--<span class="ba__caption">"Tu marca necesita una mirada fresca. Es la mía."</span>-->
                 <span class="ba__label">Original</span>
               </div>
             </div>
             <div class="ba">
-              <img src="images/par-3-despues.jpg" alt="Retrato optimizado" />
+              <img src="images/par-9-despues.webp" alt="Retrato optimizado" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">"Los abogados de tu contraparte me van a temer"</span>
+                <!--<span class="ba__caption">"Tu marca necesita una mirada fresca. Es la mía."</span>-->
                 <span class="ba__label">Optimizada</span>
               </div>
             </div>
           </div>
 
-          <!-- Slide 4 -->
+          <!-- Slide 4 · par-10 -->
           <div class="slide">
             <div class="ba">
-              <img src="images/par-4-antes.jpg" alt="Retrato original" />
+              <img src="images/par-10-antes.webp" alt="Retrato original" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">"uy! se me olvidó peinarme!"</span>
+                <!--<span class="ba__caption">"Llevo veinte años negociando. Sé cuándo decir que no."</span>-->
                 <span class="ba__label">Original</span>
               </div>
             </div>
             <div class="ba">
-              <img src="images/par-4-despues.jpg" alt="Retrato optimizado" />
+              <img src="images/par-10-despues.webp" alt="Retrato optimizado" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">"Conozco los puntos fuertes de tu empresa. ¡Vamos a potenciarlos!</span>
+                <!--<span class="ba__caption">"Llevo veinte años negociando. Sé cuándo decir que no."</span>-->
                 <span class="ba__label">Optimizada</span>
               </div>
             </div>
           </div>
 
-          <!-- Slide 5 -->
+          <!-- Slide 5 · par-11 -->
           <div class="slide">
             <div class="ba">
-              <img src="images/par-5-antes.jpg" alt="Retrato original" />
+              <img src="images/par-11-antes.webp" alt="Retrato original" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">"…el que no transa, no avanza"</span>
+                <!--<span class="ba__caption">"Reviso cada cláusula antes de que firmes."</span>-->
                 <span class="ba__label">Original</span>
               </div>
             </div>
             <div class="ba">
-              <img src="images/par-5-despues.jpg" alt="Retrato optimizado" />
+              <img src="images/par-11-despues.webp" alt="Retrato optimizado" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">Puedes confiar en mis servicios.</span>
+                <!--<span class="ba__caption">"Reviso cada cláusula antes de que firmes."</span>-->
                 <span class="ba__label">Optimizada</span>
               </div>
             </div>
           </div>
 
-          <!-- Slide 6 -->
+          <!-- Slide 6 · par-12 -->
           <div class="slide">
             <div class="ba">
-              <img src="images/par-6-antes.jpg" alt="Retrato original" />
+              <img src="images/par-12-antes.webp" alt="Retrato original" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">…me dicen la "dama de hierro".</span>
+                <!--<span class="ba__caption">"El oficio no se improvisa, se acumula."</span>-->
                 <span class="ba__label">Original</span>
               </div>
             </div>
             <div class="ba">
-              <img src="images/par-6-despues.jpg" alt="Retrato optimizado" />
+              <img src="images/par-12-despues.webp" alt="Retrato optimizado" loading="lazy" />
               <div class="ba__tag">
-                <span class="ba__caption">"Estoy a tus órdenes para estudiar tu marca."</span>
+                <!--<span class="ba__caption">"El oficio no se improvisa, se acumula."</span>-->
+                <span class="ba__label">Optimizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7 · par-13 -->
+          <div class="slide">
+            <div class="ba">
+              <img src="images/par-13-antes.webp" alt="Retrato original" loading="lazy" />
+              <div class="ba__tag">
+                <!--<span class="ba__caption">"Construyo el producto que tu startup necesita."</span>-->
+                <span class="ba__label">Original</span>
+              </div>
+            </div>
+            <div class="ba">
+              <img src="images/par-13-despues.webp" alt="Retrato optimizado" loading="lazy" />
+              <div class="ba__tag">
+                <!--<span class="ba__caption">"Construyo el producto que tu startup necesita."</span>-->
                 <span class="ba__label">Optimizada</span>
               </div>
             </div>
@@ -201,10 +241,10 @@
       </div>
     </section>
 
-    <!-- ===================== INTRO / Pregunta ===================== -->
+    <!-- ===================== INTRO / Pregunta (DESACTIVADA) ===================== -->
     <section class="intro" id="intro" data-screen-label="Intro">
       <div class="container">
-        <p class="intro__subtitle">Te presentamos seis ejemplos reinterpretando lo que posiblemente comunicarían estas expresiones antes y después de su optimización.</p>
+        <p class="intro__subtitle" style="text-align: left;">En cumplimiento de nuestro compromiso con tu privacidad, las imágenes aquí mostradas etiquetadas como "original", provienen del sitio: "This person does not exist". No obstante, los ejercicios de optimización enfrentaron los mismos desafíos tal como si se hubiera tratado de personas reales.</p>
       </div>
     </section>
 
@@ -212,9 +252,9 @@
     <section class="section" id="como-funciona" data-screen-label="Cómo funciona">
       <div class="container">
         <div class="steps__head">
-          <h2 class="steps__title">Envíanos esa foto incómoda que te atormenta</h2>
+          <h2 class="steps__title">Eleva tu retrato a una imagen icónica.</h2>
           <p class="steps__lead">
-            Empleando únicamente <span class="hl">inteligencia artificial y generación sintética de imágenes</span> recibirás un ejercicio sin costo en 24 hrs. Tú solo compras la imagen en alta resolución <span class="hl">si te convence el resultado</span>.
+            A partir de una "selfie", <span class="hl">se capturan los rasgos anatómicos de la fisonomía, rostro y expresividad de la persona.</span> El estilo, iluminación, modelado, paleta de color y tonalidad del estudio del arte, se genera de forma sintética en postproducción.
           </p>
         </div>
 
@@ -224,8 +264,8 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
             </div>
             <span class="card__num">PASO 01</span>
-            <h3 class="card__title">Sube tu foto con toda confianza</h3>
-            <p class="card__text">El archivo se elimina de nuestros servidores en 48 horas.</p>
+            <h3 class="card__title">Sube tu foto de forma segura</h3>
+            <p class="card__text">El archivo con tu imagen se elimina de nuestros servidores en un plazo máximo de 48 horas.</p>
           </article>
 
           <article class="card">
@@ -234,7 +274,7 @@
             </div>
             <span class="card__num">PASO 02</span>
             <h3 class="card__title">Recibe una propuesta sin costo</h3>
-            <p class="card__text">Un director de arte revisa tu imagen y optimiza tu expresión.</p>
+            <p class="card__text">Te enviamos un ejercicio con «marca de agua» para tu valoración en 24 hrs.</p>
           </article>
 
           <article class="card">
@@ -243,7 +283,7 @@
             </div>
             <span class="card__num">PASO 03</span>
             <h3 class="card__title">Solo pagas si te convence</h3>
-            <p class="card__text">Incluye 4 versiones en alta resolución. <span class="card__price"> Precio: $967 MXN.</span></p>
+            <p class="card__text">Una vez aprobado, se procede a comprar el servicio de acuerdo al paquete elegido.</p>
           </article>
         </div>
       </div>
@@ -267,12 +307,81 @@
       </div>
     </section>
 
+    <!-- ===================== PRECIOS ===================== -->
+    <section class="section" id="precios" data-screen-label="Precios">
+      <div class="container">
+        <div class="pricing__head">
+          <p class="eyebrow">Precio</p>
+          <h2 class="pricing__title">Elige tu esquema</h2>
+          <p class="pricing__lead">Únicamente pagas el precio elegido si te convence el resultado.</p>
+        </div>
+
+        <div class="pricing__grid">
+          <!-- Starter -->
+          <article class="price-card">
+            <header class="price-card__head">
+              <h3 class="price-card__name">Paquete 4x</h3>
+              <p class="price-card__desc">Incluye cuatro (4) versiones optimizadas generadas a partir de la "selfie" proporcionada por cliente. El precio indicado a cotinuación es por imagen, el servicio se compra por paquete.
+              </p>
+            </header>
+            <p class="price-card__price"><span class="price-card__amount">$1,125</span><span class="price-card__period">MX/Foto</span></p>
+            <ul class="price-card__features">
+              <li>Se entregan <span class="hl">cuatro (4) versiones</span></li>              
+              <li>Sin sesión fotográfica</li>
+              <li>Director de arte asignado</li>              
+              <li>Incluye ejercicio de prueba CON «marca de agua» para tu valoración.</li>
+              <li>Entrega en 24 hrs.</li>
+            </ul>
+            <a href="#contacto" class="btn btn--ghost price-card__cta" data-scroll>Prueba sin Costo</a>
+          </article>
+
+          <!-- Pro (destacado) -->
+          <article class="price-card price-card--featured">
+            <span class="price-card__badge">Más Valor</span>
+            <header class="price-card__head">
+              <h3 class="price-card__name">Paquete 8x</h3>
+              <p class="price-card__desc">Incluye ocho (8) versiones optimizadas generadas a partir de la "selfie" proporcionada por cliente. El precio indicado a cotinuación es por imagen, el servicio se compra por paquete.</p>
+              
+            </header>
+            <p class="price-card__price"><span class="price-card__amount">$875</span><span class="price-card__period">MX/Foto</span></p>
+            <ul class="price-card__features">
+              <li>Se entregan <span class="hl">ocho (8) versiones</span></li>              
+              <li>Sin sesión fotográfica</li>
+              <li>Director de arte asignado</li>
+              <li>Incluye ejercicio de prueba CON «marca de agua» para tu valoración.</li>
+              <li>Entrega en 24 hrs.</li>              
+            </ul>
+            <a href="#contacto" class="btn btn--primary price-card__cta" data-scroll>Prueba sin Costo</a>
+          </article>
+
+          <!-- Enterprise OCULTO para dejar 2 columnas (Starter + Pro).
+               Para volver a 3 planes: quita este comentario envolvente Y en
+               css/styles.css (breakpoint 1024px) regresa la retícula a 3 columnas.
+          <article class="price-card">
+            <header class="price-card__head">
+              <h3 class="price-card__name">Enterprise</h3>
+              <p class="price-card__desc">Para grandes organizaciones con necesidades a medida. Diseñado para flujos de trabajo complejos, integraciones y atención dedicada a tu cuenta.</p>
+            </header>
+            <p class="price-card__price"><span class="price-card__amount">Custom</span></p>
+            <ul class="price-card__features">
+              <li>Todo lo de Pro</li>
+              <li>Soporte 24/7</li>
+              <li>Gestor de cuenta dedicado</li>
+              <li>Integraciones a medida</li>
+            </ul>
+            <a href="#contacto" class="btn btn--ghost price-card__cta" data-scroll>Contactar ventas</a>
+          </article>
+          -->
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== TABLA COMPARATIVA ===================== -->
     <section class="section section--alt" id="compara" data-screen-label="Comparativa" style="border-bottom: solid 1px #e9e9e9;">
       <div class="container">
         <div class="compare__head">
           <h2 class="compare__title">¡Compara!</h2>
-          <p class="compare__lead">Optimización de imagen, estudio fotográfico, o aplicación tipo "DIY".</p>
+          <p class="compare__lead">Optimización de imagen (icónica24) | Opción tipo "fast-food" | Estudio fotográfico profesional</p>
         </div>
 
         <div class="table-wrap">
@@ -281,30 +390,35 @@
               <tr>
                 <th class="col-feature" scope="col"></th>
                 <th class="col-highlight brand-col" scope="col">Icónica<br /><span class="pill">Recomendado</span></th>
-                <th scope="col">Estudio fotográfico</th>
-                <th scope="col">Sitios tipo DIY<sup class="note">1</sup></th>
+                <th scope="col">"Fast-food"<sup class="note">1</sup></th>
+                <th scope="col">Estudio fotográfico<sup class="note">2</sup></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Sin sesión fotográfica</th>
                 <td class="col-highlight"><span class="check">✓</span></td>
-                <td><span class="dash">—</span></td>
                 <td><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
               </tr>
               <tr>
-                <th scope="row">Director de arte asignado<sup class="note">2</sup></th>
-                <td class="col-highlight"><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="dash">—</span></td>
-              </tr>              
-              <tr>
-                <th scope="row">Entrega en 24 horas</th>
+                <th scope="row">Modelado de expresión personalizada<sup class="note">3</sup></th>
                 <td class="col-highlight"><span class="check">✓</span></td>
                 <td><span class="dash">—</span></td>
                 <td><span class="dash">—</span></td>
               </tr>
-
+              <tr>
+                <th scope="row">Director de arte asignado<sup class="note">4</sup></th>
+                <td class="col-highlight"><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+                <td><span class="dash">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Entrega en 24 horas (o menos)</th>
+                <td class="col-highlight"><span class="check">✓</span></td>
+                <td><span class="check">✓</span></td>
+                <td><span class="dash">—</span></td>
+              </tr>
               <tr>
                 <th scope="row">Propuesta sin costo</th>
                 <td class="col-highlight"><span class="check">✓</span></td>
@@ -312,25 +426,20 @@
                 <td><span class="dash">—</span></td>
               </tr>
               <!--<tr>
-                <th scope="row">Tres versiones en alta resolución</th>
-                <td class="col-highlight"><span class="check">✓</span></td>
-                <td><span class="check">✓</span></td>
-                <td><span class="dash">—</span></td>
+                <th scope="row">Inversión</th>
+                <td class="col-highlight"><strong>$4.5K MX</strong></td>
+                <td>Horas de tu tiempo<sup class="note">4</sup></td>
+                <td>$12.7K MX<sup class="note">3</sup></td>
               </tr>-->
-              <tr>
-                <th scope="row">Precio</th>
-                <td class="col-highlight"><strong>$55 USD</strong></td>
-                <td>$250+ USD<sup class="note">3</sup></td>
-                <td>Tu tiempo<sup class="note">4</sup> <br />+ $20 a $30 USD</td>
-              </tr>
             </tbody>
           </table>
         </div>
         <ol class="compare-notes">
-          <li>DIY (Do it yourself) o “hágalo usted mismo”</li>
-<li>Un director de arte asignado revisará tu imagen para convertirla en un retrato icónico. En el caso del estudio, normalmente es el fotógrafo/a quien cumple con esta tarea.</li>
-<li>$250 USD es el aproximado mínimo para una sesión fotográfica. Éste costo podría aumentar considerablemente según el prestigio y demanda del estudio.</li>
-<li>La “curva de aprendizaje” necesaria para obtener los resultados esperados, puede tomar entre 8 y 10 semanas de trabajo intenso según la habilidad y la experiencia previa del usuario.</li>      
+          <li>Corresponde a sitios que procesan imágenes con IA sin supervisión humana. Generan una gran cantidad de resultados en pocos minutos con una alta tasa de desperdicio (apróximadamente de 2 a 3 fotos útiles por cada 100). El cliente, quien paga por adelantado, debe hacer su propia selección sin la posibilidad de solicitar mejoras.</li>
+          <li>Por estudio fotográfico, NO nos referimos al comercio tradicional de fotos para «documentos oficiales» (que suelen ofrecerse también como "estudios fotográficos", aunque no pertenecen a la misma categoría).</li>
+          <li>El modelado u optimización de imágenes permite construir de forma sintética ese momento de conexión icónica entre la expresión del rostro y la persona humana.</li>
+          <li>Un director de arte asignado revisa las imágenes proporcionadas para convertirlas en un retrato icónico.</li>          
+<!--<li>La “curva de aprendizaje” necesaria para obtener los resultados esperados, puede tomar entre 8 y 10 semanas de trabajo intenso según la habilidad y la experiencia previa del usuario.</li>-->     
         </ol>        
       </div>
     </section>
@@ -341,7 +450,7 @@
         <div class="contact__grid">
           <div class="contact__info">
             <h2 class="contact__title">Tu retrato icónico comienza aquí.</h2>
-            <p class="contact__lead">Sube tu foto. <span class="hl"> Si tienes algún comentario o sugerencia adicional sobre del tratamiento de tu imagen, <strong>coméntalo ahora en la forma de envío</strong></span>. El ejercicio de prueba no tiene ningún costo para ti, pero éste será generado con <strong>una «marca de agua» que se retira de los archivos</strong> finales si decides descargarlos.</p>
+            <p class="contact__lead">Sube tu foto. <span class="hl"> Si tienes algún comentario o sugerencia adicional sobre del tratamiento de tu imagen, <strong>coméntalo ahora en la forma de envío</strong></span>.<br /><br />Como se ha dicho, el ejercicio de prueba no tiene ningún costo para ti, pero éste será generado con <strong>una «marca de agua» que se retira de los archivos finales</strong> si decides proceder a la compra del paquete elegido.</p>
 
             <ul class="contact__list">
               <li class="contact__item">

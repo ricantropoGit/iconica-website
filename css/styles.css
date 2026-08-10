@@ -10,6 +10,7 @@
   --ink:        #0a0a0a;   /* texto principal / negro */
   --ink-soft:   #404040;   /* texto secundario fuerte */
   --muted:      #6b7280;   /* texto secundario */
+  --semimuted:  #1b1c1e;  
   --bg:         #ffffff;
   --bg-alt:     #fafafa;   /* secciones claras alternas */
   --bg-dark:    #0a0a0a;   /* sección CTA oscura */
@@ -64,12 +65,17 @@ ul { list-style: none; padding: 0; }
   padding-inline: var(--gutter);
 }
 
-/* De 865px en adelante */
+/* De 865px en adelante — DESACTIVADO.
+   El brinco de width 100% → 80% encogía el contenedor 172px de golpe al
+   cruzar el umbral (vw 864 → caja 864px; vw 865 → caja 692px), y no volvía
+   a ese ancho hasta vw 1080. Sin esta regla, .container queda en 100%
+   siempre, acotado por max-width: 1180px.
 @media (min-width: 865px) {
   .container {
     width: 80%;
   }
 }
+*/
 
 .section { padding-block: 64px; }
 .section--alt { background: var(--bg-alt); }
@@ -279,9 +285,10 @@ ul { list-style: none; padding: 0; }
    ========================================================================== */
 .intro {
   text-align: center;
-  /* Padding contenido: deja respirar la pregunta sin robarle pantalla al
-     slider. ~30px en móvil → ~50px en laptop, escalando con el viewport. */
-  padding-block: clamp(30px, 4.5vw, 52px);
+  /* Piso de 24px. Es la curva original clamp(30px, 4.5vw, 52px) reescalada
+     por 0.8 (30→24), así que conserva su proporción: 24px hasta ~667px de
+     ancho, sube hasta 42px en ~1167px y ahí se detiene. */
+  padding-block: clamp(24px, 3.6vw, 42px);
   background: var(--bg-dark);
   color: #fff;
   scroll-margin-top: var(--header-h);
@@ -297,9 +304,21 @@ ul { list-style: none; padding: 0; }
 .intro__subtitle {
   margin-top: .7rem;
   color: #a3a3a3;
-  font-size: clamp(1rem, 3.2vw, 1.3rem);
+  /* -30% respecto del original clamp(1rem, 3.2vw, 1.3rem).
+     El tope y la pendiente llevan el -30% completo (1.3→.91rem, 3.2→2.24vw),
+     pero el piso se deja en .85rem (13.6px) en vez de .7rem (11.2px): abajo
+     de ~607px de ancho ese piso es el que gobierna, y 11.2px resultaba
+     ilegible en teléfono — además los navegadores con "tamaño mínimo de
+     fuente" lo habrían subido por su cuenta, rompiendo la proporción. */
+  font-size: clamp(.85rem, 2.24vw, .91rem);
   text-wrap: pretty;
 }
+/* Con .intro en padding-block: 0 no hay padding ni borde que contenga el
+   margin-top de arriba, así que colapsaba hacia afuera y empujaba la banda
+   oscura 11px hacia abajo, dejando una franja del fondo entre el slider y el
+   intro. Solo se anula cuando el subtítulo es el primer elemento: si se
+   vuelve a agregar .intro__title antes, el margen regresa por sí solo. */
+.intro__subtitle:first-child { margin-top: 0; }
 
 /* ==========================================================================
    SLIDER / Galería antes-después
@@ -556,6 +575,95 @@ ul { list-style: none; padding: 0; }
 .check { color: var(--accent-strong); font-weight: 700; }
 .dash { color: #c4c4c4; }
 
+/* ==========================================================================
+   PRECIOS
+   ========================================================================== */
+.pricing__head { text-align: center; max-width: 44rem; margin-inline: auto; }
+.pricing__head .eyebrow { color: var(--accent-strong); }
+.pricing__title { margin-top: .5rem; font-size: clamp(1.7rem, 5.5vw, 2.6rem); font-weight: 800; letter-spacing: -.025em; }
+.pricing__lead { margin-top: .7rem; color: var(--muted); }
+
+.pricing__grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.price-card:hover { border-color: var(--ink); box-shadow: var(--shadow-md); }
+.price-card--featured { border-color: var(--ink); box-shadow: var(--shadow-md); }
+
+.price-card__badge {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--ink);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: .38em 1em;
+  border-radius: 999px;
+}
+.price-card__name { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
+.price-card__desc { margin-top: .3rem; color: var(--muted); font-size: .95rem; min-height: calc(1.45em * 4); }
+.price-card__price { margin-top: 1.4rem; display: flex; align-items: baseline; gap: .15rem; }
+.price-card__amount { font-size: clamp(2.4rem, 8vw, 3rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.price-card__amount--custom { font-size: clamp(2rem, 6.5vw, 2.6rem); }
+.price-card__period { color: var(--muted); font-size: 1rem; font-weight: 500; }
+
+.price-card__features { margin-top: 1.6rem; display: grid; gap: .5rem; align-content: start; flex: 1 1 auto; }
+.price-card__features li {
+  position: relative;
+  padding-left: 1.7rem;
+  color: var(--ink-soft);
+  font-size: .96rem;
+  line-height: 1.3;
+}
+.price-card__features li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .12em;
+  width: 1.1rem; height: 1.1rem;
+  background: no-repeat center / contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+.price-card__cta { margin-top: auto; padding-top: 0; }
+.price-card__features + .price-card__cta { margin-top: 2rem; }
+.price-card__cta { display: flex; align-items: center; justify-content: center; width: 100%; text-align: center; margin-top: auto; padding-top: 2rem; line-height: 1; padding-block: .9rem; }
+
+@media (min-width: 640px) {
+  .pricing__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, auto); gap: 24px; }
+  /* subgrid: alinea precio / viñetas / botón entre tarjetas sin importar el largo de
+     la descripción. Activo en todo el rango de 2 columnas (≥640px), hasta que colapsan a 1 (<640px). */
+  .price-card { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 0; }
+  /* Justificado + partición de palabras solo de 640px en adelante: en móvil
+     (la base) la columna es angosta y el justificado abriría ríos de espacio.
+     Requiere el lang="es" del <html> para elegir el diccionario de guionado.
+     Los prefijos son necesarios: Safari sigue pidiendo -webkit-, y -ms- cubre
+     Edge legacy / IE10+. La versión sin prefijo va al final para que gane. */
+  .price-card__desc {
+    min-height: 0;
+    text-align: justify;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .pricing__grid { max-width: 720px; margin-inline: auto; } /* 2 planes centrados en escritorio. Para volver a 3: descomentar Enterprise en index.html, poner repeat(3,1fr) y quitar este max-width. */
+}
+
 /* Notas numeradas bajo la tabla — sangría francesa (número a la izquierda,
    texto indentado). Se oculta en móvil. */
 
@@ -577,7 +685,7 @@ ul { list-style: none; padding: 0; }
   padding-left: 1.3rem;
   font-size: .7rem;
   line-height: 1.3;
-  color: var(--muted);
+  color: var(--semimuted);
   text-wrap: pretty;
 }
 .compare-notes li::before {

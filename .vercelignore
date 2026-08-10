@@ -7,6 +7,9 @@ Code.gs
 # Copias de respaldo locales (payment.bak.html, index.bak2.html, etc.)
 *.bak*
 
+# Borrador local: no debe quedar accesible en iconica24.com/index2.html
+index2.html
+
 # Carpeta de archivos no esenciales (respaldos y docs movidos) — no publicar
 VARIOS/
 

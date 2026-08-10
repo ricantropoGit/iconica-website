@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Icónica — Optimización de retratos con inteligencia artificial</title>
+  <meta name="description" content="Transformamos tu foto incómoda a un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph — previsualización al compartir el link (LinkedIn, WhatsApp, Facebook) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://iconica24.com/" />
+  <meta property="og:title" content="¿Qué le está diciendo tu foto de perfil al mundo?" />
+  <meta property="og:description" content="Transformamos tu foto incómoda en un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+  <meta property="og:image" content="https://iconica24.com/images/Maqueta01b.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
+  <meta property="og:image:alt" content="Ejemplos de retratos optimizados con Icónica" />
+  <meta property="og:locale" content="es_MX" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="¿Qué le está diciendo tu foto de perfil al mundo?" />
+  <meta name="twitter:description" content="Transformamos tu foto incómoda en un retrato icónico con inteligencia artificial. Recibes un ejercicio gratis en 24 hrs. Solo pagas si te convence." />
+  <meta name="twitter:image" content="https://iconica24.com/images/Maqueta01b.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER / Sticky menu ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="brand" data-scroll aria-label="Icónica — inicio">
+        <span class="brand__mark">Ø</span>
+        <span>icónica24</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#hero" data-scroll>Inicio</a></li>
+          <!--<li><a class="nav__link" href="#galeria" data-scroll>Galería</a></li>-->
+          <li><a class="nav__link" href="#portafolio" data-scroll>Galería</a></li>
+          <li><a class="nav__link" href="#como-funciona" data-scroll>Cómo funciona</a></li>
+          <!--<li><a class="nav__link" href="#cta" data-scroll>Sube tu foto</a></li>-->
+          <!--<li><a class="nav__link" href="#precios" data-scroll>Precio</a></li>
+          <li><a class="nav__link" href="#compara" data-scroll>Compara</a></li>-->
+          <li><a class="nav__link" href="#contacto" data-scroll>Sube tu foto</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Menú móvil colapsable -->
+    <div class="mobile-nav" id="mobile-nav">
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="#hero" data-scroll>Inicio</a></li>
+        <!--<li><a class="mobile-nav__link" href="#galeria" data-scroll>Galería</a></li>-->
+        <li><a class="mobile-nav__link" href="#portafolio" data-scroll>Galería</a></li>
+        <li><a class="mobile-nav__link" href="#como-funciona" data-scroll>Cómo funciona</a></li>
+        <!--<li><a class="mobile-nav__link" href="#precios" data-scroll>Precio</a></li>
+        <li><a class="mobile-nav__link" href="#compara" data-scroll>Compara</a></li>-->
+        <li><a class="mobile-nav__link" href="#contacto" data-scroll>Sube tu foto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero" data-screen-label="Hero">
+      <div class="container">
+        <h1 class="hero__title">Mejora tus fotos profesionales con I.A.</h1>
+        <!--<h1 class="hero__title">Eleva tu retrato a<br />una imagen icónica.</h1>-->
+        <p class="hero__subtitle">
+          <span class="hl">Te hacemos un ejercicio sin costo.</span> Entrega en 24 hrs.
+        </p>
+        <!--<p class="hero__subtitle">Comparte tu foto, y <span class="hl">en 24&nbsp;hrs. recibirás un ejercicio</span> sin ningún costo.</p>-->
+      </div>
+
+      <!-- Ancla "scroll to slider" -->
+      <a class="hero__scroll" href="#portafolio" data-scroll data-scroll-align="top" aria-label="Saber más">
+        <svg class="hero__scroll-arrow" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <span class="hero__scroll-label">[ ALGUNOS EJEMPLOS ]</span>
+      </a>
+    </section>
+
+    <!-- ===================== GALERÍA / Portafolio ===================== -->
+    <section class="gallery" id="portafolio" data-screen-label="Galería / Portafolio" aria-label="Galería de retratos">
+      <div class="gallery__grid">
+        <a class="gallery__item" href="images/webp-800/mujer_45_01.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_45_01.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/hombre_45_02.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/hombre_45_02.webp" alt="Retrato masculino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_60_02.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_60_02.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/hombre_45_01.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/hombre_45_01.webp" alt="Retrato masculino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/hombre_45_05.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/hombre_45_05.webp" alt="Retrato masculino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_25_02.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_25_02.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/hombre_45_03.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/hombre_45_03.webp" alt="Retrato masculino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_25_05.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_25_05.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_60_03.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_60_03.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/hombre_45_04.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/hombre_45_04.webp" alt="Retrato masculino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_25_01.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_25_01.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_25_04.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_25_04.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_60_01.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_60_01.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_25_06.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_25_06.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/mujer_25_03.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/mujer_25_03.webp" alt="Retrato femenino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+        <a class="gallery__item" href="images/webp-800/hombre_45_06.webp" data-fancybox="portafolio" aria-label="Ampliar retrato">
+          <img src="images/webp-400/hombre_45_06.webp" alt="Retrato masculino optimizado" loading="lazy" decoding="async" width="400" height="400" />
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== INTRO / Pregunta ===================== -->
+    <!--<section class="intro" id="intro" data-screen-label="Intro">
+      <div class="container">
+        <p class="intro__subtitle">*Imágenes generadas con I.A.</p>
+      </div>
+    </section>-->
+
+    <!-- ===================== CÓMO FUNCIONA / Card grid ===================== -->
+    <section class="section" id="como-funciona" data-screen-label="Cómo funciona">
+      <div class="container">
+        <div class="steps__head">
+          <h2 class="steps__title">¿Cómo solicitar tu ejercicio?</h2>
+          <p class="steps__lead">
+            Empleando únicamente inteligencia artificial y generación sintética de imágenes <span class="hl">recibirás una propuesta sin costo en 24 hrs.</span>
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </div>
+            <span class="card__num">PASO 01</span>
+            <h3 class="card__title">Sube tu foto de forma segura</h3>
+            <p class="card__text">El archivo se eliminará de nuestros servidores en 48 horas.</p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <span class="card__num">PASO 02</span>
+            <h3 class="card__title">Recibe una propuesta sin costo</h3>
+            <p class="card__text">Un director de arte revisará tu imagen para su optimización.</p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+            </div>
+            <span class="card__num">PASO 03</span>
+            <h3 class="card__title">Tu decides si te convence</h3>
+            <p class="card__text">Incluye 4 versiones en alta resolución con «marca de agua» para tu valoración.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA oscura ===================== -->
+    <section class="section cta on-dark" id="cta" data-screen-label="CTA / Sube tu foto">
+      <div class="container">
+        <h2 class="cta__title">¿Estás listo/a para elevar tus retratos profesionales a imágenes de categoría icónica?</h2>
+        <p class="cta__text">
+          <strong>Sube tu foto sin compromiso.</strong> La seguridad de tu identidad y la de tu imagen está garantizada por nuestras políticas de servicio.
+        </p>
+        <div class="cta__actions">
+          <a class="btn btn--primary" href="#contacto" data-scroll>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            Sube tu foto
+          </a>
+          <a class="btn btn--ghost" href="#intro" data-scroll>Ver ejemplos</a>
+        </div>
+        <p class="cta__note" id="uploadNote">Formatos JPG o PNG (no más de 3M)· El primer ejercicio es gratis.</p>
+      </div>
+    </section>
+
+    <!-- ===================== PRECIOS: SE BORRÓ ESTA SECCIÓN ===================== -->
+
+    <!-- ===================== TABLA COMPARATIVA: SE BORRÓ ESTA SECCIÓN ===================== -->
+
+    <!-- ===================== CONTACTO ===================== -->
+    <section class="section" id="contacto" data-screen-label="Contacto">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__info">
+            <h2 class="contact__title">Tu retrato icónico comienza aquí.</h2>
+            <p class="contact__lead">Sube tu foto. <span class="hl"> Si tienes algún comentario o sugerencia adicional sobre del tratamiento de tu imagen, <strong>coméntalo ahora en la forma de envío</strong></span>. El ejercicio de prueba no tiene ningún costo para ti, pero éste será generado con <strong>una «marca de agua» que se retira de los archivos</strong> finales si decides descargarlos.</p>
+
+            <ul class="contact__list">
+              <li class="contact__item">
+                <span class="contact__ico" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>
+                </span>
+                <span>
+                  <span class="contact__k">Email</span><br />
+                  <span class="contact__v">hola@iconica24.com</span>
+                </span>
+              </li>
+              <li class="contact__item">
+                <span class="contact__ico" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </span>
+                <span>
+                  <span class="contact__k">Tel.</span><br />
+                  <span class="contact__v">+52 55 4172 5924</span>
+                </span>
+              </li>
+              <li class="contact__item">
+                <span class="contact__ico" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </span>
+                <span>
+                  <span class="contact__k">Ubicación</span><br />
+                  <span class="contact__v">Ciudad de México · Servicio 100% en línea</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="form" id="contactForm" novalidate>
+            <div class="field">
+              <!--<label for="f-photo">Tu foto <span class="req">*</span></label>-->
+              <input type="file" id="f-photo" name="photo" accept="image/*" class="upload-input" />
+              <label for="f-photo" class="dropzone" id="dropzone">
+                <span class="dropzone__icon" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </span>
+                <span class="dropzone__text"><strong>Sube tu foto</strong> o arrástrala aquí</span>
+                <span class="dropzone__hint">JPG o PNG · Tu primer ejercicio es gratis</span>
+              </label>
+              <div class="dropzone__preview" id="dropzonePreview" hidden>
+                <span class="dropzone__thumb" id="dropzoneThumbWrap">
+                  <svg class="dropzone__thumb-ico" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"></path></svg>
+                  <img id="dropzoneThumb" alt="" />
+                </span>
+                <div class="dropzone__file">
+                  <span class="dropzone__name" id="dropzoneName">archivo.jpg</span>
+                  <button type="button" class="dropzone__remove" id="dropzoneRemove" aria-label="Quitar foto">Quitar</button>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-name">Nombre <span class="req">*</span></label>
+              <input type="text" id="f-name" name="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req">*</span></label>
+              <input type="email" id="f-email" name="email" placeholder="tucorreo@ejemplo.com" required />
+            </div>
+            <div class="field">
+              <label for="f-subject">Asunto</label>
+              <input type="text" id="f-subject" name="subject" placeholder="¿En qué te ayudamos?" />
+            </div>
+            <div class="field">
+              <label for="f-message">Mensaje <span class="req">*</span></label>
+              <textarea id="f-message" name="message" placeholder="¿Tienes alguna sugerencia en particular…?" required></textarea>
+            </div>
+            <p class="form__foot">* Campos obligatorios</p>
+            <div class="form__success" id="formSuccess">¡Gracias! Hemos recibido tu mensaje. Te respondemos muy pronto.</div>
+            <button type="submit" class="btn btn--primary">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" data-screen-label="Footer">
+    <div class="container">
+      <!--<div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="brand" data-scroll>
+            <span class="brand__mark">I</span>
+            <span>Icónica</span>
+          </a>
+          <p class="footer__about">Transformamos tu retrato en una imagen icónica con inteligencia artificial. Tú decides si te convence.</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Servicio</h4>
+          <ul>
+            <li><a href="#como-funciona" data-scroll>Cómo funciona</a></li>
+            <li><a href="#compara" data-scroll>Compara</a></li>
+            <li><a href="#cta" data-scroll>Sube tu foto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Compañía</h4>
+          <ul>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#contacto" data-scroll>Contacto</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Aviso de privacidad</a></li>
+            <li><a href="#">Términos de servicio</a></li>
+            <li><a href="#">Política de imagen</a></li>
+          </ul>
+        </div>
+      </div>-->
+
+      <div class="footer__bottom">
+        © <span id="year"></span> iconica24.com - Todos los derechos reservados.
+        <span class="footer__sep">·</span> <a href="privacidad.html" class="footer__legal">Aviso de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/fancybox.js"></script>
+  <script src="js/formHandler.js"></script>
+  <!-- Vercel Web Analytics (sin cookies). Para excluir tus pruebas en este
+       navegador: abre ?va-disable=1 (apagar) o ?va-disable=0 (reactivar). -->
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search);
+      if (p.get('va-disable') === '1') localStorage.setItem('va-disable', '1');
+      if (p.get('va-disable') === '0') localStorage.removeItem('va-disable');
+      if (localStorage.getItem('va-disable') !== '1') {
+        var s = document.createElement('script');
+        s.defer = true; s.src = '/_vercel/insights/script.js';
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
+
+  <!-- Rastreo per-lead (cookieless): si la URL trae ?lead=XX, lo registra en
+       la hoja "Visitas" vía Apps Script. Solo una vez por sesión. No bloquea
+       la página ni afecta nada si Apps Script no responde. -->
+  <script>
+    (function () {
+      try {
+        var lead = new URLSearchParams(location.search).get('lead');
+        if (!lead) return;
+        var key = 'lead-logged-' + lead;
+        if (sessionStorage.getItem(key)) return;   // evita duplicar al refrescar
+        sessionStorage.setItem(key, '1');
+        fetch('https://script.google.com/macros/s/AKfycbz61yAQ67vRq1hz0-OErxZhzgtDUpFFeaOfWhcIuP9WpNBrrjp9rokz7IWLJ_oekRs/exec', {
+          method: 'POST',
+          body: JSON.stringify({ action: 'logVisit', lead: lead })
+        }).catch(function () {});
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>
