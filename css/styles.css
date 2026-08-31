@@ -12,7 +12,7 @@
   --muted:      #6b7280;   /* texto secundario */
   --semimuted:  #1b1c1e;  
   --bg:         #ffffff;
-  --bg-alt:     #fafafa;   /* secciones claras alternas */
+  --bg-alt:     #f5f5f5;   /* secciones claras alternas */
   --bg-dark:    #0a0a0a;   /* sección CTA oscura */
   --border:     #dedede;
   --border-dark:#262626;
@@ -114,6 +114,61 @@ ul { list-style: none; padding: 0; }
 .btn--primary:hover { background: #262626; }
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--border); }
 .btn--ghost:hover { border-color: var(--ink); }
+
+/* ---------------------------------------------------------------------
+   Progreso dentro del propio botón
+   ---------------------------------------------------------------------
+   El envío del formulario tarda varios segundos: la foto viaja dentro del
+   mensaje y el servidor guarda en Drive, escribe la hoja y manda correos.
+   Sin señal, esa espera se siente el doble de larga.
+
+   El relleno es REAL mientras se puede medir —lectura del archivo y bytes
+   subidos—. Cuando el servidor toma el control ya no hay nada que medir,
+   así que en vez de inventar un porcentaje la barra pasa a un barrido
+   indeterminado: sigue diciendo "estoy vivo" sin mentir sobre cuánto falta.
+   --------------------------------------------------------------------- */
+.btn.is-progress {
+  position: relative;
+  overflow: hidden;
+  cursor: progress;
+}
+/* El texto va en un span para que quede POR ENCIMA del relleno: un
+   pseudo-elemento posicionado se pinta sobre el texto suelto del botón. */
+.btn.is-progress .btn__label {
+  position: relative;
+  z-index: 1;
+}
+.btn.is-progress::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--progreso, 0%);
+  background: rgba(255, 255, 255, .26);
+  transition: width .3s ease;
+}
+.btn.is-progress.is-indeterminate::before {
+  width: 100%;
+  background: linear-gradient(90deg,
+              transparent 0%, rgba(255,255,255,.30) 50%, transparent 100%);
+  background-size: 45% 100%;
+  background-repeat: no-repeat;
+  transition: none;
+  animation: btnBarrido 1.25s linear infinite;
+}
+@keyframes btnBarrido {
+  from { background-position: -45% 0; }
+  to   { background-position: 145% 0; }
+}
+/* Botón claro (ghost): el relleno blanco no se vería */
+.btn--ghost.is-progress::before { background: rgba(10, 10, 10, .10); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn.is-progress::before { transition: none; }
+  .btn.is-progress.is-indeterminate::before {
+    animation: none;
+    background: rgba(255, 255, 255, .18);
+  }
+}
 /* Variantes sobre fondo oscuro */
 .on-dark .btn--primary { background: #fff; color: var(--ink); }
 .on-dark .btn--primary:hover { background: #e9e9e9; }
@@ -243,7 +298,20 @@ ul { list-style: none; padding: 0; }
   font-weight: 800;
   letter-spacing: -.035em;
   line-height: .98;
-  font-size: clamp(2.6rem, 11vw, 6.5rem);
+  /* Encabezado SIEMPRE en 4 líneas, de 320px a 1920px.
+     Antes —clamp(2.6rem, 11vw, 6.5rem)— se apilaba en 5 en dos bandas:
+       · 780–950px: el texto se pasaba por menos de 1px.
+       · 320–360px: ahí mandaba el mínimo (2.6rem); la fuente dejaba de
+         encoger mientras el contenedor seguía estrechándose.
+     La causa de fondo es que escalaba con el VIEWPORT y debe escalar con el
+     CONTENEDOR: los 20px fijos de padding pesan mucho más en pantallas chicas,
+     así que a igual vw el texto queda proporcionalmente más ancho. Medido, la
+     razón "fuente máxima / ancho de contenedor" es casi constante (.1125–.1140)
+     en todo el rango; de ahí el factor .109, que deja ~3.2% de margen parejo.
+     El -40px son los dos gutters de 20px (el gutter sube a 32px en ≥1024px,
+     pero para entonces ya manda el tope de 6.5rem, que entra en ~994px).
+     OJO: calibrado para ESTE texto. Si cambia el encabezado, hay que recalcular. */
+  font-size: clamp(1.9rem, calc((100vw - 40px) * .109), 6.5rem);
   text-wrap: balance;
 }
 .hero__subtitle {
@@ -654,10 +722,10 @@ ul { list-style: none; padding: 0; }
      Edge legacy / IE10+. La versión sin prefijo va al final para que gane. */
   .price-card__desc {
     min-height: 0;
-    text-align: justify;
+    /*text-align: justify;
     -webkit-hyphens: auto;
         -ms-hyphens: auto;
-            hyphens: auto;
+            hyphens: auto;*/
   }
 }
 @media (min-width: 1024px) {
@@ -727,7 +795,7 @@ ul { list-style: none; padding: 0; }
 .field { display: grid; gap: 7px; }
 .field label { font-size: .85rem; font-weight: 600; }
 .field .req { color: var(--accent-strong); }
-.field input, .field textarea {
+.field input, .field textarea, .field select {
   width: 100%;
   font: inherit;
   font-size: .95rem;
@@ -737,12 +805,24 @@ ul { list-style: none; padding: 0; }
   background: var(--bg);
   transition: border-color .18s ease, box-shadow .18s ease;
 }
-.field input:focus, .field textarea:focus {
+.field select { appearance: none; cursor: pointer; }
+.field input:focus, .field textarea:focus, .field select:focus {
   outline: none;
   border-color: var(--ink);
   box-shadow: 0 0 0 3px rgba(10,10,10,.08);
 }
 .field textarea { resize: vertical; min-height: 120px; }
+/* Aviso bajo un campo. Se usa para confirmar el código de socio detectado
+   en la URL: el descuento tiene que existir desde el primer contacto. */
+.field__hint {
+  font-size: .8rem;
+  line-height: 1.45;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: var(--r-md);
+  padding: 8px 12px;
+  margin: 0;
+}
 .form__foot { font-size: .78rem; color: var(--muted); }
 
 /* Dropzone de subida de foto */
@@ -1077,3 +1157,48 @@ ul { list-style: none; padding: 0; }
   .hero__scroll-arrow { animation: none; }
 }
 
+
+/* ==========================================================================
+   MÓVIL: ajustes compartidos por index.html y afiliados.html
+   Debajo de 640px. Se limita a bloques editoriales y al pie; NO toca la tabla
+   comparativa, las etiquetas del carrusel, el dropzone, la intro ni el hero,
+   que están centrados por razones estructurales y se romperían.
+   ========================================================================== */
+@media (max-width: 639.98px) {
+  /* Cabezas de sección a bandera izquierda. .steps__head existe en ambas
+     páginas; .pricing__head y .compare__head solo en index. */
+  .steps__head,
+  .pricing__head,
+  .compare__head { text-align: left; }
+
+  /* Título y textos del CTA. En afiliados ya iban a la izquierda por su propia
+     regla (.cta--panel), así que esto solo cambia el index. La nota y los
+     botones NO se tocan: siguen centrados en ambas páginas. */
+  .cta__title,
+  .cta__text { text-align: left; }
+
+  /* Pie en dos renglones centrados: el aviso baja a su propia línea y el
+     separador «·» se oculta, porque a mitad de un salto no separa nada.
+     width: fit-content + margin auto lo centra sin estirar el área clicable
+     a todo el ancho, como haría un display:block a secas. */
+  .footer__sep { display: none; }
+  .footer__legal {
+    display: block;
+    width: fit-content;
+    margin: .4rem auto 0;
+  }
+}
+
+/* ==========================================================================
+   MÓVIL ANGOSTO (≤359px): los botones del CTA se apilan a ancho completo
+   Hasta 360px caben lado a lado; en 359 el flex-wrap los envuelve solos, pero
+   quedaban con su ancho de contenido (164 y 142px) y se veían desparejos.
+   Aquí se explicita la columna y se estiran al 100% del contenedor, igual
+   que los del hero de afiliados por debajo de 374px.
+   ========================================================================== */
+@media (max-width: 359px) {
+  .cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

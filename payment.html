@@ -107,6 +107,57 @@
     }
     .reveal__check svg { width: 14px; height: 14px; display: block; }
 
+    /* ---- Condición de socio ---- */
+    .reveal__socio {
+      margin-top: 1.2rem;
+      font-size: .85rem;
+      line-height: 1.5;
+      color: var(--accent-strong);
+      background: var(--accent-soft);
+      border-radius: var(--r-md);
+      padding: 10px 14px;
+    }
+
+    /* ---- Paquetes ---- */
+    /* Las cifras NO están escritas aquí: paymentHandler.js las pinta con lo
+       que devuelve getSubmissionData, que a su vez las lee de Code.gs. Un
+       solo lugar donde cambiar precios. */
+    .reveal__packs {
+      display: grid;
+      gap: 10px;
+      margin-top: 1.4rem;
+    }
+    .reveal__pack {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      font: inherit;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--bg);
+      cursor: pointer;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+    .reveal__pack:hover { border-color: var(--ink); }
+    .reveal__pack.is-active {
+      border-color: var(--accent-strong);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+    .reveal__pack-name { font-weight: 700; }
+    .reveal__pack-price { font-weight: 800; white-space: nowrap; }
+    .reveal__pack-was {
+      text-decoration: line-through;
+      opacity: .5;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+    /* Con un solo paquete disponible no tiene sentido pedir que "elija" */
+    .reveal__packs.is-single .reveal__pack { cursor: default; }
+
     /* ---- Precio ---- */
     .reveal__price {
       margin-top: 1.6rem;
@@ -117,6 +168,13 @@
       color: var(--ink);
     }
     .reveal__price-cur { font-weight: 800; }
+    .reveal__price-was {
+      text-decoration: line-through;
+      opacity: .4;
+      font-size: .5em;
+      font-weight: 700;
+      margin-right: .3em;
+    }
 
     .reveal__actions {
       display: flex;
@@ -319,14 +377,14 @@
 <body>
 
   <!-- ===================== HEADER / Sticky menu ===================== -->
-  <header class="header" id="header">
+  <header class="header" id="header" style="background: var(--accent-soft);">
     <div class="container header__inner">
       <a href="index.html#hero" class="brand" aria-label="Icónica — inicio">
-        <span class="brand__mark">I</span>
+        <span class="brand__mark">Ø</span>
         <span>Icónica</span>
       </a>
 
-      <nav class="nav" aria-label="Navegación principal">
+      <!--<nav class="nav" aria-label="Navegación principal">
         <ul class="nav__list">
           <li><a class="nav__link" href="index.html#hero">Inicio</a></li>
           <li><a class="nav__link" href="index.html#galeria">Galería</a></li>
@@ -335,7 +393,7 @@
           <li><a class="nav__link" href="index.html#compara">Compara</a></li>
           <li><a class="nav__link" href="index.html#contacto">Contacto</a></li>
         </ul>
-      </nav>
+      </nav>-->
 
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
         <span></span><span></span><span></span>
@@ -343,7 +401,7 @@
     </div>
 
     <!-- Menú móvil colapsable -->
-    <div class="mobile-nav" id="mobile-nav">
+    <!--<div class="mobile-nav" id="mobile-nav">
       <ul class="mobile-nav__list">
         <li><a class="mobile-nav__link" href="index.html#hero">Inicio</a></li>
         <li><a class="mobile-nav__link" href="index.html#galeria">Galería</a></li>
@@ -352,7 +410,7 @@
         <li><a class="mobile-nav__link" href="index.html#compara">Compara</a></li>
         <li><a class="mobile-nav__link" href="index.html#contacto">Contacto</a></li>
       </ul>
-    </div>
+    </div>-->
   </header>
 
   <main>
@@ -373,13 +431,13 @@
                 <span class="reveal__check" aria-hidden="true">
                   <svg viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.2 3.2L15 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
-                <span>Los archivos <strong>ya están listos para su</strong> <span class="hl">descarga sin la marca de agua</span></span>
+                <span>Recibes tus archivos <strong>sin marca de agua</strong> <span class="hl">dentro de las siguientes 24 a 48 horas</span></span>
               </li>
               <li class="reveal__item">
                 <span class="reveal__check" aria-hidden="true">
                   <svg viewBox="0 0 20 20" fill="none"><path d="M5 10.5l3.2 3.2L15 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
-                <span><strong>Se incluyen cuatro versiones</strong> con cambios sutiles de expresión tal como se aprecia en la plantilla</span>
+                <span><strong id="packVersions">Se incluyen cuatro versiones</strong> con cambios sutiles de expresión tal como se aprecia en la plantilla</span>
               </li>
               <li class="reveal__item">
                 <span class="reveal__check" aria-hidden="true">
@@ -389,7 +447,18 @@
               </li>
             </ul>
 
-            <p class="reveal__price">$4,500 <span class="reveal__price-cur">MXN</span></p>
+            <!-- Condición del socio, si el folio llegó con un código de
+                 aliado profesional. Lo pinta paymentHandler.js. -->
+            <div class="reveal__socio" id="socioNotice" hidden></div>
+
+            <!-- Paquetes disponibles. Se generan desde el servidor: un
+                 paquete sin Price ID en Stripe simplemente no aparece. -->
+            <div class="reveal__packs" id="packList" role="radiogroup" aria-label="Elige tu paquete"></div>
+
+            <p class="reveal__price">
+              <span class="reveal__price-was" id="priceWas" hidden></span><span id="priceNow">—</span>
+              <span class="reveal__price-cur">MXN</span>
+            </p>
           </div>
 
           <!-- Columna derecha: imagen de prueba (la marca de agua viene impresa en el archivo) -->

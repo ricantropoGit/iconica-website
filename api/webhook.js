@@ -137,11 +137,19 @@ export default async function handler(req, res) {
     customer_email: obj.customer_details?.email || obj.customer_email,
     session_id: obj.id,
     metadata: obj.metadata,
+    // Monto REALMENTE cobrado, en centavos. Es la base de la liquidación de
+    // comisiones: sirve igual con o sin descuento y con cualquier paquete,
+    // así que la fórmula no cambia cuando se agreguen precios nuevos.
+    amount_total: obj.amount_total,
+    currency: obj.currency,
   };
 
   console.log('📦 [Webhook] Datos a enviar:', {
     type: essentialData.type,
     submissionId: essentialData.metadata?.submissionId,
+    socio: essentialData.metadata?.socio,
+    paquete: essentialData.metadata?.paquete,
+    amount_total: essentialData.amount_total,
     payment_intent: essentialData.payment_intent,
     email: essentialData.customer_email,
   });

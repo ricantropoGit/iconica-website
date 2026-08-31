@@ -1,0 +1,251 @@
+/* ==========================================================================
+   Icónica24 — Programa de socios (afiliados.html)
+   Capa adicional sobre styles.css · mobile-first · usa los mismos tokens
+   ========================================================================== */
+
+/* ---------- HERO dividido (texto + imagen) ------------------------------- */
+/* Móvil: imagen arriba, texto centrado. En ≥1024px pasa a dos columnas con
+   el texto alineado a la izquierda. */
+.hero--split { min-height: auto; display: block; text-align: center; padding-block: 40px 56px; }
+.hero__grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+.hero__media { order: -1; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: .45em 1.05em;
+}
+/* El título del index escala a 4 líneas a pantalla completa; aquí comparte
+   media caja con la imagen, así que se le da su propia curva más corta. */
+.hero--split .hero__title { margin-top: 1.2rem; font-size: clamp(2rem, calc((100vw - 40px) * .085), 3.7rem); line-height: 1.02; }
+.hero--split .hero__subtitle { margin: 1.2rem auto 0; max-width: 46ch; font-size: clamp(1rem, 3.4vw, 1.12rem); color: var(--muted); }
+/* Los dos botones no se apilan nunca: se mantienen lado a lado y solo se
+   centra el grupo. Para que quepan en 320px (caja de 280px) se les permite
+   encoger — el padding cede primero y el texto puede partirse en dos líneas
+   antes que provocar scroll horizontal. */
+.hero__actions { margin-top: 2rem; display: flex; flex-wrap: nowrap; justify-content: center; gap: 12px; }
+.hero__actions .btn { flex: 0 1 auto; min-width: 0; white-space: normal; padding-inline: clamp(.8rem, 4vw, 1.4rem); text-align: center; }
+.hero__media { position: relative; }
+.hero__img { display: block; width: 100%; max-width: 30rem; height: auto; margin-inline: auto; }
+
+/* ---------- ¿Quién puede participar? ------------------------------------- */
+.who__head { text-align: center; max-width: 44rem; margin-inline: auto; }
+.who__title { font-size: clamp(1.7rem, 5.5vw, 2.6rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+.who__lead { margin-top: .7rem; color: var(--muted); text-wrap: pretty; }
+.who__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 14px 30px -16px rgba(0,0,0,.18);
+}
+.who__item { display: flex; align-items: flex-start; gap: 14px; padding: 22px 24px; border-top: 1px solid var(--border); }
+.who__item:first-child { border-top: 0; }
+.who__check {
+  flex: 0 0 auto;
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  margin-top: 2px;
+}
+.who__check svg { width: 15px; height: 15px; }
+/* Ambos son <span>: sin display:block corren en el mismo párrafo y el
+   margin-top de .who__t no surte efecto (los márgenes verticales no aplican
+   a elementos en línea). El contenedor ya es bloque por ser flex item. */
+.who__k { display: block; font-weight: 700; letter-spacing: -.01em; }
+.who__t { display: block; margin-top: 3px; color: var(--muted); font-size: .92rem; line-height: 1.35; text-wrap: pretty; }
+
+/* ---------- CTA oscura (el panel ES la sección) --------------------------- */
+.cta--panel { background: #111111; padding-block: 48px; }
+.cta--panel > .container { padding-inline: 26px; }
+
+/* Los dos textos del panel. Mobile-first: UNA columna con línea horizontal
+   entre párrafos. En ≥640px pasan a dos columnas con línea vertical en el
+   medianil (ver el bloque de 640px más abajo). */
+.cta__cols {
+  /* Separación = UNA línea del encabezado: su mismo clamp por su line-height
+     (1.08). Así el hueco escala con el título en vez de quedar fijo. */
+  margin-top: calc(clamp(1.8rem, 6.4vw, 3.1rem) * 1.08);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.cta__cols .cta__text {
+  margin: 0;          /* anula el "margin: 1.1rem auto 0" de styles.css */
+  max-width: none;    /* anula el max-width: 52ch, que aquí lo marca la columna */
+  text-align: left;   /* anula el text-align: center que hereda de .cta */
+}
+/* Separador entre párrafos: horizontal en móvil. Se aplica al segundo en
+   adelante, así el primero nunca lleva línea. */
+.cta__cols .cta__text + .cta__text {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+}
+
+/* La etiqueta inicial ("Socio Comercial.") como subcabeza en su propio
+   renglón. Solo el PRIMER <strong>: el otro marca el "25%" a media frase y
+   debe seguir en línea. */
+.cta__text > strong:first-child {
+  display: block;
+  margin-bottom: .4rem;
+  font-weight: 700;
+  /* En em: crece con el párrafo. NO afecta al <strong> del "25%", que no es
+     :first-child y conserva el tamaño del cuerpo. */
+  font-size: 1.18em;
+}
+
+/* ---------- FAQ desplegable ---------------------------------------------- */
+.faq__head { text-align: center; max-width: 44rem; margin-inline: auto; }
+.faq__title { font-size: clamp(1.7rem, 5.5vw, 2.6rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+.faq__lead { margin-top: .7rem; color: var(--muted); }
+.faq__list { margin-top: 40px; max-width: 780px; margin-inline: auto; border-top: 1px solid var(--border); }
+.faq__item { border-bottom: 1px solid var(--border); }
+.faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 2px;
+  background: none;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  line-height: 1.35;
+  color: var(--ink);
+  transition: color .18s ease;
+}
+.faq__q:hover { color: var(--accent-strong); }
+/* Signo + que gira a × al abrir: dos barras cruzadas, sin iconos externos. */
+.faq__ico { position: relative; flex: 0 0 auto; width: 18px; height: 18px; color: var(--muted); }
+.faq__ico::before, .faq__ico::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 15px; height: 1.6px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform .25s ease;
+}
+.faq__ico::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq__item.is-open .faq__q { color: var(--ink); }
+.faq__item.is-open .faq__ico { color: var(--ink); }
+.faq__item.is-open .faq__ico::before { transform: translate(-50%, -50%) rotate(45deg); }
+.faq__item.is-open .faq__ico::after { transform: translate(-50%, -50%) rotate(-45deg); }
+/* Apertura animada sin alturas fijas: grid 0fr → 1fr. */
+.faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s ease; }
+.faq__item.is-open .faq__a { grid-template-rows: 1fr; }
+.faq__a > div { overflow: hidden; }
+.faq__a p { padding: 0 2px 22px; margin: 0; color: var(--muted); font-size: .96rem; text-wrap: pretty; }
+.faq__a p + p { padding-top: 0; margin-top: -10px; }
+.faq__a a { color: var(--accent-strong); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.faq__a a:hover { color: var(--ink); }
+
+/* ---------- Solicitud (formulario centrado) ------------------------------ */
+.apply__head { text-align: center; max-width: 44rem; margin-inline: auto; }
+.apply__title { font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 800; letter-spacing: -.025em; line-height: 1.06; text-wrap: balance; }
+.apply__lead { margin-top: .8rem; color: var(--muted); text-wrap: pretty; }
+.apply__form { margin-top: 36px; max-width: 620px; margin-inline: auto; }
+
+/* ---------- Breakpoints --------------------------------------------------- */
+@media (min-width: 640px) {
+  .who__grid { grid-template-columns: 1fr 1fr; }
+  .who__item { border-top: 1px solid var(--border); }
+  .who__item:nth-child(-n+2) { border-top: 0; }
+  .who__item:nth-child(even) { border-left: 1px solid var(--border); }
+  .cta--panel { padding-block: 64px; }
+  .cta--panel > .container { padding-inline: 48px; }
+
+  /* Dos columnas. El gap va en 0 y la separación se hace con padding a cada
+     lado, para que la línea quede exactamente en el eje del medianil. */
+  .cta__cols { grid-template-columns: 1fr 1fr; }
+  /* La columna izquierda alinea a la derecha, contra el medianil: los dos
+     bloques quedan simétricos respecto de la línea. Solo aplica aquí; en
+     móvil (una columna) manda el text-align: left de la regla base. */
+  .cta__cols .cta__text:first-child { padding-right: 34px; text-align: right; }
+  .cta__cols .cta__text + .cta__text {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    padding-left: 34px;
+    border-left: 1px solid rgba(255, 255, 255, .14);
+  }
+  .faq__q { font-size: 1.08rem; }
+}
+
+@media (min-width: 1024px) {
+  .hero--split { padding-block: 64px 88px; text-align: left; }
+  .hero__grid { grid-template-columns: 1.02fr 1fr; gap: 56px; }
+  .hero__media { order: 0; }
+  .hero__img { max-width: 100%; }
+  .hero--split .hero__subtitle { margin-inline: 0; }
+  .hero__actions { justify-content: flex-start; }
+  .cta--panel { padding-block: 76px; }
+  .cta--panel > .container { padding-inline: 64px; }
+}
+
+/* ==========================================================================
+   MÓVIL: texto alineado a la izquierda
+   Debajo de 640px todo el texto que el diseño centra pasa a bandera izquierda.
+   El centrado no lo declaran los elementos de texto sino seis contenedores,
+   así que basta con voltearlos a ellos.
+   Excepciones pedidas: botones, menús y .cta__note conservan el centrado.
+   (Los menús viven en el <header>, que ninguno de estos contenedores toca.)
+
+   EL HERO QUEDA FUERA A PROPÓSITO. Su centrado es la contraparte de haber
+   colapsado a una columna: a ≥1024px es de dos columnas con el texto a la
+   izquierda, y por debajo se apila y se centra. Alinearlo a la izquierda solo
+   en móvil partía ese estado en dos y desalineaba el subtítulo 7px, porque la
+   izquierda del hero es un paquete de tres reglas (text-align + margin-inline
+   del subtítulo + justify-content de los botones) que solo existe a ≥1024.
+   ========================================================================== */
+@media (max-width: 639.98px) {
+  /* .steps__head vive en styles.css: lo comparten ambas páginas. Aquí van
+     solo las cabezas propias de afiliados. */
+  .who__head,
+  .cta--panel,
+  .faq__head,
+  .apply__head { text-align: left; }
+  /* El pie queda centrado: es cierre de página, no contenido de lectura. */
+
+  /* .cta--panel se volteó completo: se devuelve el centro a la nota. */
+  .cta__note { text-align: center; }
+
+  /* Las etiquetas de los botones siguen centradas. El grupo .hero__actions /
+     .cta__actions es flex y se centra por justify-content, no por text-align,
+     así que su posición no cambia. */
+  .btn { text-align: center; }
+
+  /* El pie en dos renglones vive en styles.css: es idéntico en ambas páginas. */
+}
+
+/* ==========================================================================
+   MÓVIL ANGOSTO (≤374px): los botones del hero se apilan
+   Por arriba de este ancho conviven lado a lado encogiéndose (ver
+   .hero__actions más arriba). Debajo ya no caben sin partir el texto en dos
+   renglones, así que pasan a una sola columna. El corte en 374 deja fuera al
+   iPhone SE/8 (375px), que sigue con los dos botones en línea.
+   ========================================================================== */
+@media (max-width: 374px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;   /* cada botón ocupa el ancho del contenedor */
+  }
+  /* Con el ancho completo ya no hace falta permitir el salto de línea. */
+  .hero__actions .btn { white-space: nowrap; }
+}

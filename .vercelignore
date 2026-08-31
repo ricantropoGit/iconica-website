@@ -7,11 +7,24 @@ Code.gs
 # Copias de respaldo locales (payment.bak.html, index.bak2.html, etc.)
 *.bak*
 
-# Borrador local: no debe quedar accesible en iconica24.com/index2.html
+# Borradores locales: no deben quedar accesibles en iconica24.com/<archivo>
 index2.html
+afiliados2.html
+afiliados2a.html
+
+# Original sin optimizar del hero de afiliados (2600x2000, 501 KB). Se conserva
+# en local como master; el sitio usa afiliados-hero.webp (1100x846, 52 KB).
+images/afiliados-hero.jpg
 
 # Carpeta de archivos no esenciales (respaldos y docs movidos) — no publicar
 VARIOS/
+
+# Los propios archivos de configuración. Hoy Vercel no sirve archivos que
+# empiezan con punto —verificado: iconica24.com/.gitignore da 404— pero eso
+# es comportamiento suyo, no configuración nuestra. Explícito no depende de
+# que no cambie.
+.gitignore
+.vercelignore
 
 # Entorno y sistema — mantener SIEMPRE excluidos
 .env*

@@ -53,6 +53,12 @@ function handleFormSubmit(e) {
   var fileInput = document.getElementById('f-photo');
   var file = fileInput.files[0];
 
+  // Programa de socios. Campo opcional: si el código no existe o viene con
+  // basura, Apps Script lo guarda aparte para revisarlo a mano y la
+  // solicitud sigue su curso. Nunca bloquea el envío.
+  var socioField = document.getElementById('f-socio');
+  var socio = socioField ? socioField.value.trim() : '';
+
   console.log('✓ Datos del formulario:', { name, email, subject, message, file: file ? file.name : 'sin archivo' });
 
   // Validar que hay archivo
@@ -85,6 +91,12 @@ function handleFormSubmit(e) {
   // Leer archivo y convertir a base64
   var reader = new FileReader();
 
+  // Progreso real de la lectura del archivo: primer tramo de la barra
+  reader.onprogress = function(e) {
+    if (!e.lengthComputable) return;
+    setProgreso(Math.round((e.loaded / e.total) * TRAMO_LECTURA), 'Preparando tu foto…');
+  };
+
   reader.onload = function(e) {
     var base64Data = e.target.result.split(',')[1]; // Obtener solo la parte base64
     console.log('✓ Archivo convertido a base64. Tamaño:', base64Data.length, 'caracteres');
@@ -97,6 +109,7 @@ function handleFormSubmit(e) {
       subject: subject,
       message: message,
       phone: '',
+      socio: socio,
       fileName: file.name,
       fileType: file.type,
       fileBase64: base64Data
@@ -107,41 +120,71 @@ function handleFormSubmit(e) {
     // Enviar al Google Apps Script como JSON
     console.log('✓ Enviando al Google Apps Script...');
 
-    fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json'
+    // Se usa XMLHttpRequest y no fetch por una sola razón: es el único que
+    // expone el progreso de SUBIDA (xhr.upload.onprogress). Con fetch la
+    // barra tendría que inventarse el avance; así son bytes reales.
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', APPS_SCRIPT_URL, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.upload.onprogress = function(e) {
+      if (!e.lengthComputable) return;
+      var fraccion = e.loaded / e.total;
+      setProgreso(
+        TRAMO_LECTURA + Math.round(fraccion * TRAMO_SUBIDA),
+        'Subiendo tu foto… ' + Math.round(fraccion * 100) + '%'
+      );
+    };
+
+    // Terminó de subir: a partir de aquí manda el servidor y ya no hay nada
+    // medible. La barra pasa a indeterminada con mensajes de los pasos reales.
+    xhr.upload.onload = function() {
+      iniciarEspera();
+    };
+
+    xhr.onload = function() {
+      console.log('✓ Respuesta recibida. Status:', xhr.status);
+
+      var data = null;
+      try {
+        data = JSON.parse(xhr.responseText);
+        console.log('✓ Datos parseados:', data);
+      } catch (err) {
+        console.warn('✗ Respuesta no era JSON:', xhr.responseText.substring(0, 120));
       }
-    })
-    .then(response => {
-      console.log('✓ Respuesta recibida. Status:', response.status);
-      return response.json();
-    })
-    .then(data => {
-      console.log('✓ Datos parseados:', data);
-      showLoadingState(false);
 
       // Si hay ID, redirigir con ID
       if (data && data.submissionId) {
         console.log('✓ ÉXITO con ID:', data.submissionId);
-        window.location.href = 'confirmation.html?id=' + encodeURIComponent(data.submissionId);
+        setProgreso(100, 'Listo');
+
+        // Si el código de socio empató, se lo pasamos al acuse para que lo
+        // confirme ahí mismo. El descuento persuade cuando el cliente aún
+        // está decidiendo si vale la pena, no en la pantalla de cobro.
+        var extra = '';
+        if (data.socioNombre) {
+          extra = '&socio=' + encodeURIComponent(data.socioNombre) +
+                  '&esquema=' + encodeURIComponent(data.esquema || '');
+        }
+
+        window.location.href = 'confirmation.html?id=' +
+          encodeURIComponent(data.submissionId) + extra;
       } else {
-        // Si no hay ID pero se procesó, redirigir con email
+        // Sin ID legible: Apps Script casi seguro YA procesó (el fallo típico
+        // es la recogida de la respuesta, no el trabajo). El acuse recupera
+        // el folio por correo con getSubmissionIdByEmail.
         console.log('✓ Procesado sin ID, usando email');
         window.location.href = 'confirmation.html?email=' + encodeURIComponent(email);
       }
-    })
-    .catch(error => {
-      console.error('✗ Error en respuesta:', error);
-      showLoadingState(false);
+    };
 
-      // IMPORTANTE: Aunque hay error en respuesta, el Apps Script probablemente
-      // YA procesó todo (porque recibimos el error DESPUÉS de procesar).
-      // Redirigir de todos modos.
-      console.log('✓ Redirigiendo pese a error (Apps Script probablemente procesó)');
+    xhr.onerror = function() {
+      console.error('✗ Error de red al enviar');
+      // Mismo criterio: el trabajo probablemente se hizo, el acuse resuelve.
       window.location.href = 'confirmation.html?email=' + encodeURIComponent(email);
-    });
+    };
+
+    xhr.send(JSON.stringify(payload));
   };
 
   reader.onerror = function() {
@@ -154,6 +197,59 @@ function handleFormSubmit(e) {
 }
 
 // =====================================================================
+// Barra de progreso dentro del botón
+// =====================================================================
+// El envío tarda varios segundos y sin señal la espera se siente el doble.
+// La barra es REAL donde se puede medir:
+//
+//   0 → 15 %   lectura del archivo (FileReader)
+//  15 → 70 %   subida (bytes enviados, vía XMLHttpRequest)
+//  70 → …      el servidor trabaja: NO es medible
+//
+// En ese último tramo no se inventa un porcentaje. La barra pasa a un
+// barrido indeterminado y el texto va nombrando los pasos que el servidor
+// realmente ejecuta, en el orden en que ocurren.
+// =====================================================================
+var TRAMO_LECTURA = 15;
+var TRAMO_SUBIDA = 55;
+
+var temporizadoresEspera = [];
+
+function botonEnvio() {
+  var form = document.getElementById('contactForm');
+  return form ? form.querySelector('button[type="submit"]') : null;
+}
+
+function setProgreso(pct, texto) {
+  var btn = botonEnvio();
+  if (!btn) return;
+  btn.classList.remove('is-indeterminate');
+  btn.style.setProperty('--progreso', Math.min(100, Math.max(0, pct)) + '%');
+  var label = btn.querySelector('.btn__label');
+  if (label && texto) label.textContent = texto;
+}
+
+// Pasos reales del servidor: guarda en Drive, escribe la hoja, manda correos
+function iniciarEspera() {
+  var btn = botonEnvio();
+  if (!btn) return;
+  btn.classList.add('is-indeterminate');
+
+  var etapas = [
+    [0,    'Procesando tu foto…'],
+    [2500, 'Guardando tu solicitud…'],
+    [5000, 'Enviando tu confirmación…']
+  ];
+
+  etapas.forEach(function (etapa) {
+    temporizadoresEspera.push(setTimeout(function () {
+      var label = botonEnvio() && botonEnvio().querySelector('.btn__label');
+      if (label) label.textContent = etapa[1];
+    }, etapa[0]));
+  });
+}
+
+// =====================================================================
 // Mostrar estado de carga
 // =====================================================================
 function showLoadingState(isLoading) {
@@ -162,12 +258,25 @@ function showLoadingState(isLoading) {
 
   if (isLoading) {
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.style.opacity = '0.6';
+    submitBtn.style.opacity = '0.85';
     form.style.pointerEvents = 'none';
+
+    // El texto pasa a un <span> para que quede por encima del relleno de la
+    // barra: un pseudo-elemento posicionado se pinta sobre el texto suelto.
+    submitBtn.dataset.textoOriginal = submitBtn.dataset.textoOriginal ||
+                                      submitBtn.textContent.trim();
+    submitBtn.innerHTML = '<span class="btn__label">Preparando tu foto…</span>';
+    submitBtn.classList.add('is-progress');
+    submitBtn.style.setProperty('--progreso', '0%');
+
   } else {
+    temporizadoresEspera.forEach(clearTimeout);
+    temporizadoresEspera = [];
+
     submitBtn.disabled = false;
-    submitBtn.textContent = 'Enviar mensaje';
+    submitBtn.classList.remove('is-progress', 'is-indeterminate');
+    submitBtn.style.removeProperty('--progreso');
+    submitBtn.textContent = submitBtn.dataset.textoOriginal || 'Enviar mensaje';
     submitBtn.style.opacity = '1';
     form.style.pointerEvents = 'auto';
   }

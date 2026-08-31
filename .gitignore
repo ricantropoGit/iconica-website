@@ -42,6 +42,24 @@ Code.gs
 # Carpeta de archivos no esenciales (respaldos y docs) — fuera del repo
 VARIOS/
 
+# Borradores de prueba — no deben entrar al repo.
+# OJO: .gitignore NO impide que Vercel los publique; para eso van también
+# en .vercelignore.
+afiliados2.html
+afiliados2a.html
+
+# Documentación interna de negocio. ⚠️ ESTE REPOSITORIO ES PÚBLICO en
+# github.com/ricantropoGit/iconica-website — commitear estos archivos
+# publicaría la estructura de comisiones, las condiciones a socios y los
+# puntos frágiles del sistema. No traen llaves, pero son estrategia.
+#
+# Si algún día quieres versionarlos, primero pon el repositorio en privado
+# (Settings → General → Danger Zone → Change visibility) y luego quita
+# estas tres líneas.
+FLUJO-COMERCIAL.md
+FLUJO-UNIFICADO.md
+programa-socios-mecanica.md
+
 # OS
 Thumbs.db
 .vercel

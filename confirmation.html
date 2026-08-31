@@ -88,6 +88,21 @@
       line-height: 1.6;
     }
 
+    /* Confirmación de la condición del socio. Va en verde y arriba del
+       resto: el descuento hace su trabajo aquí, cuando el cliente todavía
+       está decidiendo si vale la pena, no en la pantalla de cobro. */
+    .confirmation__socio {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 16px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 14px;
+      color: #14532d;
+      line-height: 1.6;
+    }
+
     .confirmation__checklist {
       text-align: left;
       margin-bottom: 32px;
@@ -185,7 +200,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="brand" aria-label="Icónica — inicio">
-        <span class="brand__mark">I</span>
+        <span class="brand__mark">Ø</span>
         <span>Icónica</span>
       </a>
     </div>
@@ -201,6 +216,8 @@
       <p class="confirmation__subtitle">
         Recibimos tu foto correctamente. Nos pondremos en contacto en las próximas 24 horas.
       </p>
+
+      <div class="confirmation__socio" id="socioNotice" hidden></div>
 
       <div class="confirmation__id-label">Tu ID de referencia</div>
       <div class="confirmation__id" id="submissionId">---</div>
@@ -254,38 +271,78 @@
       var submissionId = params.get('id');
       var email = params.get('email');
 
+      mostrarCondicionDeSocio(params);
+
       if (submissionId) {
         // Tenemos ID directo
         document.getElementById('submissionId').textContent = decodeURIComponent(submissionId);
-      } else if (email) {
-        // Tenemos email, buscar ID en Google Sheet
-        email = decodeURIComponent(email);
-
-        // Buscar el ID más reciente para este email en el Sheet
-        // Esto es temporal - se actualizará cuando Google Apps Script responda correctamente
-        fetch('/api/getSubmissionId?email=' + encodeURIComponent(email))
-          .then(response => response.json())
-          .then(data => {
-            if (data && data.submissionId) {
-              document.getElementById('submissionId').textContent = data.submissionId;
-            } else {
-              // Si no encuentra, mostrar un ID genérico
-              var timestamp = Date.now().toString(36).toUpperCase();
-              document.getElementById('submissionId').textContent = 'ID-' + timestamp;
-            }
-          })
-          .catch(err => {
-            // Si hay error, mostrar timestamp como ID temporal
-            var timestamp = Date.now().toString(36).toUpperCase();
-            document.getElementById('submissionId').textContent = 'ID-' + timestamp;
-          });
-
-        var messageEl = document.querySelector('.confirmation__subtitle');
-        if (messageEl) {
-          messageEl.textContent = 'Tu solicitud fue recibida en ' + email + '. Recibirás un email de confirmación en los próximos momentos.';
-        }
+        return;
       }
+
+      if (!email) return;
+
+      // Sin folio en la URL: lo buscamos por correo en el Sheet.
+      // Antes esta rama pegaba a /api/getSubmissionId —una ruta que no
+      // existe— y al fallar inventaba un "ID-<timestamp>" que no
+      // correspondía a ninguna solicitud. El folio es la llave de todo el
+      // sistema: mostrar uno falso es peor que no mostrar ninguno.
+      email = decodeURIComponent(email);
+
+      var subtitleEl = document.querySelector('.confirmation__subtitle');
+      if (subtitleEl) {
+        subtitleEl.textContent = 'Tu solicitud fue recibida en ' + email +
+          '. Recibirás un email de confirmación en los próximos momentos.';
+      }
+
+      fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'getSubmissionIdByEmail', email: email })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.success && data.submissionId) {
+            document.getElementById('submissionId').textContent = data.submissionId;
+          } else {
+            sinFolio();
+          }
+        })
+        .catch(sinFolio);
     });
+
+    // Mensaje honesto cuando no se pudo recuperar el folio
+    function sinFolio() {
+      var el = document.getElementById('submissionId');
+      el.style.fontSize = '15px';
+      el.style.fontFamily = 'inherit';
+      el.textContent = 'Te lo enviamos por correo';
+    }
+
+    // Si la solicitud llegó con el código de un socio, se confirma aquí
+    function mostrarCondicionDeSocio(params) {
+      var socio = params.get('socio');
+      if (!socio) return;
+
+      var esquema = params.get('esquema');
+      var aviso = document.getElementById('socioNotice');
+      if (!aviso) return;
+
+      // Se arma con nodos, no con innerHTML: el nombre del socio viene de
+      // la URL y no debe interpretarse como HTML.
+      var fuerte = document.createElement('strong');
+      fuerte.textContent = 'Registramos el código de ' + socio + '.';
+
+      var resto = document.createTextNode(
+        esquema === 'aliado'
+          ? ' Aplicaremos la condición preferente que te corresponde al momento de tu compra.'
+          : ' Gracias por llegar por su recomendación.'
+      );
+
+      aviso.textContent = '';
+      aviso.appendChild(fuerte);
+      aviso.appendChild(resto);
+      aviso.hidden = false;
+    }
   </script>
 
   <!-- Vercel Web Analytics (sin cookies). Para excluir tus pruebas en este

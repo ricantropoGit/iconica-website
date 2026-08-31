@@ -259,7 +259,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="brand" aria-label="Icónica — inicio">
-        <span class="brand__mark">I</span>
+        <span class="brand__mark">Ø</span>
         <span>Icónica</span>
       </a>
     </div>
@@ -270,10 +270,14 @@
     <div class="success__card">
       <div class="success__icon">🎉</div>
 
-      <h1 class="success__title">¡Compra completada!</h1>
+      <h1 class="success__title">¡Compra confirmada!</h1>
 
-      <p class="success__subtitle">
-        Tus fotos Icónica están listas para descargar. Gracias por tu confianza.
+      <!-- Esta página tiene dos estados y los dos viven en la MISMA liga:
+           mientras la carpeta "Editadas" esté vacía muestra el plazo, y en
+           cuanto el director de arte sube los archivos muestra las
+           descargas. El cliente vuelve al mismo lugar. -->
+      <p class="success__subtitle" id="successSubtitle">
+        Gracias por tu confianza. Estamos produciendo tus versiones finales.
       </p>
 
       <div class="success__transaction">
@@ -282,44 +286,14 @@
       </div>
 
       <div class="success__section">
-        <h2 class="success__section-title">Descarga tus fotos</h2>
-        <ul class="success__download-list" id="downloadList">
-          <li class="success__download-item">
-            <a href="#">
-              <div class="success__download-icon">📷</div>
-              <div class="success__download-info">
-                <div class="success__download-name">Foto 1 — Profesional</div>
-                <div class="success__download-size">2000×2000px • PNG</div>
-              </div>
-              <div class="success__download-action">↓</div>
-            </a>
-          </li>
-          <li class="success__download-item">
-            <a href="#">
-              <div class="success__download-icon">📷</div>
-              <div class="success__download-info">
-                <div class="success__download-name">Foto 2 — Ambiente</div>
-                <div class="success__download-size">2000×2000px • PNG</div>
-              </div>
-              <div class="success__download-action">↓</div>
-            </a>
-          </li>
-          <li class="success__download-item">
-            <a href="#">
-              <div class="success__download-icon">📷</div>
-              <div class="success__download-info">
-                <div class="success__download-name">Foto 3 — Artística</div>
-                <div class="success__download-size">2000×2000px • PNG</div>
-              </div>
-              <div class="success__download-action">↓</div>
-            </a>
-          </li>
-        </ul>
+        <h2 class="success__section-title" id="downloadTitle">Tus imágenes</h2>
+        <ul class="success__download-list" id="downloadList"></ul>
       </div>
 
-      <div class="success__note">
-        <strong>✉️ Revisa tu email</strong>
-        También hemos enviado los enlaces de descarga a tu correo. Los enlaces permanecerán activos durante 30 días.
+      <div class="success__note" id="successNote">
+        <strong>✉️ Te avisamos por correo</strong>
+        En cuanto tus archivos estén listos te escribimos. También puedes volver
+        a esta misma página cuando quieras: aquí aparecerán tus descargas.
       </div>
 
       <div class="success__cta">
@@ -354,8 +328,7 @@
         loadEditedPhotos(submissionId);
       } else {
         console.warn('No submissionId found in URL parameters');
-        // Mostrar mensaje de error si no hay submissionId
-        showNoPhotosMessage();
+        showMissingIdMessage();
       }
     });
 
@@ -393,6 +366,24 @@
     function populateDownloadList(photos) {
       var downloadList = document.getElementById('downloadList');
       downloadList.innerHTML = ''; // Limpiar items de placeholder
+
+      // Segundo estado de la página: ya hay entrega. Cambian los textos.
+      var subtitulo = document.getElementById('successSubtitle');
+      if (subtitulo) {
+        subtitulo.textContent =
+          'Tus imágenes están listas. Gracias por tu confianza.';
+      }
+
+      var titulo = document.getElementById('downloadTitle');
+      if (titulo) titulo.textContent = 'Descarga tus fotos';
+
+      var nota = document.getElementById('successNote');
+      if (nota) {
+        nota.innerHTML =
+          '<strong>✉️ Guárdalas en tu equipo</strong>' +
+          'También te enviamos esta liga por correo. Te recomendamos descargar ' +
+          'los archivos y conservarlos: la liga es personal.';
+      }
 
       photos.forEach(function(photo, index) {
         var listItem = document.createElement('li');
@@ -440,10 +431,28 @@
       console.log('✓ Lista de descargas actualizada con', photos.length, 'fotos');
     }
 
-    // Mostrar mensaje cuando no hay fotos
+    // Estado "en producción": es el normal justo después de pagar.
+    // Las versiones finales se producen DESPUÉS del pago, así que aquí no
+    // hay nada roto — hay trabajo en curso, y hay que decirlo así.
     function showNoPhotosMessage() {
       var downloadList = document.getElementById('downloadList');
-      downloadList.innerHTML = '<div style="padding: 20px; text-align: center; color: #999; background: #f9f9f9; border-radius: 6px;">Las fotos aún no están disponibles. Por favor, intenta de nuevo en unos momentos.</div>';
+      downloadList.innerHTML =
+        '<div style="padding: 24px; text-align: center; color: #555; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; line-height: 1.6;">' +
+        '<div style="font-size: 24px; margin-bottom: 8px;">🎨</div>' +
+        '<strong style="display:block; margin-bottom:6px; color:#14532d;">Estamos produciendo tus versiones finales</strong>' +
+        'Las recibes dentro de las siguientes <strong>24 a 48 horas</strong>, en alta ' +
+        'resolución y sin marca de agua. Te avisamos por correo en cuanto estén listas.' +
+        '</div>';
+    }
+
+    // Cuando la liga llega sin folio no podemos saber qué entregar
+    function showMissingIdMessage() {
+      var downloadList = document.getElementById('downloadList');
+      downloadList.innerHTML =
+        '<div style="padding: 20px; text-align: center; color: #555; background: #f9f9f9; border-radius: 8px; line-height: 1.6;">' +
+        'No pudimos identificar tu pedido desde esta liga. Busca en tu correo el ' +
+        'mensaje de confirmación: ahí viene tu liga personal.' +
+        '</div>';
     }
 
     // Mostrar mensaje de error
