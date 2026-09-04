@@ -277,7 +277,7 @@ ul { list-style: none; padding: 0; }
 }
 .hero__subtitle {
   margin: 1.4rem auto 0;
-  max-width: 38ch;
+  max-width: 48ch;
   font-size: clamp(1.05rem, 4.2vw, 1.5rem);
   color: var(--ink-soft);
   text-wrap: pretty;
@@ -687,7 +687,7 @@ ul { list-style: none; padding: 0; }
 .faq__item[open]::details-content { height: auto; opacity: 1; }
 .faq__a { padding: 0 1.5rem 24px 2.6rem; }
 .faq__a p { color: var(--muted); font-size: .96rem; text-wrap: pretty; }
-.faq__a a { color: var(--accent-strong); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.faq__a a { color: var(--accent-strong); text-decoration: none; }
 .faq__a a:hover { color: var(--ink); }
 @media (min-width: 640px) {
   .faq__q { font-size: 1.1rem; grid-template-columns: 3.2rem 1fr 1.5rem; }
@@ -747,7 +747,7 @@ ul { list-style: none; padding: 0; }
   counter-increment: note;
   position: relative;
   padding-left: 1.3rem;
-  font-size: .7rem;
+  font-size: .84rem;
   line-height: 1.3;
   color: var(--muted);
   text-wrap: pretty;
