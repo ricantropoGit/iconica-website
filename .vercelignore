@@ -33,3 +33,29 @@ node_modules
 .git
 .vercel
 .claude
+
+# Respaldos de datos con información personal. .gitignore NO impide que
+# Vercel los publique: sin esta regla quedarían en iconica24.com/<archivo>.
+*.xlsx
+*.csv
+*.ods
+
+# Archivos de trabajo de Pinegrow — no deben servirse en el sitio.
+index4PINEgrow.html
+pinegrow.json
+_pgbackup/
+_pginfo/
+
+# Páginas del negocio de imágenes (archivado 2026-08) y del programa de
+# socios. Se CONSERVAN en local para reciclarlas, pero no se publican:
+# describen un servicio que ya no existe.
+#   payment.html / success.html  → flujo de pago de fotos. Ocultarlas
+#     desactiva el checkout viejo: payment.html era su única entrada.
+#   privacidad.html  → aviso redactado para el tratamiento de fotografías.
+#     Pendiente de adaptar al modelo nuevo.
+#   afiliados.html   → programa de socios en términos de retratos. La
+#     mecánica se reaprovecha (resolveSocio en Code.gs sigue viva).
+payment.html
+success.html
+privacidad.html
+afiliados.html

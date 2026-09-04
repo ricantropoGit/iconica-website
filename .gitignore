@@ -64,3 +64,12 @@ programa-socios-mecanica.md
 Thumbs.db
 .vercel
 .env*
+
+# Respaldos de datos: contienen nombres, correos y teléfonos de clientes y
+# socios. ESTE REPOSITORIO ES PÚBLICO — nunca deben commitearse.
+*.xlsx
+*.csv
+*.ods
+
+# Documento de arquitectura del modelo de arrendamiento (estrategia interna).
+MODELO-TECNICO.md

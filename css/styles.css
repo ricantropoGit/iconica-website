@@ -10,9 +10,8 @@
   --ink:        #0a0a0a;   /* texto principal / negro */
   --ink-soft:   #404040;   /* texto secundario fuerte */
   --muted:      #6b7280;   /* texto secundario */
-  --semimuted:  #1b1c1e;  
   --bg:         #ffffff;
-  --bg-alt:     #f5f5f5;   /* secciones claras alternas */
+  --bg-alt:     #fafafa;   /* secciones claras alternas */
   --bg-dark:    #0a0a0a;   /* sección CTA oscura */
   --border:     #dedede;
   --border-dark:#262626;
@@ -65,17 +64,12 @@ ul { list-style: none; padding: 0; }
   padding-inline: var(--gutter);
 }
 
-/* De 865px en adelante — DESACTIVADO.
-   El brinco de width 100% → 80% encogía el contenedor 172px de golpe al
-   cruzar el umbral (vw 864 → caja 864px; vw 865 → caja 692px), y no volvía
-   a ese ancho hasta vw 1080. Sin esta regla, .container queda en 100%
-   siempre, acotado por max-width: 1180px.
+/* De 865px en adelante */
 @media (min-width: 865px) {
   .container {
     width: 80%;
   }
 }
-*/
 
 .section { padding-block: 64px; }
 .section--alt { background: var(--bg-alt); }
@@ -114,61 +108,11 @@ ul { list-style: none; padding: 0; }
 .btn--primary:hover { background: #262626; }
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--border); }
 .btn--ghost:hover { border-color: var(--ink); }
-
-/* ---------------------------------------------------------------------
-   Progreso dentro del propio botón
-   ---------------------------------------------------------------------
-   El envío del formulario tarda varios segundos: la foto viaja dentro del
-   mensaje y el servidor guarda en Drive, escribe la hoja y manda correos.
-   Sin señal, esa espera se siente el doble de larga.
-
-   El relleno es REAL mientras se puede medir —lectura del archivo y bytes
-   subidos—. Cuando el servidor toma el control ya no hay nada que medir,
-   así que en vez de inventar un porcentaje la barra pasa a un barrido
-   indeterminado: sigue diciendo "estoy vivo" sin mentir sobre cuánto falta.
-   --------------------------------------------------------------------- */
-.btn.is-progress {
-  position: relative;
-  overflow: hidden;
-  cursor: progress;
-}
-/* El texto va en un span para que quede POR ENCIMA del relleno: un
-   pseudo-elemento posicionado se pinta sobre el texto suelto del botón. */
-.btn.is-progress .btn__label {
-  position: relative;
-  z-index: 1;
-}
-.btn.is-progress::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--progreso, 0%);
-  background: rgba(255, 255, 255, .26);
-  transition: width .3s ease;
-}
-.btn.is-progress.is-indeterminate::before {
-  width: 100%;
-  background: linear-gradient(90deg,
-              transparent 0%, rgba(255,255,255,.30) 50%, transparent 100%);
-  background-size: 45% 100%;
-  background-repeat: no-repeat;
-  transition: none;
-  animation: btnBarrido 1.25s linear infinite;
-}
-@keyframes btnBarrido {
-  from { background-position: -45% 0; }
-  to   { background-position: 145% 0; }
-}
-/* Botón claro (ghost): el relleno blanco no se vería */
-.btn--ghost.is-progress::before { background: rgba(10, 10, 10, .10); }
-
-@media (prefers-reduced-motion: reduce) {
-  .btn.is-progress::before { transition: none; }
-  .btn.is-progress.is-indeterminate::before {
-    animation: none;
-    background: rgba(255, 255, 255, .18);
-  }
-}
+/* Verde oficial de WhatsApp: el reconocimiento del color es justo lo que
+   hace que este botón se lea como "canal directo" y no como otro CTA más. */
+.btn--whatsapp { background: #25D366; color: #0a0a0a; }
+.btn--whatsapp:hover { background: #1eb855; }
+.contact__wa { margin-top: 22px; }
 /* Variantes sobre fondo oscuro */
 .on-dark .btn--primary { background: #fff; color: var(--ink); }
 .on-dark .btn--primary:hover { background: #e9e9e9; }
@@ -227,8 +171,13 @@ ul { list-style: none; padding: 0; }
   padding-block: 4px;
   transition: color .18s ease;
 }
-.nav__link:hover { color: var(--ink); }
 .nav__link.is-active { color: var(--accent-strong); }
+/* Hover: sólo cambio de color al verde de la paleta, sin subrayado.
+   Va dentro de (hover: hover) porque en táctil el estado se queda "pegado"
+   tras el toque y el item quedaría verde de forma permanente. */
+@media (hover: hover) {
+  .nav__link:hover { color: var(--accent-strong); }
+}
 
 /* Hamburguesa */
 .hamburger {
@@ -275,8 +224,18 @@ ul { list-style: none; padding: 0; }
   padding: 14px 4px;
   font-size: 1.05rem;
   font-weight: 600;
+  transition: color .18s ease, transform .18s ease;
 }
 .mobile-nav__link.is-active { color: var(--accent-strong); }
+
+/* No tenía ninguna respuesta al hover. Verde de acento + un corrimiento
+   corto: en una lista de ancho completo el desplazamiento se lee mejor que
+   un cambio de color solo. */
+@media (hover: hover) {
+  .mobile-nav__link:hover { color: var(--accent-strong); transform: translateX(6px); }
+}
+/* En táctil no hay hover: :active da la respuesta al toque. */
+.mobile-nav__link:active { color: var(--accent-strong); }
 
 /* ==========================================================================
    HERO
@@ -294,24 +253,26 @@ ul { list-style: none; padding: 0; }
   text-align: center;
   padding-block: 48px 104px;
 }
+/* El h1 se mide contra el CONTENEDOR, no contra la ventana. Es lo que
+   mantiene el título en 3 líneas siempre.
+
+   Por qué: .container salta de width:100% a 80% en 865px, así que el ancho
+   útil se encoge de golpe (824 -> 652). Con una fuente en vw el texto seguía
+   creciendo mientras su caja se encogía, y se apiñaba en 5 líneas de 865px
+   en adelante. En cqw la fuente y su caja van juntas y el salto se absorbe
+   solo — igual que el cambio de --gutter en 1024px. */
+.hero > .container { container-type: inline-size; }
+
 .hero__title {
   font-weight: 800;
   letter-spacing: -.035em;
   line-height: .98;
-  /* Encabezado SIEMPRE en 4 líneas, de 320px a 1920px.
-     Antes —clamp(2.6rem, 11vw, 6.5rem)— se apilaba en 5 en dos bandas:
-       · 780–950px: el texto se pasaba por menos de 1px.
-       · 320–360px: ahí mandaba el mínimo (2.6rem); la fuente dejaba de
-         encoger mientras el contenedor seguía estrechándose.
-     La causa de fondo es que escalaba con el VIEWPORT y debe escalar con el
-     CONTENEDOR: los 20px fijos de padding pesan mucho más en pantallas chicas,
-     así que a igual vw el texto queda proporcionalmente más ancho. Medido, la
-     razón "fuente máxima / ancho de contenedor" es casi constante (.1125–.1140)
-     en todo el rango; de ahí el factor .109, que deja ~3.2% de margen parejo.
-     El -40px son los dos gutters de 20px (el gutter sube a 32px en ≥1024px,
-     pero para entonces ya manda el tope de 6.5rem, que entra en ~994px).
-     OJO: calibrado para ESTE texto. Si cambia el encabezado, hay que recalcular. */
-  font-size: clamp(1.9rem, calc((100vw - 40px) * .109), 6.5rem);
+  /* Dos declaraciones a propósito, igual que el min-height de .hero: un
+     navegador sin unidades de contenedor (anterior a 2023) descarta la
+     segunda y se queda con la primera. Sin el respaldo caería al h1 por
+     omisión — 32px — y el titular se vería roto. */
+  font-size: clamp(2rem, 11vw, 6.5rem);      /* respaldo */
+  font-size: clamp(2rem, 11.5cqw, 6.5rem);   /* preferido */
   text-wrap: balance;
 }
 .hero__subtitle {
@@ -320,6 +281,16 @@ ul { list-style: none; padding: 0; }
   font-size: clamp(1.05rem, 4.2vw, 1.5rem);
   color: var(--ink-soft);
   text-wrap: pretty;
+}
+
+/* Par de botones del hero. Mismo patrón que .cta__actions: en móvil angosto
+   se apilan solos (flex-wrap) porque .btn lleva white-space: nowrap. */
+.hero__actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
 }
 
 /* Ancla "Saber más" — flecha que baja al slider */
@@ -353,10 +324,9 @@ ul { list-style: none; padding: 0; }
    ========================================================================== */
 .intro {
   text-align: center;
-  /* Piso de 24px. Es la curva original clamp(30px, 4.5vw, 52px) reescalada
-     por 0.8 (30→24), así que conserva su proporción: 24px hasta ~667px de
-     ancho, sube hasta 42px en ~1167px y ahí se detiene. */
-  padding-block: clamp(24px, 3.6vw, 42px);
+  /* Padding contenido: deja respirar la pregunta sin robarle pantalla al
+     slider. ~30px en móvil → ~50px en laptop, escalando con el viewport. */
+  padding-block: clamp(30px, 4.5vw, 52px);
   background: var(--bg-dark);
   color: #fff;
   scroll-margin-top: var(--header-h);
@@ -372,21 +342,9 @@ ul { list-style: none; padding: 0; }
 .intro__subtitle {
   margin-top: .7rem;
   color: #a3a3a3;
-  /* -30% respecto del original clamp(1rem, 3.2vw, 1.3rem).
-     El tope y la pendiente llevan el -30% completo (1.3→.91rem, 3.2→2.24vw),
-     pero el piso se deja en .85rem (13.6px) en vez de .7rem (11.2px): abajo
-     de ~607px de ancho ese piso es el que gobierna, y 11.2px resultaba
-     ilegible en teléfono — además los navegadores con "tamaño mínimo de
-     fuente" lo habrían subido por su cuenta, rompiendo la proporción. */
-  font-size: clamp(.85rem, 2.24vw, .91rem);
+  font-size: clamp(1rem, 3.2vw, 1.3rem);
   text-wrap: pretty;
 }
-/* Con .intro en padding-block: 0 no hay padding ni borde que contenga el
-   margin-top de arriba, así que colapsaba hacia afuera y empujaba la banda
-   oscura 11px hacia abajo, dejando una franja del fondo entre el slider y el
-   intro. Solo se anula cuando el subtítulo es el primer elemento: si se
-   vuelve a agregar .intro__title antes, el margen regresa por sí solo. */
-.intro__subtitle:first-child { margin-top: 0; }
 
 /* ==========================================================================
    SLIDER / Galería antes-después
@@ -519,7 +477,7 @@ ul { list-style: none; padding: 0; }
 /* ==========================================================================
    CARD GRID / Cómo funciona
    ========================================================================== */
-.steps__head { max-width: 46rem; margin-inline: auto; text-align: center; }
+.steps__head { max-width: 46rem; margin-inline: auto; text-align: left; }
 .steps__title {
   font-size: clamp(1.8rem, 6vw, 2.9rem);
   font-weight: 800;
@@ -546,10 +504,13 @@ ul { list-style: none; padding: 0; }
 .card {
   padding: 32px 28px;
   border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   transition: background .2s ease;
 }
-.card:first-child { border-top: 0; }
 .card:hover { background: var(--bg-alt); }
+/* Retícula base (móvil): 1 columna × 6 líneas — solo separadores horizontales */
+.card { border-left: 0; }
+.card:nth-child(1) { border-top: 0; }
 .card__icon {
   width: 44px; height: 44px;
   display: grid; place-items: center;
@@ -642,6 +603,11 @@ ul { list-style: none; padding: 0; }
 .brand-col { font-weight: 800; letter-spacing: -.01em; font-size: 1.05rem; }
 .check { color: var(--accent-strong); font-weight: 700; }
 .dash { color: #c4c4c4; }
+.depends { color: var(--muted); font-size: .86rem; }
+/* Fila de costo inicial: primera y con mayor peso tipográfico */
+.row-cost th, .row-cost td { font-size: 1.02rem; }
+.compare-table tbody .row-cost th { font-weight: 800; color: var(--ink); }
+.row-cost strong { font-weight: 800; letter-spacing: -.01em; }
 
 /* ==========================================================================
    PRECIOS
@@ -687,7 +653,47 @@ ul { list-style: none; padding: 0; }
 .price-card__desc { margin-top: .3rem; color: var(--muted); font-size: .95rem; min-height: calc(1.45em * 4); }
 .price-card__price { margin-top: 1.4rem; display: flex; align-items: baseline; gap: .15rem; }
 .price-card__amount { font-size: clamp(2.4rem, 8vw, 3rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
-.price-card__amount--custom { font-size: clamp(2rem, 6.5vw, 2.6rem); }
+.price-card__billed { margin-top: .35rem; color: var(--muted); font-size: .88rem; }
+.pricing__cancel { margin-top: 28px; text-align: center; color: var(--ink-soft); font-size: .9rem; max-width: 46rem; margin-inline: auto; text-wrap: pretty; }
+.pricing__foot { margin-top: 14px; text-align: center; color: var(--muted); font-size: .84rem; max-width: 44rem; margin-inline: auto; text-wrap: pretty; }
+/* Mismo tratamiento de enlace en línea que .faq__a y .legal-prose: acento +
+   subrayado. Se extiende a .pricing__cancel en vez de duplicar la regla, para
+   que el patrón siga viviendo en un solo lugar. */
+.pricing__foot a, .pricing__cancel a { color: var(--accent-strong); text-decoration: none; }
+.pricing__foot a:hover, .pricing__cancel a:hover { color: var(--ink); }
+
+/* ==========================================================================
+   PREGUNTAS FRECUENTES — acordeón nativo (details/summary)
+   ========================================================================== */
+.faq { scroll-margin-top: var(--header-h); }
+.faq__head { max-width: 44rem; }
+.faq__head .eyebrow { color: var(--accent-strong); }
+.faq__title { font-size: clamp(1.6rem, 5vw, 2.3rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+.faq__list { margin-top: 36px; border-top: 1px solid var(--border); }
+.faq__item { border-bottom: 1px solid var(--border); }
+.faq__q { display: grid; grid-template-columns: 2.6rem 1fr 1.5rem; align-items: start; gap: .4rem; padding: 20px 2px; cursor: pointer; list-style: none; font-weight: 700; font-size: 1.02rem; letter-spacing: -.01em; text-wrap: pretty; transition: color .18s ease; }
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover { color: var(--accent-strong); }
+.faq__num { font-size: .72rem; letter-spacing: .14em; font-weight: 700; color: var(--accent-strong); padding-top: .32rem; }
+.faq__sign { position: relative; width: 1.5rem; height: 1.5rem; justify-self: end; }
+.faq__sign::before, .faq__sign::after { content: ""; position: absolute; top: 50%; left: 50%; width: 13px; height: 1px; background: currentColor; transform: translate(-50%, -50%); transition: transform .22s ease, opacity .22s ease; }
+.faq__sign::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq__item[open] .faq__sign::after { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+.faq__item[open] .faq__q { color: var(--accent-strong); }
+/* Despliegue suave: se anima la altura del contenido del <details>.
+   interpolate-size habilita la transición hacia/desde height:auto. */
+:root { interpolate-size: allow-keywords; }
+.faq__item::details-content { height: 0; overflow: hidden; opacity: 0; transition: height .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease, content-visibility .38s allow-discrete; }
+.faq__item[open]::details-content { height: auto; opacity: 1; }
+.faq__a { padding: 0 1.5rem 24px 2.6rem; }
+.faq__a p { color: var(--muted); font-size: .96rem; text-wrap: pretty; }
+.faq__a a { color: var(--accent-strong); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.faq__a a:hover { color: var(--ink); }
+@media (min-width: 640px) {
+  .faq__q { font-size: 1.1rem; grid-template-columns: 3.2rem 1fr 1.5rem; }
+  .faq__a { padding-left: 3.2rem; padding-right: 4rem; }
+  .faq__a p { font-size: 1rem; }
+}
 .price-card__period { color: var(--muted); font-size: 1rem; font-weight: 500; }
 
 .price-card__features { margin-top: 1.6rem; display: grid; gap: .5rem; align-content: start; flex: 1 1 auto; }
@@ -711,22 +717,12 @@ ul { list-style: none; padding: 0; }
 .price-card__cta { display: flex; align-items: center; justify-content: center; width: 100%; text-align: center; margin-top: auto; padding-top: 2rem; line-height: 1; padding-block: .9rem; }
 
 @media (min-width: 640px) {
-  .pricing__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, auto); gap: 24px; }
-  /* subgrid: alinea precio / viñetas / botón entre tarjetas sin importar el largo de
-     la descripción. Activo en todo el rango de 2 columnas (≥640px), hasta que colapsan a 1 (<640px). */
-  .price-card { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 0; }
-  /* Justificado + partición de palabras solo de 640px en adelante: en móvil
-     (la base) la columna es angosta y el justificado abriría ríos de espacio.
-     Requiere el lang="es" del <html> para elegir el diccionario de guionado.
-     Los prefijos son necesarios: Safari sigue pidiendo -webkit-, y -ms- cubre
-     Edge legacy / IE10+. La versión sin prefijo va al final para que gane. */
-  .price-card__desc {
-    min-height: 0;
-    /*text-align: justify;
-    -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-            hyphens: auto;*/
-  }
+  .pricing__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, auto); gap: 24px; }
+  /* subgrid: alinea precio / facturación / viñetas / botón entre tarjetas sin importar el largo de
+     la descripción. Activo en todo el rango de 2 columnas (≥640px), hasta que colapsan a 1 (<640px).
+     El span debe igualar el número de hijos de .price-card (head, price, billed, features, cta). */
+  .price-card { display: grid; grid-template-rows: subgrid; grid-row: span 5; row-gap: 0; }
+  .price-card__desc { min-height: 0; }
 }
 @media (min-width: 1024px) {
   .pricing__grid { max-width: 720px; margin-inline: auto; } /* 2 planes centrados en escritorio. Para volver a 3: descomentar Enterprise en index.html, poner repeat(3,1fr) y quitar este max-width. */
@@ -753,7 +749,7 @@ ul { list-style: none; padding: 0; }
   padding-left: 1.3rem;
   font-size: .7rem;
   line-height: 1.3;
-  color: var(--semimuted);
+  color: var(--muted);
   text-wrap: pretty;
 }
 .compare-notes li::before {
@@ -805,24 +801,13 @@ ul { list-style: none; padding: 0; }
   background: var(--bg);
   transition: border-color .18s ease, box-shadow .18s ease;
 }
-.field select { appearance: none; cursor: pointer; }
 .field input:focus, .field textarea:focus, .field select:focus {
   outline: none;
   border-color: var(--ink);
   box-shadow: 0 0 0 3px rgba(10,10,10,.08);
 }
 .field textarea { resize: vertical; min-height: 120px; }
-/* Aviso bajo un campo. Se usa para confirmar el código de socio detectado
-   en la URL: el descuento tiene que existir desde el primer contacto. */
-.field__hint {
-  font-size: .8rem;
-  line-height: 1.45;
-  color: var(--accent-strong);
-  background: var(--accent-soft);
-  border-radius: var(--r-md);
-  padding: 8px 12px;
-  margin: 0;
-}
+.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23767676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
 .form__foot { font-size: .78rem; color: var(--muted); }
 
 /* Dropzone de subida de foto */
@@ -1128,9 +1113,11 @@ ul { list-style: none; padding: 0; }
   .slider__play:hover { background: rgba(0,0,0,.7); }
   .slider__play svg { width: 20px; height: 20px; }
   .slider__dots { display: flex; bottom: 5px; }   /* ≥640px: vuelven los dots, más abajo para no encimar con .ba__tag */
-  .cards { grid-template-columns: repeat(3, 1fr); }
-  .card { border-top: 0; border-left: 1px solid var(--border); }
-  .card:first-child { border-left: 0; }
+  /* Tablet: 2 columnas × 3 líneas */
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .card { border-left: 1px solid var(--border); border-top: 1px solid var(--border); }
+  .card:nth-child(2n+1) { border-left: 0; }
+  .card:nth-child(-n+2) { border-top: 0; }
   .contact__grid { grid-template-columns: 1fr 1fr; align-items: start; }
   .footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
 }
@@ -1143,12 +1130,93 @@ ul { list-style: none; padding: 0; }
   .hero { padding-block: 56px 116px; }
   .section { padding-block: 100px; }
   .ba { aspect-ratio: 1 / 1; }
+  /* Laptop/desktop: 3 columnas × 2 líneas */
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .card { border-left: 1px solid var(--border); border-top: 1px solid var(--border); }
+  .card:nth-child(2n+1) { border-left: 1px solid var(--border); }
+  .card:nth-child(3n+1) { border-left: 0; }
+  .card:nth-child(-n+3) { border-top: 0; }
 }
 
 /* —— Desktop ≥ 1280px —— */
 @media (min-width: 1280px) {
   .hero { padding-block: 64px 120px; }
 }
+
+/* ==========================================================================
+   GALERÍA / Portafolio — retícula full-bleed
+   2 columnas en móvil · 4 columnas de tablet (≥640px) en adelante
+   ========================================================================== */
+.gallery { background: var(--bg); scroll-margin-top: var(--header-h); }
+.gallery__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+.gallery__item { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; background: var(--bg-alt); -webkit-tap-highlight-color: transparent; }
+.gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s cubic-bezier(.2,.7,.3,1), filter .3s ease; }
+.gallery__item:hover img { transform: scale(1.045); }
+.gallery__item:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: -3px; }
+@media (min-width: 640px) { .gallery__grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ==========================================================================
+   FANCYBOX / Lightbox — "página virtual" sobre la página real
+   ========================================================================== */
+/* Bloqueo del scroll del documento (el body se fija conservando posición) */
+html.fbx-lock { overflow: hidden; }
+html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
+
+.fbx { position: fixed; inset: 0; z-index: 1200; display: none; --fbx-pad: clamp(14px, 5vw, 72px); --fbx-imgw: min(calc(100vw - 2 * var(--fbx-pad)), calc(100vh - 2 * var(--fbx-pad))); }
+.fbx.is-open { display: block; }
+.fbx__overlay { position: absolute; inset: 0; background: rgba(10, 10, 10, .75); animation: fbxFade .2s ease; }
+/* Única zona con scroll mientras el lightbox está abierto */
+.fbx__scroll { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.fbx__frame { min-height: 100%; display: flex; align-items: center; justify-content: center; padding: var(--fbx-pad); box-sizing: border-box; }
+/* Contenedor que se ajusta EXACTAMENTE al tamaño de la imagen: sirve de
+   referencia de posicionamiento para las flechas (centrado vertical real). */
+.fbx__stage { position: relative; width: 100%; height: fit-content; margin: auto; }
+.fbx__img { display: block; width: 100%; height: auto; background: #000; opacity: 0; transform: scale(.985); transition: opacity .28s ease, transform .28s ease; box-shadow: 0 34px 80px -22px rgba(0, 0, 0, .8); }
+.fbx__img.is-ready { opacity: 1; transform: none; }
+.fbx__btn { position: fixed; z-index: 2; display: grid; place-items: center; border: 0; background: transparent; color: rgba(255, 255, 255, .72); cursor: pointer; transition: color .18s ease, transform .18s ease; }
+.fbx__btn:hover { color: #fff; }
+.fbx__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Flechas DENTRO del área de la imagen, separadas de su borde por la misma
+   distancia que el margen del recuadro. */
+.fbx__btn--prev, .fbx__btn--next { top: 50%; transform: translateY(-50%); width: 56px; height: 110px; color: #fff; filter: drop-shadow(0 1px 6px rgba(0, 0, 0, .55)); }
+/* Modo única imagen: las flechas viven DENTRO de .fbx__stage, así que su 50%
+   es la mitad exacta de la imagen (se desplazan con ella al hacer scroll). */
+.fbx:not(.fbx--stack) .fbx__btn--prev,
+.fbx:not(.fbx--stack) .fbx__btn--next,
+.fbx:not(.fbx--stack) .fbx__btn--close { position: absolute; }
+/* Trazo homologado a 1px visual: el stroke-width se compensa por la escala
+   a la que se rinde cada svg (44px → 0.545; 30px → 0.8 sobre viewBox de 24). */
+.fbx:not(.fbx--stack) .fbx__btn--prev svg,
+.fbx:not(.fbx--stack) .fbx__btn--next svg { width: 44px; height: 44px; stroke-width: 0.545; }
+.fbx:not(.fbx--stack) .fbx__btn--close svg { stroke-width: 0.8; }
+.fbx--stack .fbx__btn--prev svg,
+.fbx--stack .fbx__btn--next svg { stroke-width: 0.8; }
+.fbx__btn--prev:hover, .fbx__btn--next:hover { transform: translateY(-50%) scale(1.12); }
+/* Inset = el mismo margen del recuadro (--fbx-pad), medido desde el borde de
+   la imagen al GLIFO (−21px descuenta el aire del botón y del viewBox del svg). */
+.fbx:not(.fbx--stack) .fbx__btn--prev { left: calc(var(--fbx-pad) - 21px); right: auto; }
+.fbx:not(.fbx--stack) .fbx__btn--next { right: calc(var(--fbx-pad) - 21px); left: auto; }
+.fbx__btn--close { top: 12px; right: 12px; width: 46px; height: 46px; border-radius: 999px; }
+.fbx__btn--close:hover { transform: scale(1.1); }
+/* Modo única imagen: cerrar centrado sobre la imagen, a --fbx-pad de su
+   borde superior (−14px descuenta el aire del botón y del viewBox). */
+.fbx:not(.fbx--stack) .fbx__btn--close { top: calc(var(--fbx-pad) - 14px); right: auto; left: 50%; transform: translateX(-50%); color: #fff; filter: drop-shadow(0 1px 6px rgba(0, 0, 0, .55)); }
+.fbx:not(.fbx--stack) .fbx__btn--close:hover { transform: translateX(-50%) scale(1.1); }
+.fbx__counter { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 2; font-size: .78rem; letter-spacing: .1em; font-weight: 700; color: rgba(255, 255, 255, .65); pointer-events: none; }
+@keyframes fbxFade { from { opacity: 0; } to { opacity: 1; } }
+
+/* —— Modo COLUMNA (solo móvil): serie completa apilada a todo lo ancho —— */
+.fbx--stack .fbx__frame { display: block; padding: 0; }
+.fbx--stack .fbx__img { width: 100%; box-shadow: none; aspect-ratio: 1 / 1; height: auto; }
+/* Flechas arriba y abajo, centradas, fixed */
+.fbx--stack .fbx__btn--prev,
+.fbx--stack .fbx__btn--next { left: 50%; right: auto; width: 92px; height: 44px; }
+.fbx--stack .fbx__btn--prev { top: var(--fbx-pad); bottom: auto; transform: translateX(-50%) rotate(90deg); }
+.fbx--stack .fbx__btn--next { top: auto; bottom: var(--fbx-pad); transform: translateX(-50%) rotate(90deg); }
+.fbx--stack .fbx__btn--prev, .fbx--stack .fbx__btn--next { height: 44px; }
+.fbx--stack .fbx__btn--prev:hover { transform: translateX(-50%) rotate(90deg) scale(1.12); }
+.fbx--stack .fbx__btn--next:hover { transform: translateX(-50%) rotate(90deg) scale(1.12); }
+.fbx--stack .fbx__counter { left: var(--fbx-pad); bottom: auto; top: 18px; transform: none; }
 
 /* Respeta usuarios con reduced-motion */
 @media (prefers-reduced-motion: reduce) {
@@ -1157,48 +1225,66 @@ ul { list-style: none; padding: 0; }
   .hero__scroll-arrow { animation: none; }
 }
 
-
 /* ==========================================================================
-   MÓVIL: ajustes compartidos por index.html y afiliados.html
-   Debajo de 640px. Se limita a bloques editoriales y al pie; NO toca la tabla
-   comparativa, las etiquetas del carrusel, el dropzone, la intro ni el hero,
-   que están centrados por razones estructurales y se romperían.
+   SERVICIOS — página de qué incluye el plan y servicios adicionales
+   Mobile-first: las tablas colapsan a lista de dos líneas por debajo de 640px
    ========================================================================== */
-@media (max-width: 639.98px) {
-  /* Cabezas de sección a bandera izquierda. .steps__head existe en ambas
-     páginas; .pricing__head y .compare__head solo en index. */
-  .steps__head,
-  .pricing__head,
-  .compare__head { text-align: left; }
+.svc__head { max-width: 46rem; }
+.svc__head .eyebrow { color: var(--accent-strong); }
+.svc__title { margin-top: .5rem; font-size: clamp(1.6rem, 5.2vw, 2.4rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+.svc__lead { margin-top: .7rem; color: var(--muted); text-wrap: pretty; }
 
-  /* Título y textos del CTA. En afiliados ya iban a la izquierda por su propia
-     regla (.cta--panel), así que esto solo cambia el index. La nota y los
-     botones NO se tocan: siguen centrados en ambas páginas. */
-  .cta__title,
-  .cta__text { text-align: left; }
+/* Bloque A — texto simple con ícono de viñeta (mismo tono que la página legal) */
+.svc-included__list { margin-top: 40px; max-width: 62rem; display: grid; gap: 34px; }
+.svc-item { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0 .9rem; align-items: start; }
+.svc-item__icon { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: var(--r-md); color: var(--accent-strong); }
+.svc-item__title { font-size: 1.14rem; font-weight: 700; letter-spacing: -.015em; padding-top: .42rem; text-wrap: balance; }
+.svc-item__text { margin-top: .6rem; color: var(--ink-soft); font-size: 1rem; line-height: 1.62; text-wrap: pretty; }
 
-  /* Pie en dos renglones centrados: el aviso baja a su propia línea y el
-     separador «·» se oculta, porque a mitad de un salto no separa nada.
-     width: fit-content + margin auto lo centra sin estirar el área clicable
-     a todo el ancho, como haría un display:block a secas. */
-  .footer__sep { display: none; }
-  .footer__legal {
-    display: block;
-    width: fit-content;
-    margin: .4rem auto 0;
-  }
+/* Bloque B — grupos con tabla */
+.svc-groups { margin-top: 40px; display: grid; gap: 44px; }
+.svc-group__title { font-size: 1.3rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+.svc-group__note { margin-top: .7rem; color: var(--muted); font-size: .88rem; font-style: italic; text-wrap: pretty; }
+.svc-table { width: 100%; margin-top: 4px; border-collapse: collapse; }
+.svc-table thead { display: none; }
+.svc-table tbody tr { display: grid; gap: 2px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.svc-table tbody th { text-align: left; font-weight: 500; color: var(--ink-soft); font-size: .96rem; text-wrap: pretty; }
+.svc-table__price { text-align: left; font-weight: 700; color: var(--ink); font-size: .96rem; letter-spacing: -.01em; white-space: nowrap; }
+.svc-table .note { color: var(--accent-strong); font-weight: 700; font-size: .68em; }
+
+/* Bloque C — notas al pie */
+.svc-notes-sec { padding-block: 56px 72px; }
+.svc-notes { max-width: 52rem; display: grid; gap: .8rem; margin-top: 14px; }
+.svc-notes li { color: var(--muted); font-size: .84rem; line-height: 1.55; text-wrap: pretty; text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
+.svc-notes .note { color: var(--accent-strong); font-weight: 700; }
+.svc-callout { margin-top: 0; max-width: 52rem; padding: 18px 20px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r-md); color: var(--ink-soft); font-size: .95rem; text-wrap: pretty; }
+.svc-callout strong { color: var(--ink); font-weight: 700; }
+
+@media (min-width: 640px) {
+  /* Tablet: la tabla recupera su forma tabular */
+  .svc-table thead { display: table-header-group; }
+  .svc-table thead th { padding: 12px 0 8px; text-align: left; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+  .svc-table thead th.svc-table__price { text-align: right; }
+  .svc-table tbody tr { display: table-row; }
+  .svc-table tbody th { padding: 15px 24px 15px 0; border-bottom: 1px solid var(--border); }
+  .svc-table tbody td { padding: 15px 0; border-bottom: 1px solid var(--border); text-align: right; }
+  .svc-table tbody tr:first-child th, .svc-table tbody tr:first-child td { padding-top: 16px; }
+  .svc-table tbody tr:last-child th, .svc-table tbody tr:last-child td { border-bottom: 0; }
+  .svc-groups { gap: 52px; }
+  .svc-notes-sec { padding-block: 72px; }
+  /*.svc-notes { margin-top: 48px; }*/
 }
 
-/* ==========================================================================
-   MÓVIL ANGOSTO (≤359px): los botones del CTA se apilan a ancho completo
-   Hasta 360px caben lado a lado; en 359 el flex-wrap los envuelve solos, pero
-   quedaban con su ancho de contenido (164 y 142px) y se veían desparejos.
-   Aquí se explicita la columna y se estiran al 100% del contenedor, igual
-   que los del hero de afiliados por debajo de 374px.
-   ========================================================================== */
-@media (max-width: 359px) {
-  .cta__actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
+/* —— Laptop ≥1024px: una sola columna con márgenes amplios —— */
+@media (min-width: 1024px) {
+  .svc__head, .svc-included__list, .svc-groups, .svc-notes, .svc-callout { max-width: 52rem; margin-inline: auto; }
+  .svc-groups { gap: 64px; }
+  .svc-notes-sec { padding-block: 88px; }
+  .svc-item { grid-template-columns: 3.2rem 1fr; }
 }
+/* —— Desktop ≥1280px: se estrecha un poco más la medida de lectura —— */
+@media (min-width: 1280px) {
+  .svc__head, .svc-included__list, .svc-groups, .svc-notes, .svc-callout { max-width: 56rem; }
+  .svc-groups { gap: 72px; }
+}
+

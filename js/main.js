@@ -78,7 +78,7 @@
   /* ---------- Nav activo según sección visible ------------------------ */
   // OJO: en ORDEN DE DOCUMENTO — updateActiveNav recorre el arreglo y hace
   // break en la primera sección que aún no ha pasado la línea de referencia.
-  var sections = ['hero', 'galeria', 'como-funciona', 'cta', 'precios', 'compara', 'contacto']
+  var sections = ['hero', 'como-funciona', 'cta', 'precios', 'compara', 'faq', 'contacto']
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__link, .mobile-nav__link'));
