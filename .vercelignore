@@ -49,13 +49,15 @@ _pginfo/
 # Páginas del negocio de imágenes (archivado 2026-08) y del programa de
 # socios. Se CONSERVAN en local para reciclarlas, pero no se publican:
 # describen un servicio que ya no existe.
-#   payment.html / success.html  → flujo de pago de fotos. Ocultarlas
-#     desactiva el checkout viejo: payment.html era su única entrada.
+#   payment.html     → flujo de pago de fotos. Ocultarla desactiva el
+#     checkout viejo: era su única entrada.
 #   privacidad.html  → aviso redactado para el tratamiento de fotografías.
 #     Pendiente de adaptar al modelo nuevo.
 #   afiliados.html   → programa de socios en términos de retratos. La
 #     mecánica se reaprovecha (resolveSocio en Code.gs sigue viva).
+#
+# success.html SÍ se publica: se reescribió como la página de proceso que se
+# manda al cliente después de contratar. Ya no es la pantalla de descargas.
 payment.html
-success.html
 privacidad.html
 afiliados.html

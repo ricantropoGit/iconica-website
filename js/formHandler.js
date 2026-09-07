@@ -49,12 +49,9 @@ function handleFormSubmit(e) {
   var name = document.getElementById('f-name').value.trim();
   var email = document.getElementById('f-email').value.trim();
   var phone = document.getElementById('f-phone').value.trim();
-  var giro = document.getElementById('f-giro').value;
-  var sitio = document.getElementById('f-site').value.trim();
-  var message = document.getElementById('f-message').value.trim();
   var socio = document.getElementById('f-referral').value.trim();
 
-  console.log('✓ Datos del formulario:', { name, email, phone, giro, sitio, message, socio });
+  console.log('✓ Datos del formulario:', { name, email, phone, socio });
 
   // Mostrar estado de carga
   showLoadingState(true);
@@ -69,11 +66,8 @@ function handleFormSubmit(e) {
     name: name,
     email: email,
     phone: phone,
-    giro: giro,
-    sitio: sitio,
-    message: message,
     socio: socio,
-    subject: 'Solicitud de propuesta — ' + (giro || 'sin giro')
+    subject: 'Nuevo prospecto — ' + name
   };
 
   console.log('✓ Payload JSON creado. Enviando a:', APPS_SCRIPT_URL);

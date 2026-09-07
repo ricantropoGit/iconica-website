@@ -521,7 +521,8 @@ ul { list-style: none; padding: 0; }
 }
 .card__num {
   font-size: .72rem;
-  letter-spacing: .14em;
+  text-transform: uppercase;
+  /*letter-spacing: .14em;*/
   font-weight: 700;
   color: var(--accent-strong);
 }
