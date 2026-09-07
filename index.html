@@ -450,7 +450,6 @@
               <input type="text" id="f-referral" name="referral" placeholder="Nombre de quien te recomendó" />
             </div>
             <p class="form__foot">* Campos obligatorios</p>
-            <div class="form__success" id="formSuccess">¡Gracias! Recibimos tu información. Te contactamos en menos de 24 horas.</div>
             <button type="submit" class="btn btn--primary">Enviar</button>
           </form>
         </div>
@@ -534,7 +533,7 @@
         var key = 'lead-logged-' + lead;
         if (sessionStorage.getItem(key)) return;   // evita duplicar al refrescar
         sessionStorage.setItem(key, '1');
-        fetch('https://script.google.com/macros/s/AKfycbz61yAQ67vRq1hz0-OErxZhzgtDUpFFeaOfWhcIuP9WpNBrrjp9rokz7IWLJ_oekRs/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbzk9nv_x1ncl_PdLyjwC1J-uV1TU9PLLIaTNcBi-fVVUdqzJeY3x3mQJg_5VuQIZ3BeTQ/exec', {
           method: 'POST',
           body: JSON.stringify({ action: 'logVisit', lead: lead })
         }).catch(function () {});

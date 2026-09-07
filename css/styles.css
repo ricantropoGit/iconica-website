@@ -889,17 +889,8 @@ ul { list-style: none; padding: 0; }
   text-decoration: underline;
 }
 .form .btn--primary { width: 100%; padding-block: .95rem; }
-.form__success {
-  display: none;
-  padding: 14px 16px;
-  background: #f0fdf4;
-  border: 1px solid var(--accent);
-  border-radius: var(--r-md);
-  color: var(--accent-strong);
-  font-weight: 600;
-  font-size: .92rem;
-}
-.form.is-sent .form__success { display: block; }
+/* El aviso de éxito se retiró: al enviar, el formulario redirige a
+   confirmation.html con el folio. Un solo mecanismo, no dos. */
 
 /* ==========================================================================
    FOOTER

@@ -71,7 +71,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz61yAQ67vRq1hz0-OErxZhzgtDUpFFeaOfWhcIuP9WpNBrrjp9rokz7IWLJ_oekRs/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzk9nv_x1ncl_PdLyjwC1J-uV1TU9PLLIaTNcBi-fVVUdqzJeY3x3mQJg_5VuQIZ3BeTQ/exec';
 
     const { status, text: responseText } = await llamarAppsScript(
       APPS_SCRIPT_URL,
