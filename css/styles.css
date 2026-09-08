@@ -11,7 +11,7 @@
   --ink-soft:   #404040;   /* texto secundario fuerte */
   --muted:      #6b7280;   /* texto secundario */
   --bg:         #ffffff;
-  --bg-alt:     #fafafa;   /* secciones claras alternas */
+  --bg-alt:     #ebebeb;   /* secciones claras alternas */
   --bg-dark:    #0a0a0a;   /* sección CTA oscura */
   --border:     #dedede;
   --border-dark:#262626;
@@ -477,6 +477,10 @@ ul { list-style: none; padding: 0; }
 /* ==========================================================================
    CARD GRID / Cómo funciona
    ========================================================================== */
+/* Alineación a la izquierda en móvil, centrada de 640px en adelante.
+   Al ser una hoja mobile-first, el estilo base ES el de móvil: por eso va
+   'left' aquí y el centrado se restituye en el @media de abajo, en vez de
+   añadir una consulta max-width —el archivo no tiene ninguna activa—. */
 .steps__head { max-width: 46rem; margin-inline: auto; text-align: left; }
 .steps__title {
   font-size: clamp(1.8rem, 6vw, 2.9rem);
@@ -535,6 +539,8 @@ ul { list-style: none; padding: 0; }
    ========================================================================== */
 .cta { background: var(--bg-dark); color: #fff; text-align: center; }
 .cta__title {
+  /* .cta centra todo su contenido; en móvil este bloque lo revierte. */
+  text-align: left;
   max-width: 22ch;
   margin-inline: auto;
   font-size: clamp(1.8rem, 6.4vw, 3.1rem);
@@ -544,6 +550,7 @@ ul { list-style: none; padding: 0; }
   text-wrap: balance;
 }
 .cta__text {
+  text-align: left;
   margin: 1.1rem auto 0;
   max-width: 52ch;
   color: #a3a3a3;
@@ -551,6 +558,14 @@ ul { list-style: none; padding: 0; }
   text-wrap: pretty;
 }
 .cta__text strong { color: #fff; font-weight: 600; }
+
+/* De tablet en adelante vuelven al centro. Los tres juntos para que el
+   comportamiento se lea de un vistazo y no haya que buscarlo en tres sitios. */
+@media (min-width: 640px) {
+  .steps__head,
+  .cta__title,
+  .cta__text { text-align: center; }
+}
 .cta__actions {
   margin-top: 2.2rem;
   display: flex;
@@ -559,6 +574,22 @@ ul { list-style: none; padding: 0; }
   gap: 14px;
 }
 .cta__note { margin-top: 1.4rem; font-size: .8rem; color: #737373; }
+
+/* Cuando los dos botones dejan de caber lado a lado y se apilan, cada uno
+   pasa a ocupar el ancho completo — dos botones de anchos distintos, uno
+   sobre otro y centrados, se ven desalineados.
+
+   El corte no es arbitrario: los botones suman 196 + 14 de separación + 113
+   = 323px, y a 363px de ventana el ancho útil es justo 323. A 362 ya no
+   caben. ⚠️ Si cambias el texto de un botón, este número se mueve: vuelve a
+   medirlo antes de confiar en él.
+
+   flex: 1 0 100% y no width: 100% — con width, ambos botones podrían
+   encogerse hasta caber juntos en un renglón, que es lo contrario de lo
+   que se busca. Con basis 100% y sin encogimiento, cada uno toma su línea. */
+@media (max-width: 362.98px) {
+  .cta__actions > .btn { flex: 1 0 100%; }
+}
 .upload-input { display: none; }
 
 /* ==========================================================================
@@ -579,6 +610,7 @@ ul { list-style: none; padding: 0; }
   width: 100%;
   min-width: 640px;
   border-collapse: collapse;
+  background-color: #fff;
 }
 .compare-table th, .compare-table td {
   padding: 18px 20px;
