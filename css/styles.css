@@ -11,8 +11,18 @@
   --ink-soft:   #404040;   /* texto secundario fuerte */
   --muted:      #6b7280;   /* texto secundario */
   --bg:         #ffffff;
-  --bg-alt:     #ebebeb;   /* secciones claras alternas */
+  /* Punto medio deliberado. El delimitador de sección NO es este relleno
+     sino el borde de .section--alt: un gris de 8 niveles sobre blanco da
+     1.07:1 de contraste y desaparece en paneles de 6 bits, mientras que
+     una línea de 1px se ve en cualquier pantalla —el ojo detecta bordes
+     mucho mejor que superficies planas—. Subirlo más lo vuelve pesado en
+     pantallas calibradas; bajarlo no cuesta nada porque el borde sostiene. */
+  --bg-alt:     #f7f7f7;   /* secciones claras alternas */
   --bg-dark:    #0a0a0a;   /* sección CTA oscura */
+  /* Verificado en monitor de oficina: con #efefef (16 niveles sobre blanco,
+     1.15:1) el borde se pierde. #dedede da 1.35:1 y aguanta en paneles sin
+     calibrar. No aclararlo: es lo que sostiene la separación entre secciones
+     —ver .section--alt— y el gris de fondo por sí solo no basta. */
   --border:     #dedede;
   --border-dark:#262626;
 
@@ -72,7 +82,14 @@ ul { list-style: none; padding: 0; }
 }
 
 .section { padding-block: 64px; }
-.section--alt { background: var(--bg-alt); }
+/* El borde hace el trabajo de delimitar; el fondo sólo lo refuerza. Antes
+   esto vivía como style="border-bottom" suelto en una sola sección del
+   HTML, así que las otras dos quedaban sin separación visible en monitores
+   sin calibrar. */
+.section--alt {
+  background: var(--bg-alt);
+  border-block: 1px solid var(--border);
+}
 .eyebrow {
   font-size: .72rem;
   letter-spacing: .16em;
