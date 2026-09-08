@@ -73,3 +73,11 @@ Thumbs.db
 
 # Documento de arquitectura del modelo de arrendamiento (estrategia interna).
 MODELO-TECNICO.md
+
+# Autoguardados y estado de trabajo de Pinegrow. Son copias que el editor
+# genera cada pocos minutos: ensucian cada git status y no aportan historia
+# —el sitio real vive en index.html—. Se conservan en local, fuera del repo.
+_pgbackup/
+_pginfo/
+index4PINEgrow.html
+pinegrow.json
