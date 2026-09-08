@@ -643,7 +643,7 @@ ul { list-style: none; padding: 0; }
 .compare-table thead .col-highlight { background: #f0fdf4; }
 .col-highlight .pill {
   display: inline-block;
-  margin-top: 4px;
+  margin-top: 5px;
   font-size: .66rem;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -731,7 +731,13 @@ ul { list-style: none; padding: 0; }
 .faq__item[open] .faq__sign::after { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
 .faq__item[open] .faq__q { color: var(--accent-strong); }
 /* Despliegue suave: se anima la altura del contenido del <details>.
-   interpolate-size habilita la transición hacia/desde height:auto. */
+   interpolate-size habilita la transición hacia/desde height:auto.
+
+   Acordeón exclusivo: los <details> comparten name="faq" en el HTML, que
+   los agrupa como botones de radio — abrir uno cierra el que estuviera
+   abierto. Es comportamiento nativo del navegador, sin JavaScript.
+   En navegadores que no lo soporten, el atributo se ignora sin error y se
+   vuelve al comportamiento anterior: varios abiertos a la vez. */
 :root { interpolate-size: allow-keywords; }
 .faq__item::details-content { height: 0; overflow: hidden; opacity: 0; transition: height .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease, content-visibility .38s allow-discrete; }
 .faq__item[open]::details-content { height: auto; opacity: 1; }
@@ -784,6 +790,7 @@ ul { list-style: none; padding: 0; }
 .note {
   font-variant-position: super;
   font-weight: 300;
+  line-height: 0;
   }
 .compare-notes {
   list-style: none;
