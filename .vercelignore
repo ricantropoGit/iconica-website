@@ -8,7 +8,6 @@ Code.gs
 *.bak*
 
 # Borradores locales: no deben quedar accesibles en iconica24.com/<archivo>
-index2.html
 afiliados2.html
 afiliados2a.html
 
