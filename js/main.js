@@ -78,7 +78,13 @@
   /* ---------- Nav activo según sección visible ------------------------ */
   // OJO: en ORDEN DE DOCUMENTO — updateActiveNav recorre el arreglo y hace
   // break en la primera sección que aún no ha pasado la línea de referencia.
-  var sections = ['hero', 'como-funciona', 'cta', 'precios', 'compara', 'faq', 'contacto']
+  // Sólo secciones que TIENEN entrada en el menú. Si se incluye una que no la
+  // tiene —'ventajas' o 'cta'—, setActive apaga todos los enlaces y no enciende
+  // ninguno: el menú se queda en blanco mientras se recorre esa sección.
+  // Omitiéndolas, el enlace anterior permanece encendido, que es lo esperable:
+  // 'Cómo funciona' sigue activo mientras se pasa por las ventajas y la CTA.
+  // OJO: en ORDEN DE DOCUMENTO, que es como updateActiveNav las recorre.
+  var sections = ['hero', 'como-funciona', 'precios', 'compara', 'faq', 'contacto']
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__link, .mobile-nav__link'));
