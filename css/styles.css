@@ -769,20 +769,13 @@ ul { list-style: none; padding: 0; }
 .faq__item::details-content { height: 0; overflow: hidden; opacity: 0; transition: height .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease, content-visibility .38s allow-discrete; }
 .faq__item[open]::details-content { height: auto; opacity: 1; }
 .faq__a { padding: 0 1.5rem 24px 2.6rem; }
-/* Tope de medida: sin él, el párrafo se estira con el contenedor y llegaba a
-   122 caracteres por línea en escritorio —muy por encima de los 45-75 cómodos—,
-   donde el ojo pierde el renglón al saltar de una línea a la siguiente.
-   60ch y no 72ch: el 'ch' mide el glifo «0», más ancho que una letra media, así
-   que rinde MÁS caracteres de los que su número sugiere. Medido contando
-   caracteres reales en seis respuestas: 72ch daba 83 por línea; 60ch da 69.
-   Justificado con partición automática: en texto justificado SIN guiones se
+/* Justificado con partición automática: en texto justificado SIN guiones se
    abren "ríos" de espacio entre palabras. hyphens:auto lo evita, y funciona
    porque el documento declara lang="es" — sin eso el navegador no sabe qué
    diccionario aplicar y la propiedad no hace nada. */
 .faq__a p {
   color: var(--muted);
   font-size: .96rem;
-  max-width: 60ch;
   /* Izquierda en móvil, justificado de 640px en adelante. A 375px la respuesta
      mide 269px: unos 27 caracteres por línea, y ahí justificar reparte el
      sobrante entre tres o cuatro palabras, abriendo huecos muy visibles.
