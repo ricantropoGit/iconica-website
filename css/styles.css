@@ -774,7 +774,11 @@ ul { list-style: none; padding: 0; }
   color: var(--muted);
   font-size: .96rem;
   max-width: 60ch;
-  text-align: justify;
+  /* Izquierda en móvil, justificado de 640px en adelante. A 375px la respuesta
+     mide 269px: unos 27 caracteres por línea, y ahí justificar reparte el
+     sobrante entre tres o cuatro palabras, abriendo huecos muy visibles.
+     El justificado necesita medida; sin ella estorba. */
+  text-align: left;
   -webkit-hyphens: auto;   /* Safari lo sigue necesitando */
   hyphens: auto;
   text-wrap: pretty;
@@ -782,7 +786,10 @@ ul { list-style: none; padding: 0; }
 @media (min-width: 640px) {
   .faq__q { font-size: 1.1rem; grid-template-columns: 3.2rem 1fr 1.5rem; }
   .faq__a { padding-left: 3.2rem; padding-right: 4rem; }
-  .faq__a p { font-size: 1rem; }
+  /* El justificado va aquí y no en el @media de arriba: aquél precede a la
+     regla base de .faq__a p y, a igual especificidad, ganaba el text-align:left
+     por ir después en el archivo. */
+  .faq__a p { font-size: 1rem; text-align: justify; }
 }
 .price-card__period { color: var(--muted); font-size: 1rem; font-weight: 500; }
 
