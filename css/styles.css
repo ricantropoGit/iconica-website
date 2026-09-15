@@ -364,13 +364,11 @@ ul { list-style: none; padding: 0; }
      El piso es 0.9rem (14.4px) y no el 0.77rem que daría la proporción exacta:
      ese párrafo es texto corrido, y 12.3px en celular no se lee cómodo. */
   font-size: clamp(0.9rem, 2.5vw, 1rem);
-  /* Tope de medida. Sin él llegaba a 111 caracteres por línea en escritorio
-     —el ancho completo del contenedor, 1088px—, muy por encima de los 45-75
-     cómodos. Y al reducir la fuente empeoraba: letras más chicas en el mismo
-     ancho caben MÁS por línea, no menos. */
-  max-width: 60ch;
   text-wrap: pretty;
-  text-align: justify;
+  /* Izquierda en móvil; el justificado se restituye desde 640px (más abajo).
+     A anchos de celular el sobrante se reparte entre pocas palabras y los
+     huecos se notan. Mismo criterio que .faq__a p. */
+  text-align: left;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -597,6 +595,7 @@ ul { list-style: none; padding: 0; }
   .cta__title,
   .cta__text,
   .faq__title { text-align: center; }
+  .intro__subtitle { text-align: justify; }
   /* .faq__head lleva max-width pero, a diferencia de .pricing__head y
      .compare__head, no traía margin-inline. Sin él la caja se pega a la
      izquierda y el título centrado quedaría descuadrado respecto al resto
