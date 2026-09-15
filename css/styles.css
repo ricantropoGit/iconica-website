@@ -77,7 +77,7 @@ ul { list-style: none; padding: 0; }
 /* De 865px en adelante */
 @media (min-width: 865px) {
   .container {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -273,7 +273,7 @@ ul { list-style: none; padding: 0; }
 /* El h1 se mide contra el CONTENEDOR, no contra la ventana. Es lo que
    mantiene el título en 3 líneas siempre.
 
-   Por qué: .container salta de width:100% a 80% en 865px, así que el ancho
+   Por qué: .container salta de width:100% a 90% en 865px, así que el ancho
    útil se encoge de golpe (824 -> 652). Con una fuente en vw el texto seguía
    creciendo mientras su caja se encogía, y se apiñaba en 5 líneas de 865px
    en adelante. En cqw la fuente y su caja van juntas y el salto se absorbe
@@ -357,11 +357,15 @@ ul { list-style: none; padding: 0; }
 }
 .intro__title em { font-style: italic; }
 .intro__subtitle {
-  margin-top: .7rem;
   color: #a3a3a3;
   font-size: clamp(1rem, 3.2vw, 1.3rem);
   text-wrap: pretty;
-}
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  }
 
 /* ==========================================================================
    SLIDER / Galería antes-después
@@ -756,7 +760,25 @@ ul { list-style: none; padding: 0; }
 .faq__item::details-content { height: 0; overflow: hidden; opacity: 0; transition: height .38s cubic-bezier(.2,.7,.3,1), opacity .28s ease, content-visibility .38s allow-discrete; }
 .faq__item[open]::details-content { height: auto; opacity: 1; }
 .faq__a { padding: 0 1.5rem 24px 2.6rem; }
-.faq__a p { color: var(--muted); font-size: .96rem; text-wrap: pretty; }
+/* Tope de medida: sin él, el párrafo se estira con el contenedor y llegaba a
+   122 caracteres por línea en escritorio —muy por encima de los 45-75 cómodos—,
+   donde el ojo pierde el renglón al saltar de una línea a la siguiente.
+   60ch y no 72ch: el 'ch' mide el glifo «0», más ancho que una letra media, así
+   que rinde MÁS caracteres de los que su número sugiere. Medido contando
+   caracteres reales en seis respuestas: 72ch daba 83 por línea; 60ch da 69.
+   Justificado con partición automática: en texto justificado SIN guiones se
+   abren "ríos" de espacio entre palabras. hyphens:auto lo evita, y funciona
+   porque el documento declara lang="es" — sin eso el navegador no sabe qué
+   diccionario aplicar y la propiedad no hace nada. */
+.faq__a p {
+  color: var(--muted);
+  font-size: .96rem;
+  max-width: 60ch;
+  text-align: justify;
+  -webkit-hyphens: auto;   /* Safari lo sigue necesitando */
+  hyphens: auto;
+  text-wrap: pretty;
+}
 @media (min-width: 640px) {
   .faq__q { font-size: 1.1rem; grid-template-columns: 3.2rem 1fr 1.5rem; }
   .faq__a { padding-left: 3.2rem; padding-right: 4rem; }
