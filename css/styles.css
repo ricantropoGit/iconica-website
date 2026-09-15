@@ -581,7 +581,13 @@ ul { list-style: none; padding: 0; }
 @media (min-width: 640px) {
   .steps__head,
   .cta__title,
-  .cta__text { text-align: center; }
+  .cta__text,
+  .faq__title { text-align: center; }
+  /* .faq__head lleva max-width pero, a diferencia de .pricing__head y
+     .compare__head, no traía margin-inline. Sin él la caja se pega a la
+     izquierda y el título centrado quedaría descuadrado respecto al resto
+     de los encabezados de sección. */
+  .faq__head { margin-inline: auto; }
 }
 .cta__actions {
   margin-top: 2.2rem;
@@ -709,8 +715,16 @@ ul { list-style: none; padding: 0; }
 /* Mismo tratamiento de enlace en línea que .faq__a y .legal-prose: acento +
    subrayado. Se extiende a .pricing__cancel en vez de duplicar la regla, para
    que el patrón siga viviendo en un solo lugar. */
-.pricing__foot a, .pricing__cancel a { color: var(--accent-strong); text-decoration: none; }
-.pricing__foot a:hover, .pricing__cancel a:hover { color: var(--ink); }
+/* Ligas dentro de texto corrido. Un solo lugar para todas: si cambia el
+   tratamiento, cambia aquí y no en tres reglas repartidas por el archivo. */
+.pricing__foot a,
+.pricing__cancel a,
+.steps__lead a,
+.faq__a a { color: var(--accent-strong); text-decoration: none; transition: color .18s ease; }
+.pricing__foot a:hover,
+.pricing__cancel a:hover,
+.steps__lead a:hover,
+.faq__a a:hover { color: var(--ink); }
 
 /* ==========================================================================
    PREGUNTAS FRECUENTES — acordeón nativo (details/summary)
@@ -743,8 +757,6 @@ ul { list-style: none; padding: 0; }
 .faq__item[open]::details-content { height: auto; opacity: 1; }
 .faq__a { padding: 0 1.5rem 24px 2.6rem; }
 .faq__a p { color: var(--muted); font-size: .96rem; text-wrap: pretty; }
-.faq__a a { color: var(--accent-strong); text-decoration: none; }
-.faq__a a:hover { color: var(--ink); }
 @media (min-width: 640px) {
   .faq__q { font-size: 1.1rem; grid-template-columns: 3.2rem 1fr 1.5rem; }
   .faq__a { padding-left: 3.2rem; padding-right: 4rem; }
