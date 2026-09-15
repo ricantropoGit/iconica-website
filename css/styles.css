@@ -358,7 +358,17 @@ ul { list-style: none; padding: 0; }
 .intro__title em { font-style: italic; }
 .intro__subtitle {
   color: #a3a3a3;
-  font-size: clamp(1rem, 3.2vw, 1.3rem);
+  /* 2.5vw no es arbitrario: hace que el texto alcance su tamaño máximo justo
+     en 640px, el breakpoint que usa el resto del sitio. La transición termina
+     donde cambia el diseño y no en un número suelto.
+     El piso es 0.9rem (14.4px) y no el 0.77rem que daría la proporción exacta:
+     ese párrafo es texto corrido, y 12.3px en celular no se lee cómodo. */
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  /* Tope de medida. Sin él llegaba a 111 caracteres por línea en escritorio
+     —el ancho completo del contenedor, 1088px—, muy por encima de los 45-75
+     cómodos. Y al reducir la fuente empeoraba: letras más chicas en el mismo
+     ancho caben MÁS por línea, no menos. */
+  max-width: 60ch;
   text-wrap: pretty;
   text-align: justify;
   -webkit-hyphens: auto;
