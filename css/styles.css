@@ -231,6 +231,18 @@ ul { list-style: none; padding: 0; }
   visibility: hidden;
   transition: transform .25s ease, opacity .25s ease, visibility .25s;
   z-index: 49;
+  /* El panel es fixed: lo que se sale de la pantalla NO se alcanza haciendo
+     scroll, porque no participa en el flujo del documento. En un celular en
+     horizontal (667x375) la lista mide 421px contra 311 de espacio útil, y
+     los últimos enlaces quedaban inalcanzables. Acotando la altura al hueco
+     bajo el header, el propio panel scrollea y todos los items se alcanzan.
+     svh y no vh: es la ventana con la barra del navegador DESPLEGADA, el
+     caso chico. Con vh el panel se pasaría justo cuando la barra está afuera.
+     overscroll-behavior evita que al llegar al final se arrastre la página. */
+  max-height: calc(100vh - var(--header-h));
+  max-height: calc(100svh - var(--header-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .mobile-nav.is-open { transform: translateY(0); opacity: 1; visibility: visible; }
 .mobile-nav__list { padding: 12px var(--gutter) 24px; }
