@@ -81,3 +81,6 @@ _pgbackup/
 _pginfo/
 index4PINEgrow.html
 pinegrow.json
+
+# Salida del build (la genera Vercel; en local no debe existir)
+public/

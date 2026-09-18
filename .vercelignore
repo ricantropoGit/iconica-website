@@ -60,3 +60,6 @@ _pginfo/
 payment.html
 privacidad.html
 afiliados.html
+
+# Salida del build: nunca se sube, se genera en Vercel
+public/

@@ -1,6 +1,6 @@
 {
   "buildCommand": "node scripts/version-assets.mjs",
-  "outputDirectory": ".",
+  "outputDirectory": "public",
   "functions": {
     "api/submit.js": {
       "memory": 1024,
