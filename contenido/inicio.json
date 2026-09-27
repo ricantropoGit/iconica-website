@@ -145,6 +145,10 @@
       {
         "pregunta": "¿Puedo agregar reservaciones, citas o pagos en línea?",
         "respuesta": "Sí. Integramos tu sitio con la plataforma que ya uses o te ayudamos a elegir una. [Estas herramientas se contratan por separado y su integración se cotiza aparte.](/servicios.html)"
+      },
+      {
+        "pregunta": "¿Puedo usar mi propio dominio?",
+        "respuesta": "Sí, y es lo recomendable. Si ya tienes uno, lo vinculamos. Si no, te orientamos para registrarlo a tu nombre, para que siempre sea tuyo."
       }
     ]
   },
