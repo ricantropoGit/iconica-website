@@ -1,7 +1,7 @@
 /* =========================================================================
    Build del sitio: arma public/ y versiona los recursos
    -------------------------------------------------------------------------
-   Corre SÓLO en el build de Vercel (buildCommand en vercel.json). Hace dos
+   Corre SÓLO en el build de Vercel (buildCommand en vercel.json). Hace tres
    cosas:
 
    1) Copia el sitio estático a public/. Lo que NO se copia no se publica:
@@ -9,7 +9,10 @@
       mismo) y vercel.json. Antes se publicaba la raíz completa y el código
       fuente de las funciones quedaba legible en iconica24.com/api/*.js.
 
-   2) Agrega a cada referencia del HTML una huella de su contenido:
+   2) Rellena index.html con los textos de contenido/inicio.json, que es lo
+      que el cliente edita desde /admin (Decap CMS). Ver scripts/contenido.mjs.
+
+   3) Agrega a cada referencia del HTML una huella de su contenido:
 
           css/styles.css   →   css/styles.css?v=3f9a1c02be
 
@@ -27,6 +30,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
+import { aplicarContenido } from './contenido.mjs';
 
 const ROOT = process.cwd();
 const SALIDA = join(ROOT, 'public');
@@ -37,7 +41,7 @@ if (existsSync(join(ROOT, '.git'))) {
 }
 
 // Nunca se publican. Todo lo demás de la raíz sí.
-const FUERA = new Set(['api', 'scripts', 'public', 'vercel.json', 'package.json', 'node_modules']);
+const FUERA = new Set(['api', 'scripts', 'contenido', 'public', 'vercel.json', 'package.json', 'node_modules']);
 
 rmSync(SALIDA, { recursive: true, force: true });
 mkdirSync(SALIDA);
@@ -50,6 +54,17 @@ for (const entrada of readdirSync(ROOT)) {
   console.log(`[build] publicado: ${entrada}`);
 }
 console.log(`[build] ${copiados} entradas copiadas a public/`);
+
+// Contenido editable. Si el JSON falta o está mal formado, el build falla:
+// publicar la plantilla con textos viejos sin avisar sería peor.
+const PAGINAS = { 'index.html': 'contenido/inicio.json' };
+for (const [pagina, fuente] of Object.entries(PAGINAS)) {
+  const datos = JSON.parse(readFileSync(join(ROOT, fuente), 'utf8'));
+  const { html, avisos } = aplicarContenido(readFileSync(join(SALIDA, pagina), 'utf8'), datos);
+  writeFileSync(join(SALIDA, pagina), html);
+  for (const a of avisos) console.warn(`[build] ${pagina}: ${a} en ${fuente}, se deja el texto del HTML`);
+  console.log(`[build] ${pagina}: contenido aplicado desde ${fuente}`);
+}
 
 // Recursos locales con caché larga. La ruta no debe traer ya ?v= ni #,
 // para que el script sea idempotente y no toque URLs externas.

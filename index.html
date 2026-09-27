@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Icónica24 — Sitios web «llave en mano» por suscripción</title>
-        <meta name="description" content="Un sitio web profesional vinculado a tu dominio, en línea en 24 horas. Sin inversión inicial: solo pagas la suscripción. Alojamiento, respaldos y mantenimiento incluidos."/>
+        <title data-cms="seo.titulo">Icónica24 — Sitios web «llave en mano» por suscripción</title>
+        <meta name="description" data-cms-content="seo.descripcion" content="Un sitio web profesional vinculado a tu dominio, en línea en 24 horas. Sin inversión inicial: solo pagas la suscripción. Alojamiento, respaldos y mantenimiento incluidos."/>
         <!-- Favicon -->
         <link rel="icon" href="/favicon.ico" sizes="any"/>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
@@ -12,8 +12,8 @@
         <!-- Open Graph — previsualización al compartir el link (LinkedIn, WhatsApp, Facebook) -->
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://iconica24.com/"/>
-        <meta property="og:title" content="Toda tu competencia tiene página web. La tuya puede ser mejor."/>
-        <meta property="og:description" content="Un sitio «llave en mano» con sistema de diseño integrado a tu negocio, en línea en 24 horas. Tú solo pagas la suscripción."/>
+        <meta property="og:title" data-cms-content="seo.titulo_compartir" content="Toda tu competencia tiene página web. La tuya puede ser mejor."/>
+        <meta property="og:description" data-cms-content="seo.descripcion_compartir" content="Un sitio «llave en mano» con sistema de diseño integrado a tu negocio, en línea en 24 horas. Tú solo pagas la suscripción."/>
         <meta property="og:image" content="https://iconica24.com/images/Maqueta01b.jpg"/>
         <meta property="og:image:width" content="1200"/>
         <meta property="og:image:height" content="627"/>
@@ -21,8 +21,8 @@
         <meta property="og:locale" content="es_MX"/>
         <!-- Twitter / X -->
         <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="twitter:title" content="Toda tu competencia tiene página web. La tuya puede ser mejor."/>
-        <meta name="twitter:description" content="Un sitio «llave en mano» con sistema de diseño integrado a tu negocio, en línea en 24 horas. Tú solo pagas la suscripción."/>
+        <meta name="twitter:title" data-cms-content="seo.titulo_compartir" content="Toda tu competencia tiene página web. La tuya puede ser mejor."/>
+        <meta name="twitter:description" data-cms-content="seo.descripcion_compartir" content="Un sitio «llave en mano» con sistema de diseño integrado a tu negocio, en línea en 24 horas. Tú solo pagas la suscripción."/>
         <meta name="twitter:image" content="https://iconica24.com/images/Maqueta01b.jpg"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -96,12 +96,12 @@
             <!-- ===================== HERO ===================== -->
             <section class="hero" id="hero" data-screen-label="Hero">
                 <div class="container">
-                    <h1 class="hero__title">Tu sitio web en la nube, sin la curva de aprendizaje.</h1>
-                    <p class="hero__subtitle">
+                    <h1 class="hero__title" data-cms="hero.titulo">Tu sitio web en la nube, sin la curva de aprendizaje.</h1>
+                    <p class="hero__subtitle" data-cms="hero.subtitulo">
           Solo necesitas un nombre de dominio y la plantilla de tu preferencia. <span class="hl">Nosotros nos encargamos de todo lo demás.</span> </p>
                     <div class="hero__actions">
-                        <a class="btn btn--primary" href="#como-funciona" data-scroll>Cómo funciona</a>
-                        <a class="btn btn--ghost" href="#intro" data-scroll data-scroll-align="bottom">¿Qué es una plantilla?</a>
+                        <a class="btn btn--primary" href="#como-funciona" data-scroll data-cms="hero.boton_principal">Cómo funciona</a>
+                        <a class="btn btn--ghost" href="#intro" data-scroll data-scroll-align="bottom" data-cms="hero.boton_secundario">¿Qué es una plantilla?</a>
                     </div>
                 </div>
             </section>
@@ -114,15 +114,15 @@
                     <p class="intro__subtitle">Una plantilla o "template", es un diseño web genérico base que es adaptado por un diseñador a las necesidades particulares de un sitio web. Lo anterior es el sistema estandarizado que utilizan las grandes plataformas de auto-edición de páginas web tales como: WordPress, Canva, Wix, SquareSpace, Shopify, Webflow, Framer, etc., etc.</p>
                 </div>-->
                 <div class="container">
-                    <p class="intro__subtitle">Una plantilla, o "template", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En iconica24 utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales.</p>
+                    <p class="intro__subtitle" data-cms="intro.texto">Una plantilla, o "template", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En iconica24 utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales.</p>
                 </div>                
             </section>
             <!-- ===================== CÓMO FUNCIONA / Trío de tarjetas ===================== -->
             <section class="section section--alt" id="como-funciona" data-screen-label="Cómo funciona">
                 <div class="container">
                     <div class="steps__head">
-                        <h2 class="steps__title">Subimos tu sitio web a la red en tres sencillos pasos.</h2>
-                        <p class="steps__lead">Solo tienes que <span class="hl">apuntar tu dominio a nuestros servidores, subir la plantilla de tu preferencia</span> y compartir los textos e imágenes que van en tu sitio. Si no tienes una plantilla, <a href="https://themeforest.net/category/wordpress" target="_blank">puedes comprar una con nuestros socios comerciales</a> o con el proveedor de tu elección.</p>
+                        <h2 class="steps__title" data-cms="pasos.titulo">Subimos tu sitio web a la red en tres sencillos pasos.</h2>
+                        <p class="steps__lead" data-cms="pasos.texto">Solo tienes que <span class="hl">apuntar tu dominio a nuestros servidores, subir la plantilla de tu preferencia</span> y compartir los textos e imágenes que van en tu sitio. Si no tienes una plantilla, <a href="https://themeforest.net/category/wordpress" target="_blank">puedes comprar una con nuestros socios comerciales</a> o con el proveedor de tu elección.</p>
                     </div>
                     <div class="cards cards--trio">
                         <article class="card">
@@ -133,9 +133,9 @@
                                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">01 Dominio</span>
-                            <h3 class="card__title">Apunta tu dominio a nuestros servidores</h3>
-                            <p class="card__text">Puedes actualizar los DNS con tu propio proveedor de dominio. Es muy fácil.</p>
+                            <span class="card__num" data-cms="pasos.tarjetas.0.etiqueta">01 Dominio</span>
+                            <h3 class="card__title" data-cms="pasos.tarjetas.0.titulo">Apunta tu dominio a nuestros servidores</h3>
+                            <p class="card__text" data-cms="pasos.tarjetas.0.texto">Puedes actualizar los DNS con tu propio proveedor de dominio. Es muy fácil.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -144,9 +144,9 @@
                                     <path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">02 Plantilla</span>
-                            <h3 class="card__title">Sube tu plantilla preferida</h3>
-                            <p class="card__text">Toda plantilla es una base de diseño lista para ser  adaptada por nosotros.</p>
+                            <span class="card__num" data-cms="pasos.tarjetas.1.etiqueta">02 Plantilla</span>
+                            <h3 class="card__title" data-cms="pasos.tarjetas.1.titulo">Sube tu plantilla preferida</h3>
+                            <p class="card__text" data-cms="pasos.tarjetas.1.texto">Toda plantilla es una base de diseño lista para ser  adaptada por nosotros.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -157,13 +157,13 @@
                                     <rect width="7" height="7" x="3" y="14" rx="1"></rect>
                                 </svg>
                             </div>
-                            <span class="card__num">03 Contenido</span>
-                            <h3 class="card__title">Comparte de qué trata tu negocio</h3>
-                            <p class="card__text">Pásanos los textos e imágenes que quieres mostrar en tu página web.</p>
+                            <span class="card__num" data-cms="pasos.tarjetas.2.etiqueta">03 Contenido</span>
+                            <h3 class="card__title" data-cms="pasos.tarjetas.2.titulo">Comparte de qué trata tu negocio</h3>
+                            <p class="card__text" data-cms="pasos.tarjetas.2.texto">Pásanos los textos e imágenes que quieres mostrar en tu página web.</p>
                         </article>
                     </div>
                     <div class="como-funciona__actions">
-                        <a class="btn btn--primary" href="#ventajas" data-scroll>Tu sitio puede quedar hoy mismo.</a>
+                        <a class="btn btn--primary" href="#ventajas" data-scroll data-cms="pasos.boton">Tu sitio puede quedar hoy mismo.</a>
                     </div>
                 </div>
             </section>
@@ -171,8 +171,8 @@
             <section class="section" id="ventajas" data-screen-label="Por qué funciona">
                 <div class="container">
                     <div class="steps__head">
-                        <h2 class="steps__title">Olvídate de la curva de aprendizaje.</h2>
-                      <p class="steps__lead">Aquí no tienes que aprender desde cero a hacer tu propia página web. <span class="hl">Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio.</span> Tú solo pagas un servicio de suscripción mensual o anual <span class="hl">como lo harías con cualquier servicio de alojamiento web:</span></p>
+                        <h2 class="steps__title" data-cms="ventajas.titulo">Olvídate de la curva de aprendizaje.</h2>
+                      <p class="steps__lead" data-cms="ventajas.texto">Aquí no tienes que aprender desde cero a hacer tu propia página web. <span class="hl">Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio.</span> Tú solo pagas un servicio de suscripción mensual o anual <span class="hl">como lo harías con cualquier servicio de alojamiento web:</span></p>
                     </div>
                     <div class="cards">
                         <article class="card">
@@ -182,9 +182,9 @@
                                     <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">Inversión</span>
-                            <h3 class="card__title">Solo pagas tu Suscripción</h3>
-                            <p class="card__text">Sin la inversión incial que requiere un sitio web personalizado.</p>
+                            <span class="card__num" data-cms="ventajas.tarjetas.0.etiqueta">Inversión</span>
+                            <h3 class="card__title" data-cms="ventajas.tarjetas.0.titulo">Solo pagas tu Suscripción</h3>
+                            <p class="card__text" data-cms="ventajas.tarjetas.0.texto">Sin la inversión incial que requiere un sitio web personalizado.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -194,9 +194,9 @@
                                     <circle cx="7.5" cy="15.5" r="5.5"></circle>
                                 </svg>
                             </div>
-                            <span class="card__num">Solución</span>
-                            <h3 class="card__title">Tu sitio «llave-en-mano»</h3>
-                            <p class="card__text">Se entrega listo para publicarse: en 24 horas, con tu propio contenido.</p>
+                            <span class="card__num" data-cms="ventajas.tarjetas.1.etiqueta">Solución</span>
+                            <h3 class="card__title" data-cms="ventajas.tarjetas.1.titulo">Tu sitio «llave-en-mano»</h3>
+                            <p class="card__text" data-cms="ventajas.tarjetas.1.texto">Se entrega listo para publicarse: en 24 horas, con tu propio contenido.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -207,9 +207,9 @@
                                     <rect width="7" height="7" x="3" y="14" rx="1"></rect>
                                 </svg>
                             </div>
-                            <span class="card__num">Con tu propia plantilla</span>
-                            <h3 class="card__title">Configuración y set-up inicial</h3>
-                            <p class="card__text">Integración del contenido e imagen de tu negocio al diseño de tu preferencia.</p>
+                            <span class="card__num" data-cms="ventajas.tarjetas.2.etiqueta">Con tu propia plantilla</span>
+                            <h3 class="card__title" data-cms="ventajas.tarjetas.2.titulo">Configuración y set-up inicial</h3>
+                            <p class="card__text" data-cms="ventajas.tarjetas.2.texto">Integración del contenido e imagen de tu negocio al diseño de tu preferencia.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -218,9 +218,9 @@
                                     <path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">CMS</span>
-                            <h3 class="card__title">Editable en WordPress</h3>
-                            <p class="card__text">Para trabajar con aquellos cambios que solo los jefes pueden hacer.</p>
+                            <span class="card__num" data-cms="ventajas.tarjetas.3.etiqueta">CMS</span>
+                            <h3 class="card__title" data-cms="ventajas.tarjetas.3.titulo">Editable en WordPress</h3>
+                            <p class="card__text" data-cms="ventajas.tarjetas.3.texto">Para trabajar con aquellos cambios que solo los jefes pueden hacer.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -229,9 +229,9 @@
                                     <path d="m9 12 2 2 4-4"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">Alojamiento</span>
-                            <h3 class="card__title">Gestión del servidor incluida</h3>
-                            <p class="card__text">Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados.</p>
+                            <span class="card__num" data-cms="ventajas.tarjetas.4.etiqueta">Alojamiento</span>
+                            <h3 class="card__title" data-cms="ventajas.tarjetas.4.titulo">Gestión del servidor incluida</h3>
+                            <p class="card__text" data-cms="ventajas.tarjetas.4.texto">Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -240,9 +240,9 @@
                                     <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">Portabilidad</span>
-                            <h3 class="card__title">No te casas con nosotros</h3>
-                            <p class="card__text">Tienes la opción de bajar tu sitio y migrarlo con otro proveedor.</p>
+                            <span class="card__num" data-cms="ventajas.tarjetas.5.etiqueta">Portabilidad</span>
+                            <h3 class="card__title" data-cms="ventajas.tarjetas.5.titulo">No te casas con nosotros</h3>
+                            <p class="card__text" data-cms="ventajas.tarjetas.5.texto">Tienes la opción de bajar tu sitio y migrarlo con otro proveedor.</p>
                         </article>
                     </div>
                 </div>
@@ -250,63 +250,64 @@
             <!-- ===================== CTA oscura ===================== -->
             <section class="section cta on-dark" id="cta" data-screen-label="CTA">
                 <div class="container">
-                    <h2 class="cta__title">Dejamos el "hágalo-usted-mismo" para personas con mucho tiempo libre.</h2>
-                    <p class="cta__text">
+                    <h2 class="cta__title" data-cms="cta.titulo">Dejamos el "hágalo-usted-mismo" para personas con mucho tiempo libre.</h2>
+                    <p class="cta__text" data-cms="cta.texto">
           Con nuestra propuesta de colaboración, <strong>un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección</strong> entregándote un sitio web listo y en línea.<sup class="note">1</sup></p>
                     <div class="cta__actions">
-                        <a class="btn btn--primary" href="#precios" data-scroll>
+                        <a class="btn btn--primary" href="#precios" data-scroll data-cms="cta.boton_principal">
                             <!--<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"></path>
                                 <path d="m21 2-9.6 9.6"></path>
                                 <circle cx="7.5" cy="15.5" r="5.5"></circle>
                             </svg>-->
             Quiero mi Sitio!</a>
-                        <a class="btn btn--ghost" href="#compara" data-scroll>Compara</a>
+                        <a class="btn btn--ghost" href="#compara" data-scroll data-cms="cta.boton_secundario">Compara</a>
                     </div>
-                    <p class="cta__note" id="uploadNote">Sin inversión inicial · En línea en 24 horas</p>
+                    <p class="cta__note" id="uploadNote" data-cms="cta.nota">Sin inversión inicial · En línea en 24 horas</p>
                 </div>
             </section>
             <!-- ===================== PRECIOS ===================== -->
             <section class="section" id="precios" data-screen-label="Precios">
                 <div class="container">
                     <div class="pricing__head">
-                        <p class="eyebrow">Precios</p>
-                        <h2 class="pricing__title">Elige tu plan</h2>
-                        <p class="pricing__lead">Sin costo de desarrollo. Sin contrato forzoso.</p>
+                        <p class="eyebrow" data-cms="precios.etiqueta">Precios</p>
+                        <h2 class="pricing__title" data-cms="precios.titulo">Elige tu plan</h2>
+                        <p class="pricing__lead" data-cms="precios.texto">Sin costo de desarrollo. Sin contrato forzoso.</p>
                     </div>
                     <div class="pricing__grid">
                         <!-- Plan Semestral -->
                         <article class="price-card">
+                            <span class="price-card__badge" data-cms="precios.planes.0.insignia" data-cms-optional></span>
                             <header class="price-card__head">
-                                <h3 class="price-card__name">Plan Mensual</h3>
+                                <h3 class="price-card__name" data-cms="precios.planes.0.nombre">Plan Mensual</h3>
                             </header>
-                            <p class="price-card__price"><span class="price-card__amount">$499</span><span class="price-card__period">MX/mes</span></p>
-                            <p class="price-card__billed">Paga mes a mes sin compromisos</p>
-                            <ul class="price-card__features">
-                                <li>Integración de tu contenido a la plantilla de tu elección</li>
+                            <p class="price-card__price"><span class="price-card__amount" data-cms="precios.planes.0.precio">$499</span><span class="price-card__period" data-cms="precios.planes.0.periodo">MX/mes</span></p>
+                            <p class="price-card__billed" data-cms="precios.planes.0.cobro">Paga mes a mes sin compromisos</p>
+                            <ul class="price-card__features" data-cms-list="precios.planes.0.caracteristicas">
+                                <li data-cms-item data-cms=".">Integración de tu contenido a la plantilla de tu elección</li>
                                 <li>Sitio listo y en línea en 24hrs.</li>
                                 <li>Editable en WordPress (textos e imágenes)</li>
                                 <li>Alojamiento y dominio vinculado a nuestros servidores</li>                          
                             </ul>
-                            <a href="https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02" class="btn btn--ghost price-card__cta">Comprar</a>
+                            <a data-cms="precios.planes.0.boton" data-cms-href="precios.planes.0.enlace" href="https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02" class="btn btn--ghost price-card__cta">Comprar</a>
                         </article>
                         <!-- Plan Anual (destacado) -->
                         <article class="price-card price-card--featured">
-                            <span class="price-card__badge">Más valor</span>
+                            <span class="price-card__badge" data-cms="precios.planes.1.insignia" data-cms-optional>Más valor</span>
                             <header class="price-card__head">
-                                <h3 class="price-card__name">Plan Anual</h3>
+                                <h3 class="price-card__name" data-cms="precios.planes.1.nombre">Plan Anual</h3>
                             </header>
-                            <p class="price-card__price"><span class="price-card__amount">$399</span><span class="price-card__period">MX/mes</span></p>
-                            <p class="price-card__billed">Pago anual de $4,788.00</p>
-                            <ul class="price-card__features">
-                                <li>Todo lo incluido en el plan mensual más:</li>
+                            <p class="price-card__price"><span class="price-card__amount" data-cms="precios.planes.1.precio">$399</span><span class="price-card__period" data-cms="precios.planes.1.periodo">MX/mes</span></p>
+                            <p class="price-card__billed" data-cms="precios.planes.1.cobro">Pago anual de $4,788.00</p>
+                            <ul class="price-card__features" data-cms-list="precios.planes.1.caracteristicas">
+                                <li data-cms-item data-cms=".">Todo lo incluido en el plan mensual más:</li>
                                 <li><span class="hl">20% de descuento</span> (dos meses y medio sin costo)</li>
                                 <li>Prioridad en soporte</li>
                             </ul>
-                            <a href="https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03" class="btn btn--primary price-card__cta">Comprar</a>
+                            <a data-cms="precios.planes.1.boton" data-cms-href="precios.planes.1.enlace" href="https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03" class="btn btn--primary price-card__cta">Comprar</a>
                         </article>
                     </div>
-                    <p class="pricing__cancel">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. <a href="servicios.html">Consulta qué incluye tu plan y cuáles son servicios adicionales.</a><sup class="note">2</sup></p>
+                    <p class="pricing__cancel" data-cms="precios.nota">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. <a href="servicios.html">Consulta qué incluye tu plan y cuáles son servicios adicionales.</a><sup class="note">2</sup></p>
                 </div>
             </section>
             <!-- ===================== TABLA COMPARATIVA ===================== -->
@@ -385,107 +386,107 @@
             <section class="section faq" id="faq" data-screen-label="Preguntas frecuentes">
                 <div class="container">
                     <div class="faq__head">
-                        <h2 class="faq__title">Preguntas frecuentes</h2>
+                        <h2 class="faq__title" data-cms="faq.titulo">Preguntas frecuentes</h2>
                     </div>
-                    <div class="faq__list">
-                        <details class="faq__item" name="faq">
+                    <div class="faq__list" data-cms-list="faq.preguntas">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">01</span>
-                                <span class="faq__label">Ya tengo Instagram y Facebook. ¿Para qué quiero una página web?</span>
+                                <span class="faq__num" data-cms-index>01</span>
+                                <span class="faq__label" data-cms=".pregunta">Ya tengo Instagram y Facebook. ¿Para qué quiero una página web?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Las redes sirven para que te descubran; la página, para que te tomen en serio. Cuando alguien está a punto de reservar, busca el enlace de tu biografía para confirmar precios, horarios y ubicación. Si ahí no hay nada, o hay algo improvisado, la duda se resuelve a favor del competidor que sí tiene sitio. Además, tu perfil de red social no es tuyo: cambia de reglas, de alcance y de dueño. Tu página no.</p>
+                                <p data-cms=".respuesta">Las redes sirven para que te descubran; la página, para que te tomen en serio. Cuando alguien está a punto de reservar, busca el enlace de tu biografía para confirmar precios, horarios y ubicación. Si ahí no hay nada, o hay algo improvisado, la duda se resuelve a favor del competidor que sí tiene sitio. Además, tu perfil de red social no es tuyo: cambia de reglas, de alcance y de dueño. Tu página no.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">02</span>
-                                <span class="faq__label">¿Qué pasa si cancelo?</span>
+                                <span class="faq__num" data-cms-index>02</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Qué pasa si cancelo?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Puedes cancelar cuando quieras, desde tu propio panel y sin trámite. El servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Tu dominio queda libre para que lo apuntes a donde quieras, y te entregamos tu contenido —textos, fotos y datos de tu negocio— si lo pides. Lo que no continúa es el uso del diseño, porque es lo que estabas arrendando.</p>
+                                <p data-cms=".respuesta">Puedes cancelar cuando quieras, desde tu propio panel y sin trámite. El servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Tu dominio queda libre para que lo apuntes a donde quieras, y te entregamos tu contenido —textos, fotos y datos de tu negocio— si lo pides. Lo que no continúa es el uso del diseño, porque es lo que estabas arrendando.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">03</span>
-                                <span class="faq__label">¿El sitio es mío?</span>
+                                <span class="faq__num" data-cms-index>03</span>
+                                <span class="faq__label" data-cms=".pregunta">¿El sitio es mío?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Tu contenido y tu dominio son tuyos desde el primer día. El diseño es nuestro y lo usas bajo licencia mientras tu plan esté vigente, igual que ocurre con cualquier plataforma de suscripción. Esa es exactamente la razón por la que no pagas su desarrollo. Si prefieres quedártelo para siempre, puedes comprarlo.</p>
+                                <p data-cms=".respuesta">Tu contenido y tu dominio son tuyos desde el primer día. El diseño es nuestro y lo usas bajo licencia mientras tu plan esté vigente, igual que ocurre con cualquier plataforma de suscripción. Esa es exactamente la razón por la que no pagas su desarrollo. Si prefieres quedártelo para siempre, puedes comprarlo.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">04</span>
-                                <span class="faq__label">¿Puedo comprar el sitio y llevármelo?</span>
+                                <span class="faq__num" data-cms-index>04</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Puedo comprar el sitio y llevármelo?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Sí. En cualquier momento puedes comprar una licencia de uso permanente y trasladar el sitio completo al proveedor de alojamiento que elijas. Está construido sobre WordPress, un estándar de la industria, así que los archivos son transferibles y no quedas atado a nosotros. Compras el derecho de usarlo sin límite de tiempo; nosotros conservamos el de seguir ofreciendo ese diseño en otras ciudades y otros giros. El precio se calcula descontando parte de lo que ya has pagado.</p>
+                                <p data-cms=".respuesta">Sí. En cualquier momento puedes comprar una licencia de uso permanente y trasladar el sitio completo al proveedor de alojamiento que elijas. Está construido sobre WordPress, un estándar de la industria, así que los archivos son transferibles y no quedas atado a nosotros. Compras el derecho de usarlo sin límite de tiempo; nosotros conservamos el de seguir ofreciendo ese diseño en otras ciudades y otros giros. El precio se calcula descontando parte de lo que ya has pagado.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">05</span>
-                                <span class="faq__label">¿De verdad en 24 horas?</span>
+                                <span class="faq__num" data-cms-index>05</span>
+                                <span class="faq__label" data-cms=".pregunta">¿De verdad en 24 horas?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Sí: 24 horas desde que recibimos tu contenido, o desde hoy mismo si prefieres arrancar con contenido de muestra de tu giro. Te mandamos un formulario guiado que te dice exactamente qué necesitamos: textos, fotos, servicios, precios y horarios.</p>
+                                <p data-cms=".respuesta">Sí: 24 horas desde que recibimos tu contenido, o desde hoy mismo si prefieres arrancar con contenido de muestra de tu giro. Te mandamos un formulario guiado que te dice exactamente qué necesitamos: textos, fotos, servicios, precios y horarios.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">06</span>
-                                <span class="faq__label">¿Y si no tengo fotos ni textos listos?</span>
+                                <span class="faq__num" data-cms-index>06</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Y si no tengo fotos ni textos listos?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Publicamos tu sitio con contenido de muestra propio de tu giro y lo sustituimos conforme nos vayas mandando el tuyo. Es preferible estar en línea con algo digno que esperar meses a tener el material perfecto.</p>
+                                <p data-cms=".respuesta">Publicamos tu sitio con contenido de muestra propio de tu giro y lo sustituimos conforme nos vayas mandando el tuyo. Es preferible estar en línea con algo digno que esperar meses a tener el material perfecto.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">07</span>
-                                <span class="faq__label">¿Necesito saber de tecnología para editarlo?</span>
+                                <span class="faq__num" data-cms-index>07</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Necesito saber de tecnología para editarlo?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>No. Entras con tu usuario y cambias textos, precios, fotos y horarios como quien edita un documento. No puedes romper el diseño porque no tienes acceso a él, que es justamente lo que lo mantiene bien hecho.</p>
+                                <p data-cms=".respuesta">No. Entras con tu usuario y cambias textos, precios, fotos y horarios como quien edita un documento. No puedes romper el diseño porque no tienes acceso a él, que es justamente lo que lo mantiene bien hecho.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">08</span>
-                                <span class="faq__label">¿Otro negocio puede tener mi mismo diseño?</span>
+                                <span class="faq__num" data-cms-index>08</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Otro negocio puede tener mi mismo diseño?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Puede existir en otras ciudades o en otros giros, nunca en tu competencia directa. Mientras tu plan esté activo, ese diseño no se instala en otro negocio de tu mismo giro en tu zona. Con el plan anual la exclusividad se amplía de tu zona a toda tu ciudad.</p>
+                                <p data-cms=".respuesta">Puede existir en otras ciudades o en otros giros, nunca en tu competencia directa. Mientras tu plan esté activo, ese diseño no se instala en otro negocio de tu mismo giro en tu zona. Con el plan anual la exclusividad se amplía de tu zona a toda tu ciudad.</p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">09</span>
-                                <span class="faq__label">¿Puedo agregar reservaciones, citas o pagos en línea?</span>
+                                <span class="faq__num" data-cms-index>09</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Puedo agregar reservaciones, citas o pagos en línea?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Sí. Integramos tu sitio con la plataforma que ya uses o te ayudamos a elegir una. <a href="/servicios.html">Estas herramientas se contratan por separado y su integración se cotiza aparte.</a></p>
+                                <p data-cms=".respuesta">Sí. Integramos tu sitio con la plataforma que ya uses o te ayudamos a elegir una. <a href="/servicios.html">Estas herramientas se contratan por separado y su integración se cotiza aparte.</a></p>
                             </div>
                         </details>
-                        <details class="faq__item" name="faq">
+                        <details class="faq__item" name="faq" data-cms-item>
                             <summary class="faq__q">
-                                <span class="faq__num">10</span>
-                                <span class="faq__label">¿Puedo usar mi propio dominio?</span>
+                                <span class="faq__num" data-cms-index>10</span>
+                                <span class="faq__label" data-cms=".pregunta">¿Puedo usar mi propio dominio?</span>
                                 <span class="faq__sign" aria-hidden="true"></span>
                             </summary>
                             <div class="faq__a">
-                                <p>Sí, y es lo recomendable. Si ya tienes uno, lo vinculamos. Si no, te orientamos para registrarlo a tu nombre, para que siempre sea tuyo.</p>
+                                <p data-cms=".respuesta">Sí, y es lo recomendable. Si ya tienes uno, lo vinculamos. Si no, te orientamos para registrarlo a tu nombre, para que siempre sea tuyo.</p>
                             </div>
                         </details>
                     </div>
@@ -496,8 +497,8 @@
                 <div class="container">
                     <div class="contact__grid">
                         <div class="contact__info">
-                            <h2 class="contact__title">Empecemos por conocer tu negocio.</h2>
-                            <p class="contact__lead">Cuéntanos a qué te dedicas y cómo quieres que te vean. Con eso te mostramos una propuesta de tu sitio, <span class="hl"><strong>sin costo y sin compromiso.</strong></span></p>
+                            <h2 class="contact__title" data-cms="contacto.titulo">Empecemos por conocer tu negocio.</h2>
+                            <p class="contact__lead" data-cms="contacto.texto">Cuéntanos a qué te dedicas y cómo quieres que te vean. Con eso te mostramos una propuesta de tu sitio, <span class="hl"><strong>sin costo y sin compromiso.</strong></span></p>
                             <!-- Vía directa por WhatsApp. Un dueño de negocio pequeño contesta
                  WhatsApp; un formulario lo ignora. Además no depende de Google:
                  si el Apps Script cae, los prospectos siguen llegando. -->
@@ -515,14 +516,14 @@
                                     <span class="contact__ico" aria-hidden="true"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path>
                                         </svg> </span>
-                                    <span> <span class="contact__k">WhatsApp</span><br/> <span class="contact__v">+52 56 3366 8185</span> </span>
+                                    <span> <span class="contact__k">WhatsApp</span><br/> <span class="contact__v" data-cms="contacto.whatsapp">+52 56 3366 8185</span> </span>
                                 </li>
                                 <li class="contact__item">
                                     <span class="contact__ico" aria-hidden="true"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path>
                                             <circle cx="12" cy="10" r="3"></circle>
                                         </svg> </span>
-                                    <span> <span class="contact__k">Ubicación</span><br/> <span class="contact__v">Ciudad de México · Servicio 100% en línea</span> </span>
+                                    <span> <span class="contact__k">Ubicación</span><br/> <span class="contact__v" data-cms="contacto.ubicacion">Ciudad de México · Servicio 100% en línea</span> </span>
                                 </li>
                             </ul>
                             <a class="btn btn--whatsapp contact__wa" href="https://wa.me/525633668185?text=Hola%2C%20me%20interesa%20un%20sitio%20para%20mi%20negocio" target="_blank" rel="noopener"> <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

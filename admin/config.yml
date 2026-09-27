@@ -1,0 +1,170 @@
+# =========================================================================
+# Panel de edición (Decap CMS) — iconica24.com/admin
+# -------------------------------------------------------------------------
+# Cada campo de aquí es algo que el cliente puede cambiar. Lo que no está
+# aquí (diseño, colores, íconos, estructura) no se puede tocar desde el
+# panel. Los textos se guardan en contenido/inicio.json y el build de Vercel
+# los mete en index.html (scripts/contenido.mjs).
+#
+# Al guardar, Decap hace un commit en main → Vercel publica en 1-2 minutos.
+# =========================================================================
+backend:
+  name: github
+  repo: ricantropoGit/iconica-website
+  branch: main
+  base_url: https://iconica24.com
+  auth_endpoint: api/auth
+  commit_messages:
+    update: "Contenido: actualiza {{slug}} desde el panel"
+    uploadMedia: "Contenido: sube {{path}}"
+    deleteMedia: "Contenido: borra {{path}}"
+
+# Para probar en local sin GitHub: `npx decap-server` y abrir /admin.
+local_backend: true
+
+locale: es
+site_url: https://iconica24.com
+display_url: https://iconica24.com
+
+media_folder: images/cms
+public_folder: /images/cms
+
+collections:
+  - name: paginas
+    label: Páginas
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: inicio
+        label: Inicio
+        file: contenido/inicio.json
+        fields:
+          - label: Buscadores y redes sociales
+            name: seo
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título de la pestaña", name: titulo, widget: string, pattern: ['^.{1,70}$', "Máximo 70 caracteres"] }
+              - { label: "Descripción en Google", name: descripcion, widget: text, pattern: ['^[\s\S]{1,170}$', "Máximo 170 caracteres"] }
+              - { label: "Título al compartir el enlace", name: titulo_compartir, widget: string }
+              - { label: "Descripción al compartir el enlace", name: descripcion_compartir, widget: text }
+
+          - label: Portada
+            name: hero
+            widget: object
+            fields:
+              - { label: "Título principal", name: titulo, widget: string, pattern: ['^.{1,90}$', "Máximo 90 caracteres para que no se rompa la portada"] }
+              - { label: "Subtítulo", name: subtitulo, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - { label: "Botón principal", name: boton_principal, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
+              - { label: "Botón secundario", name: boton_secundario, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
+
+          - label: "¿Qué es una plantilla?"
+            name: intro
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+
+          - label: Cómo funciona
+            name: pasos
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "Tarjetas"
+                name: tarjetas
+                widget: list
+                # Cada tarjeta tiene su ícono fijo en el diseño: se editan,
+                # pero no se agregan, quitan ni reordenan.
+                allow_add: false
+                allow_remove: false
+                allow_reorder: false
+                summary: "{{fields.etiqueta}} — {{fields.titulo}}"
+                fields:
+                  - { label: "Etiqueta", name: etiqueta, widget: string }
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Texto", name: texto, widget: text }
+              - { label: "Botón", name: boton, widget: string, pattern: ['^.{1,40}$', "Máximo 40 caracteres"] }
+
+          - label: Ventajas
+            name: ventajas
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "Tarjetas"
+                name: tarjetas
+                widget: list
+                allow_add: false
+                allow_remove: false
+                allow_reorder: false
+                summary: "{{fields.etiqueta}} — {{fields.titulo}}"
+                fields:
+                  - { label: "Etiqueta", name: etiqueta, widget: string }
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Texto", name: texto, widget: text }
+
+          - label: Llamada a la acción (bloque oscuro)
+            name: cta
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `**negritas**` · `^1^` para una llamada a nota" }
+              - { label: "Botón principal", name: boton_principal, widget: string }
+              - { label: "Botón secundario", name: boton_secundario, widget: string }
+              - { label: "Nota inferior", name: nota, widget: string }
+
+          - label: Precios
+            name: precios
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Etiqueta superior", name: etiqueta, widget: string }
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: string }
+              - label: "Planes"
+                name: planes
+                widget: list
+                # El segundo plan es el destacado: el diseño depende del orden.
+                allow_add: false
+                allow_remove: false
+                allow_reorder: false
+                summary: "{{fields.nombre}} — {{fields.precio}}"
+                fields:
+                  - { label: "Insignia (vacío = sin insignia)", name: insignia, widget: string, required: false }
+                  - { label: "Nombre del plan", name: nombre, widget: string }
+                  - { label: "Precio", name: precio, widget: string, hint: "Ej. $499" }
+                  - { label: "Periodo", name: periodo, widget: string, hint: "Ej. MX/mes" }
+                  - { label: "Forma de cobro", name: cobro, widget: string }
+                  - { label: "Qué incluye", name: caracteristicas, widget: list, field: { label: "Punto", name: punto, widget: string }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Texto del botón", name: boton, widget: string }
+                  - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
+              - { label: "Nota al pie", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+
+          - label: Preguntas frecuentes
+            name: faq
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - label: "Preguntas"
+                name: preguntas
+                widget: list
+                summary: "{{fields.pregunta}}"
+                fields:
+                  - { label: "Pregunta", name: pregunta, widget: string }
+                  - { label: "Respuesta", name: respuesta, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+
+          - label: Contacto
+            name: contacto
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - { label: "WhatsApp (como se muestra)", name: whatsapp, widget: string }
+              - { label: "Ubicación", name: ubicacion, widget: string }
