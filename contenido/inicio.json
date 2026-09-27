@@ -1,0 +1,167 @@
+{
+  "pasos": {
+    "titulo": "Subimos tu sitio web a la red en tres sencillos pasos",
+    "texto": "Solo tienes que ==apuntar tu dominio a nuestros servidores, activar la plantilla de tu preferencia== y compartir los textos e imágenes que van en tu sitio.",
+    "tarjetas": [
+      {
+        "etiqueta": "01 Dominio",
+        "titulo": "Apunta tu dominio a nuestros servidores",
+        "texto": "Puedes actualizar los DNS con tu propio proveedor de dominio. Es muy fácil."
+      },
+      {
+        "etiqueta": "02 Diseño",
+        "titulo": "Elige tu plantilla preferida",
+        "texto": "Desde tu panel de WordPress entra a: Appearance, Theme, AddTheme y selecciona tu plantilla."
+      },
+      {
+        "etiqueta": "03 Contenido",
+        "titulo": "Comparte de qué trata tu negocio",
+        "texto": "Pásanos los textos e imágenes que quieres mostrar en tu página web."
+      }
+    ],
+    "boton": "Tu sitio puede quedar hoy mismo."
+  },
+  "precios": {
+    "etiqueta": "Precios",
+    "titulo": "Elige tu plan",
+    "texto": "Sin costo de desarrollo. Sin contrato forzoso.",
+    "planes": [
+      {
+        "insignia": "",
+        "nombre": "Plan Mensual",
+        "precio": "$499",
+        "periodo": "MX/mes",
+        "cobro": "Paga mes a mes sin compromisos",
+        "caracteristicas": [
+          "Integración de tu contenido a la plantilla de tu elección",
+          "Sitio listo y en línea en 24hrs.",
+          "Editable en WordPress (textos e imágenes)",
+          "Alojamiento y dominio vinculado a nuestros servidores"
+        ],
+        "boton": "Comprar",
+        "enlace": "https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02"
+      },
+      {
+        "insignia": "Más valor",
+        "nombre": "Plan Anual",
+        "precio": "$399",
+        "periodo": "MX/mes",
+        "cobro": "Pago anual de $4,788.00",
+        "caracteristicas": [
+          "Todo lo incluido en el plan mensual más:",
+          "==20% de descuento== (dos meses y medio sin costo)",
+          "Prioridad en soporte"
+        ],
+        "boton": "Comprar",
+        "enlace": "https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03"
+      }
+    ],
+    "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)^2^"
+  },
+  "contacto": {
+    "titulo": "Empecemos por conocer tu negocio.",
+    "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. Con eso te mostramos una propuesta de tu sitio, ==**sin costo y sin compromiso.**==",
+    "whatsapp": "+52 56 3366 8185",
+    "ubicacion": "Ciudad de México · Servicio 100% en línea"
+  },
+  "ventajas": {
+    "titulo": "Olvídate de la curva de aprendizaje.",
+    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio en 24 hrs.^4^== Tú solo pagas un servicio de suscripción mensual o anual ==como lo harías con cualquier servicio de alojamiento web:==",
+    "tarjetas": [
+      {
+        "etiqueta": "Inversión",
+        "titulo": "Solo pagas tu Suscripción",
+        "texto": "Sin la inversión incial que requiere un sitio web personalizado."
+      },
+      {
+        "etiqueta": "Solución",
+        "titulo": "Tu sitio «llave-en-mano»",
+        "texto": "Se entrega listo para publicarse: en 24 horas, con tu propio contenido.^4^"
+      },
+      {
+        "etiqueta": "Con tu propia plantilla",
+        "titulo": "Configuración y set-up inicial",
+        "texto": "Integración del contenido e imagen de tu negocio al diseño de tu preferencia."
+      },
+      {
+        "etiqueta": "CMS",
+        "titulo": "Editable en WordPress",
+        "texto": "Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer."
+      },
+      {
+        "etiqueta": "Alojamiento",
+        "titulo": "Gestión del servidor incluida",
+        "texto": "Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados."
+      },
+      {
+        "etiqueta": "Portabilidad",
+        "titulo": "No te casas con nosotros",
+        "texto": "Tienes la opción de bajar tu sitio y migrarlo con otro proveedor."
+      }
+    ]
+  },
+  "cta": {
+    "titulo": "Dejamos el \"hágalo-usted-mismo\" para personas con mucho tiempo libre.",
+    "texto": "Con nuestra propuesta de colaboración, **un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección** entregándote un sitio web listo y en línea.^1^",
+    "boton_principal": "Quiero mi Sitio!",
+    "boton_secundario": "Compara",
+    "nota": "Sin inversión inicial · En línea en 24 horas"
+  },
+  "faq": {
+    "titulo": "Preguntas frecuentes",
+    "preguntas": [
+      {
+        "pregunta": "Ya tengo Instagram y Facebook. ¿Para qué quiero una página web?",
+        "respuesta": "Las redes sirven para que te descubran; la página, para que te tomen en serio. Cuando alguien está a punto de reservar, busca el enlace de tu biografía para confirmar precios, horarios y ubicación. Si ahí no hay nada, o hay algo improvisado, la duda se resuelve a favor del competidor que sí tiene sitio. Además, tu perfil de red social no es tuyo: cambia de reglas, de alcance y de dueño. Tu página no."
+      },
+      {
+        "pregunta": "¿Qué pasa si cancelo?",
+        "respuesta": "Puedes cancelar cuando quieras, desde tu propio panel y sin trámite. El servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Tu dominio queda libre para que lo apuntes a donde quieras, y te entregamos tu contenido —textos, fotos y datos de tu negocio— si lo pides. Lo que no continúa es el uso del diseño, porque es lo que estabas arrendando."
+      },
+      {
+        "pregunta": "¿El sitio es mío?",
+        "respuesta": "Tu contenido y tu dominio son tuyos desde el primer día. El diseño es nuestro y lo usas bajo licencia mientras tu plan esté vigente, igual que ocurre con cualquier plataforma de suscripción. Esa es exactamente la razón por la que no pagas su desarrollo. Si prefieres quedártelo para siempre, puedes comprarlo."
+      },
+      {
+        "pregunta": "¿Puedo comprar el sitio y llevármelo?",
+        "respuesta": "Sí. En cualquier momento puedes comprar una licencia de uso permanente y trasladar el sitio completo al proveedor de alojamiento que elijas. Está construido sobre WordPress, un estándar de la industria, así que los archivos son transferibles y no quedas atado a nosotros. Compras el derecho de usarlo sin límite de tiempo; nosotros conservamos el de seguir ofreciendo ese diseño en otras ciudades y otros giros. El precio se calcula descontando parte de lo que ya has pagado."
+      },
+      {
+        "pregunta": "¿De verdad en 24 horas?",
+        "respuesta": "Sí: 24 horas desde que recibimos tu contenido, o desde hoy mismo si prefieres arrancar con contenido de muestra de tu giro. Te mandamos un formulario guiado que te dice exactamente qué necesitamos: textos, fotos, servicios, precios y horarios."
+      },
+      {
+        "pregunta": "¿Y si no tengo fotos ni textos listos?",
+        "respuesta": "Publicamos tu sitio con contenido de muestra propio de tu giro y lo sustituimos conforme nos vayas mandando el tuyo. Es preferible estar en línea con algo digno que esperar meses a tener el material perfecto."
+      },
+      {
+        "pregunta": "¿Necesito saber de tecnología para editarlo?",
+        "respuesta": "No. Entras con tu usuario y cambias textos, precios, fotos y horarios como quien edita un documento. No puedes romper el diseño porque no tienes acceso a él, que es justamente lo que lo mantiene bien hecho."
+      },
+      {
+        "pregunta": "¿Otro negocio puede tener mi mismo diseño?",
+        "respuesta": "Puede existir en otras ciudades o en otros giros, nunca en tu competencia directa. Mientras tu plan esté activo, ese diseño no se instala en otro negocio de tu mismo giro en tu zona. Con el plan anual la exclusividad se amplía de tu zona a toda tu ciudad."
+      },
+      {
+        "pregunta": "¿Puedo agregar reservaciones, citas o pagos en línea?",
+        "respuesta": "Sí. Integramos tu sitio con la plataforma que ya uses o te ayudamos a elegir una. [Estas herramientas se contratan por separado y su integración se cotiza aparte.](/servicios.html)"
+      },
+      {
+        "pregunta": "¿Puedo usar mi propio dominio?",
+        "respuesta": "Sí, y es lo recomendable. Si ya tienes uno, lo vinculamos. Si no, te orientamos para registrarlo a tu nombre, para que siempre sea tuyo."
+      }
+    ]
+  },
+  "hero": {
+    "titulo": "Tu sitio web en la nube, sin tanto rollo.",
+    "subtitulo": "Solo necesitas un nombre de dominio y elegir un diseño desde tu panel de control. ==Nosotros nos encargamos de todo lo demás.==",
+    "boton_principal": "Cómo funciona",
+    "boton_secundario": "Sin curva de aprendizaje"
+  },
+  "seo": {
+    "titulo": "Icónica24 — Sitios web «llave en mano» por suscripción",
+    "descripcion": "Un sitio web profesional vinculado a tu dominio, en línea en 24 horas. Sin inversión inicial: solo pagas la suscripción. Alojamiento, respaldos y mantenimiento incluidos.",
+    "titulo_compartir": "Toda tu competencia tiene página web. La tuya puede ser mejor.",
+    "descripcion_compartir": "Un sitio «llave en mano» con sistema de diseño integrado a tu negocio, en línea en 24 horas. Tú solo pagas la suscripción."
+  }
+}

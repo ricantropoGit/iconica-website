@@ -730,6 +730,8 @@ ul { list-style: none; padding: 0; }
   padding: .38em 1em;
   border-radius: 999px;
 }
+/* Sin texto de insignia en el CMS: no se muestra la píldora vacía */
+.price-card__badge:empty { display: none; }
 .price-card__name { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
 .price-card__desc { margin-top: .3rem; color: var(--muted); font-size: .95rem; min-height: calc(1.45em * 4); }
 .price-card__price { margin-top: 1.4rem; display: flex; align-items: baseline; gap: .15rem; }
