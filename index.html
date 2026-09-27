@@ -96,12 +96,13 @@
             <!-- ===================== HERO ===================== -->
             <section class="hero" id="hero" data-screen-label="Hero">
                 <div class="container">
-                    <h1 class="hero__title">Tu sitio web en la nube, sin la curva de aprendizaje.</h1>
+                    <h1 class="hero__title">Tu sitio web en la nube, sin tanto rollo.</h1>
                     <p class="hero__subtitle">
-          Solo necesitas un nombre de dominio y la plantilla de tu preferencia. <span class="hl">Nosotros nos encargamos de todo lo demás.</span> </p>
+          Solo necesitas un nombre de dominio y elegir un diseño desde tu panel de control. <span class="hl">Nosotros nos encargamos de todo lo demás.</span></p>
                     <div class="hero__actions">
                         <a class="btn btn--primary" href="#como-funciona" data-scroll>Cómo funciona</a>
-                        <a class="btn btn--ghost" href="#intro" data-scroll data-scroll-align="bottom">¿Qué es una plantilla?</a>
+                        <a class="btn btn--ghost" href="#ventajas" data-scroll>Sin curva de aprendizaje</a>
+                        <!--<a class="btn btn--ghost" href="#intro" data-scroll data-scroll-align="bottom">¿Qué es una plantilla?</a>-->
                     </div>
                 </div>
             </section>
@@ -109,6 +110,7 @@
             <!-- ===================== INTRO / Pregunta (DESACTIVADA) =====================
          Sección inactiva: no se renderiza. Para reactivar, elimina la etiqueta
          script de apertura y su cierre.  -->
+        <script type="text/template" id="introDisabled">
             <section class="intro" id="intro" data-screen-label="Intro">
                 <!--<div class="container">
                     <p class="intro__subtitle">Una plantilla o "template", es un diseño web genérico base que es adaptado por un diseñador a las necesidades particulares de un sitio web. Lo anterior es el sistema estandarizado que utilizan las grandes plataformas de auto-edición de páginas web tales como: WordPress, Canva, Wix, SquareSpace, Shopify, Webflow, Framer, etc., etc.</p>
@@ -117,12 +119,13 @@
                     <p class="intro__subtitle">Una plantilla, o "template", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En iconica24 utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales.</p>
                 </div>                
             </section>
+        </script>    
             <!-- ===================== CÓMO FUNCIONA / Trío de tarjetas ===================== -->
             <section class="section section--alt" id="como-funciona" data-screen-label="Cómo funciona">
                 <div class="container">
                     <div class="steps__head">
-                        <h2 class="steps__title">Subimos tu sitio web a la red en tres sencillos pasos.</h2>
-                        <p class="steps__lead">Solo tienes que <span class="hl">apuntar tu dominio a nuestros servidores, subir la plantilla de tu preferencia</span> y compartir los textos e imágenes que van en tu sitio. Si no tienes una plantilla, <a href="https://themeforest.net/category/wordpress" target="_blank">puedes comprar una con nuestros socios comerciales</a> o con el proveedor de tu elección.</p>
+                        <h2 class="steps__title">Subimos tu sitio web a la red en tres sencillos pasos<sup class="note--black">1</sup></h2>
+                        <p class="steps__lead">Solo tienes que <span class="hl">apuntar tu dominio a nuestros servidores, activar la plantilla de tu preferencia</span> y compartir los textos e imágenes que van en tu sitio.</p>
                     </div>
                     <div class="cards cards--trio">
                         <article class="card">
@@ -134,7 +137,7 @@
                                 </svg>
                             </div>
                             <span class="card__num">01 Dominio</span>
-                            <h3 class="card__title">Apunta tu dominio a nuestros servidores</h3>
+                            <h3 class="card__title">Apunta tu dominio a nuestros servidores<sup class="note--medium">2</sup></h3>
                             <p class="card__text">Puedes actualizar los DNS con tu propio proveedor de dominio. Es muy fácil.</p>
                         </article>
                         <article class="card">
@@ -144,9 +147,9 @@
                                     <path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
                                 </svg>
                             </div>
-                            <span class="card__num">02 Plantilla</span>
-                            <h3 class="card__title">Sube tu plantilla preferida</h3>
-                            <p class="card__text">Toda plantilla es una base de diseño lista para ser  adaptada por nosotros.</p>
+                            <span class="card__num">02 Diseño</span>
+                            <h3 class="card__title">Elige tu plantilla preferida<sup class="note--medium">3</sup></h3>
+                            <p class="card__text">Desde tu panel de WordPress entra a: Appearance, Theme, AddTheme y selecciona tu plantilla.</p>                            
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -172,7 +175,7 @@
                 <div class="container">
                     <div class="steps__head">
                         <h2 class="steps__title">Olvídate de la curva de aprendizaje.</h2>
-                      <p class="steps__lead">Aquí no tienes que aprender desde cero a hacer tu propia página web. <span class="hl">Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio.</span> Tú solo pagas un servicio de suscripción mensual o anual <span class="hl">como lo harías con cualquier servicio de alojamiento web:</span></p>
+                      <p class="steps__lead">Aquí no tienes que aprender desde cero a hacer tu propia página web. <span class="hl">Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio en 24 hrs.<sup class="note">4</sup></span> Tú solo pagas un servicio de suscripción mensual o anual <span class="hl">como lo harías con cualquier servicio de alojamiento web:</span></p>
                     </div>
                     <div class="cards">
                         <article class="card">
@@ -196,7 +199,7 @@
                             </div>
                             <span class="card__num">Solución</span>
                             <h3 class="card__title">Tu sitio «llave-en-mano»</h3>
-                            <p class="card__text">Se entrega listo para publicarse: en 24 horas, con tu propio contenido.</p>
+                            <p class="card__text">Se entrega listo para publicarse: en 24 horas, con tu propio contenido.<sup class="note">4</sup></p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
@@ -220,7 +223,7 @@
                             </div>
                             <span class="card__num">CMS</span>
                             <h3 class="card__title">Editable en WordPress</h3>
-                            <p class="card__text">Para trabajar con aquellos cambios que solo los jefes pueden hacer.</p>
+                            <p class="card__text">Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer.</p>
                         </article>
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
