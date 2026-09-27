@@ -845,10 +845,31 @@ ul { list-style: none; padding: 0; }
    texto indentado). Se oculta en móvil. */
 
 .note {
-  font-variant-position: super;
+  font-size: x-small;  
+  font-variant-position: super;  
   font-weight: 300;
   line-height: 0;
   }
+
+.note--black {
+  font-size: small;
+  font-variant-position: super;  
+  font-weight: 800;
+  line-height: 0;
+  }
+
+.note--medium {
+  font-size: x-small;
+  font-variant-position: super;  
+  font-weight: 800;
+  line-height: 0;
+  }
+
+@media (min-width: 640px) {
+.note--black {
+  font-size: medium;
+  }
+}
 .compare-notes {
   list-style: none;
   counter-reset: note;

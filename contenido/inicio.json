@@ -1,7 +1,7 @@
 {
   "pasos": {
-    "titulo": "Subimos tu sitio web a la red en tres sencillos pasos.",
-    "texto": "Solo tienes que ==apuntar tu dominio a nuestros servidores, subir la plantilla de tu preferencia== y compartir los textos e imágenes que van en tu sitio. Si no tienes una plantilla, [puedes comprar una con nuestros socios comerciales](https://themeforest.net/category/wordpress) o con el proveedor de tu elección.",
+    "titulo": "Subimos tu sitio web a la red en tres sencillos pasos",
+    "texto": "Solo tienes que ==apuntar tu dominio a nuestros servidores, activar la plantilla de tu preferencia== y compartir los textos e imágenes que van en tu sitio.",
     "tarjetas": [
       {
         "etiqueta": "01 Dominio",
@@ -9,9 +9,9 @@
         "texto": "Puedes actualizar los DNS con tu propio proveedor de dominio. Es muy fácil."
       },
       {
-        "etiqueta": "02 Plantilla",
-        "titulo": "Sube tu plantilla preferida",
-        "texto": "Toda plantilla es una base de diseño lista para ser  adaptada por nosotros."
+        "etiqueta": "02 Diseño",
+        "titulo": "Elige tu plantilla preferida",
+        "texto": "Desde tu panel de WordPress entra a: Appearance, Theme, AddTheme y selecciona tu plantilla."
       },
       {
         "etiqueta": "03 Contenido",
@@ -20,9 +20,6 @@
       }
     ],
     "boton": "Tu sitio puede quedar hoy mismo."
-  },
-  "intro": {
-    "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En iconica24 utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales."
   },
   "precios": {
     "etiqueta": "Precios",
@@ -69,7 +66,7 @@
   },
   "ventajas": {
     "titulo": "Olvídate de la curva de aprendizaje.",
-    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio.== Tú solo pagas un servicio de suscripción mensual o anual ==como lo harías con cualquier servicio de alojamiento web:==",
+    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio en 24 hrs.^4^== Tú solo pagas un servicio de suscripción mensual o anual ==como lo harías con cualquier servicio de alojamiento web:==",
     "tarjetas": [
       {
         "etiqueta": "Inversión",
@@ -79,7 +76,7 @@
       {
         "etiqueta": "Solución",
         "titulo": "Tu sitio «llave-en-mano»",
-        "texto": "Se entrega listo para publicarse: en 24 horas, con tu propio contenido."
+        "texto": "Se entrega listo para publicarse: en 24 horas, con tu propio contenido.^4^"
       },
       {
         "etiqueta": "Con tu propia plantilla",
@@ -89,7 +86,7 @@
       {
         "etiqueta": "CMS",
         "titulo": "Editable en WordPress",
-        "texto": "Para trabajar con aquellos cambios que solo los jefes pueden hacer."
+        "texto": "Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer."
       },
       {
         "etiqueta": "Alojamiento",
@@ -156,10 +153,10 @@
     ]
   },
   "hero": {
-    "titulo": "Tu sitio web en la nube, sin la curva de aprendizaje.",
-    "subtitulo": "Solo necesitas un nombre de dominio y la plantilla de tu preferencia. ==Nosotros nos encargamos de todo lo demás.==",
+    "titulo": "Tu sitio web en la nube, sin tanto rollo.",
+    "subtitulo": "Solo necesitas un nombre de dominio y elegir un diseño desde tu panel de control. ==Nosotros nos encargamos de todo lo demás.==",
     "boton_principal": "Cómo funciona",
-    "boton_secundario": "¿Qué es una plantilla?"
+    "boton_secundario": "Sin curva de aprendizaje"
   },
   "seo": {
     "titulo": "Icónica24 — Sitios web «llave en mano» por suscripción",

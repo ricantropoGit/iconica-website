@@ -59,19 +59,12 @@ collections:
               - { label: "Botón principal", name: boton_principal, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
               - { label: "Botón secundario", name: boton_secundario, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
 
-          - label: "¿Qué es una plantilla?"
-            name: intro
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-
           - label: Cómo funciona
             name: pasos
             widget: object
             collapsed: true
             fields:
-              - { label: "Título", name: titulo, widget: string }
+              - { label: "Título", name: titulo, widget: string, hint: "La llamada a nota 1 va fija después del título" }
               - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
               - label: "Tarjetas"
                 name: tarjetas
