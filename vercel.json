@@ -98,5 +98,11 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/github/:ruta(.*)",
+      "destination": "/api/github?ruta=:ruta"
+    }
   ]
 }
