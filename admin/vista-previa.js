@@ -36,6 +36,10 @@ CMS.registerPreviewStyle(`
   [data-ruta]:hover { outline: 2px dashed rgba(47, 111, 237, .55); }
   /* Sólo contorno y halo: un fondo taparía el de botones y bloques oscuros. */
   [data-ruta].cms-activo { outline: 2px solid #2f6fed; box-shadow: 0 0 0 6px rgba(47, 111, 237, .2); }
+  /* Las respuestas del acordeón viven en ::details-content, que recorta con
+     overflow: hidden (lo necesita para animar la apertura). Abierta ya no
+     hace falta, y sin esto el contorno se corta en el borde superior. */
+  .faq__item[open]::details-content { overflow: visible; }
 `, { raw: true });
 
 /* ---------- Formulario: de campo a ruta y de ruta a campo ---------- */
