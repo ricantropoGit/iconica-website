@@ -24,6 +24,10 @@
 
    A prueba de fallos: si falta una clave en el JSON, el texto original del
    HTML se queda como está y sólo se avisa en el log del build.
+
+   Para la vista previa del panel, { marcar: true } deja en cada elemento
+   editable un data-ruta con su ruta completa en el JSON (hero.titulo,
+   faq.preguntas.3.respuesta…), para ligarlo con su campo del formulario.
    ========================================================================= */
 
 const ATRIBUTOS = ['href', 'src', 'alt', 'content'];
@@ -98,8 +102,21 @@ function limpiarApertura(etiqueta) {
 }
 
 const avisos = [];
+let marcar = false;
 
-function renderizar(html, ctx, indice) {
+// Ruta completa de una clave: las que empiezan con "." son relativas al
+// elemento de la lista en curso (base).
+function rutaDe(clave, base) {
+  if (!clave.startsWith('.')) return clave;
+  return clave === '.' ? base : `${base}${clave}`;
+}
+
+function conRuta(apertura, ruta) {
+  if (!marcar || !ruta) return apertura;
+  return apertura.replace(/\s*\/?>$/, m => ` data-ruta="${escapar(ruta)}"${m}`);
+}
+
+function renderizar(html, ctx, indice, base = '') {
   // 1) Listas, de la más externa hacia adentro (cada una se resuelve completa).
   let pos = 0, el;
   while ((el = buscar(html, pos, t => atributo(t, 'data-cms-list') !== null))) {
@@ -117,7 +134,8 @@ function renderizar(html, ctx, indice) {
       const sangria = interior.slice(0, tpl.inicio);
       const k = interior.lastIndexOf('\n');
       const cola = k >= 0 ? interior.slice(k) : '';
-      nuevo = items.map((item, i) => sangria + renderizar(plantilla, item, i)).join('') + cola;
+      const ruta = rutaDe(clave, base);
+      nuevo = items.map((item, i) => sangria + renderizar(plantilla, item, i, `${ruta}.${i}`)).join('') + cola;
     }
     const apertura = limpiarApertura(el.apertura);
     html = html.slice(0, el.inicio) + apertura + nuevo + html.slice(c.inicio);
@@ -137,6 +155,9 @@ function renderizar(html, ctx, indice) {
     }
 
     const clave = atributo(apertura, 'data-cms');
+    const esItem = atributo(apertura, 'data-cms-item') !== null;
+    const enlace = atributo(apertura, 'data-cms-href');
+    const ruta = clave !== null ? rutaDe(clave, base) : esItem ? base : enlace !== null ? rutaDe(enlace, base) : null;
     const conIndice = atributo(apertura, 'data-cms-index') !== null;
     const opcional = atributo(apertura, 'data-cms-optional') !== null;
     let contenido = null;
@@ -156,7 +177,7 @@ function renderizar(html, ctx, indice) {
       pos = desde;
       continue;
     }
-    apertura = limpiarApertura(apertura);
+    apertura = conRuta(limpiarApertura(apertura), ruta);
     if (c && contenido !== null) {
       html = html.slice(0, el.inicio) + apertura + contenido + html.slice(c.inicio);
     } else {
@@ -167,8 +188,9 @@ function renderizar(html, ctx, indice) {
   return html;
 }
 
-export function aplicarContenido(html, datos) {
+export function aplicarContenido(html, datos, opciones = {}) {
   avisos.length = 0;
+  marcar = !!opciones.marcar;
   const salida = renderizar(html, datos);
   return { html: salida, avisos: [...avisos] };
 }
