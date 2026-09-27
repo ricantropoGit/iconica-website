@@ -24,8 +24,12 @@
    A prueba de fallos: sin ?v= la regla de caché no aplica y todo se sirve
    como siempre (max-age=0). Lo peor que puede pasar es quedarse igual.
 
-   Los archivos fuente NO se tocan: el guardia de abajo detiene el script si
-   encuentra .git, que existe en la copia local y nunca se sube a Vercel.
+   Los archivos fuente NO se tocan, y el guardia de abajo detiene el script
+   fuera de Vercel. La señal es la variable VERCEL=1, que Vercel define en
+   cada build. Antes se usaba la carpeta .git, pero en Vercel sí existe:
+   .vercelignore borra sus archivos y deja la carpeta vacía, así que el
+   script creía estar en local, no generaba public/ y el deploy fallaba.
+   Para probar el build en local: VERCEL=1 node scripts/version-assets.mjs
    ========================================================================= */
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -35,8 +39,8 @@ import { aplicarContenido } from './contenido.mjs';
 const ROOT = process.cwd();
 const SALIDA = join(ROOT, 'public');
 
-if (existsSync(join(ROOT, '.git'))) {
-  console.log('[build] Copia local detectada (.git): no se modifica nada. Este script sólo corre en el build de Vercel.');
+if (process.env.VERCEL !== '1') {
+  console.log('[build] Fuera de Vercel (sin VERCEL=1): no se modifica nada. Este script sólo corre en el build de Vercel.');
   process.exit(0);
 }
 
