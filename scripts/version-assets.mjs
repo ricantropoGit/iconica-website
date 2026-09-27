@@ -70,6 +70,12 @@ for (const [pagina, fuente] of Object.entries(PAGINAS)) {
   console.log(`[build] ${pagina}: contenido aplicado desde ${fuente}`);
 }
 
+// Vista previa del panel: la plantilla con sus marcadores y el mismo motor
+// que la rellena, para que /admin muestre el sitio real mientras se edita.
+cpSync(join(ROOT, 'index.html'), join(SALIDA, 'admin', 'plantilla-inicio.html'));
+cpSync(join(ROOT, 'scripts', 'contenido.mjs'), join(SALIDA, 'admin', 'contenido.js'));
+console.log('[build] admin/: plantilla y motor de la vista previa copiados');
+
 // Recursos locales con caché larga. La ruta no debe traer ya ?v= ni #,
 // para que el script sea idempotente y no toque URLs externas.
 const REF = /\b(href|src)="(\/?)((?:css|js|images)\/[^"?#]+|favicon\.(?:svg|ico)|apple-touch-icon\.png)"/g;

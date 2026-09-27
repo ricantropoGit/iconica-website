@@ -33,8 +33,6 @@ collections:
   - name: paginas
     label: Páginas
     delete: false
-    editor:
-      preview: false
     files:
       - name: inicio
         label: Inicio
