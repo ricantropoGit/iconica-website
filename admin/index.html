@@ -6,6 +6,9 @@
         <meta name="robots" content="noindex, nofollow"/>
         <title>Icónica24 — Editor de contenido</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+        <!-- Ruta absoluta de la configuración. Sin esto Decap la busca junto a
+             la página: en /admin (sin diagonal final) pedía /config.yml → 404. -->
+        <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url"/>
     </head>
     <body>
         <!-- Panel de edición (Decap CMS). La configuración está en config.yml,
