@@ -23,7 +23,7 @@
   },
   "precios": {
     "etiqueta": "Precios",
-    "titulo": "Elige tu plan",
+    "titulo": "Elige tu plan:",
     "texto": "Sin costo de desarrollo. Sin contrato forzoso.",
     "planes": [
       {
