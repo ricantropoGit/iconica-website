@@ -31,15 +31,16 @@ const plantilla = fetch('/admin/plantilla-inicio.html')
 const CMS = window.CMS;
 CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap');
 CMS.registerPreviewStyle('/css/styles.css');
+// El resaltado no se pinta sobre el elemento (un contorno en un texto de
+// varias líneas sale escalonado, y un contenedor con overflow lo recorta):
+// es un recuadro aparte, del tamaño total del elemento, encima de todo.
+// Sólo borde y halo: un fondo taparía el de botones y bloques oscuros.
 CMS.registerPreviewStyle(`
-  [data-ruta] { cursor: pointer; transition: outline-color .15s; outline: 2px solid transparent; outline-offset: 4px; border-radius: 3px; }
-  [data-ruta]:hover { outline: 2px dashed rgba(47, 111, 237, .55); }
-  /* Sólo contorno y halo: un fondo taparía el de botones y bloques oscuros. */
-  [data-ruta].cms-activo { outline: 2px solid #2f6fed; box-shadow: 0 0 0 6px rgba(47, 111, 237, .2); }
-  /* Las respuestas del acordeón viven en ::details-content, que recorta con
-     overflow: hidden (lo necesita para animar la apertura). Abierta ya no
-     hace falta, y sin esto el contorno se corta en el borde superior. */
-  .faq__item[open]::details-content { overflow: visible; }
+  [data-ruta] { cursor: pointer; }
+  .cms-marco { position: absolute; z-index: 2147483647; pointer-events: none; box-sizing: border-box;
+               border-radius: 6px; transition: top .12s, left .12s, width .12s, height .12s; }
+  .cms-marco--activo { border: 2px solid #2f6fed; box-shadow: 0 0 0 4px rgba(47, 111, 237, .2); }
+  .cms-marco--encima { border: 2px dashed rgba(47, 111, 237, .6); }
 `, { raw: true });
 
 /* ---------- Formulario: de campo a ruta y de ruta a campo ---------- */
@@ -113,19 +114,48 @@ async function irACampo(ruta) {
 
 let rutaActiva = null;
 let docVista = null;
+let bajoMouse = null;
+const MARGEN = 6;
+
+// Coloca (o esconde) un recuadro sobre el área completa de `el`.
+function enmarcar(tipo, el) {
+  if (!docVista) return;
+  let marco = docVista.querySelector(`.cms-marco--${tipo}`);
+  if (!marco) {
+    marco = docVista.createElement('div');
+    marco.className = `cms-marco cms-marco--${tipo}`;
+    marco.setAttribute('aria-hidden', 'true');
+    docVista.body.appendChild(marco);
+  }
+  const r = el && el.isConnected ? el.getBoundingClientRect() : null;
+  if (!r || !r.width || !r.height) { marco.hidden = true; return; }
+  const win = docVista.defaultView;
+  marco.style.top = `${r.top + win.scrollY - MARGEN}px`;
+  marco.style.left = `${r.left + win.scrollX - MARGEN}px`;
+  marco.style.width = `${r.width + MARGEN * 2}px`;
+  marco.style.height = `${r.height + MARGEN * 2}px`;
+  marco.hidden = false;
+}
+
+function reenmarcar() {
+  const activo = docVista && docVista.querySelector('.cms-activo');
+  enmarcar('activo', activo);
+  enmarcar('encima', bajoMouse && bajoMouse !== activo ? bajoMouse : null);
+}
 
 function resaltar(desplazar) {
   if (!docVista) return;
   docVista.querySelectorAll('.cms-activo').forEach(el => el.classList.remove('cms-activo'));
-  if (!rutaActiva) return;
+  if (!rutaActiva) return reenmarcar();
   // El elemento exacto; si no hay, el más cercano que lo contenga
   // (p. ej. al enfocar una pregunta completa de la lista).
   let objetivo = null;
   for (let r = rutaActiva; r && !objetivo; r = r.includes('.') ? r.slice(0, r.lastIndexOf('.')) : '') {
     objetivo = docVista.querySelector(`[data-ruta="${CSS.escape(r)}"]`);
   }
-  if (!objetivo) return;
+  if (!objetivo) return reenmarcar();
   objetivo.classList.add('cms-activo');
+  reenmarcar();
   if (desplazar) objetivo.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }
 
@@ -159,7 +189,15 @@ const VistaInicio = window.createClass({
         const el = e.target.closest('[data-ruta]');
         if (el) irACampo(el.getAttribute('data-ruta'));
       });
+      doc.addEventListener('mouseover', e => { bajoMouse = e.target.closest('[data-ruta]'); reenmarcar(); });
+      doc.addEventListener('mouseleave', () => { bajoMouse = null; reenmarcar(); });
+      // Si cambia el tamaño (ventana, fuentes, imágenes que terminan de
+      // cargar, un acordeón que se abre), los recuadros se recolocan.
+      doc.defaultView.addEventListener('resize', reenmarcar);
+      doc.addEventListener('toggle', () => setTimeout(reenmarcar, 400), true);
+      new doc.defaultView.ResizeObserver(reenmarcar).observe(doc.body);
     }
+    bajoMouse = null;
     resaltar(false);
   },
   render() {
