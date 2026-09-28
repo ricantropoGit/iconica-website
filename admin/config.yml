@@ -12,8 +12,12 @@ backend:
   name: github
   repo: ricantropoGit/iconica-website
   branch: main
+  # Inicio de sesión con usuario y contraseña (api/auth.js) y todas las
+  # llamadas a GitHub por el intermediario api/github.js. El editor nunca
+  # tiene una llave de GitHub: ver api/_cms.js.
   base_url: https://iconica24.com
   auth_endpoint: api/auth
+  api_root: /api/github
   commit_messages:
     update: "Contenido: actualiza {{slug}} desde el panel"
     uploadMedia: "Contenido: sube {{path}}"
@@ -23,6 +27,8 @@ backend:
 local_backend: true
 
 locale: es
+# Logotipo en la pantalla de entrada (en lugar del de Decap)
+logo_url: /apple-touch-icon.png
 site_url: https://iconica24.com
 display_url: https://iconica24.com
 
