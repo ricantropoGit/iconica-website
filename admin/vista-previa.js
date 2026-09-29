@@ -169,6 +169,22 @@ document.addEventListener('focusin', e => {
   resaltar(true);
 });
 
+// Como en el formulario: un clic fuera de los campos quita el resaltado.
+// (Al pasar de un campo a otro, relatedTarget es el campo nuevo y focusin
+// ya se encarga.)
+document.addEventListener('focusout', e => {
+  const raiz = formulario();
+  if (!raiz || !raiz.contains(e.target)) return;
+  if (e.relatedTarget && raiz.contains(e.relatedTarget)) return;
+  quitarResaltado();
+});
+
+function quitarResaltado() {
+  if (rutaActiva === null) return;
+  rutaActiva = null;
+  resaltar(false);
+}
+
 /* ---------- Plantilla de vista previa ---------- */
 
 const VistaInicio = window.createClass({
@@ -187,7 +203,18 @@ const VistaInicio = window.createClass({
         // En la vista previa los enlaces no navegan: un clic edita.
         if (e.target.closest('a')) e.preventDefault();
         const el = e.target.closest('[data-ruta]');
-        if (el) irACampo(el.getAttribute('data-ruta'));
+        if (el) {
+          // Se resalta de inmediato (los campos de imagen no reciben foco).
+          rutaActiva = el.getAttribute('data-ruta');
+          resaltar(false);
+          irACampo(rutaActiva);
+        } else {
+          // Clic en una parte no editable: se quita el resaltado y se suelta
+          // el campo del formulario, como al hacer clic fuera en el editor.
+          quitarResaltado();
+          const activo = document.activeElement;
+          if (activo && formulario()?.contains(activo)) activo.blur();
+        }
       });
       doc.addEventListener('mouseover', e => { bajoMouse = e.target.closest('[data-ruta]'); reenmarcar(); });
       doc.addEventListener('mouseleave', () => { bajoMouse = null; reenmarcar(); });
