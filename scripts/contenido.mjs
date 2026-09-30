@@ -171,8 +171,9 @@ function renderizar(html, ctx, indice, base = '') {
     const c = cierre(html, el);
     if (opcional && contenido === '') {
       // Se va el elemento completo, con la sangría que lo precedía.
-      const inicio = html.lastIndexOf('\n', el.inicio - 1);
-      const desde = /^\s*$/.test(html.slice(inicio + 1, el.inicio)) ? inicio : el.inicio;
+      // (Al principio del HTML no hay salto de línea antes: se quita desde el elemento.)
+      const inicio = el.inicio > 0 ? html.lastIndexOf('\n', el.inicio - 1) : -1;
+      const desde = inicio >= 0 && /^\s*$/.test(html.slice(inicio + 1, el.inicio)) ? inicio : el.inicio;
       html = html.slice(0, desde) + html.slice(c ? c.fin : el.finApertura);
       pos = desde;
       continue;
