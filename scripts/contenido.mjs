@@ -15,12 +15,28 @@
      data-cms-index                 número del elemento en la lista (01, 02…)
      data-cms-optional              si el valor está vacío, el elemento
                                     desaparece
+     data-cms-href="tel:+52{negocio.telefono|digitos}"
+                                    atributo armado con uno o más valores
+                                    entre llaves; |digitos deja sólo los
+                                    números ("55 1234 5678" → 5512345678)
+                                    (también -id y -style; un id vacío se
+                                    quita)
+     data-cms-if=".foto"            el elemento sólo aparece si el valor no
+                                    está vacío (o es true); "!.foto" al revés
+     data-cms-class="destacado:.destacado"
+                                    agrega la clase si el valor no está vacío
+                                    (varias separadas por coma)
+     data-cms-bloques="bloques"     página armada con bloques: por cada
+                                    elemento de la lista pone el bloque de su
+                                    tipo (opciones.bloques[tipo], un HTML con
+                                    claves relativas: ".titulo")
 
    Los textos admiten un marcado mínimo, para no pedirle HTML al cliente:
      ==texto==      resaltado (<span class="hl">)
      **texto**      negritas
      [texto](url)   enlace
      ^1^            llamada a nota (<sup class="note">)
+     salto de línea <br>
 
    A prueba de fallos: si falta una clave en el JSON, el texto original del
    HTML se queda como está y sólo se avisa en el log del build.
@@ -30,7 +46,7 @@
    faq.preguntas.3.respuesta…), para ligarlo con su campo del formulario.
    ========================================================================= */
 
-const ATRIBUTOS = ['href', 'src', 'alt', 'content'];
+const ATRIBUTOS = ['href', 'src', 'alt', 'content', 'id', 'style'];
 
 // Etiquetas y comentarios. Los comentarios se saltan: el HTML guarda
 // secciones desactivadas dentro de <!-- --> que no deben contarse.
@@ -54,7 +70,8 @@ export function marcado(texto) {
     })
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/==(.+?)==/g, '<span class="hl">$1</span>')
-    .replace(/\^(\w+)\^/g, '<sup class="note">$1</sup>');
+    .replace(/\^(\w+)\^/g, '<sup class="note">$1</sup>')
+    .replace(/\r?\n/g, '<br>');
 }
 
 function leer(ctx, clave) {
@@ -66,6 +83,23 @@ function leer(ctx, clave) {
   }
   return v;
 }
+
+// Valor de un atributo: una clave ("plan.enlace") o una plantilla con claves
+// entre llaves ("mailto:{negocio.correo}"). null si falta alguna clave.
+const LLAVE = /\{([^{}|]+)(\|digitos)?\}/g;
+// `valido` revisa cada valor que entra (en style, que sea un valor simple).
+function valorDeAtributo(ctx, clave, valido = () => true) {
+  if (!clave.includes('{')) { const x = leer(ctx, clave); return x == null || !valido(String(x)) ? null : x; }
+  let falta = false;
+  const v = clave.replace(LLAVE, (_, k, digitos) => {
+    const x = leer(ctx, k.trim());
+    if (x == null || !valido(String(x))) { falta = true; return ''; }
+    return digitos ? String(x).replace(/\D/g, '') : String(x);
+  });
+  return falta ? null : v;
+}
+// Clave con la que se edita un atributo (la primera, si es plantilla).
+const claveDeAtributo = clave => (clave.includes('{') ? (clave.match(/\{([^{}|]+)/) || [])[1]?.trim() ?? clave : clave);
 
 function atributo(etiqueta, nombre) {
   const m = etiqueta.match(new RegExp(`\\s${nombre}(?:="([^"]*)")?(?=[\\s/>])`));
@@ -103,6 +137,28 @@ function limpiarApertura(etiqueta) {
 
 const avisos = [];
 let marcar = false;
+let bloques = {};
+
+// Un valor "cuenta" si no está vacío: ni null, ni "", ni false, ni [].
+function verdadero(v) {
+  return v != null && v !== '' && v !== false && !(Array.isArray(v) && !v.length);
+}
+function condicion(ctx, clave) {
+  const no = clave.startsWith('!');
+  const v = verdadero(leer(ctx, no ? clave.slice(1) : clave));
+  return no ? !v : v;
+}
+
+// En un style sólo pasan valores simples (colores, medidas): nada de url(),
+// comillas ni punto y coma que abran otra declaración.
+const ESTILO_SEGURO = /^[#\w\s.,%()+-]*$/;
+
+// Quita un elemento completo, con la sangría que lo precedía.
+function quitar(html, el, c) {
+  const salto = el.inicio > 0 ? html.lastIndexOf('\n', el.inicio - 1) : -1;
+  const desde = salto >= 0 && /^\s*$/.test(html.slice(salto + 1, el.inicio)) ? salto : el.inicio;
+  return { html: html.slice(0, desde) + html.slice(c ? c.fin : el.finApertura), pos: desde };
+}
 
 // Ruta completa de una clave: las que empiezan con "." son relativas al
 // elemento de la lista en curso (base).
@@ -117,11 +173,35 @@ function conRuta(apertura, ruta) {
 }
 
 function renderizar(html, ctx, indice, base = '') {
-  // 1) Listas, de la más externa hacia adentro (cada una se resuelve completa).
+  // 0) Bloques: cada elemento de la lista con el HTML de su tipo.
   let pos = 0, el;
+  while ((el = buscar(html, pos, t => atributo(t, 'data-cms-bloques') !== null))) {
+    const clave = atributo(el.apertura, 'data-cms-bloques');
+    const c = cierre(html, el);
+    const items = leer(ctx, clave);
+    const ruta = rutaDe(clave, base);
+    let nuevo = '';
+    if (!Array.isArray(items)) avisos.push(`falta la lista de bloques "${clave}"`);
+    else {
+      nuevo = items.map((item, i) => {
+        const tpl = bloques[item && item.tipo];
+        if (!tpl) { avisos.push(`bloque "${item && item.tipo}" desconocido en ${ruta}.${i}`); return ''; }
+        return '\n' + renderizar(tpl.trim(), item, i, `${ruta}.${i}`);
+      }).join('\n') + '\n';
+    }
+    const apertura = limpiarApertura(el.apertura);
+    html = html.slice(0, el.inicio) + apertura + nuevo + html.slice(c.inicio);
+    pos = el.inicio + apertura.length + nuevo.length;
+  }
+
+  // 1) Listas, de la más externa hacia adentro (cada una se resuelve completa).
+  pos = 0;
   while ((el = buscar(html, pos, t => atributo(t, 'data-cms-list') !== null))) {
     const clave = atributo(el.apertura, 'data-cms-list');
     const c = cierre(html, el);
+    // Una lista con data-cms-if se resuelve aquí (después ya no quedaría la marca).
+    const si = atributo(el.apertura, 'data-cms-if');
+    if (si !== null && !condicion(ctx, si)) { ({ html, pos } = quitar(html, el, c)); continue; }
     const items = leer(ctx, clave);
     const interior = html.slice(el.finApertura, c.inicio);
     const tpl = buscar(interior, 0, t => atributo(t, 'data-cms-item') !== null);
@@ -146,18 +226,34 @@ function renderizar(html, ctx, indice, base = '') {
   pos = 0;
   while ((el = buscar(html, pos, t => /\sdata-cms/.test(t)))) {
     let apertura = el.apertura;
+    const si = atributo(apertura, 'data-cms-if');
+    if (si !== null && !condicion(ctx, si)) {
+      ({ html, pos } = quitar(html, el, cierre(html, el)));
+      continue;
+    }
     for (const a of ATRIBUTOS) {
       const clave = atributo(apertura, `data-cms-${a}`);
       if (clave === null) continue;
-      const v = leer(ctx, clave);
-      if (v == null) { avisos.push(`falta "${clave}"`); continue; }
-      apertura = apertura.replace(new RegExp(`(\\s${a}=")[^"]*(")`), `$1${escapar(v)}$2`);
+      const v = valorDeAtributo(ctx, clave, a === 'style' ? x => ESTILO_SEGURO.test(x) : undefined);
+      if (v == null) { avisos.push(`falta o no es válido "${clave}"`); continue; }
+      if (a === 'id' && v === '') { apertura = apertura.replace(/\sid="[^"]*"/, ''); continue; }
+      apertura = apertura.replace(new RegExp(`(\\s${a}=")[^"]*(")`), (_, antes, despues) => antes + escapar(v) + despues);
+    }
+    const clases = atributo(apertura, 'data-cms-class');
+    if (clases !== null) {
+      const agregar = clases.split(',').map(x => x.trim().split(':')).filter(([n, k]) => n && k && condicion(ctx, k.trim())).map(([n]) => n.trim());
+      if (agregar.length) {
+        apertura = /\sclass="/.test(apertura)
+          ? apertura.replace(/(\sclass=")([^"]*)(")/, (_, a, v, b) => `${a}${v ? v + ' ' : ''}${agregar.join(' ')}${b}`)
+          : apertura.replace(/\s*\/?>$/, m => ` class="${agregar.join(' ')}"${m}`);
+      }
     }
 
     const clave = atributo(apertura, 'data-cms');
     const esItem = atributo(apertura, 'data-cms-item') !== null;
-    const enlace = atributo(apertura, 'data-cms-href');
-    const ruta = clave !== null ? rutaDe(clave, base) : esItem ? base : enlace !== null ? rutaDe(enlace, base) : null;
+    // Sin texto editable, la ruta es la del atributo (enlace, imagen…).
+    const deAtributo = ['href', 'src', 'alt', 'content'].map(a => atributo(apertura, `data-cms-${a}`)).find(x => x !== null);
+    const ruta = clave !== null ? rutaDe(clave, base) : esItem ? base : deAtributo != null ? rutaDe(claveDeAtributo(deAtributo), base) : null;
     const conIndice = atributo(apertura, 'data-cms-index') !== null;
     const opcional = atributo(apertura, 'data-cms-optional') !== null;
     let contenido = null;
@@ -170,12 +266,7 @@ function renderizar(html, ctx, indice, base = '') {
 
     const c = cierre(html, el);
     if (opcional && contenido === '') {
-      // Se va el elemento completo, con la sangría que lo precedía.
-      // (Al principio del HTML no hay salto de línea antes: se quita desde el elemento.)
-      const inicio = el.inicio > 0 ? html.lastIndexOf('\n', el.inicio - 1) : -1;
-      const desde = inicio >= 0 && /^\s*$/.test(html.slice(inicio + 1, el.inicio)) ? inicio : el.inicio;
-      html = html.slice(0, desde) + html.slice(c ? c.fin : el.finApertura);
-      pos = desde;
+      ({ html, pos } = quitar(html, el, c));
       continue;
     }
     apertura = conRuta(limpiarApertura(apertura), ruta);
@@ -192,6 +283,26 @@ function renderizar(html, ctx, indice, base = '') {
 export function aplicarContenido(html, datos, opciones = {}) {
   avisos.length = 0;
   marcar = !!opciones.marcar;
+  bloques = opciones.bloques || {};
   const salida = renderizar(html, datos);
   return { html: salida, avisos: [...avisos] };
+}
+
+/* ---------- Enlaces del sitio (menú, botón de la cabecera, pie) ----------
+   Cada enlace de sitio.json puede apuntar a una página del sitio ("pagina":
+   su nombre, elegido de una lista en el panel) o a una dirección escrita
+   ("enlace": #ancla, /algo, https://…). Deja en cada uno su "url" final.
+   Con `paginas` (los nombres de las páginas que existen), un enlace a una
+   página que ya no está se quita: borrar una página no deja enlaces rotos.
+   Sin `paginas` (vista previa, donde puede haber páginas recién creadas),
+   no se quita nada. */
+export function enlazar(sitio, paginas) {
+  if (!sitio || typeof sitio !== 'object') return sitio;
+  const existe = p => !paginas || paginas.includes(p);
+  const url = e => (e && e.pagina ? `/${e.pagina}` : (e && e.enlace) || '#');
+  const lista = l => (Array.isArray(l) ? l.filter(e => !(e && e.pagina) || existe(e.pagina)).map(e => ({ ...e, url: url(e) })) : l);
+  const copia = { ...sitio, menu: lista(sitio.menu) };
+  if (sitio.boton) copia.boton = sitio.boton.pagina && !existe(sitio.boton.pagina) ? { ...sitio.boton, texto: '' } : { ...sitio.boton, url: url(sitio.boton) };
+  if (sitio.pie) copia.pie = { ...sitio.pie, enlaces: lista(sitio.pie.enlaces) };
+  return copia;
 }

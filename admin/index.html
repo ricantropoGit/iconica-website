@@ -4,22 +4,22 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="robots" content="noindex, nofollow"/>
-        <title>Icónica24 — Editor de contenido</title>
+        <title>Editor del sitio</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-        <!-- Ruta absoluta de la configuración. Sin esto Decap la busca junto a
-             la página: en /admin (sin diagonal final) pedía /config.yml → 404. -->
         <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url"/>
     </head>
     <body>
-        <!-- Panel de edición (Decap CMS). La configuración está en config.yml,
-             junto a este archivo. Versión fija para que una actualización de
-             Decap no cambie el panel sin que lo sepamos. -->
+        <!-- Panel de edición (Decap CMS), instalado por la consola de Icónica24.
+             config.yml tiene los campos de este sitio; lo que depende de dónde
+             está publicado (repo, dirección) se pone aquí al iniciar, así el
+             mismo kit sirve en cualquier dominio. admin/sitio.js lo escribe
+             el build con el repo de este sitio. -->
         <script>window.CMS_MANUAL_INIT = true;</script>
+        <script src="/admin/sitio.js"></script>
         <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
-        <!-- El español de Decap deja algunos textos en inglés ("Add …",
-             "Insert from URL"): se completan antes de iniciar, sin tocar los
-             que ya trae. La configuración se sigue leyendo de config.yml. -->
         <script>
+            // El español de Decap deja algunos textos en inglés ("Add …",
+            // "Insert from URL"): se completan sin tocar los que ya trae.
             (function () {
                 function completar(a, b) {
                     Object.keys(b).forEach(function (k) {
@@ -34,11 +34,26 @@
                     file: { chooseUrl: 'Insertar desde URL', replaceUrl: 'Reemplazar con URL' },
                 } } }));
             })();
-            CMS.init();
-        </script>
-        <!-- El editor entra con usuario y contraseña (api/auth.js), no con
-             GitHub: se quita "con GitHub" y el logo del botón de entrada. -->
-        <script>
+            CMS.init({
+                config: {
+                    backend: {
+                        name: 'github',
+                        repo: window.SITIO.repo,
+                        branch: 'main',
+                        // Usuario y contraseña (api/auth.js) y todas las llamadas
+                        // a GitHub por el intermediario (api/github.js).
+                        base_url: location.origin,
+                        auth_endpoint: 'api/auth',
+                        api_root: '/api/github',
+                    },
+                    // El panel siempre habla con GitHub por el intermediario, aunque
+                    // config.yml traiga local_backend de cuando se diseñó en local.
+                    local_backend: false,
+                    site_url: location.origin,
+                    display_url: location.origin,
+                },
+            });
+            // El editor no entra con GitHub: se quita "con GitHub" y el logo del botón.
             new MutationObserver(function () {
                 document.querySelectorAll('button').forEach(function (b) {
                     if (!/con GitHub|with GitHub/i.test(b.textContent)) return;
@@ -49,7 +64,6 @@
                 });
             }).observe(document.documentElement, { childList: true, subtree: true });
         </script>
-        <!-- Vista previa con el diseño real del sitio (botón del ojo) -->
         <script type="module" src="/admin/vista-previa.js"></script>
     </body>
 </html>

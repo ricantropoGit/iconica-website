@@ -13,30 +13,66 @@
    formulario la ruta se lee de los id que pone Decap (hero-field-6 →
    titulo-field-7) y de la posición de cada elemento en las listas.
 
-   En el sitio publicado, el build copia la plantilla y el motor a /admin/.
-   En local (decap-server) se leen directo de la raíz.
-   ========================================================================= */
-const { aplicarContenido } = await import('/admin/contenido.js')
-  .catch(() => import('/scripts/contenido.mjs'));
+   El build (scripts/build.mjs) copia las plantillas y el motor a /admin/.
 
-const plantilla = fetch('/admin/plantilla-inicio.html')
-  .then(r => (r.ok ? r : fetch('/index.html')))
-  .then(r => r.text())
-  .then(html => {
-    const cuerpo = html.slice(html.indexOf('>', html.indexOf('<body')) + 1, html.lastIndexOf('</body>'));
+   Plantilla de bloques: además carga el HTML de cada bloque
+   (admin/bloques.json) y los datos publicados (admin/datos/*.json). Una
+   página se ve con el menú y pie guardados; "Sitio" (menú, marca, pie) se
+   ve sobre la página de inicio guardada, y sus rutas llevan "sitio.".
+   ========================================================================= */
+const { aplicarContenido, enlazar = x => x } = await import('/admin/contenido.js');
+
+// Una plantilla por página editable (inicio → index.html, etc.). El build
+// las copia a /admin/plantilla-<nombre>.html y lista los nombres en sitio.js.
+const plantillas = {};
+function html(nombre) {
+  plantillas[nombre] ??= fetch(`/admin/plantilla-${nombre}.html`)
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); });
+  return plantillas[nombre];
+}
+function plantilla(nombre) {
+  return html(nombre).then(texto => {
+    const cuerpo = texto.slice(texto.indexOf('>', texto.indexOf('<body')) + 1, texto.lastIndexOf('</body>'));
     // Los scripts no corren en la vista previa; se quitan para no ensuciarla.
     return cuerpo.replace(/<script\b[\s\S]*?<\/script>/gi, '');
   });
+}
+
+// La vista previa vive dentro de /admin/: las rutas relativas del sitio
+// (imagenes/foto.jpg) se vuelven absolutas (/imagenes/foto.jpg).
+const RELATIVA = /(\s(?:src|href|poster)=")(?![a-z][\w+.-]*:|\/|#|")([^"]*")/gi;
+const absoluta = texto => texto.replace(RELATIVA, '$1/$2');
+
+const SITIO = window.SITIO || {};
+const bloques = SITIO.bloques ? await fetch('/admin/bloques.json').then(r => r.json()).catch(() => ({})) : {};
+const guardados = {};
+const guardado = nombre => (guardados[nombre] ??= fetch(`/admin/datos/${nombre}.json`).then(r => (r.ok ? r.json() : {})).catch(() => ({})));
 
 const CMS = window.CMS;
-CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap');
-CMS.registerPreviewStyle('/css/styles.css');
+// Los estilos de la vista previa son los de la página misma: sus <link
+// rel="stylesheet"> y sus <style>. Un sitio puede agregar ajustes sólo para
+// la vista previa en admin/vista-previa.css (p. ej. una cabecera fija que
+// en el panel estorba).
+const primera = (SITIO.paginas || [])[0];
+if (primera) {
+  const cabeza = await html(primera).then(t => t.slice(0, t.search(/<body[\s>]/i)), () => '');
+  for (const [etiqueta] of cabeza.matchAll(/<link\b[^>]*>/gi)) {
+    if (!/\brel=["']?stylesheet/i.test(etiqueta)) continue;
+    const href = (etiqueta.match(/\bhref=["']([^"']+)/i) || [])[1];
+    if (href) CMS.registerPreviewStyle(new URL(href, location.origin + '/').href);
+  }
+  for (const [, css] of cabeza.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)) {
+    CMS.registerPreviewStyle(css, { raw: true });
+  }
+}
+if (SITIO.estilosVista) CMS.registerPreviewStyle('/admin/vista-previa.css');
 // El resaltado no se pinta sobre el elemento (un contorno en un texto de
 // varias líneas sale escalonado, y un contenedor con overflow lo recorta):
 // es un recuadro aparte, del tamaño total del elemento, encima de todo.
 // Sólo borde y halo: un fondo taparía el de botones y bloques oscuros.
 CMS.registerPreviewStyle(`
   [data-ruta] { cursor: pointer; }
+  .cms-vista-sitio [data-ruta]:not([data-ruta^="sitio."]), .cms-vista-pagina [data-ruta^="sitio."] { cursor: auto; }
   .cms-marco { position: absolute; z-index: 2147483647; pointer-events: none; box-sizing: border-box;
                border-radius: 6px; transition: top .12s, left .12s, width .12s, height .12s; }
   .cms-marco--activo { border: 2px solid #2f6fed; box-shadow: 0 0 0 4px rgba(47, 111, 237, .2); }
@@ -89,9 +125,31 @@ function abrir(nodo, raiz) {
   if (boton && boton.getAttribute('aria-label') === 'Expand') boton.click();
 }
 
+// Rutas de la vista previa → rutas del formulario abierto. En "Sitio" el
+// formulario es sitio.json (las rutas de la página llevan "sitio."); en una
+// página, lo de "sitio." no está en este formulario.
+// El prefijo es el de la vista previa abierta (cada una lo deja en su
+// documento): Decap puede volver a pintar la de otra entrada un momento.
+const prefijoActual = () => (docVista && docVista.__prefijo) || '';
+// ¿Se edita en el formulario abierto? (En una página, el menú y el pie no;
+// en "Sitio", los bloques de la página no.)
+const editableAqui = ruta => {
+  const prefijo = prefijoActual();
+  return prefijo ? ruta.startsWith(prefijo) : !(SITIO.sitio && ruta.startsWith('sitio.'));
+};
+// Elemento editable (en este formulario) más cercano.
+const editableDe = el => {
+  const e = el && el.closest('[data-ruta]');
+  return e && editableAqui(e.getAttribute('data-ruta')) ? e : null;
+};
 async function irACampo(ruta) {
   const raiz = formulario();
   if (!raiz) return;
+  const prefijo = prefijoActual();
+  if (prefijo) {
+    if (!ruta.startsWith(prefijo)) return;
+    ruta = ruta.slice(prefijo.length);
+  } else if (ruta.startsWith('sitio.') && SITIO.sitio) return;
   let nodo = raiz;
   for (const parte of ruta.split('.')) {
     abrir(nodo, raiz);
@@ -163,7 +221,7 @@ let datosActuales = {};
 document.addEventListener('focusin', e => {
   const raiz = formulario();
   if (!raiz || !raiz.contains(e.target)) return;
-  const ruta = normalizar(rutaDeCampo(e.target), datosActuales);
+  const ruta = prefijoActual() + normalizar(rutaDeCampo(e.target), datosActuales);
   if (ruta === rutaActiva) return;
   rutaActiva = ruta;
   resaltar(true);
@@ -187,22 +245,29 @@ function quitarResaltado() {
 
 /* ---------- Plantilla de vista previa ---------- */
 
-const VistaInicio = window.createClass({
+// `pagina`: la plantilla que se muestra. Para "Sitio" es la de inicio, con
+// sus bloques guardados y el sitio del formulario.
+const vista = (nombre, pagina = nombre) => window.createClass({
   getInitialState() { return { plantilla: null, error: null }; },
   componentDidMount() {
-    plantilla
-      .then(p => this.setState({ plantilla: p }))
+    Promise.all([plantilla(pagina), SITIO.sitio ? guardado(nombre === 'sitio' ? pagina : 'sitio') : {}])
+      .then(([p, otros]) => this.setState({ plantilla: p, otros }))
       .catch(() => this.setState({ error: 'No se pudo cargar la vista previa.' }));
   },
   componentDidUpdate() {
     if (!this.raiz) return;
     const doc = this.raiz.ownerDocument;
+    doc.__prefijo = this.prefijo;
+    if (SITIO.sitio) {
+      doc.body.classList.toggle('cms-vista-sitio', !!this.prefijo);
+      doc.body.classList.toggle('cms-vista-pagina', !this.prefijo);
+    }
     if (doc !== docVista) {
       docVista = doc;
       doc.addEventListener('click', e => {
         // En la vista previa los enlaces no navegan: un clic edita.
         if (e.target.closest('a')) e.preventDefault();
-        const el = e.target.closest('[data-ruta]');
+        const el = editableDe(e.target);
         if (el) {
           // Se resalta de inmediato (los campos de imagen no reciben foco).
           rutaActiva = el.getAttribute('data-ruta');
@@ -216,7 +281,7 @@ const VistaInicio = window.createClass({
           if (activo && formulario()?.contains(activo)) activo.blur();
         }
       });
-      doc.addEventListener('mouseover', e => { bajoMouse = e.target.closest('[data-ruta]'); reenmarcar(); });
+      doc.addEventListener('mouseover', e => { bajoMouse = editableDe(e.target); reenmarcar(); });
       doc.addEventListener('mouseleave', () => { bajoMouse = null; reenmarcar(); });
       // Si cambia el tamaño (ventana, fuentes, imágenes que terminan de
       // cargar, un acordeón que se abre), los recuadros se recolocan.
@@ -232,9 +297,25 @@ const VistaInicio = window.createClass({
     if (this.state.error) return h('p', { style: { padding: '2rem' } }, this.state.error);
     if (!this.state.plantilla) return h('p', { style: { padding: '2rem' } }, 'Cargando vista previa…');
     datosActuales = this.props.entry.get('data').toJS();
-    const { html } = aplicarContenido(this.state.plantilla, datosActuales, { marcar: true });
-    return h('div', { ref: el => { this.raiz = el; }, dangerouslySetInnerHTML: { __html: html } });
+    const esSitio = nombre === 'sitio';
+    this.prefijo = esSitio ? 'sitio.' : '';
+    // Los enlaces del menú y del pie se resuelven igual que en el build
+    // (una opción que apunta a una página lleva a /pagina).
+    const datos = esSitio
+      ? { ...this.state.otros, sitio: enlazar(datosActuales) }
+      : SITIO.sitio ? { ...datosActuales, sitio: enlazar(this.state.otros) } : datosActuales;
+    const { html } = aplicarContenido(this.state.plantilla, datos, { marcar: true, bloques });
+    return h('div', { ref: el => { this.raiz = el; }, dangerouslySetInnerHTML: { __html: absoluta(html) } });
   },
 });
 
-CMS.registerPreviewTemplate('inicio', VistaInicio);
+for (const nombre of SITIO.paginas || []) {
+  CMS.registerPreviewTemplate(nombre, vista(nombre));
+}
+// Páginas nuevas (colección "paginas" del panel): mismo molde que inicio.
+if (SITIO.bloques && (SITIO.paginas || []).includes('inicio')) {
+  CMS.registerPreviewTemplate('paginas', vista('paginas', 'inicio'));
+}
+if (SITIO.sitio && (SITIO.paginas || []).length) {
+  CMS.registerPreviewTemplate('sitio', vista('sitio', SITIO.paginas.includes('inicio') ? 'inicio' : SITIO.paginas[0]));
+}

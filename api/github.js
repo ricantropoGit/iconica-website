@@ -23,6 +23,20 @@ async function cuerpoCrudo(req) {
   return Buffer.concat(partes);
 }
 
+// ¿La ruta es del repo de este sitio y no se sale de él?
+// ".." (también codificado) haría que la URL se normalice fuera del repo.
+// Una "/" codificada sólo se acepta donde Decap la usa: para listar una
+// carpeta (git/trees/main:contenido%2Fpaginas); ahí se revisa ya
+// decodificada. (Lo prueba pruebas/unitarias/intermediario.test.mjs.)
+export function rutaPermitida(ruta, repo) {
+  const propia = `repos/${String(repo || '').toLowerCase()}`;
+  const rl = ruta.toLowerCase();
+  const arbol = /^repos\/[^/]+\/[^/]+\/git\/trees\/[^/:]+:/i.test(ruta);
+  const revisar = arbol ? ruta.replace(/%2f/gi, '/') : ruta;
+  const escapa = /(^|[/:])\.\.?(\/|$)|%2e|%5c|\\/i.test(revisar) || /%2f/i.test(revisar);
+  return !!repo && !escapa && (rl === propia || rl.startsWith(`${propia}/`));
+}
+
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
 
@@ -45,13 +59,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ login: usuario, name: usuario, avatar_url: '' });
   }
 
+  if (!rutaPermitida(ruta, repo)) return res.status(403).json({ message: 'Ruta no permitida' });
   const propia = `repos/${repo}`;
   const rl = ruta.toLowerCase();
-  // ".." (también codificado) haría que la URL se normalice fuera del repo.
-  const escapa = /(^|\/)\.\.?(\/|$)|%2e|%2f|%5c|\\/i.test(ruta);
-  if (!repo || escapa || (rl !== propia && !rl.startsWith(`${propia}/`))) {
-    return res.status(403).json({ message: 'Ruta no permitida' });
-  }
 
   let llave;
   try {
