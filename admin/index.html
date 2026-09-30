@@ -14,7 +14,28 @@
         <!-- Panel de edición (Decap CMS). La configuración está en config.yml,
              junto a este archivo. Versión fija para que una actualización de
              Decap no cambie el panel sin que lo sepamos. -->
+        <script>window.CMS_MANUAL_INIT = true;</script>
         <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
+        <!-- El español de Decap deja algunos textos en inglés ("Add …",
+             "Insert from URL"): se completan antes de iniciar, sin tocar los
+             que ya trae. La configuración se sigue leyendo de config.yml. -->
+        <script>
+            (function () {
+                function completar(a, b) {
+                    Object.keys(b).forEach(function (k) {
+                        if (b[k] && typeof b[k] === 'object') a[k] = completar(a[k] || {}, b[k]);
+                        else if (!(k in a)) a[k] = b[k];
+                    });
+                    return a;
+                }
+                CMS.registerLocale('es', completar(CMS.getLocale('es') || {}, { editor: { editorWidgets: {
+                    list: { add: 'Añadir %{item}', addType: 'Añadir %{item}' },
+                    image: { chooseUrl: 'Insertar desde URL', replaceUrl: 'Reemplazar con URL' },
+                    file: { chooseUrl: 'Insertar desde URL', replaceUrl: 'Reemplazar con URL' },
+                } } }));
+            })();
+            CMS.init();
+        </script>
         <!-- El editor entra con usuario y contraseña (api/auth.js), no con
              GitHub: se quita "con GitHub" y el logo del botón de entrada. -->
         <script>
