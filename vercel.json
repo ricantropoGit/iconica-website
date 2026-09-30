@@ -1,5 +1,5 @@
 {
-  "buildCommand": "node scripts/version-assets.mjs",
+  "buildCommand": "node scripts/build.mjs",
   "outputDirectory": "public",
   "functions": {
     "api/submit.js": {
