@@ -56,7 +56,7 @@
         "enlace": "https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03"
       }
     ],
-    "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)^6^"
+    "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.^6^](servicios.html)"
   },
   "contacto": {
     "titulo": "Empecemos por conocer tu negocio.",
