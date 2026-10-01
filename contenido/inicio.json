@@ -66,7 +66,7 @@
   },
   "ventajas": {
     "titulo": "Olvídate de la curva de aprendizaje.",
-    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio en 24 hrs.^4^== Tú solo pagas un servicio de suscripción mensual o anual== tal como lo harías con cualquier servicio de alojamiento web:==",
+    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio.== Tú solo pagas un servicio de suscripción mensual o anual ==tal como lo harías con cualquier servicio de alojamiento web:==",
     "tarjetas": [
       {
         "etiqueta": "Inversión",
@@ -85,7 +85,7 @@
       },
       {
         "etiqueta": "CMS",
-        "titulo": "Editable en WordPress",
+        "titulo": "Editas tu propio contenido",
         "texto": "Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer."
       },
       {
@@ -123,6 +123,10 @@
         "respuesta": "Es lo más conveniente. Así es posible partir de un ejemplo real sobre del cual sea factible basarnos para diseñar tu página web. No vamos a copiar otro sitio, sólo vamos a rescatar algunos de sus elementos esenciales para construir algo nuevo.\n\nLos sitios del \"hágalo usted mismo\" trabajan parecido con sistemas de plantillas. De cualquier forma, al final del día, el cliente deberá elegir un tema prediseñado para que sea adaptado a la imagen de su empresa o negocio."
       },
       {
+        "pregunta": "¿Puedo agregar reservaciones, agendas o pagos en línea?",
+        "respuesta": "Sí. Es posible integrar tu sitio con la plataforma que ya uses, o te ayudamos a elegir una. Estas herramientas las contratas por tu cuenta. [El costo de integración es adicional a la mensualidad.](/servicios.html)"
+      },
+      {
         "pregunta": "¿De verdad en 24 horas?",
         "respuesta": "Sí, 24 horas a partir de haber recibido tu contenido y la URL de un ejemplo de sitio/página web base para empezar a construir desde ahí. Te mandamos un formulario guiado que te dice exactamente qué necesitamos de ti, por ejemplo: textos, fotos, servicios, precios, horarios… etc."
       },
@@ -145,10 +149,6 @@
       {
         "pregunta": "¿Otro negocio puede tener mi mismo diseño?",
         "respuesta": "Puede existir en otras ciudades o en otros giros, nunca en tu competencia directa. Mientras tu plan esté activo, ese diseño no se instala en otro negocio de tu mismo giro en tu zona. Con el plan anual la exclusividad se amplía de tu zona a toda tu ciudad."
-      },
-      {
-        "pregunta": "¿Puedo agregar reservaciones, citas o pagos en línea?",
-        "respuesta": "Sí. Integramos tu sitio con la plataforma que ya uses o te ayudamos a elegir una. [Estas herramientas se contratan por separado y su integración se cotiza aparte.](/servicios.html)"
       }
     ]
   },
