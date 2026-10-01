@@ -1,12 +1,12 @@
 {
   "pasos": {
     "titulo": "Subimos tu sitio web a la red en tres sencillos pasos",
-    "texto": "Solo tienes que ==apuntar tu dominio a nuestros servidores, señalarnos un ejemplo de cualquier diseño web para basarnos en él== y compartir los textos e imágenes que van en tu sitio.",
+    "texto": "Únicamente tienes que ==apuntar tu dominio a nuestros servidores, señalarnos un ejemplo de cualquier diseño web de tu elección== para basarnos en él y compartir los textos e imágenes que van en tu sitio.",
     "tarjetas": [
       {
         "etiqueta": "01 Dominio",
         "titulo": "Apunta tu dominio a nuestros servidores",
-        "texto": "Si no cuentas con un nombre de dominio, te podemos asesorar también con ese tema."
+        "texto": "Si no cuentas con uno, te podemos asesorar también con ese tema."
       },
       {
         "etiqueta": "02 Diseño",
