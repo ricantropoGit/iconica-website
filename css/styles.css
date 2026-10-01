@@ -770,7 +770,7 @@ ul { list-style: none; padding: 0; }
 .faq__sign::before, .faq__sign::after { content: ""; position: absolute; top: 50%; left: 50%; width: 13px; height: 1px; background: currentColor; transform: translate(-50%, -50%); transition: transform .22s ease, opacity .22s ease; }
 .faq__sign::after { transform: translate(-50%, -50%) rotate(90deg); }
 .faq__item[open] .faq__sign::after { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
-.faq__item[open] .faq__q { color: var(--accent-strong); }
+.faq__item[open] .faq__q { color: var(--muted); }
 /* Despliegue suave: se anima la altura del contenido del <details>.
    interpolate-size habilita la transición hacia/desde height:auto.
 
