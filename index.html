@@ -97,8 +97,7 @@
             <section class="hero" id="hero" data-screen-label="Hero">
                 <div class="container">
                     <h1 class="hero__title" data-cms="hero.titulo">Tu sitio web en la nube, sin tanto rollo.</h1>
-                    <p class="hero__subtitle" data-cms="hero.subtitulo">
-          Solo necesitas un nombre de dominio y compartirnos un diseño web que te rife. <span class="hl">Nosotros nos encargamos de todo lo demás.</span></p>
+                    <p class="hero__subtitle"><span data-cms="hero.subtitulo">Solo necesitas un nombre de dominio <span class="hl">y compartirnos un diseño web que te rife.</span> Nosotros nos encargamos de todo lo demás.</span><sup class="note--subheader">1</sup></p>
                     <div class="hero__actions">
                         <a class="btn btn--primary" href="#como-funciona" data-scroll data-cms="hero.boton_principal">Cómo funciona</a>
                         <a class="btn btn--ghost" href="#ventajas" data-scroll data-cms="hero.boton_secundario">Sin curva de aprendizaje</a>
@@ -124,7 +123,7 @@
             <section class="section section--alt" id="como-funciona" data-screen-label="Cómo funciona">
                 <div class="container">
                     <div class="steps__head">
-                        <h2 class="steps__title"><span data-cms="pasos.titulo">Subimos tu sitio web a la red en tres sencillos pasos</span><sup class="note--black">1</sup></h2>
+                        <h2 class="steps__title"><span data-cms="pasos.titulo">Subimos tu sitio web a la red en tres sencillos pasos</span></h2>
                         <p class="steps__lead" data-cms="pasos.texto">Solo tienes que <span class="hl">apuntar tu dominio a nuestros servidores, señalarnos un ejemplo de cualquier diseño web para basarnos en él</span> y compartir los textos e imágenes que van en tu sitio.</p>
                     </div>
                     <div class="cards cards--trio">
@@ -255,7 +254,7 @@
                 <div class="container">
                     <h2 class="cta__title" data-cms="cta.titulo">Dejamos el "hágalo-usted-mismo" para personas con mucho tiempo libre.</h2>
                     <p class="cta__text" data-cms="cta.texto">
-          Con nuestra propuesta de colaboración, <strong>un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección</strong> entregándote un sitio web listo y en línea.<sup class="note">1</sup></p>
+          Con nuestra propuesta de colaboración, <strong>un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección</strong> entregándote un sitio web listo y en línea.<sup class="note">5</sup></p>
                     <div class="cta__actions">
                         <a class="btn btn--primary" href="#precios" data-scroll data-cms="cta.boton_principal">
                             <!--<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -310,7 +309,7 @@
                             <a data-cms="precios.planes.1.boton" data-cms-href="precios.planes.1.enlace" href="https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03" class="btn btn--primary price-card__cta">Comprar</a>
                         </article>
                     </div>
-                    <p class="pricing__cancel" data-cms="precios.nota">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. <a href="servicios.html">Consulta qué incluye tu plan y cuáles son servicios adicionales.</a><sup class="note">2</sup></p>
+                    <p class="pricing__cancel" data-cms="precios.nota">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. <a href="servicios.html">Consulta qué incluye tu plan y cuáles son servicios adicionales.</a><sup class="note">6</sup></p>
                 </div>
             </section>
             <!-- ===================== TABLA COMPARATIVA ===================== -->
@@ -325,21 +324,21 @@
                             <thead>
                                 <tr>
                                     <th class="col-feature" scope="col"></th>
-                                    <th class="col-highlight brand-col" scope="col">Icónica24<br/><span class="pill">Recomendado</span></th>
-                                    <th scope="col">Soluciones tipo DIY<sup class="note">3</sup></th>
-                                    <th scope="col">Encargo por Diseño<sup class="note">4</sup></th>
+                                    <th class="col-highlight brand-col" scope="col">Icónica24<br/><span class="pill">Te conviene</span></th>
+                                    <th scope="col">Soluciones tipo DIY<sup class="note">7</sup></th>
+                                    <th scope="col">Encargo por Diseño<sup class="note">8</sup></th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                 <tr>
-                                    <th scope="row">Sin curva de aprendizaje (DIY)</th>
+                                    <th scope="row">Sin curva de aprendizaje (DIY)<sup class="note">7</sup></th>
                                     <td class="col-highlight"><span class="check">✓</span></td>
                                     <td><span class="dash">—</span></td>
                                     <td><span class="check">✓</span></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Diseñador Asignado</th>
+                                    <th scope="row">Diseñador Asignado<sup class="note">9</sup></th>
                                     <td class="col-highlight"><span class="check">✓</span></td>
                                     <td><span class="dash">—</span></td>
                                     <td><span class="check">✓</span></td>
@@ -377,12 +376,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <ol class="compare-notes">
+                    <!--<ol class="compare-notes">
                         <li>Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.</li>
                         <li>Puedes cancelar cuando quieras: el servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Te avisamos 5 días antes de cada renovación.</li>
                         <li>DIY: "Hágalo-usted-mismo". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor, con excepciones.</li>
                         <li>Desarrollo a la medida, con un costo inicial aproximado de entre $9,000 y $27,000 antes de alojamiento y mantenimiento. La autoedición es opcional y aumenta los costos aquí ofrecidos.</li>
-                    </ol>
+                    </ol>-->
                 </div>
             </section>
             <!-- ===================== PREGUNTAS FRECUENTES ===================== -->

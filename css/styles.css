@@ -851,6 +851,13 @@ ul { list-style: none; padding: 0; }
   line-height: 0;
   }
 
+.note--subheader {
+  font-size: x-small;  
+  font-variant-position: super;  
+  font-weight: 600;
+  line-height: 0;
+  }
+
 .note--black {
   font-size: small;
   font-variant-position: super;  
@@ -868,6 +875,9 @@ ul { list-style: none; padding: 0; }
 @media (min-width: 640px) {
 .note--black {
   font-size: medium;
+  }
+.note--subheader {
+  font-size: small;
   }
 }
 .compare-notes {
