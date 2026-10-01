@@ -788,7 +788,7 @@ ul { list-style: none; padding: 0; }
    porque el documento declara lang="es" — sin eso el navegador no sabe qué
    diccionario aplicar y la propiedad no hace nada. */
 .faq__a p {
-  color: var(--muted);
+  color: var(--ink-soft);
   font-size: .96rem;
   /* Izquierda en móvil, justificado de 640px en adelante. A 375px la respuesta
      mide 269px: unos 27 caracteres por línea, y ahí justificar reparte el
