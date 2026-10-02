@@ -144,15 +144,11 @@
       },
       {
         "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
-        "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier documento. No puedes romper el diseño porque no tienes acceso a él, que es justamente lo que lo mantiene bien hecho."
+        "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es viable hacer cambios propiamente sobre el diseño. Permitir hacer ediciones sobre el diseño, te traslada trabajo de diseñador/desarrollador, responsabilidades que, precisamente, hemos querido ahorrarte."
       },
       {
-        "pregunta": "¿Y si no tengo fotos ni textos listos?",
-        "respuesta": "Publicamos tu sitio con contenido de muestra propio de tu giro y lo sustituimos conforme nos vayas mandando el tuyo. Es preferible estar en línea con algo digno que esperar meses a tener el material perfecto."
-      },
-      {
-        "pregunta": "¿Puedo comprar el sitio y llevármelo?",
-        "respuesta": "Sí. En cualquier momento puedes comprar una licencia de uso permanente y trasladar el sitio completo al proveedor de alojamiento que elijas. Está construido sobre WordPress, un estándar de la industria, así que los archivos son transferibles y no quedas atado a nosotros. Compras el derecho de usarlo sin límite de tiempo; nosotros conservamos el de seguir ofreciendo ese diseño en otras ciudades y otros giros. El precio se calcula descontando parte de lo que ya has pagado."
+        "pregunta": "¿Puedo comprar el sitio y llevarlo a otro proveedor?",
+        "respuesta": "Sí. En cualquier momento puedes comprar el sitio y trasladarlo al proveedor de alojamiento que elijas. Esencialmente está construido sobre html, css y javascript que son estándares de la industria. Los archivos son transferibles y no quedas atado a nosotros. Su precio se calcula de acuerdo a la permanencia de tu suscripción."
       }
     ]
   },
