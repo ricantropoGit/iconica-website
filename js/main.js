@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Icónica — main.js
+   GraphicaWeb — main.js
    Hamburguesa · smooth-scroll a anchors · slider antes/después ·
    nav activo · formulario · botón de upload
    ========================================================================== */

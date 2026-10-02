@@ -1,5 +1,5 @@
 // =====================================================================
-// Icónica - Form Handler JavaScript
+// GraphicaWeb - Form Handler JavaScript
 // Maneja la sumisión del formulario de contacto
 // =====================================================================
 
