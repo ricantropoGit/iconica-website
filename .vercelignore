@@ -7,7 +7,7 @@ Code.gs
 # Copias de respaldo locales (payment.bak.html, index.bak2.html, etc.)
 *.bak*
 
-# Borradores locales: no deben quedar accesibles en iconica24.com/<archivo>
+# Borradores locales: no deben quedar accesibles en grfkweb.com/<archivo>
 afiliados2.html
 afiliados2a.html
 
@@ -19,7 +19,7 @@ images/afiliados-hero.jpg
 VARIOS/
 
 # Los propios archivos de configuración. Hoy Vercel no sirve archivos que
-# empiezan con punto —verificado: iconica24.com/.gitignore da 404— pero eso
+# empiezan con punto —verificado: grfkweb.com/.gitignore da 404— pero eso
 # es comportamiento suyo, no configuración nuestra. Explícito no depende de
 # que no cambie.
 .gitignore
@@ -34,7 +34,7 @@ node_modules
 .claude
 
 # Respaldos de datos con información personal. .gitignore NO impide que
-# Vercel los publique: sin esta regla quedarían en iconica24.com/<archivo>.
+# Vercel los publique: sin esta regla quedarían en grfkweb.com/<archivo>.
 *.xlsx
 *.csv
 *.ods
