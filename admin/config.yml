@@ -1,5 +1,5 @@
 # =========================================================================
-# Panel de edición (Decap CMS) — iconica24.com/admin
+# Panel de edición (Decap CMS) — grfkweb.com/admin
 # -------------------------------------------------------------------------
 # Cada campo de aquí es algo que el cliente puede cambiar. Lo que no está
 # aquí (diseño, colores, íconos, estructura) no se puede tocar desde el
@@ -15,7 +15,7 @@ backend:
   # Inicio de sesión con usuario y contraseña (api/auth.js) y todas las
   # llamadas a GitHub por el intermediario api/github.js. El editor nunca
   # tiene una llave de GitHub: ver api/_cms.js.
-  base_url: https://iconica24.com
+  base_url: https://grfkweb.com
   auth_endpoint: api/auth
   api_root: /api/github
   commit_messages:
@@ -29,8 +29,8 @@ local_backend: true
 locale: es
 # Logotipo en la pantalla de entrada (en lugar del de Decap)
 logo_url: /apple-touch-icon.png
-site_url: https://iconica24.com
-display_url: https://iconica24.com
+site_url: https://grfkweb.com
+display_url: https://grfkweb.com
 
 media_folder: images/cms
 public_folder: /images/cms
