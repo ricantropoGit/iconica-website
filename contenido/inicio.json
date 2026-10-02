@@ -135,20 +135,24 @@
         "respuesta": "Puedes cancelar en el momento que así lo desees desde el panel proporcionado por Stripe, nuestro plataforma de pagos. El servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Tu dominio queda libre para que lo apuntes a donde quieras. Si así lo requieres, te entregamos tu contenido —textos, fotos y datos de tu negocio."
       },
       {
-        "pregunta": "¿Puedo comprar el sitio y llevármelo?",
-        "respuesta": "Sí. En cualquier momento puedes comprar una licencia de uso permanente y trasladar el sitio completo al proveedor de alojamiento que elijas. Está construido sobre WordPress, un estándar de la industria, así que los archivos son transferibles y no quedas atado a nosotros. Compras el derecho de usarlo sin límite de tiempo; nosotros conservamos el de seguir ofreciendo ese diseño en otras ciudades y otros giros. El precio se calcula descontando parte de lo que ya has pagado."
+        "pregunta": "¿Qué son las soluciones tipo DIY?",
+        "respuesta": "DIY: \"Hágalo-usted-mismo\". Con constructores de páginas web tipo Wix, WebFlow, Squarespace, Canva, etc., etc. El costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover el sitio entero a otro proveedor."
+      },
+      {
+        "pregunta": "¿Cómo funciona lo del diseñador/a asignado?",
+        "respuesta": "…pendiente…"
+      },
+      {
+        "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
+        "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier documento. No puedes romper el diseño porque no tienes acceso a él, que es justamente lo que lo mantiene bien hecho."
       },
       {
         "pregunta": "¿Y si no tengo fotos ni textos listos?",
         "respuesta": "Publicamos tu sitio con contenido de muestra propio de tu giro y lo sustituimos conforme nos vayas mandando el tuyo. Es preferible estar en línea con algo digno que esperar meses a tener el material perfecto."
       },
       {
-        "pregunta": "¿Necesito saber de tecnología para editarlo?",
-        "respuesta": "No. Entras con tu usuario y cambias textos, precios, fotos y horarios como quien edita un documento. No puedes romper el diseño porque no tienes acceso a él, que es justamente lo que lo mantiene bien hecho."
-      },
-      {
-        "pregunta": "¿Otro negocio puede tener mi mismo diseño?",
-        "respuesta": "Puede existir en otras ciudades o en otros giros, nunca en tu competencia directa. Mientras tu plan esté activo, ese diseño no se instala en otro negocio de tu mismo giro en tu zona. Con el plan anual la exclusividad se amplía de tu zona a toda tu ciudad."
+        "pregunta": "¿Puedo comprar el sitio y llevármelo?",
+        "respuesta": "Sí. En cualquier momento puedes comprar una licencia de uso permanente y trasladar el sitio completo al proveedor de alojamiento que elijas. Está construido sobre WordPress, un estándar de la industria, así que los archivos son transferibles y no quedas atado a nosotros. Compras el derecho de usarlo sin límite de tiempo; nosotros conservamos el de seguir ofreciendo ese diseño en otras ciudades y otros giros. El precio se calcula descontando parte de lo que ya has pagado."
       }
     ]
   },
