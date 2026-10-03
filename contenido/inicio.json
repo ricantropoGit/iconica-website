@@ -140,11 +140,11 @@
       },
       {
         "pregunta": "¿Cuáles son los alcances y límites del diseñador/a asignado?",
-        "respuesta": "…pendiente…"
+        "respuesta": "Un diseñador/a asignado llevará a cabo la integración inicial de los contenidos (textos e imágenes) e imagen de tu negocio al sistema modular de diseño sobre una plantilla previamente aprobada. A falta de una plantilla, el cliente puede proporcionar la URL de un sitio web a manera de guía. ==Se entrega **Landing-page** con menú configurado== para la navegación dentro de la misma página. Es posible generar más páginas e items de menú desde el editor."
       },
       {
         "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
-        "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es viable hacer cambios propiamente sobre el diseño. Permitir hacer ediciones sobre el diseño, te traslada trabajo de diseñador/desarrollador; responsabilidades que, precisamente, se deben evitar."
+        "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es viable hacer cambios a la estructura de la plantilla.  De esta forma, tu puedes agregar los contenidos que tu quieras, sin romper el diseño."
       },
       {
         "pregunta": "¿Puedo comprar el sitio y llevarlo a otro proveedor?",
