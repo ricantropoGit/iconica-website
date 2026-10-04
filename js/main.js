@@ -43,7 +43,9 @@
   });
   // Cierra el menú al cambiar a viewport grande
   var mq = window.matchMedia('(min-width: 1024px)');
-  mq.addEventListener('change', function (e) { if (e.matches) setMenu(false); });
+  var alCambiar = function (e) { if (e.matches) setMenu(false); };
+  // (addListener: Safari anterior a 14 no tiene addEventListener aquí.)
+  if (mq.addEventListener) mq.addEventListener('change', alCambiar); else mq.addListener(alCambiar);
 
   /* ---------- Smooth scroll a anchors (con offset del header) --------- */
   function headerOffset() {
