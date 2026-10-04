@@ -33,8 +33,11 @@ out/
 *.bak*
 ~*
 
-# Backend de Apps Script — contiene la sk_live de Stripe; nunca al repo
+# Backend de Apps Script — contiene la sk_live de Stripe; nunca al repo.
+# También sus copias (Code.gs.bk, Code.gs.old, Code copia.gs…).
 Code.gs
+Code.gs.*
+Code*.gs
 
 # Config local de Claude Code — puede capturar secretos dentro de permisos
 .claude/settings.local.json
