@@ -208,7 +208,8 @@
   }, { passive: true });
 
   /* Si se cruza el breakpoint con el lightbox abierto, reconstruye el modo */
-  window.matchMedia(MOBILE).addEventListener("change", function () {
-    if (box.classList.contains("is-open")) build(true);
-  });
+  var mqMovil = window.matchMedia(MOBILE);
+  var alCambiar = function () { if (box.classList.contains("is-open")) build(true); };
+  // (addListener: Safari anterior a 14 no tiene addEventListener aquí.)
+  if (mqMovil.addEventListener) mqMovil.addEventListener("change", alCambiar); else mqMovil.addListener(alCambiar);
 })();
