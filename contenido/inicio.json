@@ -35,7 +35,7 @@
         "caracteristicas": [
           "Integración de tu contenido a la plantilla de tu elección",
           "Sitio listo y en línea en 24hrs.",
-          "Editable en WordPress (textos e imágenes)",
+          "Editor intuitivo para textos e imágenes",
           "Alojamiento y dominio vinculado a nuestros servidores"
         ],
         "boton": "Comprar",
@@ -60,7 +60,7 @@
   },
   "contacto": {
     "titulo": "Empecemos por conocer tu negocio.",
-    "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. Con eso te mostramos una propuesta de tu sitio, ==**sin costo y sin compromiso.**==",
+    "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",
     "whatsapp": "+52 56 3366 8185",
     "ubicacion": "Ciudad de México · Servicio 100% en línea"
   },
