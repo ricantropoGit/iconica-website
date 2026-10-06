@@ -141,6 +141,7 @@ collections:
                   - { label: "Texto del botón", name: boton, widget: string }
                   - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
               - { label: "Nota al pie", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - { label: "Notas de la tabla comparativa", name: notas, widget: list, required: false, field: { label: "Nota", name: nota, widget: text }, hint: "Se numeran solas en el orden de la lista. Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)` · `^1^` superíndice" }
 
           - label: Preguntas frecuentes
             name: faq
