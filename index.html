@@ -297,10 +297,20 @@
                         <article class="price-card price-card--featured">
                             <span class="price-card__badge" data-cms="precios.planes.1.insignia" data-cms-optional>Más valor</span>
                             <header class="price-card__head">
-                                <h3 class="price-card__name" data-cms="precios.planes.1.nombre">Plan Anual</h3>
+                                <h3 class="price-card__name price-card__name--selector">
+                                <!-- Los plazos se editan en el panel (Precios → tarjeta destacada → Plazos).
+                                     El primer <option> es el molde de cada plazo; los demás sólo sirven
+                                     para ver la maqueta sin build. Sale elegido el último de la lista. -->
+                                <select class="price-card__plazo" id="plazo-msi" data-total="$9,900" data-cms-data-total="precios.planes.1.total" data-cms-list="precios.planes.1.plazos" aria-label="Plazo de mensualidades sin intereses">
+                                    <option value="3" data-precio="$3,300" data-cms-item data-cms="{.meses} meses" data-cms-value=".meses" data-cms-data-precio=".precio" data-cms-selected="#ultimo">3 meses</option>
+                                    <option value="6" data-precio="$1,650">6 meses</option>
+                                    <option value="9" data-precio="$1,100">9 meses</option>
+                                    <option value="12" data-precio="$825" selected>12 meses</option>
+                                </select>
+                            </h3>
                             </header>
-                            <p class="price-card__price"><span class="price-card__amount" data-cms="precios.planes.1.precio">$399</span><span class="price-card__period" data-cms="precios.planes.1.periodo">MX/mes</span></p>
-                            <p class="price-card__billed" data-cms="precios.planes.1.cobro">Pago anual de $4,788.00</p>
+                            <p class="price-card__price"><span class="price-card__amount" id="precio-msi" data-cms="precios.planes.1.plazos.-1.precio">$825</span><span class="price-card__period" data-cms="precios.planes.1.periodo">MX/mes</span></p>
+                            <p class="price-card__billed" id="cobro-msi" data-cms="{precios.planes.1.plazos.-1.meses} pagos de {precios.planes.1.plazos.-1.precio} — total {precios.planes.1.total}">12 pagos de $825 — total $9,900</p>
                             <ul class="price-card__features" data-cms-list="precios.planes.1.caracteristicas">
                                 <li data-cms-item data-cms=".">Todo lo incluido en el plan mensual más:</li>
                                 <li data-cms-item data-cms="."><span class="hl">20% de descuento</span> (dos meses y medio sin costo)</li>

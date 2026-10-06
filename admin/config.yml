@@ -127,19 +127,45 @@ collections:
                 name: planes
                 widget: list
                 # El segundo plan es el destacado: el diseño depende del orden.
+                # Cada tarjeta tiene su tipo, para que el formulario muestre sólo sus campos.
                 allow_add: false
                 allow_remove: false
                 allow_reorder: false
-                summary: "{{fields.nombre}} — {{fields.precio}}"
-                fields:
-                  - { label: "Insignia (vacío = sin insignia)", name: insignia, widget: string, required: false }
-                  - { label: "Nombre del plan", name: nombre, widget: string }
-                  - { label: "Precio", name: precio, widget: string, hint: "Ej. $499" }
-                  - { label: "Periodo", name: periodo, widget: string, hint: "Ej. MX/mes" }
-                  - { label: "Forma de cobro", name: cobro, widget: string }
-                  - { label: "Qué incluye", name: caracteristicas, widget: list, field: { label: "Punto", name: punto, widget: string }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-                  - { label: "Texto del botón", name: boton, widget: string }
-                  - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
+                typeKey: tipo
+                types:
+                  - label: "Tarjeta izquierda"
+                    name: fijo
+                    widget: object
+                    summary: "{{fields.nombre}} — {{fields.precio}}"
+                    fields:
+                      - { label: "Insignia (vacío = sin insignia)", name: insignia, widget: string, required: false }
+                      - { label: "Nombre del plan", name: nombre, widget: string }
+                      - { label: "Precio", name: precio, widget: string, hint: "Ej. $499" }
+                      - { label: "Periodo", name: periodo, widget: string, hint: "Ej. MX/mes" }
+                      - { label: "Forma de cobro", name: cobro, widget: string }
+                      - { label: "Qué incluye", name: caracteristicas, widget: list, field: { label: "Punto", name: punto, widget: string }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                      - { label: "Texto del botón", name: boton, widget: string }
+                      - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
+                  - label: "Tarjeta destacada (con plazos)"
+                    name: plazos
+                    widget: object
+                    summary: "Total {{fields.total}}"
+                    fields:
+                      - { label: "Insignia (vacío = sin insignia)", name: insignia, widget: string, required: false }
+                      - label: "Plazos"
+                        name: plazos
+                        widget: list
+                        min: 1
+                        summary: "{{fields.meses}} meses — {{fields.precio}}"
+                        hint: "Opciones del selector. Sale elegido el último de la lista."
+                        fields:
+                          - { label: "Meses", name: meses, widget: string, pattern: ['^\d+$', "Sólo el número, p. ej. 12"] }
+                          - { label: "Precio por mes", name: precio, widget: string, hint: "Ej. $825" }
+                      - { label: "Total", name: total, widget: string, hint: "Ej. $9,900. Debajo del precio se lee: «12 pagos de $825 — total $9,900»" }
+                      - { label: "Periodo", name: periodo, widget: string, hint: "Ej. MX/mes" }
+                      - { label: "Qué incluye", name: caracteristicas, widget: list, field: { label: "Punto", name: punto, widget: string }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                      - { label: "Texto del botón", name: boton, widget: string }
+                      - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
               - { label: "Nota al pie", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
               - { label: "Notas de la tabla comparativa", name: notas, widget: list, required: false, field: { label: "Nota", name: nota, widget: text }, hint: "Se numeran solas en el orden de la lista. Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)` · `^1^` superíndice" }
 
