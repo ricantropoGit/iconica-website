@@ -32,9 +32,9 @@
         "precio": "$9,900",
         "nombre": "Contado",
         "caracteristicas": [
-          "9 mensualidades de $1,100 sin intereses",
-          "Integración de tu contenido a la plantilla de tu elección",
-          "Sitio listo y en línea en 24hrs.",
+          "Garantía de 30 días",
+          "Reembolso  a través de Stripe",
+          "Aclaraciones a través de Stripe",
           "Editor intuitivo para textos e imágenes",
           "Alojamiento y dominio vinculado a nuestros servidores"
         ],
@@ -45,7 +45,7 @@
       },
       {
         "tipo": "plazos",
-        "insignia": "Más valor",
+        "insignia": "Más solicitado",
         "plazos": [
           {
             "meses": "3",
