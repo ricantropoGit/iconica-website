@@ -27,12 +27,10 @@
     "texto": "Sin costo de desarrollo. Sin contrato forzoso.",
     "planes": [
       {
-        "tipo": "fijo",
-        "insignia": "",
-        "nombre": "Plan 9",
-        "precio": "$1,101",
-        "periodo": "MXN X 9",
-        "cobro": "Precio de contado: $9,900",
+        "enlace": "https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02",
+        "boton": "Comprar",
+        "precio": "$9,900",
+        "nombre": "Contado",
         "caracteristicas": [
           "9 mensualidades de $1,100 sin intereses",
           "Integración de tu contenido a la plantilla de tu elección",
@@ -40,8 +38,10 @@
           "Editor intuitivo para textos e imágenes",
           "Alojamiento y dominio vinculado a nuestros servidores"
         ],
-        "boton": "Comprar",
-        "enlace": "https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02"
+        "periodo": "MXN",
+        "cobro": "Precio de contado: $9,900",
+        "tipo": "fijo",
+        "insignia": ""
       },
       {
         "tipo": "plazos",
