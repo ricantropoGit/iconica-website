@@ -363,6 +363,31 @@
     });
   }
 
+  /* ---------- Plazo de mensualidades sin intereses -------------------- */
+  // El precio que se ve al cargar vive en el HTML; este script NO lo escribe.
+  // Es a propósito: la vista previa del panel no ejecuta JS, y la tarjeta tiene
+  // que verse completa sin él. Aquí sólo se reacciona al cambio de plazo.
+  // Las cifras se editan en el panel y el build las pone en el HTML —el precio
+  // en cada <option>, el total en el propio <select>—; aquí sólo se componen.
+  // La frase es la misma que arma el build en index.html (#cobro-msi): si
+  // cambia una, cambia la otra.
+  var plazoSel = document.getElementById('plazo-msi');
+  var montoMsi = document.getElementById('precio-msi');
+  var cobroMsi = document.getElementById('cobro-msi');
+  if (plazoSel && montoMsi) {
+    plazoSel.addEventListener('change', function () {
+      var op = plazoSel.options[plazoSel.selectedIndex];
+      var precio = op ? op.getAttribute('data-precio') : null;
+      if (!precio) return;
+      montoMsi.textContent = precio;
+      if (cobroMsi) {
+        var total = plazoSel.getAttribute('data-total');
+        cobroMsi.textContent = op.value + ' pagos de ' + precio +
+          (total ? ' \u2014 total ' + total : '');
+      }
+    });
+  }
+
    /* ==================================================================
      Formulario de contacto - Manejado por formHandler.js
      ================================================================== */

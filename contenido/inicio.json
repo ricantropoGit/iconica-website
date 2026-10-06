@@ -27,6 +27,7 @@
     "texto": "Sin costo de desarrollo. Sin contrato forzoso.",
     "planes": [
       {
+        "tipo": "fijo",
         "insignia": "",
         "nombre": "Plan 9",
         "precio": "$1,101",
@@ -43,11 +44,28 @@
         "enlace": "https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02"
       },
       {
+        "tipo": "plazos",
         "insignia": "Más valor",
-        "nombre": "Plan 12",
-        "precio": "$825",
+        "plazos": [
+          {
+            "meses": "3",
+            "precio": "$3,300"
+          },
+          {
+            "meses": "6",
+            "precio": "$1,650"
+          },
+          {
+            "meses": "9",
+            "precio": "$1,100"
+          },
+          {
+            "meses": "12",
+            "precio": "$825"
+          }
+        ],
+        "total": "$9,900",
         "periodo": "MEX x 12",
-        "cobro": "Precio de contado: $9,900",
         "caracteristicas": [
           "12 mensualidades de $825 sin intereses",
           "==20% de descuento== (dos meses y medio sin costo)",

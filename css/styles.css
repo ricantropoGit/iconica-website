@@ -699,12 +699,17 @@ ul { list-style: none; padding: 0; }
 .pricing__lead { margin-top: .7rem; color: var(--muted); }
 
 .pricing__grid {
+  --pricing-gap: 22px;
   margin-top: 44px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 22px;
+  gap: var(--pricing-gap);
   align-items: stretch;
 }
+/* Varias .pricing__grid seguidas = más hileras de tarjetas. El aire vertical
+   entre hileras iguala al horizontal entre columnas; el margin-top de 44px es
+   la separación de la sección y sólo debe aplicar a la primera. */
+.pricing__grid + .pricing__grid { margin-top: var(--pricing-gap); }
 .price-card {
   position: relative;
   display: flex;
@@ -734,10 +739,49 @@ ul { list-style: none; padding: 0; }
 .price-card__badge:empty { display: none; }
 .price-card__name { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
 .price-card__desc { margin-top: .3rem; color: var(--muted); font-size: .95rem; min-height: calc(1.45em * 4); }
+/* Selector de plazo: ocupa el lugar y el estilo del nombre del plan, pero es
+   un control. El <select> hereda la tipografía del <h3> que lo envuelve, así
+   que si cambia .price-card__name el selector lo sigue solo. La flecha se
+   dibuja en el ::after del <h3> —no en el select— para poder usar currentColor
+   y evitar un SVG embebido. */
+/* El <select> ES la píldora: el borde, el fondo blanco y el bloque verde de la
+   flecha se dibujan sobre él mismo. Antes el bloque verde era un ::after del
+   <h3>, y eso tenía dos fallos: el hover sólo valía sobre el texto y hacer clic
+   en la flecha no abría nada, porque un pseudo-elemento no es parte del
+   control. Las medidas van en em para escalar con la tipografía del título. */
+.price-card__name--selector { display: inline-flex; }
+.price-card__plazo {
+  --plazo-verde: var(--accent-strong);
+  font: inherit; color: inherit; letter-spacing: inherit;
+  margin: 0; padding: .22em 2.5em .22em .55em;
+  border: 2px solid var(--plazo-verde);
+  border-radius: var(--r-md);
+  background-color: var(--bg);
+  /* Dos capas: la flecha encima, el bloque verde debajo. origin en border-box
+     para que el verde llegue hasta el borde y el redondeo lo recorte limpio. */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1.6 1.8 6 6.2l4.4-4.4' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+    linear-gradient(var(--plazo-verde), var(--plazo-verde));
+  background-repeat: no-repeat, no-repeat;
+  background-position: right .78em center, right center;
+  background-size: .46em auto, 2em 100%;
+  background-origin: border-box, border-box;
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  cursor: pointer;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+/* El sistema no trae un tono de hover para el acento, así que éste vive sólo
+   aquí. Borde y bloque leen la misma variable, de modo que oscurecen a la vez. */
+.price-card__plazo:hover { --plazo-verde: #12833c; box-shadow: 0 2px 12px rgba(22, 163, 74, .3); }
+.price-card__plazo:active { box-shadow: 0 1px 4px rgba(22, 163, 74, .35); }
+/* Sin contorno negro: el foco se marca con un halo del verde claro del sistema,
+   y sólo con :focus-visible, así que al abrirlo con el ratón no aparece. */
+.price-card__plazo:focus { outline: none; }
+.price-card__plazo:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
 .price-card__price { margin-top: 1.4rem; display: flex; align-items: baseline; gap: .15rem; }
 .price-card__amount { font-size: clamp(2.4rem, 8vw, 3rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
 .price-card__billed { margin-top: .35rem; color: var(--muted); font-size: .88rem; }
-.pricing__cancel { margin-top: 28px; color: var(--ink-soft); font-size: .9rem; max-width: 46rem; margin-inline: auto; text-wrap: pretty; text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
+.pricing__cancel { margin-top: 28px; color: var(--ink-soft); font-size: .9rem; max-width: 46rem; margin-inline: auto; text-wrap: pretty; text-align: left }
 .pricing__foot { margin-top: 14px; text-align: center; color: var(--muted); font-size: .84rem; max-width: 44rem; margin-inline: auto; text-wrap: pretty; }
 /* Mismo tratamiento de enlace en línea que .faq__a y .legal-prose: acento +
    subrayado. Se extiende a .pricing__cancel en vez de duplicar la regla, para
@@ -752,6 +796,10 @@ ul { list-style: none; padding: 0; }
 .pricing__cancel a:hover,
 .steps__lead a:hover,
 .faq__a a:hover { color: var(--ink); }
+
+@media (min-width: 640px) {
+    .pricing__cancel {text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto;}
+}
 
 /* ==========================================================================
    PREGUNTAS FRECUENTES — acordeón nativo (details/summary)
@@ -830,7 +878,7 @@ ul { list-style: none; padding: 0; }
 .price-card__cta { display: flex; align-items: center; justify-content: center; width: 100%; text-align: center; margin-top: auto; padding-top: 2rem; line-height: 1; padding-block: .9rem; }
 
 @media (min-width: 640px) {
-  .pricing__grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, auto); gap: 24px; }
+  .pricing__grid { --pricing-gap: 24px; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, auto); gap: var(--pricing-gap); }
   /* subgrid: alinea precio / facturación / viñetas / botón entre tarjetas sin importar el largo de
      la descripción. Activo en todo el rango de 2 columnas (≥640px), hasta que colapsan a 1 (<640px).
      El span debe igualar el número de hijos de .price-card (head, price, billed, features, cta). */
