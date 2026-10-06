@@ -1,7 +1,7 @@
 {
   "pasos": {
     "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
-    "texto": "Tú solo pagas un servicio de suscripción mensual o anual ==tal como lo harías con cualquier servicio de alojamiento web.==",
+    "texto": "Puedes comprar tu sitio ==hasta en 12 mensualidades sin intereses,== con el alojamiento incluido el primer año. Al terminar tu plazo, el sitio es tuyo.",
     "tarjetas": [
       {
         "etiqueta": "01 Dominio",
@@ -95,8 +95,8 @@
     "tarjetas": [
       {
         "etiqueta": "Inversión",
-        "titulo": "Solo pagas tu Suscripción",
-        "texto": "Sin la inversión incial que requiere un sitio web personalizado."
+        "titulo": "Págalo en mensualidades",
+        "texto": "Hasta 12 pagos sin intereses. Sin desembolsar $9,900 de una sola vez."
       },
       {
         "etiqueta": "Solución",
@@ -115,7 +115,7 @@
       },
       {
         "etiqueta": "Alojamiento",
-        "titulo": "Gestión del servidor incluida",
+        "titulo": "Primer año incluido",
         "texto": "Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados."
       },
       {
@@ -179,7 +179,7 @@
   },
   "hero": {
     "titulo": "Tu sitio web en la nube, sin tanto rollo.",
-    "subtitulo": "Solo necesitas un nombre de dominio ==y ubicar un diseño web que te rife.== Nosotros nos encargamos de todo lo demás.",
+    "subtitulo": "Solo necesitas un nombre de dominio ==y compartir un diseño web que te rife.== Nosotros nos encargamos de todo lo demás.",
     "boton_principal": "Cómo funciona",
     "boton_secundario": "Sin curva de aprendizaje"
   },
