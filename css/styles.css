@@ -737,7 +737,14 @@ ul { list-style: none; padding: 0; }
 }
 /* Sin texto de insignia en el CMS: no se muestra la píldora vacía */
 .price-card__badge:empty { display: none; }
-.price-card__name { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
+.price-card__name {
+  /* Medidas de la píldora del selector. Viven aquí, en el padre, porque las
+     usan dos reglas: el <select> para su borde y relleno, y el título de la
+     otra tarjeta para compensar ese mismo alto. Si cambia una, cambian ambas. */
+  --plazo-borde: 2px;
+  --plazo-relleno-y: .22em;
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em;
+}
 .price-card__desc { margin-top: .3rem; color: var(--muted); font-size: .95rem; min-height: calc(1.45em * 4); }
 /* Selector de plazo: ocupa el lugar y el estilo del nombre del plan, pero es
    un control. El <select> hereda la tipografía del <h3> que lo envuelve, así
@@ -753,8 +760,8 @@ ul { list-style: none; padding: 0; }
 .price-card__plazo {
   --plazo-verde: var(--accent-strong);
   font: inherit; color: inherit; letter-spacing: inherit;
-  margin: 0; padding: .22em 2.5em .22em .55em;
-  border: 2px solid var(--plazo-verde);
+  margin: 0; padding: var(--plazo-relleno-y) 2.5em var(--plazo-relleno-y) .55em;
+  border: var(--plazo-borde) solid var(--plazo-verde);
   border-radius: var(--r-md);
   background-color: var(--bg);
   /* Dos capas: la flecha encima, el bloque verde debajo. origin en border-box
@@ -884,6 +891,13 @@ ul { list-style: none; padding: 0; }
      El span debe igualar el número de hijos de .price-card (head, price, billed, features, cta). */
   .price-card { display: grid; grid-template-rows: subgrid; grid-row: span 5; row-gap: 0; }
   .price-card__desc { min-height: 0; }
+  /* Línea base: el título sin selector baja lo que el borde y el relleno de la
+     píldora empujan al texto del otro, de modo que ambas líneas base coincidan.
+     Va aquí dentro y no en la regla base porque sólo tiene sentido mientras las
+     tarjetas van lado a lado; apiladas en móvil no hay nada que alinear. */
+  .price-card__name:not(.price-card__name--selector) {
+    padding-top: calc(var(--plazo-borde) + var(--plazo-relleno-y));
+  }
 }
 @media (min-width: 1024px) {
   .pricing__grid { max-width: 720px; margin-inline: auto; } /* 2 planes centrados en escritorio. Para volver a 3: descomentar Enterprise en index.html, poner repeat(3,1fr) y quitar este max-width. */
