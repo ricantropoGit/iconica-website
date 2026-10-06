@@ -737,7 +737,7 @@ ul { list-style: none; padding: 0; }
 .price-card__price { margin-top: 1.4rem; display: flex; align-items: baseline; gap: .15rem; }
 .price-card__amount { font-size: clamp(2.4rem, 8vw, 3rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
 .price-card__billed { margin-top: .35rem; color: var(--muted); font-size: .88rem; }
-.pricing__cancel { margin-top: 28px; text-align: center; color: var(--ink-soft); font-size: .9rem; max-width: 46rem; margin-inline: auto; text-wrap: pretty; }
+.pricing__cancel { margin-top: 28px; color: var(--ink-soft); font-size: .9rem; max-width: 46rem; margin-inline: auto; text-wrap: pretty; text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto; }
 .pricing__foot { margin-top: 14px; text-align: center; color: var(--muted); font-size: .84rem; max-width: 44rem; margin-inline: auto; text-wrap: pretty; }
 /* Mismo tratamiento de enlace en línea que .faq__a y .legal-prose: acento +
    subrayado. Se extiende a .pricing__cancel en vez de duplicar la regla, para
