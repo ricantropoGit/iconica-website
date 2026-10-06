@@ -28,10 +28,10 @@
     "planes": [
       {
         "insignia": "",
-        "nombre": "Plan Mensual",
-        "precio": "$499",
-        "periodo": "MX/mes",
-        "cobro": "Paga mes a mes sin compromisos^6^",
+        "nombre": "Plan 9",
+        "precio": "$1,101",
+        "periodo": "MXN X 9",
+        "cobro": "Precio de contado: $9,900",
         "caracteristicas": [
           "Integración de tu contenido a la plantilla de tu elección",
           "Sitio listo y en línea en 24hrs.",
@@ -43,10 +43,10 @@
       },
       {
         "insignia": "Más valor",
-        "nombre": "Plan Anual",
-        "precio": "$399",
-        "periodo": "MX/mes",
-        "cobro": "Pago anual de $4,788.00^6^",
+        "nombre": "Plan 12",
+        "precio": "$825",
+        "periodo": "MEX x 12",
+        "cobro": "Precio de contado: $9,900",
         "caracteristicas": [
           "Todo lo incluido en el plan mensual más:",
           "==20% de descuento== (dos meses y medio sin costo)",
@@ -56,7 +56,7 @@
         "enlace": "https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03"
       }
     ],
-    "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)",
+    "nota": "Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar. La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)",
     "notas": [
       "Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.",
       "Puedes cancelar cuando quieras: el servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Te avisamos 5 días antes de cada renovación.",
