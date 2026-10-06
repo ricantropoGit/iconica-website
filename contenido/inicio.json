@@ -24,7 +24,7 @@
   "precios": {
     "etiqueta": "Precios",
     "titulo": "Elige tu plan:",
-    "texto": "Sin costo de desarrollo. Sin contrato forzoso.",
+    "texto": "Sin el desembolso inicial · Tu eliges tu mensualidad.",
     "planes": [
       {
         "enlace": "https://buy.stripe.com/7sY5kDdC539JcxQ3bifUQ02",
@@ -130,7 +130,7 @@
     "texto": "Con nuestra propuesta de colaboración, **un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección** entregándote un sitio web listo y en línea.^5^",
     "boton_principal": "Quiero mi Sitio!",
     "boton_secundario": "Compara",
-    "nota": "Sin inversión inicial · En línea en 24 horas"
+    "nota": "Desde $825 MXN al mes · En línea en 24 horas"
   },
   "faq": {
     "titulo": "Preguntas frecuentes",
