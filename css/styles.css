@@ -811,13 +811,13 @@ ul { list-style: none; padding: 0; }
 .steps__lead a:hover,
 .faq__a a:hover { color: var(--ink); }
 
-/* Notas al pie: una lista (cada nota se edita aparte en el panel y se numera
-   sola) que se lee como un párrafo corrido: "1. … 2. … 3. …". */
+/* Notas al pie: un párrafo corrido ("1. … 2. … 3. …") en el que cada nota es
+   un <span> (se edita aparte en el panel) y la CSS pone su número. */
 .section--notes > .container { padding: unset; }
-.general__notes { list-style: none; counter-reset: nota; margin: 0 auto; padding: 0; color: var(--ink-soft); font-size: .7rem; text-wrap: pretty; text-align: left }
-.general__notes li { display: inline; counter-increment: nota; }
-/* (El espacio entre una nota y la siguiente es el del propio HTML.) */
-.general__notes li::before { content: counter(nota) ". "; }
+.general__notes { counter-reset: nota; margin: 0 auto; color: var(--ink-soft); font-size: .7rem; text-wrap: pretty; text-align: left }
+.general__notes > span { counter-increment: nota; }
+.general__notes > span::before { content: counter(nota) ". "; }
+.general__notes > span + span::before { content: " " counter(nota) ". "; }
 
 @media (min-width: 640px) {
     .pricing__notes {text-align: center; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto;}

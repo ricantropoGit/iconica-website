@@ -576,10 +576,11 @@
                  cada nota es el de los superíndices de la página. -->
             <section class="section section--notes" id="notas" data-screen-label="Notas">
                 <div class="container">
-                    <ol class="general__notes" data-cms-list="notas.lista">
-                        <li data-cms-item data-cms=".">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.</li>
-                        <li data-cms-item data-cms=".">Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.</li>
-                    </ol>
+                    <!-- Un solo párrafo, como "1. Texto. 2. Texto.": cada nota es un <span>
+                         (se edita aparte en el panel) y el número lo pone la CSS. Todo va en
+                         una línea, sin espacios entre las notas ni al final: Safari estiraba
+                         la última línea del texto justificado cuando los había. -->
+                    <p class="general__notes" data-cms-list="notas.lista"><span data-cms-item data-cms=".">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.</span><span>Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.</span></p>
                 </div>
             </section>            
         </main>
