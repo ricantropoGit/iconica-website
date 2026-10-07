@@ -821,7 +821,9 @@ ul { list-style: none; padding: 0; }
 
 @media (min-width: 640px) {
     .pricing__notes {text-align: center; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto;}
-    .general__notes {text-align: justify; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto;}  
+    /* text-align-last: la última línea siempre a la izquierda (algunos navegadores la
+       estiraban en la vista previa del panel). */
+    .general__notes {text-align: justify; text-align-last: start; -webkit-hyphens: auto; -moz-hyphens: auto; -ms-hyphens: auto; hyphens: auto;}  
 }
 
 /* ==========================================================================
