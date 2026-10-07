@@ -75,19 +75,22 @@
         "enlace": "https://buy.stripe.com/fZu3cv8hLh0zfK2aDKfUQ03"
       }
     ],
-    "nota": "Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar. La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)",
-    "notas": [
-      "Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.",
-      "Puedes cancelar cuando quieras: el servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Te avisamos 5 días antes de cada renovación.",
-      "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor, con excepciones.",
-      "Desarrollo a la medida, con un costo inicial aproximado de entre $9,000 y $27,000 antes de alojamiento y mantenimiento. La autoedición es opcional y aumenta los costos aquí ofrecidos."
-    ]
+    "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.^1^](servicios.html)"
   },
   "contacto": {
     "titulo": "Empecemos por conocer tu negocio.",
     "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",
     "whatsapp": "+52 56 3366 8185",
     "ubicacion": "Ciudad de México · Servicio 100% en línea"
+  },
+  "notas": {
+    "lista": [
+      "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
+      "Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.",
+      "Puedes cancelar cuando quieras: el servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Te avisamos 5 días antes de cada renovación.",
+      "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor, con excepciones.",
+      "Desarrollo a la medida, con un costo inicial aproximado de entre $9,000 y $27,000 antes de alojamiento y mantenimiento. La autoedición es opcional y aumenta los costos aquí ofrecidos."
+    ]
   },
   "ventajas": {
     "titulo": "Olvídate de la curva de aprendizaje.",
@@ -101,7 +104,7 @@
       {
         "etiqueta": "Solución",
         "titulo": "Tu sitio «llave-en-mano»",
-        "texto": "Se entrega listo para publicarse: en 24 horas, con tu propio contenido.^4^"
+        "texto": "Se entrega listo para publicarse: en 24 horas, con tu propio contenido.^2^"
       },
       {
         "etiqueta": "Diseño",
@@ -127,7 +130,7 @@
   },
   "cta": {
     "titulo": "Dejamos el \"hágalo-usted-mismo\" para personas con mucho tiempo libre.",
-    "texto": "Con nuestra propuesta de colaboración, **un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección** entregándote un sitio web listo y en línea.^5^",
+    "texto": "Con nuestra propuesta de colaboración, **un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección** entregándote un sitio web listo y en línea.^2^",
     "boton_principal": "Quiero mi Sitio!",
     "boton_secundario": "Compara",
     "nota": "Desde $825 MXN al mes · En línea en 24 horas"
