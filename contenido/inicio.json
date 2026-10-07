@@ -1,4 +1,125 @@
 {
+  "compara": {
+    "titulo": "¡Compara!",
+    "texto": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Profesional",
+    "col1": {
+      "nombre": "GraphicaWeb",
+      "etiqueta": "Te conviene"
+    },
+    "col2": {
+      "nombre": "Soluciones tipo DIY"
+    },
+    "col3": {
+      "nombre": "Encargo por Diseño"
+    },
+    "filas": [
+      {
+        "caracteristica": "Sin curva de aprendizaje (DIY)^4^",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "no",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "si",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Diseñador Asignado",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "no",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "si",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Autoeditable",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "no",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Alojamiento incluido",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "no",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "El sitio es tuyo^5^",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "no",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "si",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Pago Inicial (MX)",
+        "costo": true,
+        "col1": {
+          "tipo": "texto",
+          "texto": "$825+"
+        },
+        "col2": {
+          "tipo": "texto",
+          "texto": "$550+"
+        },
+        "col3": {
+          "tipo": "texto",
+          "texto": "$9,000 a $27,000"
+        }
+      }
+    ]
+  },
+  "notas": {
+    "lista": [
+      "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
+      "Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.",
+      "Puedes cancelar cuando quieras: el servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Te avisamos 5 días antes de cada renovación.",
+      "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor, con excepciones.",
+      "Desarrollo a la medida, con un costo inicial aproximado de entre $9,000 y $27,000 antes de alojamiento y mantenimiento. La autoedición es opcional y aumenta los costos aquí ofrecidos."
+    ]
+  },
   "pasos": {
     "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
     "texto": "Puedes comprar tu sitio ==hasta en 12 mensualidades sin intereses,== con el alojamiento incluido el primer año. Al terminar tu plazo, el sitio es tuyo.",
@@ -6,12 +127,12 @@
       {
         "etiqueta": "01 Dominio",
         "titulo": "Apunta tu dominio a nuestros servidores",
-        "texto": "Si no cuentas con uno, te podemos asesorar también con ese tema."
+        "texto": "Si no cuentas con uno, te podemos asesorar también con ese tema.^1^"
       },
       {
         "etiqueta": "02 Diseño",
-        "titulo": "Elige un diseño base de internet",
-        "texto": "Pásanos la URL de algún sitio o página web que te guste para usarla como guía."
+        "titulo": "Elige un diseño web de referencia",
+        "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía.^2^"
       },
       {
         "etiqueta": "03 Contenido",
@@ -77,132 +198,11 @@
     ],
     "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.^1^](servicios.html)"
   },
-  "compara": {
-    "titulo": "¡Compara!",
-    "texto": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Profesional",
-    "col1": {
-      "nombre": "GraphicaWeb",
-      "etiqueta": "Te conviene"
-    },
-    "col2": {
-      "nombre": "Soluciones tipo DIY"
-    },
-    "col3": {
-      "nombre": "Encargo por Diseño"
-    },
-    "filas": [
-      {
-        "caracteristica": "Sin curva de aprendizaje (DIY)",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "no",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "si",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "Diseñador Asignado",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "no",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "si",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "Autoeditable",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "no",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "Alojamiento incluido",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "no",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "El sitio es tuyo",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "no",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "si",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "Pago Inicial (MX)",
-        "costo": true,
-        "col1": {
-          "tipo": "texto",
-          "texto": "$825+"
-        },
-        "col2": {
-          "tipo": "texto",
-          "texto": "$550+"
-        },
-        "col3": {
-          "tipo": "texto",
-          "texto": "$9,000 a $27,000"
-        }
-      }
-    ]
-  },
   "contacto": {
     "titulo": "Empecemos por conocer tu negocio.",
     "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",
     "whatsapp": "+52 56 3366 8185",
     "ubicacion": "Ciudad de México · Servicio 100% en línea"
-  },
-  "notas": {
-    "lista": [
-      "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
-      "Tomando en cuenta que ya cuentas con un dominio apuntando a nuestros servidores, una vez confirmados contenido y estructura (considerando textos e imágenes proporcionadas), tu sitio queda en línea en 24 hrs.",
-      "Puedes cancelar cuando quieras: el servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Te avisamos 5 días antes de cada renovación.",
-      "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor, con excepciones.",
-      "Desarrollo a la medida, con un costo inicial aproximado de entre $9,000 y $27,000 antes de alojamiento y mantenimiento. La autoedición es opcional y aumenta los costos aquí ofrecidos."
-    ]
   },
   "ventajas": {
     "titulo": "Olvídate de la curva de aprendizaje.",
@@ -242,7 +242,7 @@
   },
   "cta": {
     "titulo": "Dejamos el \"hágalo-usted-mismo\" para personas con mucho tiempo libre.",
-    "texto": "Con nuestra propuesta de colaboración, **un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección** entregándote un sitio web listo y en línea.^2^",
+    "texto": "Con nuestra propuesta de colaboración, **un diseñador profesional revisará los materiales compartidos y en 24 hrs. los adaptará a la plantilla de tu elección** entregándote un sitio web listo y en línea.^3^",
     "boton_principal": "Quiero mi Sitio!",
     "boton_secundario": "Compara",
     "nota": "Desde $825 MXN al mes · En línea en 24 horas"
