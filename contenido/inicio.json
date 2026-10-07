@@ -77,6 +77,118 @@
     ],
     "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.^1^](servicios.html)"
   },
+  "compara": {
+    "titulo": "¡Compara!",
+    "texto": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Profesional",
+    "col1": {
+      "nombre": "GraphicaWeb",
+      "etiqueta": "Te conviene"
+    },
+    "col2": {
+      "nombre": "Soluciones tipo DIY"
+    },
+    "col3": {
+      "nombre": "Encargo por Diseño"
+    },
+    "filas": [
+      {
+        "caracteristica": "Sin curva de aprendizaje (DIY)",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "no",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "si",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Diseñador Asignado",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "no",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "si",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Autoeditable",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "no",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Alojamiento incluido",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "no",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "El sitio es tuyo",
+        "costo": false,
+        "col1": {
+          "tipo": "si",
+          "texto": ""
+        },
+        "col2": {
+          "tipo": "no",
+          "texto": ""
+        },
+        "col3": {
+          "tipo": "si",
+          "texto": ""
+        }
+      },
+      {
+        "caracteristica": "Pago Inicial (MX)",
+        "costo": true,
+        "col1": {
+          "tipo": "texto",
+          "texto": "$825+"
+        },
+        "col2": {
+          "tipo": "texto",
+          "texto": "$550+"
+        },
+        "col3": {
+          "tipo": "texto",
+          "texto": "$9,000 a $27,000"
+        }
+      }
+    ]
+  },
   "contacto": {
     "titulo": "Empecemos por conocer tu negocio.",
     "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",

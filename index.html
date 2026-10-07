@@ -326,26 +326,29 @@
             <section class="section section--alt" id="compara" data-screen-label="Comparativa">
                 <div class="container">
                     <div class="compare__head">
-                        <h2 class="compare__title">¡Compara!</h2>
-                        <p class="compare__lead">GraphicaWeb | Opciones "hágalo usted mismo" (DIY) | Diseñador/a Profesional</p>
+                        <h2 class="compare__title" data-cms="compara.titulo">¡Compara!</h2>
+                        <p class="compare__lead" data-cms="compara.texto">GraphicaWeb | Opciones "hágalo usted mismo" (DIY) | Diseñador/a Profesional</p>
                     </div>
                     <div class="table-wrap">
                         <table class="compare-table">
                             <thead>
                                 <tr>
                                     <th class="col-feature" scope="col"></th>
-                                    <th class="col-highlight brand-col" scope="col">GraphicaWeb<br/><span class="pill">Te conviene</span></th>
-                                    <th scope="col">Soluciones tipo DIY</th>
-                                    <th scope="col">Encargo por Diseño</th>
+                                    <th class="col-highlight brand-col" scope="col"><span data-cms="compara.col1.nombre">GraphicaWeb</span><br/><span class="pill" data-cms="compara.col1.etiqueta" data-cms-optional>Te conviene</span></th>
+                                    <th scope="col" data-cms="compara.col2.nombre">Soluciones tipo DIY</th>
+                                    <th scope="col" data-cms="compara.col3.nombre">Encargo por Diseño</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                                <tr>
-                                    <th scope="row">Sin curva de aprendizaje (DIY)</th>
-                                    <td class="col-highlight"><span class="check">✓</span></td>
-                                    <td><span class="dash">—</span></td>
-                                    <td><span class="check">✓</span></td>
+                            <!-- Las filas se editan en el panel (Tabla comparativa → Filas). La
+                                 primera fila es el molde: cada celda trae sus tres formas
+                                 (✓, — o texto) y el panel elige cuál se publica. Las demás sólo
+                                 sirven para ver la maqueta sin build. -->
+                            <tbody data-cms-list="compara.filas">
+                                <tr data-cms-class="row-cost:.costo" data-cms-item>
+                                    <th scope="row" data-cms=".caracteristica">Sin curva de aprendizaje (DIY)</th>
+                                    <td class="col-highlight"><span class="check" data-cms-if=".col1.tipo=si">✓</span><span class="dash" data-cms-if=".col1.tipo=no">—</span><strong data-cms=".col1.texto" data-cms-if=".col1.tipo=texto">Texto</strong></td>
+                                    <td><span class="check" data-cms-if=".col2.tipo=si">✓</span><span class="dash" data-cms-if=".col2.tipo=no">—</span><strong data-cms=".col2.texto" data-cms-if=".col2.tipo=texto">Texto</strong></td>
+                                    <td><span class="check" data-cms-if=".col3.tipo=si">✓</span><span class="dash" data-cms-if=".col3.tipo=no">—</span><strong data-cms=".col3.texto" data-cms-if=".col3.tipo=texto">Texto</strong></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Diseñador Asignado</th>

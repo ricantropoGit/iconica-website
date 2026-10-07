@@ -168,6 +168,56 @@ collections:
                       - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
               - { label: "Nota al pie", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
 
+          - label: Tabla comparativa
+            name: compara
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto bajo el título", name: texto, widget: string }
+              - label: "Columna 1 (destacada)"
+                name: col1
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Nombre", name: nombre, widget: string }
+                  - { label: "Etiqueta (vacío = sin etiqueta)", name: etiqueta, widget: string, required: false }
+              - { label: "Columna 2", name: col2, widget: object, collapsed: true, fields: [{ label: "Nombre", name: nombre, widget: string }] }
+              - { label: "Columna 3", name: col3, widget: object, collapsed: true, fields: [{ label: "Nombre", name: nombre, widget: string }] }
+              - label: "Filas"
+                name: filas
+                label_singular: fila
+                widget: list
+                summary: "{{fields.caracteristica}}"
+                hint: "Arrastra para ordenarlas. En cada celda eliges ✓, — o un texto."
+                fields:
+                  - { label: "Característica", name: caracteristica, widget: string, hint: "Formato: `**negritas**` · `^1^` superíndice" }
+                  - { label: "Fila de costo (resaltada)", name: costo, widget: boolean, default: false, required: false }
+                  - label: "Columna 1"
+                    name: col1
+                    widget: object
+                    collapsed: false
+                    summary: "{{fields.tipo}} {{fields.texto}}"
+                    fields:
+                      - { label: "Celda", name: tipo, widget: select, default: si, options: [{ label: "✓  Sí", value: si }, { label: "—  No", value: no }, { label: "Texto", value: texto }] }
+                      - { label: "Texto (si elegiste Texto)", name: texto, widget: string, required: false, hint: "Sale en negritas, p. ej. $9,000 a $27,000" }
+                  - label: "Columna 2"
+                    name: col2
+                    widget: object
+                    collapsed: false
+                    summary: "{{fields.tipo}} {{fields.texto}}"
+                    fields:
+                      - { label: "Celda", name: tipo, widget: select, default: si, options: [{ label: "✓  Sí", value: si }, { label: "—  No", value: no }, { label: "Texto", value: texto }] }
+                      - { label: "Texto (si elegiste Texto)", name: texto, widget: string, required: false, hint: "Sale en negritas, p. ej. $9,000 a $27,000" }
+                  - label: "Columna 3"
+                    name: col3
+                    widget: object
+                    collapsed: false
+                    summary: "{{fields.tipo}} {{fields.texto}}"
+                    fields:
+                      - { label: "Celda", name: tipo, widget: select, default: si, options: [{ label: "✓  Sí", value: si }, { label: "—  No", value: no }, { label: "Texto", value: texto }] }
+                      - { label: "Texto (si elegiste Texto)", name: texto, widget: string, required: false, hint: "Sale en negritas, p. ej. $9,000 a $27,000" }
+
           - label: Preguntas frecuentes
             name: faq
             widget: object
