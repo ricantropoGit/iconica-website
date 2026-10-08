@@ -156,7 +156,7 @@
           "Reembolso sin condiciones",
           "Soporte 24/7",
           "Editor intuitivo para textos e imágenes",
-          "Alojamiento y dominio vinculado a nuestros servidores"
+          "Alojamiento, dominio propio vinculado a nuestros servidores y certificado de seguridad por un año."
         ],
         "periodo": "MXN",
         "cobro": "Precio de contado: $9,900^1^",
@@ -254,24 +254,28 @@
         "respuesta": "Cuando llega el momento de tener tu propia página web, usualmente tienes dos opciones: contratar a un diseñador/a (bajo el típico esquema del 50% de anticipo, 50% contra entrega) o entrarle a hacer tu propio diseño con alguna de las grandes plataformas del \"hágalo usted mismo\" ( DIY).\n\n**GraphicaWeb** se presenta como una opción más conveniente. Haces un primer pago, que puede ser hasta de $825 MXN (a 12 meses sin intereses). ==Con nosotros te olvidas de anticipos del 50%, obtienes tu sitio listo y en línea en 72 hrs.,== y te ahorras la curva de aprendizaje del «hágalo usted mismo»; que suele ser mucho más pronunciada —y dilatada— de lo que te parece."
       },
       {
+        "pregunta": "¿Que te entregamos?",
+        "respuesta": "**Tu sitio.** Una landing page responsiva con menú de navegación interna. Es posible agregar tantas páginas adicionales como sea necesario, vinculadas a sus respectivos ítems de menú.\n\n**El diseño.** Tu sitio se construye sobre nuestro sistema modular de diseño, configurado según la estrategia comercial de tu negocio. Es un sistema editable, capaz de crecer y adaptarse conforme lo necesites.\n\n**La integración.** Un diseñador adapta tus contenidos —textos e imágenes— a ese sistema, sobre el diseño que hayas aprobado.\n\n**La operación.** Publicación de tu sitio, 12 meses de alojamiento con respaldos y mantenimiento, y acceso a tu panel para editar textos e imágenes cuando quieras."
+      },
+      {
         "pregunta": "¿Necesito un nombre de dominio?",
-        "respuesta": "Sí, es lo recomendable. Si ya tienes uno, lo puedes apuntar a nuestros servidores desde la cuenta de tu proveedor de dominios. Es muy fácil. Si no cuentas con uno, te orientamos para registrarlo a tu nombre con el proveedor que tú nos indiques."
+        "respuesta": "Sí, es lo recomendable. Si ya tienes uno, lo apuntas a nuestros servidores desde la cuenta de tu proveedor. Es muy fácil. Si no cuentas con uno, te orientamos para registrarlo a tu nombre con el proveedor que tú nos indiques."
       },
       {
         "pregunta": "¿Debo indicar algún ejemplo de diseño web?",
-        "respuesta": "Es lo más conveniente. De esta forma es posible partir de un ejemplo real sobre del cual sea factible visualizar tu diseño. Los constructores de páginas web como Wix o Webflow trabajan de forma parecida. El cliente elige un tema prediseñado para ser adaptado a los contenidos e imagen de su empresa o negocio. En este caso, a diferencia de nuestra propuesta, es el cliente mismo quien tiene que adaptar la plantilla."
+        "respuesta": "Es lo más conveniente. Nos sirve para entender tu estilo y partir de una referencia concreta en lugar de una descripción. El resultado es un diseño propio, adaptado a tu negocio, no una copia del sitio que nos muestres."
       },
       {
-        "pregunta": "¿Puedo agregar reservaciones, suscripciones o pagos en línea?",
-        "respuesta": "Sí. Es posible integrar tu sitio con la plataforma que ya uses, o te ayudamos a elegir una. Estas herramientas las contratas por tu cuenta. [El costo de su integración es adicional a la mensualidad.](/servicios.html)"
-      },
-      {
-        "pregunta": "¿Que te entregamos?",
-        "respuesta": "Recibes una página web (landing Page) con la integración inicial de los contenidos (textos e imágenes) de tu negocio al sistema modular de diseño sobre una plantilla o diseño previamente aprobado.\n\n==Te entregamos una **Landing-page** con menú configurado== para la navegación dentro de la misma página con el diseño, la integración de tus contenidos,\n\nSiempre será posible generar más páginas e items de menú desde el editor.\n\nEl diseño, la integración de tus contenidos, la publicación de tu sitio y 12 meses de alojamiento con respaldos y mantenimiento. También el acceso a tu panel para editar textos e imágenes cuando quieras."
+        "respuesta": "Sí. El plazo de tres días hábiles corre desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc.— más tu referencia de diseño. Te mandamos un formulario guiado que te dice exactamente lo qué necesitamos.",
+        "pregunta": "¿De verdad en 72 horas?"
       },
       {
         "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
         "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es viable hacer cambios a la estructura de la plantilla.  De esta forma, tu puedes agregar los contenidos que tu quieras, sin romper el diseño."
+      },
+      {
+        "pregunta": "¿Puedo agregar reservaciones, suscripciones o pagos en línea?",
+        "respuesta": "Sí. Es posible integrar tu sitio con la plataforma que ya uses, o te ayudamos a elegir una. Estas herramientas las contratas por tu cuenta. [El costo de su integración es adicional a la mensualidad.](/servicios.html)"
       },
       {
         "pregunta": "¿Puedo comprar el sitio y llevarlo a otro proveedor?",
