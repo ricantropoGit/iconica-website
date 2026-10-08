@@ -250,7 +250,7 @@
     "titulo": "Preguntas frecuentes",
     "preguntas": [
       {
-        "pregunta": "¿Cuál es la ventaja de tener mi página en GraphicaWeb?",
+        "pregunta": "¿Cuál es la ventaja en hacer mi página con GraphicaWeb?",
         "respuesta": "Cuando llega el momento de tener tu propia página web, usualmente tienes dos opciones: contratar a un diseñador, o entrarle a hacer tu propio diseño con una de las grandes plataformas de alojamiento web.\n\n==GraphicaWeb se presenta como una tercer camino.== No tienes que hacer la inversión inicial del despacho o diseñador —que puede ser muy onerosa—, y te ahorras la curva de aprendizaje del \"hágalo usted mismo\", que suele ser mucho más pronunciada de lo que te venden."
       },
       {
@@ -268,14 +268,6 @@
       {
         "pregunta": "¿De verdad en 24 horas?",
         "respuesta": "Sí, tu sitio queda en 24 horas una vez confirmadas la entrega de contenido y estructura (considerando textos e imágenes).\n\nTe mandamos un formulario guiado que te dice exactamente qué necesitamos de ti, por ejemplo: textos, fotos, servicios, precios, horarios… etc."
-      },
-      {
-        "pregunta": "¿Qué pasa si cancelo?",
-        "respuesta": "Puedes cancelar en el momento que así lo desees desde el panel proporcionado por Stripe, nuestro plataforma de pagos. El servicio corre hasta el final del periodo que ya pagaste y no se cobra el siguiente. Tu dominio queda libre para que lo apuntes a donde quieras. Si así lo requieres, te entregamos tu contenido —textos, fotos y datos de tu negocio."
-      },
-      {
-        "pregunta": "¿Qué son las soluciones tipo DIY?",
-        "respuesta": "DIY: \"Hágalo-usted-mismo\". Son constructores de páginas web tipo Wix, WebFlow, Squarespace, Framer, Canva, etc., etc. El costo mensual es similar a nuestra propuesta, pero el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover el sitio entero a otro proveedor."
       },
       {
         "pregunta": "¿Cuáles son los alcances y límites del diseñador/a asignado?",
