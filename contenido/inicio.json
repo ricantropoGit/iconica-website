@@ -147,7 +147,7 @@
     "texto": "Sin el desembolso inicial · Tu eliges tu mensualidad.",
     "planes": [
       {
-        "enlace": "https://buy.stripe.com/bJe5kD0PjdOn69saDKfUQ04",
+        "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
         "boton": "Comprar",
         "precio": "$9,900",
         "nombre": "Contado",
@@ -192,7 +192,7 @@
           "Prioridad en soporte"
         ],
         "boton": "Comprar",
-        "enlace": "https://buy.stripe.com/bJe5kD0PjdOn69saDKfUQ04"
+        "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
       }
     ],
     "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)"
