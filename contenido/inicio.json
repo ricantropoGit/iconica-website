@@ -101,7 +101,7 @@
         },
         "col2": {
           "tipo": "texto",
-          "texto": "Tu tiempo^2^"
+          "texto": "Tu tiempo + Suscripción^2^"
         },
         "col3": {
           "tipo": "texto",
