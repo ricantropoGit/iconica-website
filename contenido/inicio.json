@@ -14,22 +14,6 @@
     },
     "filas": [
       {
-        "caracteristica": "¿Quién la hace?",
-        "costo": false,
-        "col1": {
-          "tipo": "texto",
-          "texto": "Nosotros"
-        },
-        "col2": {
-          "tipo": "texto",
-          "texto": "Tú"
-        },
-        "col3": {
-          "tipo": "texto",
-          "texto": "Un diseñador"
-        }
-      },
-      {
         "caracteristica": "Sin curva de aprendizaje (DIY)",
         "costo": false,
         "col1": {
@@ -94,19 +78,19 @@
         }
       },
       {
-        "caracteristica": "Costo Inicial (MX)",
+        "caracteristica": "¿Quién la hace?",
         "costo": true,
         "col1": {
           "tipo": "texto",
-          "texto": "$0"
+          "texto": "Nosotros"
         },
         "col2": {
           "tipo": "texto",
-          "texto": "$0"
+          "texto": "Tú"
         },
         "col3": {
           "tipo": "texto",
-          "texto": "$9,000 a $27,000"
+          "texto": "Un diseñador"
         }
       },
       {
@@ -117,13 +101,13 @@
         },
         "col2": {
           "tipo": "texto",
-          "texto": "$250 a $500"
+          "texto": "Tu tiempo^2^"
         },
         "col3": {
           "tipo": "texto",
-          "texto": "Adicional"
+          "texto": "50% anticipo"
         },
-        "caracteristica": "Pago Mensual (MX)"
+        "caracteristica": "Desembolso Inicial"
       }
     ]
   },
