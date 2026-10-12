@@ -120,13 +120,13 @@
     ]
   },
   "pasos": {
-    "titulo": "Libera el poder de tus redes sociales en tres sencillos pasos.",
-    "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una **landing page efectiva.**==",
+    "titulo": "Libera el poder de tus redes sociales en tres pasos.",
+    "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una **landing page vendedora:**==",
     "tarjetas": [
       {
         "etiqueta": "01 Qué comunicar",
         "titulo": "Diseño de Concepto",
-        "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
+        "texto": "Se deduce a partir de la promesa básica, argumento e idea vendedora."
       },
       {
         "etiqueta": "02 Cómo comunicar",
@@ -285,7 +285,7 @@
   },
   "hero": {
     "titulo": "Convierte tu sitio\nweb, en un medio\npublicitario.",
-    "subtitulo": "Solo necesitas una página web ==y tener presencia en tus redes sociales==. Si no tienes una, nosotros te la creamos **sin costo**.",
+    "subtitulo": "Solo necesitas ==tener presencia en redes sociales== y una página web. Si no tienes una, nosotros la creamos **sin costo adicional**.",
     "boton_principal": "Cómo funciona",
     "boton_secundario": "Sin curva de aprendizaje"
   },
