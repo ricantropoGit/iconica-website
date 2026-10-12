@@ -124,18 +124,18 @@
     "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una landing page vendedora.== Esto se logra en 3 etapas:",
     "tarjetas": [
       {
-        "etiqueta": "01 Qué comunicar",
-        "titulo": "Diseño de Concepto",
-        "texto": "Se construye con una estrategia de comunicación que traduce tu promesa básica en una idea vendedora."
+        "etiqueta": "01 Diseño de Concepto",
+        "titulo": "Qué comunicar",
+        "texto": "Se aborda construyendo una estrategia de comunicación que traduce tu promesa básica en una idea vendedora."
       },
       {
-        "etiqueta": "02 Cómo comunicar",
-        "titulo": "Aplicación a página web",
-        "texto": "Esta idea vendedora se aplica a los contenidos publicitarios, siendo el medio tu landing-page."
+        "etiqueta": "02 Aplicación a página web",
+        "titulo": "Cómo comunicar",
+        "texto": "Luego, dicha idea vendedora se aplica a los contenidos publicitarios, usando como medio tu landing-page."
       },
       {
-        "etiqueta": "03 A quién comunicar",
-        "titulo": "Integración a redes",
+        "etiqueta": "03 Integración a redes",
+        "titulo": "A quién comunicar",
         "texto": "Convierte seguidores en compradores enviando la actividad de tus redes sociales a tu landing-page."
       }
     ],
