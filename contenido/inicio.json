@@ -120,8 +120,8 @@
     ]
   },
   "pasos": {
-    "titulo": "Libera el poder de tus redes sociales en tres pasos.",
-    "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una **landing page vendedora:**==",
+    "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
+    "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una landing page vendedora== en tres etapas:",
     "tarjetas": [
       {
         "etiqueta": "01 Qué comunicar",
@@ -131,12 +131,12 @@
       {
         "etiqueta": "02 Cómo comunicar",
         "titulo": "Aplicación a página web",
-        "texto": "Se ejecutan aplican los contenidos publicitarios considerando que el medio es tu landing page."
+        "texto": "Ésta idea vendedora se aplica a los contenidos publicitarios: el medio es tu landing-page."
       },
       {
         "etiqueta": "03 A quién comunicar",
         "titulo": "Integración a redes",
-        "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
+        "texto": "Convierte a tus seguidores en compradores. Envía la actividad de tus rede sociales  a tu landing-page."
       }
     ],
     "boton": "Tu sitio puede quedar hoy mismo"
@@ -149,7 +149,7 @@
       {
         "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
         "boton": "Comprar",
-        "precio": "$9,900",
+        "precio": "$15 Mil",
         "nombre": "Contado",
         "caracteristicas": [
           "Garantía de 30 días",
