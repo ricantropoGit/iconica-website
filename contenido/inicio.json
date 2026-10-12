@@ -124,18 +124,18 @@
     "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una **landing page efectiva.**==",
     "tarjetas": [
       {
-        "etiqueta": "01 Qué",
-        "titulo": "Idea vendedora",
+        "etiqueta": "01 Qué comunicar",
+        "titulo": "Diseño de Concepto",
         "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
       },
       {
-        "etiqueta": "02 Cómo",
-        "titulo": "Landing Page",
+        "etiqueta": "02 Cómo comunicarlo",
+        "titulo": "Desarrollo de página web",
         "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
       },
       {
-        "etiqueta": "03 A quién",
-        "titulo": "Conecta tus redes sociales",
+        "etiqueta": "03 A quién comunicarlo",
+        "titulo": "Integración a redes",
         "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
       }
     ],
