@@ -58,7 +58,11 @@ collections:
             name: hero
             widget: object
             fields:
-              - { label: "Título principal", name: titulo, widget: string, pattern: ['^.{1,90}$', "Máximo 90 caracteres para que no se rompa la portada"] }
+              # widget: text (no string) para poder escribir el título en tres renglones:
+              # el motor convierte cada salto de línea en <br>. El patrón usa [\s\S] en vez
+              # de . porque el punto NO cuenta los saltos, y con ^.{1,90}$ el campo
+              # rechazaría cualquier título que ocupe más de una línea.
+              - { label: "Título principal", name: titulo, widget: text, pattern: ['^[\s\S]{1,90}$', "Máximo 90 caracteres para que no se rompa la portada"], hint: "Va en TRES renglones: escribe cada uno en su propia línea. Evita renglones de más de ~20 caracteres o el título se partirá en cuatro." }
               - { label: "Subtítulo", name: subtitulo, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
               - { label: "Botón principal", name: boton_principal, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
               - { label: "Botón secundario", name: boton_secundario, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
