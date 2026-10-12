@@ -120,22 +120,22 @@
     ]
   },
   "pasos": {
-    "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
-    "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
+    "titulo": "Libera el poder de tus redes sociales en tres sencillos pasos.",
+    "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una **landing page efectiva.**==",
     "tarjetas": [
       {
-        "etiqueta": "01 Dominio",
-        "titulo": "Apunta tu dominio a nuestros servidores",
+        "etiqueta": "01 Qué",
+        "titulo": "Idea vendedora",
         "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
       },
       {
-        "etiqueta": "02 Diseño",
-        "titulo": "Elige un diseño web de referencia",
+        "etiqueta": "02 Cómo",
+        "titulo": "Landing Page",
         "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
       },
       {
-        "etiqueta": "03 Contenido",
-        "titulo": "Comparte de qué trata tu negocio",
+        "etiqueta": "03 A quién",
+        "titulo": "Conecta tus redes sociales",
         "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
       }
     ],
