@@ -120,27 +120,26 @@
     ]
   },
   "pasos": {
-    "titulo": "Conduce el tráfico de tus redes sociales hacia tu página web.",
-    "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una landing page vendedora.== Lo anterior lo conseguimos respondiendo a las siguientes tres preguntas:",
+    "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
+    "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
     "tarjetas": [
       {
-        "etiqueta": "01 Diseño de Concepto",
-        "titulo": "Qué comunicar",
-        "texto": "Se aborda construyendo una estrategia de comunicación que traduce tu «promesa básica» en una idea vendedora."
+        "etiqueta": "01 Dominio",
+        "titulo": "Apunta tu dominio a nuestros servidores",
+        "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
       },
       {
-        "etiqueta": "02 Aplicación a página web",
-        "titulo": "Cómo comunicar",
-        "texto": "Luego, dicha idea vendedora se aplica a los contenidos publicitarios, usando como recurso tu landing-page."
+        "etiqueta": "02 Diseño",
+        "titulo": "Elige un diseño web de referencia",
+        "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
       },
       {
-        "etiqueta": "03 Integración a redes",
-        "titulo": "A quién comunicar",
-        "texto": "Convierte a tus seguidores en compradores enviando la actividad de tus redes sociales a tu landing-page."
+        "etiqueta": "03 Contenido",
+        "titulo": "Comparte de qué trata tu negocio",
+        "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
       }
     ],
-    "boton": "Comienza a vender hoy",
-    "boton_ancla": "#cta"
+    "boton": "Tu sitio puede quedar hoy mismo"
   },
   "precios": {
     "etiqueta": "Precios",
@@ -150,7 +149,7 @@
       {
         "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
         "boton": "Comprar",
-        "precio": "$15,500",
+        "precio": "$9,900",
         "nombre": "Contado",
         "caracteristicas": [
           "Garantía de 30 días",
@@ -160,7 +159,7 @@
           "Alojamiento, dominio propio vinculado a nuestros servidores y certificado de seguridad por un año."
         ],
         "periodo": "MXN",
-        "cobro": "Precio de contado: $15,500^1^",
+        "cobro": "Precio de contado: $9,900^1^",
         "tipo": "fijo",
         "insignia": ""
       },
@@ -170,26 +169,22 @@
         "plazos": [
           {
             "meses": "3",
-            "precio": "$5,166"
+            "precio": "$3,300"
           },
           {
             "meses": "6",
-            "precio": "$2,583"
+            "precio": "$1,650"
           },
           {
             "meses": "9",
-            "precio": "$1,722"
+            "precio": "$1,100"
           },
           {
             "meses": "12",
-            "precio": "$1,291"
-          },
-          {
-            "meses": "18",
-            "precio": "$861"
+            "precio": "$825"
           }
         ],
-        "total": "$15,500",
+        "total": "$9,900",
         "periodo": "MXN",
         "caracteristicas": [
           "12 mensualidades de $825 sin intereses",
@@ -245,13 +240,11 @@
     ]
   },
   "cta": {
-    "titulo": "¿Listo/a para empezar a vender desde tu página web?",
-    "texto": "Amplía el alcance de tu promesa básica con una experiencia en línea que **no es posible ofrecer solo con redes sociales.**",
+    "titulo": "Olvídate de la curva de aprendizaje.",
+    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
     "boton_principal": "Quiero mi Sitio!",
-    "boton_secundario": "Cuánto cuesta",
-    "nota": "Hasta 18 mensualidades **sin intereses.**",
-    "boton_principal_ancla": "#precios",
-    "boton_secundario_ancla": "#precios"
+    "boton_secundario": "Compara",
+    "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**"
   },
   "faq": {
     "titulo": "Preguntas frecuentes",
@@ -291,12 +284,10 @@
     ]
   },
   "hero": {
-    "titulo": "Convierte tu sitio web en un poderoso instrumento de ventas.",
-    "subtitulo": "Solo necesitas tener presencia en redes sociales y una página web. ==Si no tienes una, **nosotros la creamos sin costo adicional**.==",
+    "titulo": "Tu sitio web en la nube, sin tanto rollo.",
+    "subtitulo": "Solo necesitas un nombre de dominio ==y elegir un diseño web que te rife.== Nosotros nos encargamos de todo lo demás.",
     "boton_principal": "Cómo funciona",
-    "boton_secundario": "Quiero vender más",
-    "boton_principal_ancla": "#como-funciona",
-    "boton_secundario_ancla": "#cta"
+    "boton_secundario": "Sin curva de aprendizaje"
   },
   "seo": {
     "titulo": "GraphicaWeb — Sitios web «llave en mano» por suscripción",
