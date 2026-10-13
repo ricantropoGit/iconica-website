@@ -1,0 +1,88 @@
+{
+  "seo": {
+    "titulo": "Aviso de Privacidad — GraphicaWeb",
+    "descripcion": "Aviso de Privacidad Integral de GraphicaMente. Cómo recabamos, usamos, conservamos y protegemos tus datos personales, y cómo ejercer tus derechos ARCO."
+  },
+  "encabezado": {
+    "etiqueta": "Legal",
+    "titulo": "Aviso de Privacidad Integral",
+    "actualizado": "Última actualización: 19 de junio de 2026"
+  },
+  "intro": "**GraphicaMente** (en adelante, \"el Responsable\"), con domicilio [por confirmar], es el responsable del tratamiento de sus datos personales y pone a su disposición el presente Aviso de Privacidad, en cumplimiento con lo dispuesto por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares y su Reglamento.",
+  "contacto": {
+    "titulo": "Contacto de privacidad",
+    "correo": "privacidad@grfkweb.com",
+    "domicilio": "Domicilio: [por confirmar]."
+  },
+  "secciones": {
+    "s1": {
+      "titulo": "Datos personales que recabamos",
+      "parrafo_1": "En GraphicaWeb somos conscientes de que su imagen es un dato personal valioso y sensible. Por ello, limitamos la recopilación de información a lo estrictamente necesario para ofrecerle nuestro servicio de optimización de retratos. Únicamente recabamos la siguiente información:",
+      "puntos": [
+        "**Su nombre y primer apellido**, para poder dirigirnos a usted de manera personalizada.",
+        "**Su dirección de correo electrónico**, que utilizamos como medio principal para enviarle la propuesta de su retrato optimizado, notificarle sobre el estado de su solicitud y mantener cualquier comunicación relacionada con el servicio.",
+        "**Su fotografía (retrato)**, que es la imagen que usted nos envía para ser procesada y optimizada mediante inteligencia artificial. Dado que una fotografía revela su imagen personal, la ley mexicana la considera un dato personal sensible, por lo que recibe un trato especialmente cuidadoso y protegido.",
+        "**Comentarios o sugerencias adicionales**, que usted puede incluir al momento de enviar su foto para indicar preferencias específicas sobre el resultado deseado."
+      ],
+      "destacado": "**No recabamos ni almacenamos ningún dato financiero**, como números de tarjetas de crédito o cuentas bancarias. Todo el proceso de pago es gestionado de manera externa y segura por nuestro socio comercial Stripe, por lo que usted realizará la transacción directamente con ellos al momento de decidir comprar su imagen en alta resolución."
+    },
+    "s2": {
+      "titulo": "Finalidades del tratamiento de sus datos personales",
+      "parrafo_1": "Sus datos personales serán utilizados para las siguientes finalidades primarias y necesarias (que no requieren su consentimiento expreso para existir):",
+      "puntos": [
+        "**Proveer el servicio de optimización:** procesar la imagen que nos envía para generar la propuesta de retrato optimizado con inteligencia artificial.",
+        "**Comunicación:** enviarle por correo electrónico la propuesta de ejercicio sin costo (con marca de agua), así como notificarle sobre el estado de su solicitud.",
+        "**Gestión de descargas:** facilitarle la descarga de las versiones en alta resolución (sin marca de agua) en caso de que decida adquirirlas.",
+        "**Atención al cliente:** responder a sus preguntas, comentarios o solicitudes de soporte."
+      ],
+      "parrafo_2": "No realizamos tratamientos de sus datos para fines de marketing, publicidad o prospección comercial sin su consentimiento previo y explícito."
+    },
+    "s3": {
+      "titulo": "Plazos de conservación y supresión de datos",
+      "parrafo_1": "La ley exige que establezcamos un plazo de conservación claro, así como el procedimiento de supresión.",
+      "puntos": [
+        "**Imágenes (retratos):** una vez generada la propuesta de optimización, su imagen original será eliminada automáticamente de nuestros servidores en un plazo máximo de 48 horas. Este es un compromiso explícito de nuestra política de servicio, que garantiza la privacidad de su identidad.",
+        "**Nombre y correo electrónico:** conservaremos estos datos para poder mantener comunicación con usted y gestionar su solicitud. Una vez que el proceso de optimización haya finalizado (ya sea que compre la imagen o no), y siempre que no exista una relación comercial activa, estos datos serán bloqueados y posteriormente suprimidos, a menos que usted solicite su eliminación antes."
+      ]
+    },
+    "s4": {
+      "titulo": "Transferencia de datos personales",
+      "parrafo_1": "Para cumplir con las finalidades descritas, sus datos personales pueden ser transferidos a terceros nacionales o internacionales en los siguientes casos:",
+      "puntos": [
+        "**Proveedores de servicios tecnológicos:** compartimos su imagen con plataformas de inteligencia artificial (modelos generativos de imágenes sintéticas) que son necesarios para procesar su retrato y generar la propuesta optimizada.",
+        "**Procesamiento de pagos:** como se mencionó, Stripe procesa los pagos. No compartimos sus datos personales (nombre, correo, imagen) con Stripe; la transferencia de datos para el pago se realiza directamente entre usted y Stripe al momento de la compra a través de la plataforma de pagos mencionada."
+      ],
+      "parrafo_2": "Si usted manifiesta de forma expresa su oposición para realizar dichas transferencias a proveedores tecnológicos y de pagos, entenderemos que nos otorga su consentimiento tácito para llevarlas a cabo."
+    },
+    "s5": {
+      "titulo": "Derechos ARCO y revocación del consentimiento",
+      "parrafo_1": "Usted tiene el derecho de acceder, rectificar, cancelar u oponerse al tratamiento de sus datos personales (derechos ARCO). Para ejercerlos, usted o su representante legal deberá presentar una solicitud ante el Responsable a través del correo electrónico [privacidad@grfkweb.com](mailto:privacidad@grfkweb.com), la cual deberá contener:",
+      "puntos": [
+        "Su nombre completo y su dirección de correo electrónico.",
+        "Documentos que acrediten su identidad (copia de identificación oficial) o, en su caso, la personalidad del representante.",
+        "La descripción clara y precisa de los datos respecto de los cuales busca ejercer alguno de los derechos ARCO.",
+        "Cualquier otro elemento que facilite la localización de sus datos."
+      ],
+      "parrafo_2": "**Procedimiento y plazos:** responderemos a su solicitud en un plazo máximo de 20 (veinte) días hábiles contados desde la recepción de la misma. Si la solicitud es procedente, haremos efectiva la rectificación, cancelación u oposición en los 15 (quince) días hábiles siguientes a la fecha en que le comuniquemos la respuesta. El ejercicio de estos derechos es gratuito."
+    },
+    "s6": {
+      "titulo": "Seguridad y confidencialidad",
+      "parrafo_1": "Implementamos medidas técnicas y organizativas para proteger su información, incluyendo:",
+      "puntos": [
+        "Cifrado y conexiones seguras (TLS) para la transmisión de datos entre su navegador y nuestros servidores.",
+        "Acceso restringido a sus datos solo al personal autorizado que necesita conocerlos para prestar el servicio.",
+        "Borrado automático de su imagen en un plazo máximo de 48 horas, como se ha indicado."
+      ],
+      "parrafo_2": "Sin embargo, ningún sistema es completamente infalible. Por ello, le recomendamos no compartir imágenes que considere de extrema sensibilidad a través de medios no seguros."
+    },
+    "s7": {
+      "titulo": "Cambios al Aviso de Privacidad",
+      "parrafo_1": "Nos reservamos el derecho de realizar modificaciones o actualizaciones al presente Aviso de Privacidad en cualquier momento. Cualquier cambio será notificado a través de nuestro sitio web [grfkweb.com](https://grfkweb.com) o por correo electrónico, con al menos dos semanas de antelación a su entrada en vigor."
+    },
+    "s8": {
+      "titulo": "Consentimiento y contacto",
+      "parrafo_1": "Al proporcionarnos sus datos personales y utilizar nuestros servicios, usted manifiesta su consentimiento libre, específico e informado para el tratamiento de los mismos conforme a lo establecido en este Aviso de Privacidad.",
+      "parrafo_2": "Si tiene alguna pregunta o duda, o desea ejercer sus derechos ARCO, puede contactarnos a través de:"
+    }
+  }
+}
