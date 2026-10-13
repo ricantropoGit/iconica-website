@@ -248,3 +248,229 @@ collections:
             collapsed: true
             fields:
               - { label: "Notas", name: lista, widget: list, label_singular: nota, field: { label: "Nota", name: nota, widget: text }, hint: "Se numeran solas en el orden de la lista: la primera es la 1, y así. Los superíndices de la página (^1^, ^2^…) llevan a la nota con ese número; si cambias el orden, revísalos. Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+      - name: servicios
+        label: "Servicios"
+        file: contenido/servicios.json
+        fields:
+          - label: "Buscadores"
+            name: seo
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título de la pestaña", name: titulo, widget: string, pattern: ["^.{1,70}$", "M\u00e1ximo 70 caracteres"] }
+              - { label: "Descripción en Google", name: descripcion, widget: text, pattern: ["^[\\s\\S]{1,170}$", "M\u00e1ximo 170 caracteres"] }
+          - label: "Encabezado"
+            name: encabezado
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Etiqueta", name: etiqueta, widget: string }
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text }
+          - label: "Incluido en tu plan"
+            name: incluido
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Etiqueta", name: etiqueta, widget: string }
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text }
+              - label: "Servicios incluidos"
+                name: servicios
+                widget: list
+                # Cada uno tiene su ícono fijo en el diseño: se editan, pero no se agregan ni quitan.
+                allow_add: false
+                allow_remove: false
+                allow_reorder: false
+                summary: "{{fields.titulo}}"
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Texto", name: texto, widget: text }
+          - label: "Servicios adicionales"
+            name: extras
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Etiqueta", name: etiqueta, widget: string }
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text }
+              - label: "Grupos"
+                name: grupos
+                widget: list
+                label_singular: grupo
+                summary: "{{fields.titulo}}"
+                fields:
+                  - { label: "Título del grupo", name: titulo, widget: string }
+                  - { label: "Nota bajo el título", name: nota, widget: string, required: false, hint: "Opcional." }
+                  - label: "Servicios"
+                    name: servicios
+                    widget: list
+                    label_singular: servicio
+                    summary: "{{fields.servicio}} — {{fields.precio}}"
+                    fields:
+                      - { label: "Servicio", name: servicio, widget: string }
+                      - { label: "Precio", name: precio, widget: string, hint: "Ej.: $1,800 · Desde $6,500 · Según Plan ^1^" }
+          - label: "Notas al pie"
+            name: notas
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Aviso «No ofrecemos»", name: aviso, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - { label: "Notas", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+          - label: "Llamada final"
+            name: cta
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text }
+              - { label: "Botón", name: boton, widget: string }
+              - { label: "Enlace del botón", name: enlace, widget: string, hint: "Ej.: index.html#contacto" }
+      - name: success
+        label: "Después del pago (success)"
+        file: contenido/success.json
+        fields:
+          - label: "Buscadores"
+            name: seo
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título de la pestaña", name: titulo, widget: string, pattern: ["^.{1,70}$", "M\u00e1ximo 70 caracteres"] }
+              - { label: "Descripción en Google", name: descripcion, widget: text, pattern: ["^[\\s\\S]{1,170}$", "M\u00e1ximo 170 caracteres"] }
+          - label: "Encabezado"
+            name: encabezado
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Etiqueta", name: etiqueta, widget: string }
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+          - label: "Pasos"
+            name: pasos
+            widget: list
+            # Los cuatro pasos son fijos en el diseño (el 3 lleva la tabla DNS).
+            allow_add: false
+            allow_remove: false
+            allow_reorder: false
+            collapsed: true
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+          - label: "Tabla DNS (paso 3)"
+            name: dns
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "IP del servidor (registro A)", name: ip, widget: string, hint: "OJO: si cambia el servidor, avisa a todos los clientes cuyo dominio apunta aquí." }
+              - { label: "Valor del CNAME (www)", name: cname, widget: string }
+              - { label: "Nota bajo la tabla", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+          - label: "WhatsApp y nota final"
+            name: cierre
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Texto del botón", name: boton, widget: string }
+              - { label: "Enlace de WhatsApp", name: enlace, widget: string, hint: "https://wa.me/52…?text=…" }
+              - { label: "Nota", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+      - name: privacidad
+        label: "Aviso de privacidad"
+        file: contenido/privacidad.json
+        fields:
+          - label: "Buscadores"
+            name: seo
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título de la pestaña", name: titulo, widget: string, pattern: ["^.{1,70}$", "M\u00e1ximo 70 caracteres"] }
+              - { label: "Descripción en Google", name: descripcion, widget: text, pattern: ["^[\\s\\S]{1,170}$", "M\u00e1ximo 170 caracteres"] }
+          - label: "Encabezado"
+            name: encabezado
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Etiqueta", name: etiqueta, widget: string }
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Última actualización", name: actualizado, widget: string }
+          - { label: "Introducción", name: intro, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+          - label: "Secciones"
+            name: secciones
+            widget: object
+            collapsed: true
+            fields:
+              - label: "1. Datos personales que recabamos"
+                name: s1
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Viñetas", name: puntos, widget: list, label_singular: viñeta, field: { label: "Viñeta", name: punto, widget: text }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Recuadro destacado", name: destacado, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "2. Finalidades del tratamiento de sus datos personales"
+                name: s2
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Viñetas", name: puntos, widget: list, label_singular: viñeta, field: { label: "Viñeta", name: punto, widget: text }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Párrafo 2", name: parrafo_2, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "3. Plazos de conservación y supresión de datos"
+                name: s3
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Viñetas", name: puntos, widget: list, label_singular: viñeta, field: { label: "Viñeta", name: punto, widget: text }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "4. Transferencia de datos personales"
+                name: s4
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Viñetas", name: puntos, widget: list, label_singular: viñeta, field: { label: "Viñeta", name: punto, widget: text }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Párrafo 2", name: parrafo_2, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "5. Derechos ARCO y revocación del consentimiento"
+                name: s5
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Viñetas", name: puntos, widget: list, label_singular: viñeta, field: { label: "Viñeta", name: punto, widget: text }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Párrafo 2", name: parrafo_2, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "6. Seguridad y confidencialidad"
+                name: s6
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Viñetas", name: puntos, widget: list, label_singular: viñeta, field: { label: "Viñeta", name: punto, widget: text }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Párrafo 2", name: parrafo_2, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "7. Cambios al Aviso de Privacidad"
+                name: s7
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+              - label: "8. Consentimiento y contacto"
+                name: s8
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Título", name: titulo, widget: string }
+                  - { label: "Párrafo 1", name: parrafo_1, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+                  - { label: "Párrafo 2", name: parrafo_2, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+          - label: "Contacto de privacidad"
+            name: contacto
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Título", name: titulo, widget: string }
+              - { label: "Correo", name: correo, widget: string }
+              - { label: "Domicilio", name: domicilio, widget: string, hint: "Incluye la palabra «Domicilio:»." }

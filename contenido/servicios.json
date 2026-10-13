@@ -1,0 +1,231 @@
+{
+  "seo": {
+    "titulo": "Qué incluye tu plan y qué no — GraphicaWeb",
+    "descripcion": "Lo que incluye tu suscripción de GraphicaWeb y el costo de los servicios adicionales: integraciones, contenido, diseño, funcionalidad, soporte y compra de licencia."
+  },
+  "encabezado": {
+    "etiqueta": "Servicios y precios",
+    "titulo": "Servicios incluídos y servicios adicionales",
+    "texto": "Los servicios adicionales se contratan por separado."
+  },
+  "incluido": {
+    "etiqueta": "Bloque A",
+    "titulo": "Incluido en tu plan",
+    "texto": "Sin costo adicional, en el plan semestral y en el anual.",
+    "servicios": [
+      {
+        "titulo": "Configuración e integración inicial",
+        "texto": "Integración de los contenidos e imagen de tu negocio al sistema modular de diseño, sobre la plantilla previamente aprobada. Incluye hasta 5 páginas y una ronda de ajustes sobre la propuesta inicial."
+      },
+      {
+        "titulo": "Entrega «llave en mano»",
+        "texto": "Sitio publicado y credenciales de acceso para que administres tus contenidos desde WordPress. La edición de tus propios textos, precios, fotos y horarios corre por tu cuenta y no tiene límite. Incluye aviso de privacidad y términos de uso."
+      },
+      {
+        "titulo": "Operación y mantenimiento",
+        "texto": "Alojamiento, conexión de tu dominio y certificado de seguridad. Respaldos automáticos diarios. Actualizaciones del CMS, de seguridad y del sistema de diseño. Soporte por correo en horario hábil para lo relativo a la operación del sitio."
+      }
+    ]
+  },
+  "extras": {
+    "etiqueta": "Bloque B",
+    "titulo": "Servicios adicionales",
+    "texto": "Se contratan solo si los necesitas, en cualquier momento.",
+    "grupos": [
+      {
+        "titulo": "Integraciones con terceros",
+        "nota": "",
+        "servicios": [
+          {
+            "servicio": "Plataforma de reservas, citas o agenda",
+            "precio": "$1,800"
+          },
+          {
+            "servicio": "Pasarela de pagos o cobros en línea",
+            "precio": "$2,200"
+          },
+          {
+            "servicio": "Tienda en línea básica (hasta 20 productos)",
+            "precio": "Desde $6,500"
+          }
+        ]
+      },
+      {
+        "titulo": "Contenido",
+        "nota": "",
+        "servicios": [
+          {
+            "servicio": "Redacción de textos, por página",
+            "precio": "$700"
+          },
+          {
+            "servicio": "Redacción del sitio completo",
+            "precio": "$3,500"
+          },
+          {
+            "servicio": "Optimización y retoque de imágenes, paquete de 20",
+            "precio": "$900"
+          },
+          {
+            "servicio": "Sesión fotográfica del establecimiento",
+            "precio": "Desde $5,500"
+          },
+          {
+            "servicio": "Versión del sitio en inglés",
+            "precio": "$3,200"
+          },
+          {
+            "servicio": "Migración de contenido desde un sitio existente",
+            "precio": "$1,200"
+          },
+          {
+            "servicio": "Alta y optimización de Google Business Profile",
+            "precio": "$1,100"
+          }
+        ]
+      },
+      {
+        "titulo": "Diseño y estructura",
+        "nota": "Composición sobre tu sistema de diseño. Sin funcionalidad adicional.",
+        "servicios": [
+          {
+            "servicio": "Página adicional dentro de tu sistema de diseño",
+            "precio": "$1,100"
+          },
+          {
+            "servicio": "Banner o cabecera de sección",
+            "precio": "$700"
+          },
+          {
+            "servicio": "Bloque o sección especial (galería, testimonios, equipo)",
+            "precio": "$900"
+          },
+          {
+            "servicio": "Landing de campaña o promoción temporal",
+            "precio": "$2,800"
+          },
+          {
+            "servicio": "Ajuste de paleta o tipografía fuera del sistema",
+            "precio": "$1,600"
+          },
+          {
+            "servicio": "Cambio de plantilla a otro vertical",
+            "precio": "$2,500"
+          },
+          {
+            "servicio": "Diseño de logotipo",
+            "precio": "Desde $6,000"
+          }
+        ]
+      },
+      {
+        "titulo": "Elementos con funcionalidad",
+        "nota": "Requieren desarrollo, pruebas en distintos navegadores y mantenimiento posterior.",
+        "servicios": [
+          {
+            "servicio": "Formulario simple (contacto, suscripción)",
+            "precio": "$900"
+          },
+          {
+            "servicio": "Formulario avanzado (campos condicionales, adjuntos, ruteo por área)",
+            "precio": "$1,900"
+          },
+          {
+            "servicio": "Slider o carrusel de imágenes",
+            "precio": "$1,400"
+          },
+          {
+            "servicio": "Galería con filtros o lightbox",
+            "precio": "$1,600"
+          },
+          {
+            "servicio": "Animación al desplazarse, por sección",
+            "precio": "$600"
+          },
+          {
+            "servicio": "Contador, temporizador o barra de progreso",
+            "precio": "$700"
+          },
+          {
+            "servicio": "Mapa interactivo con múltiples ubicaciones",
+            "precio": "$1,200"
+          },
+          {
+            "servicio": "Automatización con WhatsApp",
+            "precio": "$1,200"
+          },
+          {
+            "servicio": "Comportamiento a la medida",
+            "precio": "Desde $2,500"
+          }
+        ]
+      },
+      {
+        "titulo": "Soporte fuera del plan",
+        "nota": "",
+        "servicios": [
+          {
+            "servicio": "Hora de trabajo adicional",
+            "precio": "$550"
+          },
+          {
+            "servicio": "Restauración de respaldo por cambios del cliente",
+            "precio": "$700"
+          },
+          {
+            "servicio": "Capacitación adicional, por hora",
+            "precio": "$550"
+          },
+          {
+            "servicio": "Redirecciones desde un sitio anterior",
+            "precio": "$900"
+          },
+          {
+            "servicio": "Copia de respaldo o exportación adicional",
+            "precio": "$600"
+          },
+          {
+            "servicio": "Atención en fin de semana o fuera de horario hábil",
+            "precio": "$900"
+          }
+        ]
+      },
+      {
+        "titulo": "Compra y salida",
+        "nota": "",
+        "servicios": [
+          {
+            "servicio": "Licencia de uso permanente del diseño",
+            "precio": "Según Plan ^1^"
+          },
+          {
+            "servicio": "Entrega técnica: exportación, empaquetado y documentación",
+            "precio": "$1,800"
+          },
+          {
+            "servicio": "Traslado e instalación en el proveedor que elijas",
+            "precio": "$2,400"
+          },
+          {
+            "servicio": "Acompañamiento post-traslado, 30 días",
+            "precio": "$1,500"
+          },
+          {
+            "servicio": "Exportación de contenido, sin licencia de diseño",
+            "precio": "$600"
+          }
+        ]
+      }
+    ]
+  },
+  "notas": {
+    "aviso": "**No ofrecemos** registro de dominio, correo corporativo, configuración de analítica ni migración a otras plataformas o CMS. Te orientamos para que los contrates a tu nombre con el proveedor que prefieras.",
+    "texto": "El precio se calcula descontando parte de lo que ya has pagado en suscripción (1). Consúltanos tu caso. / Precios en pesos mexicanos, por sitio, vigentes a septiembre de 2026. Las plataformas de terceros se contratan directamente con su proveedor; aquí se cobra únicamente la integración. Los trabajos marcados «Desde» se cotizan según alcance. / Cada servicio adicional incluye una ronda de ajustes. Las revisiones posteriores se cobran por hora. / Los tiempos de entrega de los servicios adicionales se acuerdan al contratarlos y no están sujetos a la entrega en 24 horas del sitio inicial. / Los elementos con funcionalidad a la medida se mantienen bajo el esquema de hora adicional."
+  },
+  "cta": {
+    "titulo": "¿Tienes dudas sobre algún servicio?",
+    "texto": "Cuéntanos qué necesitas y te decimos si está incluido o cuánto cuesta, sin compromiso.",
+    "boton": "Contactar",
+    "enlace": "index.html#contacto"
+  }
+}

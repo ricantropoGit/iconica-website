@@ -1,0 +1,39 @@
+{
+  "seo": {
+    "titulo": "Empezamos con tu sitio — GraphicaWeb",
+    "descripcion": "Cómo se lleva a cabo el proceso: llamada con tu diseñador, entrega en 24 horas y conexión de tu dominio."
+  },
+  "encabezado": {
+    "etiqueta": "Empezamos",
+    "titulo": "Listo. Vamos a construir tu sitio.",
+    "texto": "Esto es lo que sigue, paso por paso. ==No necesitas preparar nada todavía==: en la llamada te decimos exactamente qué reunir."
+  },
+  "pasos": [
+    {
+      "titulo": "Te llamamos",
+      "texto": "Un diseñador o diseñadora te contacta en breve para entender las características de tu empresa o negocio."
+    },
+    {
+      "titulo": "Tu sitio en 24 horas",
+      "texto": "Una vez reunidos los contenidos, la estructura del sitio y las imágenes, lo entregamos en 24 horas."
+    },
+    {
+      "titulo": "Conectamos tu dominio",
+      "texto": "Si ya tienes dominio, apúntalo desde tu proveedor a estos servidores. Si no lo tienes, te asesoramos para contratar uno."
+    },
+    {
+      "titulo": "Qué incluye tu plan",
+      "texto": "De 2 a 5 páginas, revisión de contenidos e imágenes, formulario de contacto, y administración y alojamiento del sitio. Todo servicio adicional se contrata por separado — [consulta el detalle aquí](servicios.html)."
+    }
+  ],
+  "dns": {
+    "ip": "216.128.134.28",
+    "cname": "tudominio.com",
+    "nota": "Se hace desde el panel de quien te vendió el dominio. El cambio tarda de unos minutos a un par de horas en surtir efecto — a veces hasta 24. Si prefieres, lo hacemos nosotros con tus accesos."
+  },
+  "cierre": {
+    "boton": "Escríbenos por WhatsApp",
+    "enlace": "https://wa.me/525633668185?text=Hola%2C%20ya%20contrat%C3%A9%20mi%20plan%20y%20quiero%20arrancar%20mi%20sitio",
+    "nota": "¿Dudas antes de la llamada? Escríbenos y te respondemos el mismo día."
+  }
+}
