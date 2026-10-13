@@ -107,7 +107,6 @@
                     </div>
                 </div>
             </section>
-            <!-- ===================== SLIDER / Galería ===================== -->
             <!-- ===================== INTRO / Pregunta (DESACTIVADA) =====================
          Sección inactiva: no se renderiza. Para reactivar, elimina la etiqueta
          script de apertura y su cierre.  -->
@@ -132,9 +131,8 @@
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <path d="M2 12h20"></path>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
                                 </svg>
                             </div>
                             <span class="card__num" data-cms="pasos.tarjetas.0.etiqueta">01 Dominio</span>
@@ -144,8 +142,9 @@
                         <article class="card">
                             <div class="card__icon" aria-hidden="true">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                    <path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M2 12h20"></path>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                                 </svg>
                             </div>
                             <span class="card__num" data-cms="pasos.tarjetas.1.etiqueta">02 Diseño</span>
@@ -325,74 +324,6 @@
                 </div>
             </section>
             <!-- ===================== TABLA COMPARATIVA ===================== -->
-            <section class="section section--alt" id="compara" data-screen-label="Comparativa">
-                <div class="container">
-                    <div class="compare__head">
-                        <h2 class="compare__title" data-cms="compara.titulo">¡Compara!</h2>
-                        <p class="compare__lead" data-cms="compara.texto">GraphicaWeb | Opciones "hágalo usted mismo" (DIY) | Diseñador/a Profesional</p>
-                    </div>
-                    <div class="table-wrap">
-                        <table class="compare-table">
-                            <thead>
-                                <tr>
-                                    <th class="col-feature" scope="col"></th>
-                                    <th class="col-highlight brand-col" scope="col"><span data-cms="compara.col1.nombre">GraphicaWeb</span><br/><span class="pill" data-cms="compara.col1.etiqueta" data-cms-optional>Te conviene</span></th>
-                                    <th scope="col" data-cms="compara.col2.nombre">Soluciones tipo DIY</th>
-                                    <th scope="col" data-cms="compara.col3.nombre">Encargo por Diseño</th>
-                                </tr>
-                            </thead>
-                            <!-- Las filas se editan en el panel (Tabla comparativa → Filas). La
-                                 primera fila es el molde: cada celda trae sus tres formas
-                                 (✓, — o texto) y el panel elige cuál se publica. Las demás sólo
-                                 sirven para ver la maqueta sin build. -->
-                            <tbody data-cms-list="compara.filas">
-                                <tr data-cms-class="row-cost:.costo" data-cms-item>
-                                    <th scope="row" data-cms=".caracteristica">Sin curva de aprendizaje (DIY)</th>
-                                    <td class="col-highlight"><span class="check" data-cms-if=".col1.tipo=si">✓</span><span class="dash" data-cms-if=".col1.tipo=no">—</span><strong data-cms=".col1.texto" data-cms-if=".col1.tipo=texto">Texto</strong></td>
-                                    <td><span class="check" data-cms-if=".col2.tipo=si">✓</span><span class="dash" data-cms-if=".col2.tipo=no">—</span><strong data-cms=".col2.texto" data-cms-if=".col2.tipo=texto">Texto</strong></td>
-                                    <td><span class="check" data-cms-if=".col3.tipo=si">✓</span><span class="dash" data-cms-if=".col3.tipo=no">—</span><strong data-cms=".col3.texto" data-cms-if=".col3.tipo=texto">Texto</strong></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Diseñador Asignado</th>
-                                    <td class="col-highlight"><span class="check">✓</span></td>
-                                    <td><span class="dash">—</span></td>
-                                    <td><span class="check">✓</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Autoeditable</th>
-                                    <td class="col-highlight"><span class="check">✓</span></td>
-                                    <td><span class="check">✓</span></td>
-                                    <td><span class="dash">—</span></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Alojamiento incluido</th>
-                                    <td class="col-highlight"><span class="check">✓</span></td>
-                                    <td><span class="check">✓</span></td>
-                                    <td><span class="dash">—</span></td>
-                                </tr>
-                                <!--<tr>
-                                    <th scope="row">Opción de compra<sup class="note">5</sup></th>
-                                    <td class="col-highlight"><span class="check">✓</span></td>
-                                    <td><span class="dash">—</span></td>
-                                    <td><span class="check">✓</span></td>
-                                </tr>-->
-                                <tr>
-                                    <th scope="row">El sitio es tuyo</th>
-                                    <td class="col-highlight"><span class="check">✓</span></td>
-                                    <td><span class="dash">—</span></td>
-                                    <td><span class="check">✓</span></td>
-                                </tr>
-                                <tr class="row-cost">
-                                    <th scope="row">Pago Inicial (MX)</th>
-                                    <td class="col-highlight"><strong>$825+</strong></td>
-                                    <td><strong>$550+</strong></td>
-                                    <td><strong>$9,000 a $27,000</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
             <!-- ===================== PREGUNTAS FRECUENTES ===================== -->
             <section class="section faq" id="faq" data-screen-label="Preguntas frecuentes">
                 <div class="container">
