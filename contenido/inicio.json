@@ -169,19 +169,23 @@
         "plazos": [
           {
             "meses": "3",
-            "precio": "$3,300"
+            "precio": "$5,166"
           },
           {
             "meses": "6",
-            "precio": "$1,650"
+            "precio": "$2,583"
           },
           {
             "meses": "9",
-            "precio": "$1,100"
+            "precio": "$1,722"
           },
           {
             "meses": "12",
-            "precio": "$825"
+            "precio": "$1,291"
+          },
+          {
+            "meses": "18",
+            "precio": "$861"
           }
         ],
         "total": "$15,500",
