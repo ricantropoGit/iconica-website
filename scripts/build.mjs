@@ -1,5 +1,5 @@
 /* =========================================================================
-   Build de un sitio Icónica24 (kit instalado por la consola)
+   Build de un sitio GraphicaWeb (kit instalado por la consola)
    -------------------------------------------------------------------------
    Corre SÓLO en Vercel (VERCEL=1). Arma public/, que es lo que se publica:
 
@@ -36,7 +36,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
-import { aplicarContenido, enlazar } from './contenido.mjs';
+import { aplicarContenido, enlazar, anclasOcultas } from './contenido.mjs';
 
 const ROOT = process.cwd();
 const SALIDA = join(ROOT, 'public');
@@ -72,6 +72,25 @@ if (existsSync(dirBloques)) {
     if (existsSync(join(dirBloques, tipo, 'campos.json'))) {
       const campos = JSON.parse(readFileSync(join(dirBloques, tipo, 'campos.json'), 'utf8'));
       if (campos.name !== tipo) throw new Error(`bloques/${tipo}/campos.json: "name" debe ser "${tipo}"`);
+      // Todo bloque se puede apagar sin borrarlo: la casilla va primero y su
+      // estado se lee en la lista de bloques ("Precios — … (oculto)").
+      if (!(campos.fields || []).some(f => f.name === 'oculto')) {
+        campos.fields = [{ label: 'Oculto (no se publica)', name: 'oculto', widget: 'boolean', default: false, required: false,
+          hint: 'Apaga el bloque sin borrarlo: no se publica ni se ve en la vista previa, pero su contenido se guarda.' }, ...(campos.fields || [])];
+        campos.summary = `${campos.summary || campos.label}{{fields.oculto | ternary(' (oculto)', '')}}`;
+      }
+      // Y todo bloque puede ir con el fondo de siempre o con un gris suave,
+      // salvo los que lo desactivan en su campos.json ("fondo": false), como
+      // una franja oscura. Un bloque que ya trae su campo fondo_suave (p. ej.
+      // con otro valor por defecto) lo conserva.
+      const conFondo = campos.fondo !== false;
+      delete campos.fondo;
+      if (conFondo && !(campos.fields || []).some(f => f.name === 'fondo_suave')) {
+        const casilla = { label: 'Fondo gris suave', name: 'fondo_suave', widget: 'boolean', default: false, required: false,
+          hint: 'Sin marcar, el bloque va con el fondo de la página.' };
+        const i = campos.fields.findIndex(f => f.name === 'ancla');
+        campos.fields.splice(i >= 0 ? i : campos.fields.length, 0, casilla);
+      }
       tipos.push(campos);
     }
   }
@@ -97,7 +116,9 @@ const nuevas = existsSync(dirPaginas)
 // Datos comunes a todas las páginas (menú, pie, marca): "sitio.*", con los
 // enlaces ya resueltos contra las páginas que existen.
 const datosSitio = existsSync(join(dirContenido, 'sitio.json')) ? JSON.parse(readFileSync(join(dirContenido, 'sitio.json'), 'utf8')) : null;
-const sitioEnlazado = enlazar(datosSitio, nuevas);
+// Un enlace a una sección de inicio que está apagada se quita mientras lo esté.
+const datosInicio = existsSync(join(dirContenido, 'inicio.json')) ? JSON.parse(readFileSync(join(dirContenido, 'inicio.json'), 'utf8')) : null;
+const sitioEnlazado = enlazar(datosSitio, nuevas, anclasOcultas(datosInicio));
 if (existsSync(dirContenido)) {
   for (const f of readdirSync(dirContenido).filter(f => f.endsWith('.json'))) {
     const nombre = f.slice(0, -5);
@@ -120,7 +141,12 @@ if (nuevas.length && existsSync(join(ROOT, 'index.html'))) {
   const molde = readFileSync(join(ROOT, 'index.html'), 'utf8');
   // El menú y el pie son de todo el sitio: sus #ancla son de la página de
   // inicio aunque esta página tenga un bloque con la misma ancla.
-  const aInicio = e => (e && /^#[\w-]+$/.test(e.url || '') ? { ...e, url: `/${e.url}` } : e);
+  const aInicio = e => {
+    if (!e) return e;
+    const c = /^#[\w-]+$/.test(e.url || '') ? { ...e, url: `/${e.url}` } : { ...e };
+    if (Array.isArray(e.submenu)) c.submenu = e.submenu.map(aInicio);
+    return c;
+  };
   const sitioInterior = sitioEnlazado && {
     ...sitioEnlazado,
     menu: Array.isArray(sitioEnlazado.menu) ? sitioEnlazado.menu.map(aInicio) : sitioEnlazado.menu,

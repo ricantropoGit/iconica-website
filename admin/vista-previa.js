@@ -19,6 +19,8 @@
    (admin/bloques.json) y los datos publicados (admin/datos/*.json). Una
    página se ve con el menú y pie guardados; "Sitio" (menú, marca, pie) se
    ve sobre la página de inicio guardada, y sus rutas llevan "sitio.".
+   Un bloque apagado ("Oculto") no se ve, igual que en el sitio; en el
+   formulario sigue completo.
    ========================================================================= */
 const { aplicarContenido, enlazar = x => x } = await import('/admin/contenido.js');
 
@@ -36,6 +38,12 @@ function plantilla(nombre) {
     // Los scripts no corren en la vista previa; se quitan para no ensuciarla.
     return cuerpo.replace(/<script\b[\s\S]*?<\/script>/gi, '');
   });
+}
+// Idioma del sitio (<html lang="…"> de la plantilla). La vista previa es otro
+// documento, sin idioma: sin él, hyphens: auto no parte ninguna palabra y el
+// texto se ve con otros cortes y otro número de líneas que en el sitio.
+function idioma(nombre) {
+  return html(nombre).then(texto => (texto.match(/<html\b[^>]*\slang=["']?([\w-]+)/i) || [])[1] || 'es', () => 'es');
 }
 
 // La vista previa vive dentro de /admin/: las rutas relativas del sitio
@@ -143,6 +151,37 @@ const editableDe = el => {
   const e = el && el.closest('[data-ruta]');
   return e && editableAqui(e.getAttribute('data-ruta')) ? e : null;
 };
+const cuadro = () => new Promise(r => requestAnimationFrame(r));
+// Espera (cuadro a cuadro, hasta ~`max` cuadros) a que `fn` devuelva algo:
+// Decap pinta los campos de un elemento que se despliega un poco después.
+async function esperarA(fn, max = 30) {
+  for (let i = 0; i < max; i++) {
+    const v = fn();
+    if (v) return v;
+    await cuadro();
+  }
+  return null;
+}
+
+// Contenedor que se desplaza (el formulario de Decap).
+function cajaDe(el) {
+  for (let c = el.parentElement; c; c = c.parentElement) {
+    if (c.scrollHeight > c.clientHeight + 1 && /auto|scroll/.test(getComputedStyle(c).overflowY)) return c;
+  }
+  return null;
+}
+
+function aLaVista(el) {
+  const caja = cajaDe(el);
+  const r = el.getBoundingClientRect();
+  const c = caja ? caja.getBoundingClientRect() : { top: 0, bottom: innerHeight };
+  return r.top >= c.top && r.bottom <= c.bottom;
+}
+
+// Cada clic en la vista previa es un viaje; uno nuevo deja sin efecto al
+// anterior (si se hace clic rápido en varios elementos, gana el último).
+let viaje = 0;
+
 async function irACampo(ruta) {
   const raiz = formulario();
   if (!raiz) return;
@@ -151,22 +190,48 @@ async function irACampo(ruta) {
     if (!ruta.startsWith(prefijo)) return;
     ruta = ruta.slice(prefijo.length);
   } else if (ruta.startsWith('sitio.') && SITIO.sitio) return;
+  const este = ++viaje;
+  const vigente = () => este === viaje;
   let nodo = raiz;
   for (const parte of ruta.split('.')) {
     abrir(nodo, raiz);
-    await new Promise(r => requestAnimationFrame(r));
-    const candidatos = hijos(nodo, raiz);
-    const siguiente = /^\d+$/.test(parte)
-      ? candidatos.filter(esItem)[Number(parte)]
-      : candidatos.find(el => (el.id.match(ID_CAMPO) || [])[1] === parte);
+    const actual = nodo;
+    const siguiente = await esperarA(() => {
+      const candidatos = hijos(actual, raiz);
+      return /^\d+$/.test(parte)
+        ? candidatos.filter(esItem)[Number(parte)]
+        : candidatos.find(el => (el.id.match(ID_CAMPO) || [])[1] === parte);
+    }, 20);
+    if (!vigente()) return;
     if (!siguiente) break;
     nodo = siguiente;
   }
   abrir(nodo, raiz);
-  await new Promise(r => requestAnimationFrame(r));
-  const control = nodo.matches('input, textarea') ? nodo : nodo.querySelector('input, textarea, [contenteditable="true"]');
-  (control || nodo).scrollIntoView({ block: 'center', behavior: 'smooth' });
+  const destino = nodo;
+  const control = (destino.matches('input, textarea') ? destino : await esperarA(
+    () => destino.querySelector('input, textarea, [contenteditable="true"]'), 10)) || null;
+  if (!vigente()) return;
+  const el = control || destino;
+  // Al desplegarse, los campos (sobre todo los de texto con formato) cambian
+  // de alto unos cuadros más: se espera a que el campo deje de moverse antes
+  // de desplazar el formulario, o el desplazamiento apunta a donde estaba.
+  let antes = null, quieto = 0;
+  for (let i = 0; i < 30 && quieto < 3; i++) {
+    const caja = cajaDe(el);
+    const y = el.getBoundingClientRect().top + (caja ? caja.scrollTop : scrollY);
+    quieto = y === antes ? quieto + 1 : 0;
+    antes = y;
+    await cuadro();
+    if (!vigente()) return;
+  }
   if (control) control.focus({ preventScroll: true });
+  el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  // Si algo se movió durante el desplazamiento (o lo interrumpió), se corrige.
+  for (const comportamiento of ['smooth', 'auto']) {
+    await new Promise(r => setTimeout(r, 700));
+    if (!vigente() || !el.isConnected) return;
+    if (!aLaVista(el)) el.scrollIntoView({ block: 'center', behavior: comportamiento });
+  }
 }
 
 /* ---------- Vista previa: resaltar el campo activo ---------- */
@@ -210,6 +275,7 @@ function reenmarcar() {
 function resaltar(desplazar) {
   if (!docVista) return;
   docVista.querySelectorAll('.cms-activo').forEach(el => el.classList.remove('cms-activo'));
+  docVista.querySelectorAll('.cms-camino').forEach(el => el.classList.remove('cms-camino'));
   if (!rutaActiva) return reenmarcar();
   // El elemento exacto; si no hay, el más cercano que lo contenga
   // (p. ej. al enfocar una pregunta completa de la lista).
@@ -219,7 +285,13 @@ function resaltar(desplazar) {
   }
   if (!objetivo) return reenmarcar();
   objetivo.classList.add('cms-activo');
+  // Los contenedores del elemento llevan .cms-camino: así una plantilla puede
+  // dejar abierto (en su admin/vista-previa.css) el submenú o desplegable que
+  // lo contiene mientras se edita, aunque el cursor ya no esté encima.
+  for (let p = objetivo.parentElement; p && p !== docVista.body; p = p.parentElement) p.classList.add('cms-camino');
   reenmarcar();
+  // Si algo se abrió con una transición, el recuadro se recoloca al terminar.
+  setTimeout(reenmarcar, 350);
   if (desplazar) objetivo.scrollIntoView({ block: 'center', behavior: 'smooth' });
 }
 
@@ -264,6 +336,7 @@ const vista = (nombre, pagina = nombre) => window.createClass({
     if (!this.raiz) return;
     const doc = this.raiz.ownerDocument;
     doc.__prefijo = this.prefijo;
+    if (!doc.documentElement.lang) idioma(pagina).then(l => { doc.documentElement.lang = l; });
     if (SITIO.sitio) {
       doc.body.classList.toggle('cms-vista-sitio', !!this.prefijo);
       doc.body.classList.toggle('cms-vista-pagina', !this.prefijo);
