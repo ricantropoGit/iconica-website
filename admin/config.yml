@@ -65,7 +65,9 @@ collections:
               - { label: "Título principal", name: titulo, widget: text, pattern: ['^[\s\S]{1,90}$', "Máximo 90 caracteres para que no se rompa la portada"], hint: "Va en TRES renglones: escribe cada uno en su propia línea. Evita renglones de más de ~20 caracteres o el título se partirá en cuatro." }
               - { label: "Subtítulo", name: subtitulo, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
               - { label: "Botón principal", name: boton_principal, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
+              - { label: "Botón principal: lleva a…", name: boton_principal_ancla, widget: select, options: [{label: "Inicio (arriba)", value: "#hero"}, {label: "Intro", value: "#intro"}, {label: "Cómo funciona", value: "#como-funciona"}, {label: "Por qué funciona", value: "#ventajas"}, {label: "Llamada a la acción", value: "#cta"}, {label: "Precios", value: "#precios"}, {label: "Comparativa", value: "#compara"}, {label: "Preguntas frecuentes", value: "#faq"}, {label: "Contacto", value: "#contacto"}, {label: "Notas", value: "#notas"}], hint: "Sección de la página a la que baja el botón." }
               - { label: "Botón secundario", name: boton_secundario, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
+              - { label: "Botón secundario: lleva a…", name: boton_secundario_ancla, widget: select, options: [{label: "Inicio (arriba)", value: "#hero"}, {label: "Intro", value: "#intro"}, {label: "Cómo funciona", value: "#como-funciona"}, {label: "Por qué funciona", value: "#ventajas"}, {label: "Llamada a la acción", value: "#cta"}, {label: "Precios", value: "#precios"}, {label: "Comparativa", value: "#compara"}, {label: "Preguntas frecuentes", value: "#faq"}, {label: "Contacto", value: "#contacto"}, {label: "Notas", value: "#notas"}], hint: "Sección de la página a la que baja el botón." }
 
           - label: Cómo funciona
             name: pasos
@@ -88,6 +90,7 @@ collections:
                   - { label: "Título", name: titulo, widget: string }
                   - { label: "Texto", name: texto, widget: text }
               - { label: "Botón", name: boton, widget: string, pattern: ['^.{1,40}$', "Máximo 40 caracteres"] }
+              - { label: "Botón: lleva a…", name: boton_ancla, widget: select, options: [{label: "Inicio (arriba)", value: "#hero"}, {label: "Intro", value: "#intro"}, {label: "Cómo funciona", value: "#como-funciona"}, {label: "Por qué funciona", value: "#ventajas"}, {label: "Llamada a la acción", value: "#cta"}, {label: "Precios", value: "#precios"}, {label: "Comparativa", value: "#compara"}, {label: "Preguntas frecuentes", value: "#faq"}, {label: "Contacto", value: "#contacto"}, {label: "Notas", value: "#notas"}], hint: "Sección de la página a la que baja el botón." }
 
           - label: Ventajas
             name: ventajas
@@ -116,7 +119,9 @@ collections:
               - { label: "Título", name: titulo, widget: string }
               - { label: "Texto", name: texto, widget: text, hint: "Formato: `**negritas**` · `^1^` para una llamada a nota" }
               - { label: "Botón principal", name: boton_principal, widget: string }
+              - { label: "Botón principal: lleva a…", name: boton_principal_ancla, widget: select, options: [{label: "Inicio (arriba)", value: "#hero"}, {label: "Intro", value: "#intro"}, {label: "Cómo funciona", value: "#como-funciona"}, {label: "Por qué funciona", value: "#ventajas"}, {label: "Llamada a la acción", value: "#cta"}, {label: "Precios", value: "#precios"}, {label: "Comparativa", value: "#compara"}, {label: "Preguntas frecuentes", value: "#faq"}, {label: "Contacto", value: "#contacto"}, {label: "Notas", value: "#notas"}], hint: "Sección de la página a la que baja el botón." }
               - { label: "Botón secundario", name: boton_secundario, widget: string }
+              - { label: "Botón secundario: lleva a…", name: boton_secundario_ancla, widget: select, options: [{label: "Inicio (arriba)", value: "#hero"}, {label: "Intro", value: "#intro"}, {label: "Cómo funciona", value: "#como-funciona"}, {label: "Por qué funciona", value: "#ventajas"}, {label: "Llamada a la acción", value: "#cta"}, {label: "Precios", value: "#precios"}, {label: "Comparativa", value: "#compara"}, {label: "Preguntas frecuentes", value: "#faq"}, {label: "Contacto", value: "#contacto"}, {label: "Notas", value: "#notas"}], hint: "Sección de la página a la que baja el botón." }
               - { label: "Nota inferior", name: nota, widget: string }
 
           - label: Precios
