@@ -139,7 +139,8 @@
         "texto": "Convierte a tus seguidores en compradores enviando la actividad de tus redes sociales a tu landing-page."
       }
     ],
-    "boton": "Comienza a vender hoy"
+    "boton": "Comienza a vender hoy",
+    "boton_ancla": "#cta"
   },
   "precios": {
     "etiqueta": "Precios",
@@ -248,7 +249,9 @@
     "texto": "Amplía el alcance de tu promesa básica con una experiencia en línea que **no es posible ofrecer solo con redes sociales.**",
     "boton_principal": "Quiero mi Sitio!",
     "boton_secundario": "Cuánto cuesta",
-    "nota": "Hasta 18 mensualidades **sin intereses.**"
+    "nota": "Hasta 18 mensualidades **sin intereses.**",
+    "boton_principal_ancla": "#precios",
+    "boton_secundario_ancla": "#compara"
   },
   "faq": {
     "titulo": "Preguntas frecuentes",
@@ -291,7 +294,9 @@
     "titulo": "Convierte tu sitio web en un poderoso instrumento de ventas.",
     "subtitulo": "Solo necesitas tener presencia en redes sociales y una página web. ==Si no tienes una, **nosotros la creamos sin costo adicional**.==",
     "boton_principal": "Cómo funciona",
-    "boton_secundario": "Quiero vender más"
+    "boton_secundario": "Quiero vender más",
+    "boton_principal_ancla": "#como-funciona",
+    "boton_secundario_ancla": "#cta"
   },
   "seo": {
     "titulo": "GraphicaWeb — Sitios web «llave en mano» por suscripción",
