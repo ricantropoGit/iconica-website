@@ -303,24 +303,13 @@ ul { list-style: none; padding: 0; }
   font-weight: 800;
   letter-spacing: -.035em;
   line-height: .98;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
   /* Dos declaraciones a propósito, igual que el min-height de .hero: un
      navegador sin unidades de contenedor (anterior a 2023) descarta la
      segunda y se queda con la primera. Sin el respaldo caería al h1 por
      omisión — 32px — y el titular se vería roto. */
-  font-size: clamp(1.7rem, 11vw, 6.5rem);    /* respaldo */
-  font-size: clamp(1.7rem, 11.5cqw, 6.5rem); /* preferido */
-  /* El piso bajó de 2rem a 1.7rem: sólo entra en juego por debajo de ~296px
-     de ancho, donde 32px ya no dejaban caber «medio publicitario» en una línea
-     y el titular se iba a cuatro. Arriba de ese ancho manda el valor en cqw y
-     nada cambia.
-     Sin text-wrap: balance. Los cortes del titular vienen del contenido —el
-     motor convierte los saltos en <br>— así que el reparto automático sobra y
-     además hacía bailar el número de líneas entre breakpoints. El ajuste que
-     queda por hacer es sólo que ninguna línea sea tan larga que se parta. */
+  font-size: clamp(2rem, 11vw, 6.5rem);      /* respaldo */
+  font-size: clamp(2rem, 11.5cqw, 6.5rem);   /* preferido */
+  text-wrap: balance;
 }
 .hero__subtitle {
   margin: 1.4rem auto 0;
