@@ -16,8 +16,8 @@
      "lista.-1.precio"              un índice negativo cuenta desde el final
                                     (-1 es el último elemento)
      data-cms-index                 número del elemento en la lista (01, 02…)
-     data-cms-optional              si el valor está vacío, el elemento
-                                    desaparece
+     data-cms-optional              si el valor está vacío (o la clave aún no
+                                    existe), el elemento desaparece
      data-cms-href="tel:+52{negocio.telefono|digitos}"
                                     atributo armado con uno o más valores
                                     entre llaves; |digitos deja sólo los
@@ -40,7 +40,13 @@
      data-cms-bloques="bloques"     página armada con bloques: por cada
                                     elemento de la lista pone el bloque de su
                                     tipo (opciones.bloques[tipo], un HTML con
-                                    claves relativas: ".titulo")
+                                    claves relativas: ".titulo"). Un bloque
+                                    con "oculto": true no se publica ni se
+                                    ve en la vista previa (en el formulario
+                                    del panel sigue completo). Con
+                                    "fondo_suave": true la sección lleva
+                                    la clase bloque--suave; con false,
+                                    bloque--papel
      "@sitio.negocio.telefono"      en cualquier clave: se lee desde la raíz de
                                     los datos (p. ej. un bloque que muestra el
                                     teléfono que se escribe en Sitio)
@@ -237,6 +243,14 @@ function conRuta(apertura, ruta) {
   return apertura.replace(/\s*\/?>$/, m => ` data-ruta="${escapar(ruta)}"${m}`);
 }
 
+// Agrega una clase a la primera etiqueta de un fragmento de HTML.
+function ponerClase(html, clase) {
+  return html.replace(/^(\s*<[a-zA-Z][\w-]*)([^>]*?)(\s*\/?>)/, (todo, inicio, attrs, fin) =>
+    /\sclass="/.test(attrs)
+      ? inicio + attrs.replace(/(\sclass=")([^"]*)(")/, (_, a, v, b) => `${a}${v ? v + ' ' : ''}${clase}${b}`) + fin
+      : `${inicio}${attrs} class="${clase}"${fin}`);
+}
+
 // Pone un atributo con su valor: lo reemplaza si ya está, si no lo agrega.
 function ponerAtributo(apertura, nombre, valor) {
   const re = new RegExp(`(\\s${nombre}=")[^"]*(")`);
@@ -259,9 +273,17 @@ function renderizar(html, ctx, indice, base = '', total) {
       nuevo = items.map((item, i) => {
         const tpl = bloques[item && item.tipo];
         if (!tpl) { avisos.push(`bloque "${item && item.tipo}" desconocido en ${ruta}.${i}`); return ''; }
-        const hecho = renderizar(tpl.trim(), item, i, `${ruta}.${i}`, items.length);
-        return maqueta ? `\n<!-- ▼ bloque: ${item.tipo} -->\n${hecho}\n<!-- ▲ bloque: ${item.tipo} -->` : '\n' + hecho;
-      }).join('\n') + '\n';
+        // Bloque apagado: no se publica ni se ve en la vista previa, pero su
+        // contenido sigue guardado (y en el formulario del panel).
+        const oculto = item.oculto === true;
+        if (oculto && !maqueta) return '';
+        let hecho = renderizar(tpl.trim(), item, i, `${ruta}.${i}`, items.length);
+        // Fondo del bloque (casilla "Fondo gris suave"): la plantilla decide
+        // cómo se ve cada clase; sin valor, el bloque queda con su fondo de siempre.
+        if (item.fondo_suave === true || item.fondo_suave === false) hecho = ponerClase(hecho, item.fondo_suave ? 'bloque--suave' : 'bloque--papel');
+        const nota = oculto ? ' (oculto)' : '';
+        return maqueta ? `\n<!-- ▼ bloque: ${item.tipo}${nota} -->\n${hecho}\n<!-- ▲ bloque: ${item.tipo} -->` : '\n' + hecho;
+      }).filter(Boolean).join('\n') + '\n';
     }
     const apertura = limpiarApertura(el.apertura);
     html = html.slice(0, el.inicio) + apertura + nuevo + html.slice(c.inicio);
@@ -346,7 +368,11 @@ function renderizar(html, ctx, indice, base = '', total) {
     if (conIndice) contenido = String((indice ?? 0) + 1).padStart(2, '0');
     else if (clave !== null) {
       const v = clave.includes('{') ? valorDeAtributo(ctx, clave) : leer(ctx, clave);
-      if (v == null) avisos.push(`falta "${clave}"`);
+      // Un elemento opcional cuya clave aún no existe (un campo que el diseño
+      // agregó después) se quita como si estuviera vacío: no debe publicarse
+      // el texto de ejemplo del HTML.
+      if (v == null && opcional) contenido = '';
+      else if (v == null) avisos.push(`falta "${clave}"`);
       else contenido = marcado(v);
     }
 
@@ -384,14 +410,30 @@ export function aplicarContenido(html, datos, opciones = {}) {
    Con `paginas` (los nombres de las páginas que existen), un enlace a una
    página que ya no está se quita: borrar una página no deja enlaces rotos.
    Sin `paginas` (vista previa, donde puede haber páginas recién creadas),
-   no se quita nada. */
-export function enlazar(sitio, paginas) {
+   no se quita nada.
+   Las opciones pueden traer "submenu" (otra lista igual, en varios niveles):
+   se resuelven y se limpian de la misma forma.
+   Con `ocultas` (anclas de bloques apagados de inicio, ver anclasOcultas),
+   un enlace a #esa-ancla también se quita mientras el bloque esté apagado. */
+export function enlazar(sitio, paginas, ocultas = []) {
   if (!sitio || typeof sitio !== 'object') return sitio;
   const existe = p => !paginas || paginas.includes(p);
   const url = e => (e && e.pagina ? `/${e.pagina}` : (e && e.enlace) || '#');
-  const lista = l => (Array.isArray(l) ? l.filter(e => !(e && e.pagina) || existe(e.pagina)).map(e => ({ ...e, url: url(e) })) : l);
+  const apagado = e => !(e && e.pagina) && ocultas.includes(String(url(e)).replace(/^\/?#/, ''));
+  const vale = e => (!(e && e.pagina) || existe(e.pagina)) && !apagado(e);
+  // Los submenús (de cualquier nivel) se resuelven igual que el menú.
+  const lista = l => (Array.isArray(l) ? l.filter(vale).map(e => ({ ...e, url: url(e), ...(Array.isArray(e.submenu) ? { submenu: lista(e.submenu) } : {}) })) : l);
   const copia = { ...sitio, menu: lista(sitio.menu) };
-  if (sitio.boton) copia.boton = sitio.boton.pagina && !existe(sitio.boton.pagina) ? { ...sitio.boton, texto: '' } : { ...sitio.boton, url: url(sitio.boton) };
+  if (sitio.boton) copia.boton = !vale(sitio.boton) ? { ...sitio.boton, texto: '' } : { ...sitio.boton, url: url(sitio.boton) };
   if (sitio.pie) copia.pie = { ...sitio.pie, enlaces: lista(sitio.pie.enlaces) };
   return copia;
+}
+
+// Anclas de los bloques apagados de una página (sin las que también tiene
+// un bloque visible): el menú no debe llevar a una sección que no se publica.
+export function anclasOcultas(datos) {
+  const lista = datos && Array.isArray(datos.bloques) ? datos.bloques : [];
+  const de = oculto => new Set(lista.filter(b => b && b.ancla && (b.oculto === true) === oculto).map(b => String(b.ancla)));
+  const visibles = de(false);
+  return [...de(true)].filter(a => !visibles.has(a));
 }
