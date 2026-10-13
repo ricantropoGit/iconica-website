@@ -120,13 +120,13 @@
     ]
   },
   "pasos": {
-    "titulo": "Transforma a tus seguidores en compradores o clientes.",
+    "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
     "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una landing page vendedora.== Lo anterior lo conseguimos respondiendo a las siguientes tres preguntas:",
     "tarjetas": [
       {
         "etiqueta": "01 Diseño de Concepto",
         "titulo": "Qué comunicar",
-        "texto": "Se aborda construyendo una estrategia de comunicación que traduce tu promesa básica en una idea vendedora."
+        "texto": "Se aborda construyendo una estrategia de comunicación que traduce tu «promesa básica» en una idea vendedora."
       },
       {
         "etiqueta": "02 Aplicación a página web",
@@ -136,7 +136,7 @@
       {
         "etiqueta": "03 Integración a redes",
         "titulo": "A quién comunicar",
-        "texto": "Convierte a tus seguidores en compradores enviando la actividad de tus redes sociales a tu landing-page."
+        "texto": "==Convierte a tus seguidores en compradores== enviando la actividad de tus redes sociales a tu landing-page."
       }
     ],
     "boton": "Comienza a vender hoy"
@@ -240,7 +240,7 @@
     ]
   },
   "cta": {
-    "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
+    "titulo": "Transformamos tu página web en una poderosa herramienta de ventas.",
     "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
     "boton_principal": "Quiero mi Sitio!",
     "boton_secundario": "Compara",
