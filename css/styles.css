@@ -303,6 +303,10 @@ ul { list-style: none; padding: 0; }
   font-weight: 800;
   letter-spacing: -.035em;
   line-height: .98;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
   /* Dos declaraciones a propósito, igual que el min-height de .hero: un
      navegador sin unidades de contenedor (anterior a 2023) descarta la
      segunda y se queda con la primera. Sin el respaldo caería al h1 por
