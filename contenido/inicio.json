@@ -120,7 +120,7 @@
     ]
   },
   "pasos": {
-    "titulo": "Transforma a tus seguidores/as en compradores o clientes.",
+    "titulo": "Transforma a tus seguidores en compradores o clientes.",
     "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, etc.— ==sólo te falta conectarlas a una landing page vendedora.== Lo anterior lo conseguimos respondiendo a las siguientes tres preguntas:",
     "tarjetas": [
       {
@@ -149,7 +149,7 @@
       {
         "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
         "boton": "Comprar",
-        "precio": "$15 Mil",
+        "precio": "$15,500",
         "nombre": "Contado",
         "caracteristicas": [
           "Garantía de 30 días",
@@ -159,7 +159,7 @@
           "Alojamiento, dominio propio vinculado a nuestros servidores y certificado de seguridad por un año."
         ],
         "periodo": "MXN",
-        "cobro": "Precio de contado: $9,900^1^",
+        "cobro": "Precio de contado: $15,500^1^",
         "tipo": "fijo",
         "insignia": ""
       },
@@ -184,7 +184,7 @@
             "precio": "$825"
           }
         ],
-        "total": "$9,900",
+        "total": "$15,500",
         "periodo": "MXN",
         "caracteristicas": [
           "12 mensualidades de $825 sin intereses",
@@ -240,7 +240,7 @@
     ]
   },
   "cta": {
-    "titulo": "Olvídate de la curva de aprendizaje.",
+    "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
     "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
     "boton_principal": "Quiero mi Sitio!",
     "boton_secundario": "Compara",
