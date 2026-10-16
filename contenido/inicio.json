@@ -152,11 +152,11 @@
         "precio": "$9,900",
         "nombre": "Contado",
         "caracteristicas": [
-          "Garantía de 30 días",
-          "Reembolso sin condiciones",
-          "Soporte 24/7",
-          "Editor intuitivo para textos e imágenes",
-          "Alojamiento, dominio propio vinculado a nuestros servidores y certificado de seguridad por un año."
+          "Tu sitio web en 24 hrs.",
+          "12 meses de alojamiento incluido",
+          "Apunta tu dominio a nuestros servidores",
+          "Certificado de seguridad por un año",
+          "Editor para textos e imágenes"
         ],
         "periodo": "MXN",
         "cobro": "Precio de contado: $9,900^1^",
@@ -187,9 +187,8 @@
         "total": "$9,900",
         "periodo": "MXN",
         "caracteristicas": [
-          "12 mensualidades de $825 sin intereses",
-          "==20% de descuento== (dos meses y medio sin costo)",
-          "Prioridad en soporte"
+          "Todo lo incluido en el plan de contado",
+          "==Mensualidades SIN intereses=="
         ],
         "boton": "Comprar",
         "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
