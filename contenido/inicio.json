@@ -116,7 +116,8 @@
       "Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
       "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es una renta permanente y el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor.",
       "Primer año incluido; después, $269 al mes.",
-      "Precio calculado de acuerdo al plan de pago de 12 mensualidades sin intereses."
+      "Precio calculado de acuerdo al plan de pago de 12 mensualidades sin intereses.",
+      "Plazo de 24 horas contado desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc."
     ]
   },
   "pasos": {
@@ -152,11 +153,10 @@
         "precio": "$9,900",
         "nombre": "Contado",
         "caracteristicas": [
-          "Tu sitio web en 24 hrs.",
-          "12 meses de alojamiento incluido",
-          "Apunta tu dominio a nuestros servidores",
-          "Certificado de seguridad por un año",
-          "Editor para textos e imágenes"
+          "Tu sitio web en 24 hrs.^5^",
+          "==Diseñador asignado==",
+          "Editor para textos e imágenes",
+          "12 meses de alojamiento incluido"
         ],
         "periodo": "MXN",
         "cobro": "Precio de contado: $9,900^1^",
