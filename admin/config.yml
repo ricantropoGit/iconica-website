@@ -134,7 +134,7 @@ collections:
                 allow_remove: false
                 typeKey: tipo
                 types:
-                  - label: "Tarjeta izquierda"
+                  - label: "Tarjeta de contado"
                     name: fijo
                     widget: object
                     summary: "{{fields.nombre}} — {{fields.precio}}"
