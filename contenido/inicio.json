@@ -148,22 +148,6 @@
     "texto": "Sin el desembolso inicial · Tu eliges tu mensualidad.",
     "planes": [
       {
-        "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
-        "boton": "Comprar",
-        "precio": "$9,900",
-        "nombre": "Contado",
-        "caracteristicas": [
-          "Tu sitio web en 24 hrs.^5^",
-          "==Diseñador asignado==",
-          "Editor para textos e imágenes",
-          "12 meses de alojamiento incluido"
-        ],
-        "periodo": "MXN",
-        "cobro": "Precio de contado: $9,900^1^",
-        "tipo": "fijo",
-        "insignia": ""
-      },
-      {
         "tipo": "plazos",
         "insignia": "Más Solicitado",
         "plazos": [
@@ -192,6 +176,22 @@
         ],
         "boton": "Comprar",
         "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
+      },
+      {
+        "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+        "boton": "Comprar",
+        "precio": "$9,900",
+        "nombre": "Contado",
+        "caracteristicas": [
+          "Tu sitio web en 24 hrs.^5^",
+          "==Diseñador asignado==",
+          "Editor para textos e imágenes",
+          "12 meses de alojamiento incluido"
+        ],
+        "periodo": "MXN",
+        "cobro": "Precio de contado: $9,900^1^",
+        "tipo": "fijo",
+        "insignia": ""
       }
     ],
     "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)"
