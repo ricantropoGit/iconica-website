@@ -126,11 +126,12 @@ collections:
               - label: "Planes"
                 name: planes
                 widget: list
-                # El segundo plan es el destacado: el diseño depende del orden.
-                # Cada tarjeta tiene su tipo, para que el formulario muestre sólo sus campos.
+                # Cada tarjeta tiene su tipo: el diseño sale del tipo (no de la
+                # posición) y el formulario muestra sólo sus campos. Se pueden
+                # reacomodar: el orden de la lista es el orden en pantalla.
+                hint: "Arrastra las tarjetas para cambiar su orden (la primera va a la izquierda y arriba en celular)."
                 allow_add: false
                 allow_remove: false
-                allow_reorder: false
                 typeKey: tipo
                 types:
                   - label: "Tarjeta izquierda"
