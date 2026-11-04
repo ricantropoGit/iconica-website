@@ -17,9 +17,53 @@
                  borde del formulario no lo corte. */
             .e1nx103k0 { display: none !important; }
             .e1nx103k2 .efqlgsg1 { left: auto !important; right: 0 !important; max-width: calc(100vw - 32px); }
+
+            /* Entrada al editor (en lugar de la pantalla de Decap y su ventana emergente) */
+            #entrada { --tinta: #0b0b0c; --gris: #6b6f76; --borde: #d9dbe0; --acento: #16a34a; --error: #b42318;
+                       position: fixed; inset: 0; overflow: auto; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                       gap: 28px; padding: 32px 16px; background: #f4f5f7; color: var(--tinta);
+                       font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+            #entrada[hidden] { display: none; }
+            #entrada * { box-sizing: border-box; }
+            #entrada form { width: min(380px, 100%); background: #fff; border: 1px solid var(--borde);
+                            border-radius: 14px; padding: 32px 28px 28px; box-shadow: 0 10px 30px -18px rgba(0,0,0,.25); }
+            #entrada .sitio { margin: 0 0 6px; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gris); overflow-wrap: anywhere; }
+            #entrada h1 { margin: 0 0 4px; font-size: 1.35rem; line-height: 1.3; }
+            #entrada .sub { margin: 0 0 20px; color: var(--gris); font-size: .92rem; }
+            #entrada label { display: block; font-size: .85rem; font-weight: 600; margin: 14px 0 6px; }
+            #entrada input { width: 100%; padding: 11px 12px; border: 1px solid var(--borde); border-radius: 9px; font: inherit; font-size: 16px; color: inherit; background: #fff; }
+            #entrada input:focus { outline: 2px solid var(--acento); outline-offset: 1px; border-color: transparent; }
+            #entrada button { width: 100%; margin-top: 22px; padding: 12px; border: 0; border-radius: 9px; background: var(--tinta);
+                              color: #fff; font: inherit; font-weight: 600; cursor: pointer; }
+            #entrada button:disabled { opacity: .6; cursor: progress; }
+            #entrada .aviso { margin: 16px 0 0; font-size: .9rem; color: var(--error); }
+            #entrada .aviso:empty { display: none; }
+            #entrada .regresar { color: var(--gris); font-size: .92rem; text-decoration: none; }
+            #entrada .regresar:hover { color: var(--tinta); }
+            .cms-abriendo #nc-root { visibility: hidden; }
+            .cms-abriendo body::after { content: "Abriendo el editor…"; position: fixed; inset: 0; display: grid; place-items: center;
+                                        background: #f4f5f7; color: #6b6f76; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
         </style>
     </head>
     <body>
+        <!-- Entrada: usuario y contraseña en la página misma. api/auth.js los
+             revisa y devuelve la sesión firmada; se guarda donde Decap la busca
+             al arrancar (localStorage "decap-cms-user") y Decap entra directo
+             al editor, sin su pantalla de inicio ni ventana emergente. -->
+        <div id="entrada" hidden>
+            <form id="entrada-form" autocomplete="on" novalidate>
+                <p class="sitio" id="entrada-sitio"></p>
+                <h1>Editor del sitio</h1>
+                <p class="sub">Entra con el usuario y la contraseña que te dimos.</p>
+                <label for="usuario">Usuario</label>
+                <input id="usuario" name="usuario" autocomplete="username" autocapitalize="none" spellcheck="false" required/>
+                <label for="clave">Contraseña</label>
+                <input id="clave" name="clave" type="password" autocomplete="current-password" required/>
+                <p class="aviso" id="entrada-aviso" role="alert"></p>
+                <button type="submit">Entrar</button>
+            </form>
+            <a class="regresar" href="/">← Regresar al sitio</a>
+        </div>
         <!-- Panel de edición (Decap CMS), instalado por la consola de GraphicaWeb.
              config.yml tiene los campos de este sitio; lo que depende de dónde
              está publicado (repo, dirección) se pone aquí al iniciar, así el
@@ -36,7 +80,7 @@
         <script>
             // El español de Decap deja algunos textos en inglés ("Add …",
             // "Insert from URL"): se completan sin tocar los que ya trae.
-            (function () {
+            if (window.CMS) (function () {
                 function completar(a, b) {
                     Object.keys(b).forEach(function (k) {
                         if (b[k] && typeof b[k] === 'object') a[k] = completar(a[k] || {}, b[k]);
@@ -50,7 +94,95 @@
                     file: { chooseUrl: 'Insertar desde URL', replaceUrl: 'Reemplazar con URL' },
                 } } }));
             })();
-            CMS.init({
+            // ---------- Entrada ----------
+            // La sesión (api/_cms.js) es "datos.firma"; datos trae { u, exp } en
+            // base64url y se puede leer aquí (sólo el servidor puede firmarla).
+            var SESION = 'decap-cms-user', AVISO = 'entrada.aviso';
+            function leer(k, almacen) { try { return almacen.getItem(k); } catch (e) { return null; } }
+            function quitar(k, almacen) { try { almacen.removeItem(k); } catch (e) {} }
+            function sesionVigente() {
+                try {
+                    var token = JSON.parse(leer(SESION, localStorage) || 'null').token;
+                    var datos = JSON.parse(atob(token.split('.')[0].replace(/-/g, '+').replace(/_/g, '/')));
+                    return datos.exp > Date.now() ? datos : null;
+                } catch (e) { return null; }
+            }
+            // Vuelve a la entrada (recargando: Decap no se puede iniciar dos veces).
+            function volverAEntrar(aviso) {
+                quitar(SESION, localStorage);
+                try { if (aviso) sessionStorage.setItem(AVISO, aviso); } catch (e) {}
+                location.reload();
+            }
+            function mostrarEntrada() {
+                var caja = document.getElementById('entrada'), form = document.getElementById('entrada-form');
+                var aviso = document.getElementById('entrada-aviso'), boton = form.querySelector('button');
+                document.getElementById('entrada-sitio').textContent = location.hostname;
+                aviso.textContent = leer(AVISO, sessionStorage) || '';
+                quitar(AVISO, sessionStorage);
+                boton.disabled = false; boton.textContent = 'Entrar';
+                caja.hidden = false;
+                form.usuario.focus();
+                if (form.dataset.listo) return;
+                form.dataset.listo = '1';
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (!form.usuario.value.trim() || !form.clave.value) {
+                        aviso.textContent = 'Escribe tu usuario y tu contraseña.';
+                        return;
+                    }
+                    aviso.textContent = '';
+                    boton.disabled = true; boton.textContent = 'Entrando…';
+                    fetch('/api/auth', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ usuario: form.usuario.value, clave: form.clave.value }),
+                    }).then(function (r) {
+                        return r.json().catch(function () { return {}; });
+                    }).then(function (d) {
+                        if (!d.token) throw new Error(d.error || 'No se pudo entrar. Intenta de nuevo.');
+                        localStorage.setItem(SESION, JSON.stringify({ token: d.token, backendName: 'github' }));
+                        caja.hidden = true;
+                        arrancar(true);
+                    }).catch(function (err) {
+                        aviso.textContent = /fetch|network/i.test(err.message) ? 'Sin conexión. Revisa tu internet e intenta de nuevo.' : err.message;
+                        boton.disabled = false; boton.textContent = 'Entrar';
+                        form.clave.select();
+                    });
+                });
+            }
+            function arrancar(recienEntrado) {
+                var inicio = Date.now();
+                // Sin Decap (el CDN no respondió) no hay editor: se dice en la entrada.
+                if (!window.CMS) {
+                    try { sessionStorage.setItem(AVISO, 'No se pudo cargar el editor. Revisa tu conexión y recarga la página.'); } catch (e) {}
+                    document.getElementById('entrada').hidden = true;
+                    return mostrarEntrada();
+                }
+                // Si Decap muestra su pantalla de inicio es que cerró la sesión:
+                // "Cerrar sesión", o no pudo abrir el editor con ella.
+                new MutationObserver(function (cambios, obs) {
+                    var suya = [].some.call(document.querySelectorAll('button'), function (b) { return /con GitHub|with GitHub/i.test(b.textContent); });
+                    if (!suya) return;
+                    obs.disconnect();
+                    volverAEntrar(recienEntrado && Date.now() - inicio < 30000
+                        ? 'No se pudo abrir el editor. Si vuelve a pasar, avisa a quien administra tu sitio.' : '');
+                }).observe(document.documentElement, { childList: true, subtree: true });
+                // Al volver a una pestaña que quedó abierta, si la sesión venció.
+                document.addEventListener('visibilitychange', function () {
+                    if (document.visibilityState === 'visible' && !sesionVigente()) volverAEntrar('Tu sesión terminó. Vuelve a entrar.');
+                });
+                // Sin destino en la dirección (/admin o /admin#/) se abre directo
+                // «Contenido» (admin/vista-previa.js); mientras, no se ve la lista
+                // de colecciones de Decap.
+                window.ENTRADA_EN_BLANCO = /^#?\/?$/.test(location.hash) && (window.SITIO.paginas || []).indexOf('inicio') !== -1;
+                if (window.ENTRADA_EN_BLANCO) {
+                    document.documentElement.classList.add('cms-abriendo');
+                    setTimeout(function () { document.documentElement.classList.remove('cms-abriendo'); }, 20000);
+                }
+                CMS.init(configuracion);
+                window.dispatchEvent(new Event('cms-arranca'));
+            }
+            var configuracion = {
                 config: {
                     backend: {
                         name: 'github',
@@ -68,17 +200,16 @@
                     site_url: location.origin,
                     display_url: location.origin,
                 },
-            });
-            // El editor no entra con GitHub: se quita "con GitHub" y el logo del botón.
-            new MutationObserver(function () {
-                document.querySelectorAll('button').forEach(function (b) {
-                    if (!/con GitHub|with GitHub/i.test(b.textContent)) return;
-                    b.querySelectorAll('svg').forEach(function (i) { (i.parentElement === b ? i : i.parentElement).style.display = 'none'; });
-                    b.childNodes.forEach(function (n) {
-                        if (n.nodeType === 3) n.textContent = n.textContent.replace(/\s*(con|with) GitHub/i, '');
-                    });
-                });
-            }).observe(document.documentElement, { childList: true, subtree: true });
+            };
+            if (sesionVigente()) arrancar(false);
+            else {
+                // Una sesión guardada que ya venció: se avisa en la entrada.
+                if (leer(SESION, localStorage)) {
+                    quitar(SESION, localStorage);
+                    try { sessionStorage.setItem(AVISO, 'Tu sesión terminó. Vuelve a entrar.'); } catch (e) {}
+                }
+                mostrarEntrada();
+            }
         </script>
         <script type="module" src="/admin/vista-previa.js"></script>
     </body>

@@ -3,9 +3,12 @@ import { verificarClave, crearSesion, entregarAlPanel, origenDe } from './_cms.j
 // =====================================================================
 // Inicio de sesión del panel /admin (Decap CMS)
 // =====================================================================
-// Decap abre esta ruta en una ventana emergente al dar clic en "Iniciar
-// sesión". GET muestra el formulario; POST revisa usuario y contraseña y,
-// si son correctos, entrega al panel una sesión firmada (ver _cms.js).
+// El formulario de /admin (admin/index.html) manda usuario y contraseña en
+// JSON y recibe la sesión firmada (ver _cms.js) en JSON: { token } o
+// { error }.
+// Se conserva también el camino de Decap con ventana emergente (GET muestra
+// el formulario; POST de formulario entrega la sesión al panel), por si un
+// sitio sigue con un kit anterior en el navegador.
 // =====================================================================
 
 function escapar(s) {
@@ -54,21 +57,32 @@ function formulario(res, { usuario = '', error = '' } = {}) {
 </html>`);
 }
 
+function responder(res, estado, datos) {
+  res.setHeader('Cache-Control', 'no-store');
+  res.status(estado).json(datos);
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return formulario(res);
 
+  const json = String(req.headers['content-type'] || '').startsWith('application/json');
   const { usuario = '', clave = '' } = req.body || {};
   if (!verificarClave(usuario, clave)) {
     // Una pausa fija encarece probar contraseñas a lo bruto.
     await new Promise(r => setTimeout(r, 1000));
-    return formulario(res, { usuario, error: 'Usuario o contraseña incorrectos.' });
+    const error = 'Usuario o contraseña incorrectos.';
+    if (json) return responder(res, 401, { error });
+    return formulario(res, { usuario, error });
   }
 
   try {
     const token = crearSesion(String(usuario).trim().toLowerCase());
+    if (json) return responder(res, 200, { token });
     entregarAlPanel(res, 'success', { token, provider: 'github' }, origenDe(req));
   } catch (err) {
     console.error('[auth]', err.message);
-    entregarAlPanel(res, 'error', { message: 'El panel no está configurado. Avisa a quien administra tu sitio.' }, origenDe(req));
+    const message = 'El panel no está configurado. Avisa a quien administra tu sitio.';
+    if (json) return responder(res, 500, { error: message });
+    entregarAlPanel(res, 'error', { message }, origenDe(req));
   }
 }

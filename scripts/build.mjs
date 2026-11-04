@@ -205,7 +205,7 @@ if (existsSync(join(SALIDA, 'admin', 'config.yml'))) {
     if (conTipos === yml) console.warn('[build] admin/config.yml no tiene types: "@bloques": el panel no ofrecerá bloques');
     writeFileSync(config, conTipos);
   }
-  const sitio = { repo: process.env.CMS_REPO || '', paginas: paginas.map(p => p.nombre), bloques: Object.keys(bloques).length > 0, sitio: !!datosSitio, estilosVista: existsSync(join(SALIDA, 'admin', 'vista-previa.css')) };
+  const sitio = { repo: process.env.CMS_REPO || '', paginas: paginas.map(p => p.nombre), bloques: Object.keys(bloques).length > 0, sitio: !!datosSitio, estilosVista: existsSync(join(SALIDA, 'admin', 'vista-previa.css')), entradas: entradasDeConfig(readFileSync(join(SALIDA, 'admin', 'config.yml'), 'utf8')) };
   writeFileSync(join(SALIDA, 'admin', 'sitio.js'), `window.SITIO = ${JSON.stringify(sitio)};\n`);
   console.log(`[build] admin/: panel listo para ${sitio.repo || '(sin CMS_REPO)'} con ${paginas.length} página(s)`);
 } else {
@@ -216,6 +216,37 @@ if (existsSync(join(SALIDA, 'admin', 'config.yml'))) {
 // 4) Huella de contenido en CSS, JS e imágenes locales.
 const REF = /\b(href|src)="(\/?)((?:css|js|images|img|imagenes|assets|fonts)\/[^"?#]+|favicon\.(?:svg|ico|png)|apple-touch-icon\.png)"/g;
 const huellas = new Map();
+// Entrada del editor de cada página fija, según admin/config.yml: dirección en
+// el sitio ("/" para inicio, "/nombre") → { destino: "#/collections/<colección>/entries/<entrada>",
+// titulo: su label }.
+// Cada sitio las acomoda a su modo (las plantillas: colección "inicio"; un
+// sitio de varias páginas, todas en una colección "paginas").
+function entradasDeConfig(yml) {
+  const entradas = {};
+  const nombres = {}, titulos = {}; // última "- name:" (y su label) vista en cada sangría
+  let coleccion = null, sangriaColecciones = null;
+  for (const linea of yml.split('\n')) {
+    if (/^collections:\s*$/.test(linea)) { sangriaColecciones = -1; continue; }
+    if (sangriaColecciones === null) continue;
+    if (/^\S/.test(linea)) { sangriaColecciones = null; continue; }
+    let m = linea.match(/^(\s*)- name:\s*["']?([\w-]+)/);
+    if (m) {
+      if (sangriaColecciones === -1) sangriaColecciones = m[1].length;
+      if (m[1].length === sangriaColecciones) coleccion = m[2];
+      nombres[m[1].length] = m[2]; titulos[m[1].length] = null;
+      continue;
+    }
+    m = linea.match(/^(\s*)label:\s*["']?([^"'\n]+?)["']?\s*$/);
+    if (m && nombres[m[1].length - 2] && titulos[m[1].length - 2] === null) { titulos[m[1].length - 2] = m[2]; continue; }
+    m = linea.match(/^(\s*)file:\s*["']?contenido\/([\w-]+)\.json/);
+    if (m && coleccion && m[2] !== 'sitio') {
+      const entrada = nombres[m[1].length - 2];
+      if (entrada) entradas[m[2] === 'inicio' ? '/' : `/${m[2]}`] = { destino: `#/collections/${coleccion}/entries/${entrada}`, titulo: titulos[m[1].length - 2] || entrada };
+    }
+  }
+  return entradas;
+}
+
 function huella(ruta) {
   if (!huellas.has(ruta)) {
     const abs = join(SALIDA, ruta);
