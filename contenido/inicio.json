@@ -17,6 +17,35 @@
       "ancla": "hero"
     },
     {
+      "tipo": "pasos",
+      "titulo": "Sube tu sitio web a la red en tres sencillos pasos:",
+      "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
+      "tarjetas": [
+        {
+          "etiqueta": "01 Dominio",
+          "titulo": "Apunta tu dominio a nuestros servidores",
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
+          "icono": "globo"
+        },
+        {
+          "etiqueta": "02 Diseño",
+          "titulo": "Elige una plantilla de tu proveedor favorito",
+          "texto": "Podemos adaptar el diseño de cualquier constructor comercial de sitios web^5^.",
+          "icono": "lapiz"
+        },
+        {
+          "etiqueta": "03 Contenido",
+          "titulo": "Comparte de qué trata tu negocio",
+          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web.",
+          "icono": "cuadricula"
+        }
+      ],
+      "boton": "Elige tu plantilla",
+      "boton_enlace": "#plataformas",
+      "fondo_gris": true,
+      "ancla": "como-funciona"
+    },
+    {
       "tipo": "intro",
       "oculto": false,
       "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En GraphicaWeb utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales…",
@@ -25,7 +54,7 @@
     {
       "tipo": "plataformas",
       "oculto": false,
-      "titulo": "Adaptamos los diseños de cualquier proveedor comercial a tu página web.",
+      "titulo": "Adaptamos las plantillas de cualquier proveedor comercial a tu página web.",
       "texto": "Elige cualquier plantilla de las siguiente plataformas y en 24 hrs. ==la adaptamos a la imagen de tu empresa o negocio sin costo para ti.==^5^",
       "logos": [
         {
@@ -112,35 +141,6 @@
       "boton_principal": "Quiero mi Sitio!",
       "boton_secundario_enlace": "#compara",
       "titulo": "Olvídate de la curva de aprendizaje."
-    },
-    {
-      "tipo": "pasos",
-      "titulo": "Sube tu sitio web a la red en tres sencillos pasos:",
-      "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
-      "tarjetas": [
-        {
-          "etiqueta": "01 Dominio",
-          "titulo": "Apunta tu dominio a nuestros servidores",
-          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
-          "icono": "globo"
-        },
-        {
-          "etiqueta": "02 Diseño",
-          "titulo": "Elige una plantilla de tu proveedor favorito",
-          "texto": "Podemos adaptar el diseño de cualquier constructor comercial de sitios web^5^.",
-          "icono": "lapiz"
-        },
-        {
-          "etiqueta": "03 Contenido",
-          "titulo": "Comparte de qué trata tu negocio",
-          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web.",
-          "icono": "cuadricula"
-        }
-      ],
-      "boton": "Tu sitio puede quedar hoy mismo",
-      "boton_enlace": "#cta",
-      "fondo_gris": true,
-      "ancla": "como-funciona"
     },
     {
       "tipo": "precios",
