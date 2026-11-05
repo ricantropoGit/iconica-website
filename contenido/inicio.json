@@ -47,9 +47,21 @@
     },
     {
       "tipo": "intro",
-      "oculto": false,
+      "oculto": true,
       "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En GraphicaWeb utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales…",
       "ancla": "intro"
+    },
+    {
+      "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
+      "oculto": false,
+      "boton_secundario": "",
+      "boton_principal_enlace": "#precios",
+      "ancla": "cta",
+      "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**",
+      "tipo": "cta",
+      "boton_principal": "Quiero mi Sitio!",
+      "boton_secundario_enlace": "#compara",
+      "titulo": "Plantillas"
     },
     {
       "tipo": "plataformas",
