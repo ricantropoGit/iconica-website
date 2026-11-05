@@ -15,38 +15,50 @@
       "ancla": "hero"
     },
     {
+      "tipo": "plataformas",
+      "oculto": false,
+      "titulo": "Trabajamos con la plataforma que prefieras",
+      "texto": "Adaptamos el diseño de cualquiera de estos constructores de sitios web.",
+      "logos": [
+        {
+          "logo": "/images/cms/logos/webflow.svg",
+          "nombre": "WebFlow",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/squarespace.svg",
+          "nombre": "SquareSpace",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/canva.svg",
+          "nombre": "Canva",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/wordpress.svg",
+          "nombre": "WordPress",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/framer.svg",
+          "nombre": "Framer",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/wix.svg",
+          "nombre": "Wix",
+          "enlace": ""
+        }
+      ],
+      "fondo_gris": false,
+      "ancla": "plataformas"
+    },
+    {
       "tipo": "intro",
       "oculto": true,
       "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En GraphicaWeb utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales…",
       "ancla": "intro"
-    },
-    {
-      "tipo": "pasos",
-      "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
-      "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
-      "tarjetas": [
-        {
-          "etiqueta": "01 Dominio",
-          "titulo": "Apunta tu dominio a nuestros servidores",
-          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
-          "icono": "globo"
-        },
-        {
-          "etiqueta": "02 Diseño",
-          "titulo": "Elige una plantilla de tu proveedor favorito",
-          "texto": "Podemos adaptar el diseño de cualquier constructor comercial de sitios web^5^.",
-          "icono": "lapiz"
-        },
-        {
-          "etiqueta": "03 Contenido",
-          "titulo": "Comparte de qué trata tu negocio",
-          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web.",
-          "icono": "cuadricula"
-        }
-      ],
-      "boton": "Tu sitio puede quedar hoy mismo",
-      "fondo_gris": true,
-      "ancla": "como-funciona"
     },
     {
       "tipo": "ventajas",
@@ -98,14 +110,49 @@
       "ancla": "cta"
     },
     {
+      "tipo": "pasos",
+      "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
+      "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
+      "tarjetas": [
+        {
+          "etiqueta": "01 Dominio",
+          "titulo": "Apunta tu dominio a nuestros servidores",
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
+          "icono": "globo"
+        },
+        {
+          "etiqueta": "02 Diseño",
+          "titulo": "Elige una plantilla de tu proveedor favorito",
+          "texto": "Podemos adaptar el diseño de cualquier constructor comercial de sitios web^5^.",
+          "icono": "lapiz"
+        },
+        {
+          "etiqueta": "03 Contenido",
+          "titulo": "Comparte de qué trata tu negocio",
+          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web.",
+          "icono": "cuadricula"
+        }
+      ],
+      "boton": "Tu sitio puede quedar hoy mismo",
+      "fondo_gris": true,
+      "ancla": "como-funciona"
+    },
+    {
       "tipo": "precios",
       "etiqueta": "Precios",
       "titulo": "Elige tu plan:",
       "texto": "Sin el desembolso inicial · Tu eliges tu mensualidad.",
       "planes": [
         {
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+          "total": "$9,900",
+          "boton": "Comprar",
+          "caracteristicas": [
+            "Todo lo incluido en el plan de contado",
+            "==Mensualidades SIN intereses=="
+          ],
+          "periodo": "MXN",
           "tipo": "plazos",
-          "insignia": "Más Solicitado",
           "plazos": [
             {
               "meses": "3",
@@ -124,14 +171,7 @@
               "precio": "$825"
             }
           ],
-          "total": "$9,900",
-          "periodo": "MXN",
-          "caracteristicas": [
-            "Todo lo incluido en el plan de contado",
-            "==Mensualidades SIN intereses=="
-          ],
-          "boton": "Comprar",
-          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+          "insignia": "Más Solicitado",
           "destacada": true
         },
         {
