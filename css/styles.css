@@ -1520,17 +1520,21 @@ html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
 }
 .card--logo {
   position: relative;
+  /* Celda cuadrada; logo, nombre y separación se miden contra su ancho
+     (cqi), así guardan la proporción en desktop, tablet y celular. */
+  aspect-ratio: 1 / 1; container-type: inline-size;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 14px; padding-block: 44px 40px; text-align: center;
+  padding: 0; text-align: center;
 }
 .card__logo {
-  display: block; width: 104px; height: 84px;
+  /* Proporción del lienzo de los SVG (394 × 315): el dibujo queda a escala */
+  display: block; width: 28cqi; aspect-ratio: 394 / 315;
   background-color: var(--logo-color);
   -webkit-mask: var(--logo) center / contain no-repeat;
           mask: var(--logo) center / contain no-repeat;
   transition: background-color .2s ease;
 }
-.card__logo-nombre { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; color: var(--logo-nombre-color); }
+.card__logo-nombre { margin-top: 5cqi; font-size: clamp(15px, 6.2cqi, 26px); font-weight: 400; letter-spacing: -.005em; line-height: 1.2; color: var(--logo-nombre-color); }
 /* Con enlace, toda la tarjeta lo abre */
 .card--logo a.card__logo-nombre::after { content: ""; position: absolute; inset: 0; }
 .card--logo a.card__logo-nombre:focus-visible { outline: none; }
