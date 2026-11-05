@@ -1,0 +1,19 @@
+<section data-cms-item class="section" data-cms-class="section--alt: .fondo_gris" id="plataformas" data-cms-id=".ancla" data-screen-label="Plataformas">
+    <div class="container">
+        <div class="steps__head">
+            <h2 class="steps__title"><span data-cms=".titulo">Trabajamos con la plataforma que prefieras</span></h2>
+            <p class="steps__lead" data-cms=".texto" data-cms-optional>Adaptamos el diseño de cualquiera de estos constructores de sitios web.</p>
+        </div>
+        <!-- Logos: misma retícula y tarjetas que «Cómo funciona»; se agregan,
+             quitan, ordenan u ocultan en el editor. Cada logo es una máscara
+             (--logo): se pinta con --logo-color de css/styles.css, sin importar
+             el color del SVG. Con enlace, toda la tarjeta lo abre. -->
+        <div class="cards cards--logos" data-cms-list=".logos">
+            <article class="card card--logo" data-cms-item data-cms-if="!.oculto">
+                <span class="card__logo" aria-hidden="true" style="" data-cms-style="--logo:url({.logo})"></span>
+                <span class="card__logo-nombre" data-cms=".nombre" data-cms-if="!.enlace">WebFlow</span>
+                <a class="card__logo-nombre" href="#" target="_blank" rel="noopener" data-cms-href=".enlace" data-cms=".nombre" data-cms-if=".enlace">WebFlow</a>
+            </article>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,123 @@
+{
+  "label": "Plataformas (logos)",
+  "name": "plataformas",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "Trabajamos con la plataforma que prefieras"
+    },
+    {
+      "label": "Texto",
+      "name": "texto",
+      "widget": "text",
+      "required": false,
+      "default": "Adaptamos el diseño de cualquiera de estos constructores de sitios web.",
+      "hint": "Vacío = sin texto. Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`"
+    },
+    {
+      "label": "Logos",
+      "name": "logos",
+      "label_singular": "logo",
+      "widget": "list",
+      "summary": "{{fields.nombre}}{{fields.oculto | ternary(' (oculto)', '')}}",
+      "hint": "Agrega, quita u ordena los logos (arrastra para moverlos). «Oculto» lo apaga sin borrarlo.",
+      "default": [
+        {
+          "logo": "/images/cms/logos/webflow.svg",
+          "nombre": "WebFlow",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/squarespace.svg",
+          "nombre": "SquareSpace",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/canva.svg",
+          "nombre": "Canva",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/wordpress.svg",
+          "nombre": "WordPress",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/framer.svg",
+          "nombre": "Framer",
+          "enlace": ""
+        },
+        {
+          "logo": "/images/cms/logos/wix.svg",
+          "nombre": "Wix",
+          "enlace": ""
+        }
+      ],
+      "fields": [
+        {
+          "label": "Oculto (no se publica)",
+          "name": "oculto",
+          "widget": "boolean",
+          "required": false,
+          "default": false,
+          "hint": "Apaga el logo sin borrarlo."
+        },
+        {
+          "label": "Logo",
+          "name": "logo",
+          "widget": "image",
+          "default": "/images/cms/logos/webflow.svg",
+          "choose_url": false,
+          "hint": "Un SVG de una sola tinta (cualquier color: se pinta del gris del sitio). Mejor con lienzo apaisado, como los de images/cms/logos/."
+        },
+        {
+          "label": "Nombre",
+          "name": "nombre",
+          "widget": "string",
+          "default": "WebFlow",
+          "pattern": [
+            "^.{1,30}$",
+            "Máximo 30 caracteres"
+          ]
+        },
+        {
+          "label": "Enlace",
+          "name": "enlace",
+          "widget": "string",
+          "required": false,
+          "default": "",
+          "hint": "Opcional: https://… (abre en otra pestaña). Vacío = sin enlace.",
+          "pattern": [
+            "^(|https?://.+|/.*)$",
+            "Empieza con https:// o /"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "plataformas",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

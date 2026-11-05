@@ -1508,6 +1508,37 @@ html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
    (Antes eran 3 fijas en un solo renglón desde 640px.)
    ========================================================================== */
 
+/* ---------- Logos de plataformas (bloque «Plataformas») ----------------
+   Mismas tarjetas y retícula que «Cómo funciona». Cada logo es una máscara
+   (--logo, la pone el build con la imagen de cada tarjeta): se pinta con
+   --logo-color, sin importar el color del SVG. Para cambiar los colores,
+   basta con estas variables. */
+.cards--logos {
+  --logo-color: #666;               /* logo */
+  --logo-color-hover: var(--ink);   /* logo al pasar el cursor por la tarjeta */
+  --logo-nombre-color: var(--ink);  /* nombre */
+}
+.card--logo {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; padding-block: 44px 40px; text-align: center;
+}
+.card__logo {
+  display: block; width: 104px; height: 84px;
+  background-color: var(--logo-color);
+  -webkit-mask: var(--logo) center / contain no-repeat;
+          mask: var(--logo) center / contain no-repeat;
+  transition: background-color .2s ease;
+}
+.card__logo-nombre { font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; color: var(--logo-nombre-color); }
+/* Con enlace, toda la tarjeta lo abre */
+.card--logo a.card__logo-nombre::after { content: ""; position: absolute; inset: 0; }
+.card--logo a.card__logo-nombre:focus-visible { outline: none; }
+.card--logo a.card__logo-nombre:focus-visible::after { outline: 2px solid var(--accent-strong); outline-offset: -4px; border-radius: var(--r-lg); }
+@media (hover: hover) {
+  .card--logo:hover .card__logo { background-color: var(--logo-color-hover); }
+}
+
 /* Celdas vacías del último renglón (p. ej. 3 tarjetas en 2 columnas): se
    rellenan con ::after (y ::before si faltan dos) con los filetes de una
    tarjeta, para que la retícula se vea completa. ::before lleva order: 1 para
