@@ -195,7 +195,7 @@ ul { list-style: none; padding: 0; }
   padding-block: 4px;
   transition: color .18s ease;
 }
-.nav__link.is-active { color: var(--accent-strong); }
+.nav__link[aria-current] { color: var(--accent-strong); }
 /* Hover: sólo cambio de color al verde de la paleta, sin subrayado.
    Va dentro de (hover: hover) porque en táctil el estado se queda "pegado"
    tras el toque y el item quedaría verde de forma permanente. */
@@ -222,9 +222,9 @@ ul { list-style: none; padding: 0; }
   background: var(--ink);
   transition: transform .25s ease, opacity .2s ease;
 }
-.hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.is-open span:nth-child(2) { opacity: 0; }
-.hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.cabecera.is-abierta .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.cabecera.is-abierta .hamburger span:nth-child(2) { opacity: 0; }
+.cabecera.is-abierta .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Panel móvil */
 .mobile-nav {
@@ -251,7 +251,7 @@ ul { list-style: none; padding: 0; }
   overflow-y: auto;
   overscroll-behavior: contain;
 }
-.mobile-nav.is-open { transform: translateY(0); opacity: 1; visibility: visible; }
+.cabecera.is-abierta .mobile-nav { transform: translateY(0); opacity: 1; visibility: visible; }
 .mobile-nav__list { padding: 12px var(--gutter) 24px; }
 .mobile-nav__list li { border-bottom: 1px solid var(--border); }
 .mobile-nav__list li:last-child { border-bottom: 0; }
@@ -262,7 +262,7 @@ ul { list-style: none; padding: 0; }
   font-weight: 600;
   transition: color .18s ease, transform .18s ease;
 }
-.mobile-nav__link.is-active { color: var(--accent-strong); }
+.mobile-nav__link[aria-current] { color: var(--accent-strong); }
 
 /* No tenía ninguna respuesta al hover. Verde de acento + un corrimiento
    corto: en una lista de ancho completo el desplazamiento se lee mejor que
@@ -272,6 +272,20 @@ ul { list-style: none; padding: 0; }
 }
 /* En táctil no hay hover: :active da la respuesta al toque. */
 .mobile-nav__link:active { color: var(--accent-strong); }
+
+/* Desde 768px el menú va en la cabecera… si cabe. Si sus opciones no caben
+   junto a la marca (js/main.js lo mide; en el editor, la vista previa), se
+   usa la hamburguesa también en pantalla ancha: menú compacto. Mientras se
+   mide, nada se encoge. (Las clases .cabecera, .menu, .hamburguesa y
+   .menu-movil son las que usan el editor y las plantillas.) */
+@media (min-width: 768px) {
+  .nav { display: block; }
+  .hamburger { display: none; }
+}
+.cabecera.menu-compacto .nav { display: none; }
+.cabecera.menu-compacto .hamburger { display: inline-flex; }
+.cabecera.menu-midiendo .cabecera__fila > * { flex-shrink: 0; }
+.cabecera.menu-midiendo .nav__link { white-space: nowrap; }
 
 /* ==========================================================================
    HERO
@@ -1319,8 +1333,6 @@ ul { list-style: none; padding: 0; }
 /* —— Laptop ≥ 1024px —— */
 @media (min-width: 1024px) {
   :root { --header-h: 72px; --gutter: 32px; }
-  .nav { display: block; }
-  .hamburger { display: none; }
   .hero { padding-block: 56px 116px; }
   .section { padding-block: 100px; }
   .section--notes {

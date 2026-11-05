@@ -475,3 +475,31 @@ collections:
               - { label: "Título", name: titulo, widget: string }
               - { label: "Correo", name: correo, widget: string }
               - { label: "Domicilio", name: domicilio, widget: string, hint: "Incluye la palabra «Domicilio:»." }
+
+  # Menú y pie: los comparten todas las páginas (el build los pone en cada
+  # una). Fuera de inicio, los #ancla del menú llevan a inicio (/#precios).
+  - name: sitio
+    label: Menú y pie
+    delete: false
+    files:
+      - name: sitio
+        label: Menú y pie
+        file: contenido/sitio.json
+        fields:
+          - { label: "Nombre en la cabecera", name: nombre, widget: string, hint: "Junto al símbolo Ø." }
+          - label: Menú
+            name: menu
+            label_singular: opción
+            widget: list
+            max: 8
+            summary: "{{fields.texto}}"
+            hint: "Arrastra para ordenarlas. Si no caben en la cabecera, el menú pasa solo a la hamburguesa."
+            fields:
+              - { label: "Texto", name: texto, widget: string, pattern: ['^.{1,24}$', "Máximo 24 caracteres"] }
+              - { label: "Dirección", name: enlace, widget: string, hint: "#ancla de una sección de inicio (p. ej. #precios), /servicios.html o https://…", pattern: ['^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$', "Empieza con #, / o https://"] }
+          - label: Pie
+            name: pie
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Texto legal", name: legal, widget: string, hint: "Va después de «© año»." }
