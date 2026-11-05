@@ -28,17 +28,20 @@
         {
           "etiqueta": "01 Dominio",
           "titulo": "Apunta tu dominio a nuestros servidores",
-          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
+          "icono": "globo"
         },
         {
           "etiqueta": "02 Diseño",
           "titulo": "Elige un diseño web de referencia",
-          "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
+          "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía.",
+          "icono": "lapiz"
         },
         {
           "etiqueta": "03 Contenido",
           "titulo": "Comparte de qué trata tu negocio",
-          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
+          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web.",
+          "icono": "cuadricula"
         }
       ],
       "boton": "Tu sitio puede quedar hoy mismo",

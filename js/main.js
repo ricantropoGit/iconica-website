@@ -412,12 +412,14 @@
   // que verse completa sin él. Aquí sólo se reacciona al cambio de plazo.
   // Las cifras se editan en el panel y el build las pone en el HTML —el precio
   // en cada <option>, el total en el propio <select>—; aquí sólo se componen.
-  // La frase es la misma que arma el build en index.html (#cobro-msi): si
-  // cambia una, cambia la otra.
-  var plazoSel = document.getElementById('plazo-msi');
-  var montoMsi = document.getElementById('precio-msi');
-  var cobroMsi = document.getElementById('cobro-msi');
-  if (plazoSel && montoMsi) {
+  // La frase es la misma que arma el build en index.html (la de
+  // .price-card__billed--plazos): si cambia una, cambia la otra.
+  // Cada tarjeta con plazos tiene su propio selector (puede haber varias).
+  Array.prototype.forEach.call(document.querySelectorAll('.price-card__plazo'), function (plazoSel) {
+    var tarjeta = plazoSel.closest('.price-card');
+    var montoMsi = tarjeta && tarjeta.querySelector('.price-card__price--plazos .price-card__amount');
+    var cobroMsi = tarjeta && tarjeta.querySelector('.price-card__billed--plazos');
+    if (!montoMsi) return;
     plazoSel.addEventListener('change', function () {
       var op = plazoSel.options[plazoSel.selectedIndex];
       var precio = op ? op.getAttribute('data-precio') : null;
@@ -429,7 +431,7 @@
           (total ? ' \u2014 total ' + total : '');
       }
     });
-  }
+  });
 
    /* ==================================================================
      Formulario de contacto - Manejado por formHandler.js
