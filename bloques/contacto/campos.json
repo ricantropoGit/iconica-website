@@ -25,6 +25,17 @@
       "default": "+52 56 3366 8185"
     },
     {
+      "label": "Enlace del botón de WhatsApp",
+      "name": "whatsapp_enlace",
+      "widget": "string",
+      "default": "https://wa.me/525633668185?text=Hola%2C%20me%20interesa%20un%20sitio%20para%20mi%20negocio",
+      "hint": "https://wa.me/52… con el número sin espacios; después de ?text= va el mensaje que se escribe solo (los espacios como %20). También acepta #ancla, /página o https://….",
+      "pattern": [
+        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "Empieza con # (sección de esta página), / (página del sitio) o https://"
+      ]
+    },
+    {
       "label": "Ubicación",
       "name": "ubicacion",
       "widget": "string",

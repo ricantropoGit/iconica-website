@@ -79,6 +79,15 @@
   if (document.fonts) document.fonts.ready.then(medirMenu);
   window.addEventListener('load', medirMenu);
 
+  /* ---------- Enlaces a otros sitios: en otra pestaña ------------------ */
+  // Los botones se editan en el panel y pueden llevar a otro sitio
+  // (https://…): ésos se abren en otra pestaña para no sacar al visitante.
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="http"]'), function (a) {
+    if (a.host === location.host || a.hasAttribute('target')) return;
+    a.target = '_blank';
+    a.rel = (a.rel ? a.rel + ' ' : '') + 'noopener';
+  });
+
   /* ---------- Smooth scroll a anchors (con offset del header) --------- */
   function headerOffset() {
     return (header ? header.offsetHeight : 0);

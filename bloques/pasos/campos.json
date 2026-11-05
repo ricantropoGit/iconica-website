@@ -118,6 +118,17 @@
       "default": "Tu sitio puede quedar hoy mismo"
     },
     {
+      "label": "Enlace del botón",
+      "name": "boton_enlace",
+      "widget": "string",
+      "default": "#cta",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "pattern": [
+        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "Empieza con # (sección de esta página), / (página del sitio) o https://"
+      ]
+    },
+    {
       "label": "Fondo gris",
       "name": "fondo_gris",
       "widget": "boolean",
