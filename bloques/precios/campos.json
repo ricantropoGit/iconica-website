@@ -34,7 +34,7 @@
           "label": "Tarjeta de contado",
           "name": "fijo",
           "widget": "object",
-          "summary": "{{fields.nombre}} — {{fields.precio}}{{fields.oculto | ternary(' (oculta)', '')}}",
+          "summary": "{{fields.nombre}} — {{fields.precio}}{{fields.destacada | ternary(' ★', '')}}{{fields.oculto | ternary(' (oculta)', '')}}",
           "fields": [
             {
               "label": "Oculta (no se publica)",
@@ -43,6 +43,14 @@
               "required": false,
               "default": false,
               "hint": "Apaga la tarjeta sin borrarla."
+            },
+            {
+              "label": "Destacada",
+              "name": "destacada",
+              "widget": "boolean",
+              "required": false,
+              "default": false,
+              "hint": "Borde oscuro, sombra y botón negro. Puede haber más de una."
             },
             {
               "label": "Insignia (vacío = sin insignia)",
@@ -116,7 +124,7 @@
           "label": "Tarjeta destacada (con plazos)",
           "name": "plazos",
           "widget": "object",
-          "summary": "Total {{fields.total}}{{fields.oculto | ternary(' (oculta)', '')}}",
+          "summary": "Total {{fields.total}}{{fields.destacada | ternary(' ★', '')}}{{fields.oculto | ternary(' (oculta)', '')}}",
           "fields": [
             {
               "label": "Oculta (no se publica)",
@@ -125,6 +133,14 @@
               "required": false,
               "default": false,
               "hint": "Apaga la tarjeta sin borrarla."
+            },
+            {
+              "label": "Destacada",
+              "name": "destacada",
+              "widget": "boolean",
+              "required": false,
+              "default": true,
+              "hint": "Borde oscuro, sombra y botón negro. Puede haber más de una."
             },
             {
               "label": "Insignia (vacío = sin insignia)",
@@ -255,7 +271,8 @@
             "==Mensualidades SIN intereses=="
           ],
           "boton": "Comprar",
-          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+          "destacada": true
         },
         {
           "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
@@ -271,7 +288,8 @@
           "periodo": "MXN",
           "cobro": "Precio de contado: $9,900^1^",
           "tipo": "fijo",
-          "insignia": ""
+          "insignia": "",
+          "destacada": false
         }
       ],
       "label_singular": "tarjeta"

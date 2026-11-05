@@ -131,7 +131,8 @@
             "==Mensualidades SIN intereses=="
           ],
           "boton": "Comprar",
-          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+          "destacada": true
         },
         {
           "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
@@ -147,7 +148,8 @@
           "periodo": "MXN",
           "cobro": "Precio de contado: $9,900^1^",
           "tipo": "fijo",
-          "insignia": ""
+          "insignia": "",
+          "destacada": false
         }
       ],
       "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)",

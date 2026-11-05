@@ -7,10 +7,11 @@
         </div>
         <!-- Cada tarjeta se dibuja según su tipo (Precios → Planes): "fijo" o
              "plazos". El orden de la lista es el orden en pantalla (y en celular).
-             Se agregan, quitan u ocultan en el editor; el selector de meses es de
+             Se agregan, quitan u ocultan en el editor; cualquiera puede ir
+             destacada (borde oscuro, sombra y botón negro); el selector de meses es de
              cada tarjeta (js/main.js), así que puede haber más de una con plazos. -->
         <div class="pricing__grid" data-cms-list=".planes">
-            <article class="price-card" data-cms-class="price-card--featured: .tipo=plazos" data-cms-item data-cms-if="!.oculto">
+            <article class="price-card" data-cms-class="price-card--featured: .destacada" data-cms-item data-cms-if="!.oculto">
                 <span class="price-card__badge" data-cms=".insignia" data-cms-optional></span>
                 <header class="price-card__head">
                     <h3 class="price-card__name" data-cms=".nombre" data-cms-if=".tipo=fijo">Plan Mensual</h3>
@@ -29,7 +30,7 @@
                 <ul class="price-card__features" data-cms-list=".caracteristicas">
                     <li data-cms-item data-cms=".">Sitio listo y en línea en 24hrs.</li>
                 </ul>
-                <a data-cms=".boton" data-cms-href=".enlace" data-cms-class="btn--primary: .tipo=plazos, btn--ghost: .tipo=fijo" href="#" class="btn price-card__cta">Comprar</a>
+                <a data-cms=".boton" data-cms-href=".enlace" data-cms-class="btn--primary: .destacada, btn--ghost: !.destacada" href="#" class="btn price-card__cta">Comprar</a>
             </article>
         </div>
         <p class="pricing__notes" data-cms=".nota">La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. <a href="servicios.html">Consulta qué incluye tu plan y cuáles son servicios adicionales.</a></p>
