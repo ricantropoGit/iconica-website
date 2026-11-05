@@ -136,6 +136,22 @@ function abrir(nodo, raiz) {
   if (boton && boton.getAttribute('aria-label') === 'Expand') boton.click();
 }
 
+// Si el campo quedó oculto aunque se abrió el camino, se prueba el botón de
+// plegar de cada nivel de arriba hasta que se vea (y se deshace el clic que
+// no ayudó). Pasa tras añadir un bloque: Decap deja el botón de la lista con
+// la etiqueta contraria a su estado y abrir() no lo pulsa.
+async function destapar(el, raiz, vigente) {
+  for (let n = nodoPadre(el, raiz); n && el.offsetParent === null; n = nodoPadre(n, raiz)) {
+    const boton = [...n.querySelectorAll('button[data-testid="expand-button"]')].find(b => nodoPadre(b, raiz) === n);
+    if (!boton) continue;
+    boton.click();
+    if (await esperarA(() => el.offsetParent !== null, 10)) return;
+    if (!vigente()) return;
+    boton.click();
+    await cuadro();
+  }
+}
+
 // Rutas de la vista previa → rutas del formulario abierto. En "Sitio" el
 // formulario es sitio.json (las rutas de la página llevan "sitio."); en una
 // página, lo de "sitio." no está en este formulario.
@@ -218,6 +234,10 @@ async function irACampo(ruta) {
   }
   abrir(nodo, raiz);
   const destino = nodo;
+  if (destino.offsetParent === null) await esperarA(() => destino.offsetParent !== null, 10);
+  if (!vigente()) return;
+  if (destino.offsetParent === null) await destapar(destino, raiz, vigente);
+  if (!vigente()) return;
   const control = (destino.matches('input, textarea') ? destino : await esperarA(
     () => destino.querySelector('input, textarea, [contenteditable="true"]'), 10)) || null;
   if (!vigente()) return;

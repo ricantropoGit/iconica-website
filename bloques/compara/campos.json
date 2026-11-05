@@ -1,0 +1,323 @@
+{
+  "label": "Tabla comparativa",
+  "name": "compara",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "¡Compara!"
+    },
+    {
+      "label": "Texto bajo el título",
+      "name": "texto",
+      "widget": "string",
+      "default": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Web"
+    },
+    {
+      "label": "Columna 1 (destacada)",
+      "name": "col1",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+        {
+          "label": "Nombre",
+          "name": "nombre",
+          "widget": "string",
+          "default": "GraphicaWeb"
+        },
+        {
+          "label": "Etiqueta (vacío = sin etiqueta)",
+          "name": "etiqueta",
+          "widget": "string",
+          "required": false,
+          "default": "Te conviene"
+        }
+      ]
+    },
+    {
+      "label": "Columna 2",
+      "name": "col2",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+        {
+          "label": "Nombre",
+          "name": "nombre",
+          "widget": "string",
+          "default": "Soluciones tipo DIY^2^"
+        }
+      ]
+    },
+    {
+      "label": "Columna 3",
+      "name": "col3",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+        {
+          "label": "Nombre",
+          "name": "nombre",
+          "widget": "string",
+          "default": "Encargo por Diseño"
+        }
+      ]
+    },
+    {
+      "label": "Filas",
+      "name": "filas",
+      "label_singular": "fila",
+      "widget": "list",
+      "summary": "{{fields.caracteristica}}",
+      "hint": "Arrastra para ordenarlas. En cada celda eliges ✓, — o un texto.",
+      "fields": [
+        {
+          "label": "Característica",
+          "name": "caracteristica",
+          "widget": "string",
+          "hint": "Formato: `**negritas**` · `^1^` superíndice",
+          "default": "Sin curva de aprendizaje (DIY)"
+        },
+        {
+          "label": "Fila de costo (resaltada)",
+          "name": "costo",
+          "widget": "boolean",
+          "default": false,
+          "required": false
+        },
+        {
+          "label": "Columna 1",
+          "name": "col1",
+          "widget": "object",
+          "collapsed": false,
+          "summary": "{{fields.tipo}} {{fields.texto}}",
+          "fields": [
+            {
+              "label": "Celda",
+              "name": "tipo",
+              "widget": "select",
+              "default": "si",
+              "options": [
+                {
+                  "label": "✓  Sí",
+                  "value": "si"
+                },
+                {
+                  "label": "—  No",
+                  "value": "no"
+                },
+                {
+                  "label": "Texto",
+                  "value": "texto"
+                }
+              ]
+            },
+            {
+              "label": "Texto (si elegiste Texto)",
+              "name": "texto",
+              "widget": "string",
+              "required": false,
+              "hint": "Sale en negritas, p. ej. $9,000 a $27,000",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "label": "Columna 2",
+          "name": "col2",
+          "widget": "object",
+          "collapsed": false,
+          "summary": "{{fields.tipo}} {{fields.texto}}",
+          "fields": [
+            {
+              "label": "Celda",
+              "name": "tipo",
+              "widget": "select",
+              "default": "si",
+              "options": [
+                {
+                  "label": "✓  Sí",
+                  "value": "si"
+                },
+                {
+                  "label": "—  No",
+                  "value": "no"
+                },
+                {
+                  "label": "Texto",
+                  "value": "texto"
+                }
+              ]
+            },
+            {
+              "label": "Texto (si elegiste Texto)",
+              "name": "texto",
+              "widget": "string",
+              "required": false,
+              "hint": "Sale en negritas, p. ej. $9,000 a $27,000",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "label": "Columna 3",
+          "name": "col3",
+          "widget": "object",
+          "collapsed": false,
+          "summary": "{{fields.tipo}} {{fields.texto}}",
+          "fields": [
+            {
+              "label": "Celda",
+              "name": "tipo",
+              "widget": "select",
+              "default": "si",
+              "options": [
+                {
+                  "label": "✓  Sí",
+                  "value": "si"
+                },
+                {
+                  "label": "—  No",
+                  "value": "no"
+                },
+                {
+                  "label": "Texto",
+                  "value": "texto"
+                }
+              ]
+            },
+            {
+              "label": "Texto (si elegiste Texto)",
+              "name": "texto",
+              "widget": "string",
+              "required": false,
+              "hint": "Sale en negritas, p. ej. $9,000 a $27,000",
+              "default": ""
+            }
+          ]
+        }
+      ],
+      "default": [
+        {
+          "caracteristica": "Sin curva de aprendizaje (DIY)",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "no",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "si",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "Autoeditable",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "no",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "Alojamiento incluido^3^",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "no",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "El sitio es tuyo",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "no",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "si",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "¿Quién la hace?",
+          "costo": true,
+          "col1": {
+            "tipo": "texto",
+            "texto": "Nosotros"
+          },
+          "col2": {
+            "tipo": "texto",
+            "texto": "Tú"
+          },
+          "col3": {
+            "tipo": "texto",
+            "texto": "Un diseñador"
+          }
+        },
+        {
+          "costo": true,
+          "col1": {
+            "tipo": "texto",
+            "texto": "$825^4^"
+          },
+          "col2": {
+            "tipo": "texto",
+            "texto": "Tu tiempo + Suscripción^2^"
+          },
+          "col3": {
+            "tipo": "texto",
+            "texto": "50% anticipo"
+          },
+          "caracteristica": "Desembolso Inicial (MXN)"
+        }
+      ]
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": true,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "compara",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

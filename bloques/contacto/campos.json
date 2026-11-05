@@ -1,0 +1,54 @@
+{
+  "label": "Contacto",
+  "name": "contacto",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "Empecemos por conocer tu negocio."
+    },
+    {
+      "label": "Texto",
+      "name": "texto",
+      "widget": "text",
+      "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+      "default": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no."
+    },
+    {
+      "label": "WhatsApp (como se muestra)",
+      "name": "whatsapp",
+      "widget": "string",
+      "default": "+52 56 3366 8185"
+    },
+    {
+      "label": "Ubicación",
+      "name": "ubicacion",
+      "widget": "string",
+      "default": "Ciudad de México · Servicio 100% en línea"
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": true,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "contacto",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

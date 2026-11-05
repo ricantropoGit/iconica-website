@@ -1,0 +1,40 @@
+{
+  "label": "Notas al pie",
+  "name": "notas",
+  "widget": "object",
+  "summary": "Notas al pie",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Notas",
+      "name": "lista",
+      "widget": "list",
+      "label_singular": "nota",
+      "field": {
+        "label": "Nota",
+        "name": "nota",
+        "widget": "text"
+      },
+      "hint": "Se numeran solas en el orden de la lista: la primera es la 1, y así. Los superíndices de la página (^1^, ^2^…) llevan a la nota con ese número; si cambias el orden, revísalos. Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+      "default": [
+        "Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
+        "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es una renta permanente y el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor.",
+        "Primer año incluido; después, $269 al mes.",
+        "Precio calculado de acuerdo al plan de pago de 12 mensualidades sin intereses.",
+        "Plazo de 24 horas contado desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc."
+      ]
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "notas",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

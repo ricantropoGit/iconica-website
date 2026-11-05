@@ -1,297 +1,330 @@
 {
-  "compara": {
-    "titulo": "¡Compara!",
-    "texto": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Web",
-    "col1": {
-      "nombre": "GraphicaWeb",
-      "etiqueta": "Te conviene"
-    },
-    "col2": {
-      "nombre": "Soluciones tipo DIY^2^"
-    },
-    "col3": {
-      "nombre": "Encargo por Diseño"
-    },
-    "filas": [
-      {
-        "caracteristica": "Sin curva de aprendizaje (DIY)",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "no",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "si",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "Autoeditable",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "no",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "Alojamiento incluido^3^",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "no",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "El sitio es tuyo",
-        "costo": false,
-        "col1": {
-          "tipo": "si",
-          "texto": ""
-        },
-        "col2": {
-          "tipo": "no",
-          "texto": ""
-        },
-        "col3": {
-          "tipo": "si",
-          "texto": ""
-        }
-      },
-      {
-        "caracteristica": "¿Quién la hace?",
-        "costo": true,
-        "col1": {
-          "tipo": "texto",
-          "texto": "Nosotros"
-        },
-        "col2": {
-          "tipo": "texto",
-          "texto": "Tú"
-        },
-        "col3": {
-          "tipo": "texto",
-          "texto": "Un diseñador"
-        }
-      },
-      {
-        "costo": true,
-        "col1": {
-          "tipo": "texto",
-          "texto": "$825^4^"
-        },
-        "col2": {
-          "tipo": "texto",
-          "texto": "Tu tiempo + Suscripción^2^"
-        },
-        "col3": {
-          "tipo": "texto",
-          "texto": "50% anticipo"
-        },
-        "caracteristica": "Desembolso Inicial (MXN)"
-      }
-    ]
-  },
-  "notas": {
-    "lista": [
-      "Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
-      "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es una renta permanente y el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor.",
-      "Primer año incluido; después, $269 al mes.",
-      "Precio calculado de acuerdo al plan de pago de 12 mensualidades sin intereses.",
-      "Plazo de 24 horas contado desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc."
-    ]
-  },
-  "pasos": {
-    "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
-    "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
-    "tarjetas": [
-      {
-        "etiqueta": "01 Dominio",
-        "titulo": "Apunta tu dominio a nuestros servidores",
-        "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
-      },
-      {
-        "etiqueta": "02 Diseño",
-        "titulo": "Elige un diseño web de referencia",
-        "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
-      },
-      {
-        "etiqueta": "03 Contenido",
-        "titulo": "Comparte de qué trata tu negocio",
-        "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
-      }
-    ],
-    "boton": "Tu sitio puede quedar hoy mismo"
-  },
-  "precios": {
-    "etiqueta": "Precios",
-    "titulo": "Elige tu plan:",
-    "texto": "Sin el desembolso inicial · Tu eliges tu mensualidad.",
-    "planes": [
-      {
-        "tipo": "plazos",
-        "insignia": "Más Solicitado",
-        "plazos": [
-          {
-            "meses": "3",
-            "precio": "$3,300"
-          },
-          {
-            "meses": "6",
-            "precio": "$1,650"
-          },
-          {
-            "meses": "9",
-            "precio": "$1,100"
-          },
-          {
-            "meses": "12",
-            "precio": "$825"
-          }
-        ],
-        "total": "$9,900",
-        "periodo": "MXN",
-        "caracteristicas": [
-          "Todo lo incluido en el plan de contado",
-          "==Mensualidades SIN intereses=="
-        ],
-        "boton": "Comprar",
-        "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
-      },
-      {
-        "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
-        "boton": "Comprar",
-        "precio": "$9,900",
-        "nombre": "Contado",
-        "caracteristicas": [
-          "Tu sitio web en 24 hrs.^5^",
-          "==Diseñador asignado==",
-          "Editor para textos e imágenes",
-          "12 meses de alojamiento incluido"
-        ],
-        "periodo": "MXN",
-        "cobro": "Precio de contado: $9,900^1^",
-        "tipo": "fijo",
-        "insignia": ""
-      }
-    ],
-    "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)"
-  },
-  "contacto": {
-    "titulo": "Empecemos por conocer tu negocio.",
-    "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",
-    "whatsapp": "+52 56 3366 8185",
-    "ubicacion": "Ciudad de México · Servicio 100% en línea"
-  },
-  "ventajas": {
-    "titulo": "Olvídate de la curva de aprendizaje.",
-    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio== en 72 hrs.",
-    "tarjetas": [
-      {
-        "etiqueta": "Inversión",
-        "titulo": "Págalo en mensualidades",
-        "texto": "Hasta 12 pagos sin intereses. Sin desembolsar $9,900 de una sola vez."
-      },
-      {
-        "etiqueta": "Solución",
-        "titulo": "Tu sitio «llave-en-mano»",
-        "texto": "Se entrega listo para publicarse: en 72 horas, con tu propio contenido."
-      },
-      {
-        "etiqueta": "Diseño",
-        "titulo": "Configuración y set-up inicial",
-        "texto": "Integración del contenido e imagen de tu negocio al diseño de tu preferencia."
-      },
-      {
-        "etiqueta": "CMS",
-        "titulo": "Editas tu propio contenido",
-        "texto": "Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer."
-      },
-      {
-        "etiqueta": "Alojamiento",
-        "titulo": "Primer año incluido",
-        "texto": "Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados."
-      },
-      {
-        "etiqueta": "Portabilidad",
-        "titulo": "No te casas con nosotros",
-        "texto": "Tienes la opción de bajar tu sitio y migrarlo con otro proveedor."
-      }
-    ]
-  },
-  "cta": {
-    "titulo": "Olvídate de la curva de aprendizaje.",
-    "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
-    "boton_principal": "Quiero mi Sitio!",
-    "boton_secundario": "Compara",
-    "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**"
-  },
-  "faq": {
-    "titulo": "Preguntas frecuentes",
-    "preguntas": [
-      {
-        "pregunta": "¿Cuál es la ventaja de hacer mi página con GraphicaWeb?",
-        "respuesta": "Cuando llega el momento de tener tu propia página web, usualmente tienes dos opciones: contratar a un diseñador/a (bajo el típico esquema del 50% de anticipo, 50% contra entrega) o entrarle a hacer tu propio diseño con alguna de las grandes plataformas del \"hágalo usted mismo\" ( DIY).\n\n**GraphicaWeb** se presenta como una opción más conveniente. Haces un primer pago, que puede ser hasta de $825 MXN (a 12 meses sin intereses). ==Con nosotros te olvidas de anticipos del 50%, obtienes tu sitio listo y en línea en 24 hrs.,== y te ahorras la curva de aprendizaje del «hágalo usted mismo»; que suele ser mucho más pronunciada —y dilatada— de lo que te parece."
-      },
-      {
-        "pregunta": "¿Que te entregamos?",
-        "respuesta": "**Tu sitio.** Inicialmente obtienes una landing page responsiva con menú de navegación interna. Adicionalmente es posible agregar tantas páginas subsecuentes como sea necesario, vinculadas éstas a sus respectivos ítems de menú.\n\n**El diseño.** Tu sitio se construye sobre nuestro sistema modular de diseño, configurado según la estrategia comercial de tu negocio. Es un sistema editable, capaz de crecer y adaptarse conforme lo necesites.\n\n**La integración.** Un diseñador adapta tus contenidos —textos e imágenes— a ese sistema, sobre el diseño que hayas aprobado.\n\n**La operación.** Publicación de tu sitio, 12 meses de alojamiento con respaldos y mantenimiento, y acceso a tu panel para editar textos e imágenes cuando quieras."
-      },
-      {
-        "pregunta": "¿Necesito un nombre de dominio?",
-        "respuesta": "Sí, es lo recomendable. Si ya tienes uno, lo apuntas a nuestros servidores desde la cuenta de tu proveedor. Es muy fácil. Si no cuentas con uno, te orientamos para registrarlo a tu nombre con el proveedor que tú nos indiques."
-      },
-      {
-        "pregunta": "¿Debo indicar algún ejemplo de diseño web?",
-        "respuesta": "Es lo más conveniente. Nos sirve para entender tu estilo y partir de una referencia concreta en lugar de una descripción. El resultado es un diseño propio, adaptado a tu negocio, no una copia del sitio que nos muestres."
-      },
-      {
-        "respuesta": "Sí. 24 horas desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc. Te mandamos un formulario guiado que te dice exactamente lo qué necesitamos.",
-        "pregunta": "¿De verdad en 24 horas?"
-      },
-      {
-        "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
-        "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es posible alterar la estructura de la plantilla. De esta forma, puedes agregar los contenidos que tu quieras, sin romper el diseño."
-      },
-      {
-        "pregunta": "¿Puedo agregar reservaciones, suscripciones o pagos en línea?",
-        "respuesta": "Sí. Es posible integrar tu sitio con la plataforma que ya uses, o te ayudamos a elegir una. Estas herramientas las contratas por tu cuenta. [El costo de su integración es adicional a los precios aquí mostrados.](/servicios.html)"
-      },
-      {
-        "pregunta": "¿Puedo mudar mi sitio y llevarlo con otro proveedor?",
-        "respuesta": "Sí, tu sitio está construido sobre HTML, CSS y JavaScript, que son estándares de la industria, así que los archivos son transferibles y los puedes subir con el proveedor que elijas. Lo que no viaja es el panel de edición, que es parte de nuestra plataforma."
-      }
-    ]
-  },
-  "hero": {
-    "titulo": "Tu sitio web en la nube, sin tanto rollo.",
-    "subtitulo": "Solo necesitas un nombre de dominio ==y elegir un diseño web que te rife.== Nosotros nos encargamos de todo lo demás.",
-    "boton_principal": "Cómo funciona",
-    "boton_secundario": "Sin curva de aprendizaje"
-  },
   "seo": {
     "titulo": "GraphicaWeb — Sitios web «llave en mano» por suscripción",
     "descripcion": "Un sitio web profesional vinculado a tu dominio, en línea en 24 horas. Sin inversión inicial: solo pagas la suscripción. Alojamiento, respaldos y mantenimiento incluidos.",
     "titulo_compartir": "Toda tu competencia tiene página web. La tuya puede ser mejor.",
     "descripcion_compartir": "Un sitio «llave en mano» con sistema de diseño integrado a tu negocio, en línea en 24 horas. Tú solo pagas la suscripción."
-  }
+  },
+  "bloques": [
+    {
+      "tipo": "hero",
+      "titulo": "Tu sitio web en la nube, sin tanto rollo.",
+      "subtitulo": "Solo necesitas un nombre de dominio ==y elegir un diseño web que te rife.== Nosotros nos encargamos de todo lo demás.",
+      "boton_principal": "Cómo funciona",
+      "boton_secundario": "Sin curva de aprendizaje",
+      "ancla": "hero"
+    },
+    {
+      "tipo": "intro",
+      "oculto": true,
+      "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En GraphicaWeb utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales.",
+      "ancla": "intro"
+    },
+    {
+      "tipo": "pasos",
+      "titulo": "Subimos tu sitio web a la red en tres sencillos pasos:",
+      "texto": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes.",
+      "tarjetas": [
+        {
+          "etiqueta": "01 Dominio",
+          "titulo": "Apunta tu dominio a nuestros servidores",
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
+        },
+        {
+          "etiqueta": "02 Diseño",
+          "titulo": "Elige un diseño web de referencia",
+          "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
+        },
+        {
+          "etiqueta": "03 Contenido",
+          "titulo": "Comparte de qué trata tu negocio",
+          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
+        }
+      ],
+      "boton": "Tu sitio puede quedar hoy mismo",
+      "fondo_gris": true,
+      "ancla": "como-funciona"
+    },
+    {
+      "tipo": "ventajas",
+      "oculto": true,
+      "titulo": "Olvídate de la curva de aprendizaje.",
+      "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio== en 72 hrs.",
+      "tarjetas": [
+        {
+          "etiqueta": "Inversión",
+          "titulo": "Págalo en mensualidades",
+          "texto": "Hasta 12 pagos sin intereses. Sin desembolsar $9,900 de una sola vez."
+        },
+        {
+          "etiqueta": "Solución",
+          "titulo": "Tu sitio «llave-en-mano»",
+          "texto": "Se entrega listo para publicarse: en 72 horas, con tu propio contenido."
+        },
+        {
+          "etiqueta": "Diseño",
+          "titulo": "Configuración y set-up inicial",
+          "texto": "Integración del contenido e imagen de tu negocio al diseño de tu preferencia."
+        },
+        {
+          "etiqueta": "CMS",
+          "titulo": "Editas tu propio contenido",
+          "texto": "Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer."
+        },
+        {
+          "etiqueta": "Alojamiento",
+          "titulo": "Primer año incluido",
+          "texto": "Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados."
+        },
+        {
+          "etiqueta": "Portabilidad",
+          "titulo": "No te casas con nosotros",
+          "texto": "Tienes la opción de bajar tu sitio y migrarlo con otro proveedor."
+        }
+      ],
+      "fondo_gris": false,
+      "ancla": "ventajas"
+    },
+    {
+      "tipo": "cta",
+      "titulo": "Olvídate de la curva de aprendizaje.",
+      "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
+      "boton_principal": "Quiero mi Sitio!",
+      "boton_secundario": "Compara",
+      "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**",
+      "ancla": "cta"
+    },
+    {
+      "tipo": "precios",
+      "etiqueta": "Precios",
+      "titulo": "Elige tu plan:",
+      "texto": "Sin el desembolso inicial · Tu eliges tu mensualidad.",
+      "planes": [
+        {
+          "tipo": "plazos",
+          "insignia": "Más Solicitado",
+          "plazos": [
+            {
+              "meses": "3",
+              "precio": "$3,300"
+            },
+            {
+              "meses": "6",
+              "precio": "$1,650"
+            },
+            {
+              "meses": "9",
+              "precio": "$1,100"
+            },
+            {
+              "meses": "12",
+              "precio": "$825"
+            }
+          ],
+          "total": "$9,900",
+          "periodo": "MXN",
+          "caracteristicas": [
+            "Todo lo incluido en el plan de contado",
+            "==Mensualidades SIN intereses=="
+          ],
+          "boton": "Comprar",
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
+        },
+        {
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+          "boton": "Comprar",
+          "precio": "$9,900",
+          "nombre": "Contado",
+          "caracteristicas": [
+            "Tu sitio web en 24 hrs.^5^",
+            "==Diseñador asignado==",
+            "Editor para textos e imágenes",
+            "12 meses de alojamiento incluido"
+          ],
+          "periodo": "MXN",
+          "cobro": "Precio de contado: $9,900^1^",
+          "tipo": "fijo",
+          "insignia": ""
+        }
+      ],
+      "nota": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)",
+      "fondo_gris": false,
+      "ancla": "precios"
+    },
+    {
+      "tipo": "compara",
+      "titulo": "¡Compara!",
+      "texto": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Web",
+      "col1": {
+        "nombre": "GraphicaWeb",
+        "etiqueta": "Te conviene"
+      },
+      "col2": {
+        "nombre": "Soluciones tipo DIY^2^"
+      },
+      "col3": {
+        "nombre": "Encargo por Diseño"
+      },
+      "filas": [
+        {
+          "caracteristica": "Sin curva de aprendizaje (DIY)",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "no",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "si",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "Autoeditable",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "no",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "Alojamiento incluido^3^",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "no",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "El sitio es tuyo",
+          "costo": false,
+          "col1": {
+            "tipo": "si",
+            "texto": ""
+          },
+          "col2": {
+            "tipo": "no",
+            "texto": ""
+          },
+          "col3": {
+            "tipo": "si",
+            "texto": ""
+          }
+        },
+        {
+          "caracteristica": "¿Quién la hace?",
+          "costo": true,
+          "col1": {
+            "tipo": "texto",
+            "texto": "Nosotros"
+          },
+          "col2": {
+            "tipo": "texto",
+            "texto": "Tú"
+          },
+          "col3": {
+            "tipo": "texto",
+            "texto": "Un diseñador"
+          }
+        },
+        {
+          "costo": true,
+          "col1": {
+            "tipo": "texto",
+            "texto": "$825^4^"
+          },
+          "col2": {
+            "tipo": "texto",
+            "texto": "Tu tiempo + Suscripción^2^"
+          },
+          "col3": {
+            "tipo": "texto",
+            "texto": "50% anticipo"
+          },
+          "caracteristica": "Desembolso Inicial (MXN)"
+        }
+      ],
+      "fondo_gris": true,
+      "ancla": "compara"
+    },
+    {
+      "tipo": "faq",
+      "titulo": "Preguntas frecuentes",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuál es la ventaja de hacer mi página con GraphicaWeb?",
+          "respuesta": "Cuando llega el momento de tener tu propia página web, usualmente tienes dos opciones: contratar a un diseñador/a (bajo el típico esquema del 50% de anticipo, 50% contra entrega) o entrarle a hacer tu propio diseño con alguna de las grandes plataformas del \"hágalo usted mismo\" ( DIY).\n\n**GraphicaWeb** se presenta como una opción más conveniente. Haces un primer pago, que puede ser hasta de $825 MXN (a 12 meses sin intereses). ==Con nosotros te olvidas de anticipos del 50%, obtienes tu sitio listo y en línea en 24 hrs.,== y te ahorras la curva de aprendizaje del «hágalo usted mismo»; que suele ser mucho más pronunciada —y dilatada— de lo que te parece."
+        },
+        {
+          "pregunta": "¿Que te entregamos?",
+          "respuesta": "**Tu sitio.** Inicialmente obtienes una landing page responsiva con menú de navegación interna. Adicionalmente es posible agregar tantas páginas subsecuentes como sea necesario, vinculadas éstas a sus respectivos ítems de menú.\n\n**El diseño.** Tu sitio se construye sobre nuestro sistema modular de diseño, configurado según la estrategia comercial de tu negocio. Es un sistema editable, capaz de crecer y adaptarse conforme lo necesites.\n\n**La integración.** Un diseñador adapta tus contenidos —textos e imágenes— a ese sistema, sobre el diseño que hayas aprobado.\n\n**La operación.** Publicación de tu sitio, 12 meses de alojamiento con respaldos y mantenimiento, y acceso a tu panel para editar textos e imágenes cuando quieras."
+        },
+        {
+          "pregunta": "¿Necesito un nombre de dominio?",
+          "respuesta": "Sí, es lo recomendable. Si ya tienes uno, lo apuntas a nuestros servidores desde la cuenta de tu proveedor. Es muy fácil. Si no cuentas con uno, te orientamos para registrarlo a tu nombre con el proveedor que tú nos indiques."
+        },
+        {
+          "pregunta": "¿Debo indicar algún ejemplo de diseño web?",
+          "respuesta": "Es lo más conveniente. Nos sirve para entender tu estilo y partir de una referencia concreta en lugar de una descripción. El resultado es un diseño propio, adaptado a tu negocio, no una copia del sitio que nos muestres."
+        },
+        {
+          "respuesta": "Sí. 24 horas desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc. Te mandamos un formulario guiado que te dice exactamente lo qué necesitamos.",
+          "pregunta": "¿De verdad en 24 horas?"
+        },
+        {
+          "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
+          "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es posible alterar la estructura de la plantilla. De esta forma, puedes agregar los contenidos que tu quieras, sin romper el diseño."
+        },
+        {
+          "pregunta": "¿Puedo agregar reservaciones, suscripciones o pagos en línea?",
+          "respuesta": "Sí. Es posible integrar tu sitio con la plataforma que ya uses, o te ayudamos a elegir una. Estas herramientas las contratas por tu cuenta. [El costo de su integración es adicional a los precios aquí mostrados.](/servicios.html)"
+        },
+        {
+          "pregunta": "¿Puedo mudar mi sitio y llevarlo con otro proveedor?",
+          "respuesta": "Sí, tu sitio está construido sobre HTML, CSS y JavaScript, que son estándares de la industria, así que los archivos son transferibles y los puedes subir con el proveedor que elijas. Lo que no viaja es el panel de edición, que es parte de nuestra plataforma."
+        }
+      ],
+      "fondo_gris": false,
+      "ancla": "faq"
+    },
+    {
+      "tipo": "contacto",
+      "titulo": "Empecemos por conocer tu negocio.",
+      "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",
+      "whatsapp": "+52 56 3366 8185",
+      "ubicacion": "Ciudad de México · Servicio 100% en línea",
+      "fondo_gris": true,
+      "ancla": "contacto"
+    },
+    {
+      "tipo": "notas",
+      "lista": [
+        "Precios en pesos mexicanos. Mensualidades sin intereses disponibles con tarjetas de crédito participantes; los plazos que puedas usar dependen de tu banco y se muestran al momento de pagar.",
+        "DIY: \"Hágalo-usted-mismo\". Con constructores tipo Wix, WebFlow, Squarespace, Canva, etc., el costo mensual es una renta permanente y el diseño y creación del sitio dependen enteramente de tu tiempo, habilidad y experiencia para manejar la plataforma. Los archivos no son tuyos y no se pueden mover a otro proveedor.",
+        "Primer año incluido; después, $269 al mes.",
+        "Precio calculado de acuerdo al plan de pago de 12 mensualidades sin intereses.",
+        "Plazo de 24 horas contado desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc."
+      ],
+      "ancla": "notas"
+    }
+  ]
 }

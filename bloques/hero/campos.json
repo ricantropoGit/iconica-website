@@ -1,0 +1,58 @@
+{
+  "label": "Portada",
+  "name": "hero",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título principal",
+      "name": "titulo",
+      "widget": "string",
+      "pattern": [
+        "^.{1,90}$",
+        "Máximo 90 caracteres para que no se rompa la portada"
+      ],
+      "default": "Tu sitio web en la nube, sin tanto rollo."
+    },
+    {
+      "label": "Subtítulo",
+      "name": "subtitulo",
+      "widget": "text",
+      "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+      "default": "Solo necesitas un nombre de dominio ==y elegir un diseño web que te rife.== Nosotros nos encargamos de todo lo demás."
+    },
+    {
+      "label": "Botón principal",
+      "name": "boton_principal",
+      "widget": "string",
+      "pattern": [
+        "^.{1,30}$",
+        "Máximo 30 caracteres"
+      ],
+      "default": "Cómo funciona"
+    },
+    {
+      "label": "Botón secundario",
+      "name": "boton_secundario",
+      "widget": "string",
+      "pattern": [
+        "^.{1,30}$",
+        "Máximo 30 caracteres"
+      ],
+      "default": "Sin curva de aprendizaje"
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "hero",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}
