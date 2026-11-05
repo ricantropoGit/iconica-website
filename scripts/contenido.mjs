@@ -221,6 +221,11 @@ function condicion(ctx, clave, lugar = {}) {
 // En un style sólo pasan valores simples (colores, medidas): nada de url(),
 // comillas ni punto y coma que abran otra declaración.
 const ESTILO_SEGURO = /^[#\w\s.,%()+-]*$/;
+// …o la ruta de una imagen del propio sitio, para usarla en el estilo
+// (data-cms-style="--logo:url({.logo})"): empieza con una sola "/" y sólo
+// lleva letras, números, "-", "_", "." y "/".
+const RUTA_DE_IMAGEN = /^\/(?!\/)[\w./-]+\.(?:svg|png|jpe?g|webp|gif|avif)$/i;
+const estiloSeguro = x => ESTILO_SEGURO.test(x) || RUTA_DE_IMAGEN.test(x);
 
 // Quita un elemento completo, con la sangría que lo precedía.
 function quitar(html, el, c) {
@@ -335,7 +340,7 @@ function renderizar(html, ctx, indice, base = '', total) {
     for (const a of ATRIBUTOS) {
       const clave = atributo(apertura, `data-cms-${a}`);
       if (clave === null) continue;
-      const v = valorDeAtributo(ctx, clave, a === 'style' ? x => ESTILO_SEGURO.test(x) : undefined);
+      const v = valorDeAtributo(ctx, clave, a === 'style' ? estiloSeguro : undefined);
       if (v == null) { avisos.push(`falta o no es válido "${clave}"`); continue; }
       if (a === 'id' && v === '') { apertura = apertura.replace(/\sid="[^"]*"/, ''); continue; }
       apertura = apertura.replace(new RegExp(`(\\s${a}=")[^"]*(")`), (_, antes, despues) => antes + escapar(v) + despues);
