@@ -1508,6 +1508,25 @@ html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
    (Antes eran 3 fijas en un solo renglón desde 640px.)
    ========================================================================== */
 
+/* Celdas vacías del último renglón (p. ej. 3 tarjetas en 2 columnas): se
+   rellenan con ::after (y ::before si faltan dos) con los filetes de una
+   tarjeta, para que la retícula se vea completa. ::before lleva order: 1 para
+   ir después de las tarjetas. Con la retícula completa no aparece ninguno.
+   (Un navegador sin :has() simplemente no los dibuja.) */
+.cards::before, .cards::after { order: 1; border-left: 1px solid var(--border); border-top: 1px solid var(--border); }
+@media (min-width: 640px) and (max-width: 1023px) {
+  .cards:has(> .card:nth-child(2n+1):last-child)::after { content: ""; }
+  .cards:has(> .card:only-child)::after { border-top: 0; }
+}
+@media (min-width: 1024px) {
+  .cards:has(> .card:nth-child(3n+1):last-child)::before,
+  .cards:has(> .card:nth-child(3n+1):last-child)::after,
+  .cards:has(> .card:nth-child(3n+2):last-child)::after { content: ""; }
+  /* Si faltan en el primer renglón (1 o 2 tarjetas), sin filete arriba */
+  .cards:has(> .card:nth-child(-n+2):last-child)::before,
+  .cards:has(> .card:nth-child(-n+2):last-child)::after { border-top: 0; }
+}
+
 /* Acciones de la sección "Cómo funciona" — mismo patrón que .hero__actions.
    El margen superior sigue el padding-block de .section (64 / 80 / 100px) para
    que el botón quede a la misma distancia de las tarjetas que del borde de la
