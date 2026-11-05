@@ -1501,14 +1501,12 @@ html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
 
 
 /* ==========================================================================
-   CARDS — variante trío (3 columnas en una línea)
-   Móvil: 1 columna / 3 renglones. De 640px en adelante: 3 columnas fijas.
+   CARDS — «Cómo funciona» (.cards--trio)
+   Sigue la retícula general de .cards: móvil 1 columna, tablet (640px) 2,
+   laptop/desktop (1024px) 3, con filete entre columnas y entre renglones.
+   Las tarjetas se agregan en el editor: con 6 salen 3 × 2 en desktop.
+   (Antes eran 3 fijas en un solo renglón desde 640px.)
    ========================================================================== */
-@media (min-width: 640px) {
-  .cards--trio { grid-template-columns: repeat(3, 1fr); }
-  .cards--trio .card { border-left: 1px solid var(--border); border-top: 0; }
-  .cards--trio .card:nth-child(3n+1) { border-left: 0; }
-}
 
 /* Acciones de la sección "Cómo funciona" — mismo patrón que .hero__actions.
    El margen superior sigue el padding-block de .section (64 / 80 / 100px) para
