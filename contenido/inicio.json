@@ -11,7 +11,9 @@
       "titulo": "Tu sitio web en la nube, sin tanto rollo.",
       "subtitulo": "Solo necesitas un nombre de dominio ==y elegir una plantilla de tu proveedor favorito.== Nosotros nos encargamos de todo lo demás.",
       "boton_principal": "Cómo funciona",
+      "boton_principal_enlace": "#como-funciona",
       "boton_secundario": "Sin curva de aprendizaje",
+      "boton_secundario_enlace": "#cta",
       "ancla": "hero"
     },
     {
@@ -105,7 +107,9 @@
       "titulo": "Olvídate de la curva de aprendizaje.",
       "texto": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs.",
       "boton_principal": "Quiero mi Sitio!",
+      "boton_principal_enlace": "#precios",
       "boton_secundario": "Compara",
+      "boton_secundario_enlace": "#compara",
       "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**",
       "ancla": "cta"
     },
@@ -134,6 +138,7 @@
         }
       ],
       "boton": "Tu sitio puede quedar hoy mismo",
+      "boton_enlace": "#cta",
       "fondo_gris": true,
       "ancla": "como-funciona"
     },
@@ -356,6 +361,7 @@
       "titulo": "Empecemos por conocer tu negocio.",
       "texto": "Cuéntanos a qué te dedicas y cómo quieres que te vean. ==Compártenos la URL de algún sitio que consideres adaptable.== Nosotros te decimos que se puede retomar y que no.",
       "whatsapp": "+52 56 3366 8185",
+      "whatsapp_enlace": "https://wa.me/525633668185?text=Hola%2C%20me%20interesa%20un%20sitio%20para%20mi%20negocio",
       "ubicacion": "Ciudad de México · Servicio 100% en línea",
       "fondo_gris": true,
       "ancla": "contacto"

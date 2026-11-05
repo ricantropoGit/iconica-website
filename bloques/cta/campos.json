@@ -25,10 +25,32 @@
       "default": "Quiero mi Sitio!"
     },
     {
+      "label": "Enlace del botón principal",
+      "name": "boton_principal_enlace",
+      "widget": "string",
+      "default": "#precios",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "pattern": [
+        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "Empieza con # (sección de esta página), / (página del sitio) o https://"
+      ]
+    },
+    {
       "label": "Botón secundario",
       "name": "boton_secundario",
       "widget": "string",
       "default": "Compara"
+    },
+    {
+      "label": "Enlace del botón secundario",
+      "name": "boton_secundario_enlace",
+      "widget": "string",
+      "default": "#compara",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "pattern": [
+        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "Empieza con # (sección de esta página), / (página del sitio) o https://"
+      ]
     },
     {
       "label": "Nota inferior",

@@ -33,6 +33,17 @@
       "default": "Cómo funciona"
     },
     {
+      "label": "Enlace del botón principal",
+      "name": "boton_principal_enlace",
+      "widget": "string",
+      "default": "#como-funciona",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "pattern": [
+        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "Empieza con # (sección de esta página), / (página del sitio) o https://"
+      ]
+    },
+    {
       "label": "Botón secundario",
       "name": "boton_secundario",
       "widget": "string",
@@ -41,6 +52,17 @@
         "Máximo 30 caracteres"
       ],
       "default": "Sin curva de aprendizaje"
+    },
+    {
+      "label": "Enlace del botón secundario",
+      "name": "boton_secundario_enlace",
+      "widget": "string",
+      "default": "#cta",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "pattern": [
+        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "Empieza con # (sección de esta página), / (página del sitio) o https://"
+      ]
     },
     {
       "label": "Ancla para el menú",
