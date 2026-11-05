@@ -55,11 +55,11 @@
       "texto": "Una plantilla, o \"template\", **es un diseño base genérico** cuya finalidad es ser adaptado a las necesidades particulares del **sitio web de tu empresa o negocio.**",
       "oculto": false,
       "boton_secundario": "",
-      "boton_principal_enlace": "#precios",
+      "boton_principal_enlace": "#plataformas",
       "ancla": "tema-plantillas",
       "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**",
       "tipo": "cta",
-      "boton_principal": "Quiero mi Sitio!",
+      "boton_principal": "Proveedores de Plantillas",
       "boton_secundario_enlace": "#compara",
       "titulo": "¿Qué es una plantilla?"
     },
