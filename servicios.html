@@ -14,40 +14,28 @@
 <body>
 
   <!-- ===================== HEADER / Sticky menu ===================== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="index.html" class="brand" aria-label="GraphicaWeb — inicio">
-        <span class="brand__mark">Ø</span>
-        <span>GraphicaWeb</span>
-      </a>
-
-      <nav class="nav" aria-label="Navegación principal">
-        <ul class="nav__list">
-          <li><a class="nav__link" href="index.html#hero">Inicio</a></li>
-          <li><a class="nav__link" href="index.html#como-funciona">Ventajas</a></li>
-          <li><a class="nav__link" href="index.html#precios">Precios</a></li>
-          <li><a class="nav__link" href="index.html#compara">Compara</a></li>
-          <li><a class="nav__link" href="index.html#faq">FAQs</a></li>
-          <li><a class="nav__link" href="index.html#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Menú móvil colapsable -->
-    <div class="mobile-nav" id="mobile-nav">
-      <ul class="mobile-nav__list">
-        <li><a class="mobile-nav__link" href="index.html#hero">Inicio</a></li>
-        <li><a class="mobile-nav__link" href="index.html#como-funciona">Ventajas</a></li>
-        <li><a class="mobile-nav__link" href="index.html#precios">Precios</a></li>
-        <li><a class="mobile-nav__link" href="index.html#compara">Compara</a></li>
-        <li><a class="mobile-nav__link" href="index.html#faq">FAQs</a></li>
-        <li><a class="mobile-nav__link" href="index.html#contacto">Contacto</a></li>
-      </ul>
-    </div>
+  <header class="header cabecera" id="header">
+      <div class="container header__inner cabecera__fila">
+          <a href="/" class="brand marca" aria-label="GraphicaWeb — inicio"><span class="brand__mark">Ø</span> <span data-cms="sitio.nombre">GraphicaWeb</span></a>
+          <!-- Menú: contenido/sitio.json (pestaña «Menú y sitio» del editor). Si
+               las opciones no caben, pasa solo a la hamburguesa (js/main.js). -->
+          <nav class="nav menu" aria-label="Navegación principal">
+              <ul class="nav__list" data-cms-list="sitio.menu">
+                  <li data-cms-item><a class="nav__link" href="#hero" data-cms-href=".url" data-cms=".texto" data-scroll>Inicio</a></li>
+              </ul>
+          </nav>
+          <button class="hamburger hamburguesa" id="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+      </div>
+      <!-- Menú móvil colapsable -->
+      <div class="mobile-nav menu-movil" id="mobile-nav">
+          <ul class="mobile-nav__list menu-movil__lista" data-cms-list="sitio.menu">
+              <li data-cms-item><a class="mobile-nav__link" href="#hero" data-cms-href=".url" data-cms=".texto" data-scroll>Inicio</a></li>
+          </ul>
+      </div>
   </header>
 
   <main>
@@ -251,7 +239,7 @@
   <footer class="footer" data-screen-label="Footer">
     <div class="container">
       <div class="footer__bottom">
-        © <span id="year"></span> grfkweb.com - Todos los derechos reservados.
+        © <span id="year"></span> <span data-cms="sitio.pie.legal">grfkweb.com - Todos los derechos reservados.</span>
       </div>
     </div>
   </footer>

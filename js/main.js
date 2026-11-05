@@ -20,32 +20,64 @@
   window.addEventListener('scroll', onScrollHeader, { passive: true });
 
   /* ---------- Menú hamburguesa ---------------------------------------- */
+  // Abre y cierra con la hamburguesa; se cierra al tocar fuera del menú (no
+  // al tocar una opción), con Escape, con la marca o al pasar a pantalla
+  // ancha. La clase .is-abierta en la cabecera es la misma que usa el editor.
   var hamburger = document.getElementById('hamburger');
   var mobileNav = document.getElementById('mobile-nav');
 
   function setMenu(open) {
-    if (!hamburger || !mobileNav) return;
-    hamburger.classList.toggle('is-open', open);
-    mobileNav.classList.toggle('is-open', open);
+    if (!header || !hamburger) return;
+    header.classList.toggle('is-abierta', open);
     hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
     hamburger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
   }
+  var abierto = function () { return !!header && header.classList.contains('is-abierta'); };
   if (hamburger) {
-    hamburger.addEventListener('click', function () {
-      setMenu(!mobileNav.classList.contains('is-open'));
-    });
+    hamburger.addEventListener('click', function () { setMenu(!abierto()); });
   }
-  // Cierra el menú al tocar fuera de él (pero no al tocar un item dentro)
   document.addEventListener('click', function (e) {
-    if (!mobileNav || !mobileNav.classList.contains('is-open')) return;
-    if (mobileNav.contains(e.target) || (hamburger && hamburger.contains(e.target))) return;
+    if (!abierto()) return;
+    if ((mobileNav && mobileNav.contains(e.target)) || (hamburger && hamburger.contains(e.target))) return;
     setMenu(false);
   });
-  // Cierra el menú al cambiar a viewport grande
-  var mq = window.matchMedia('(min-width: 1024px)');
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  var marca = header && header.querySelector('.marca');
+  if (marca) marca.addEventListener('click', function () { setMenu(false); });
+  // Cierra el menú al cambiar a pantalla ancha
+  var mq = window.matchMedia('(min-width: 768px)');
   var alCambiar = function (e) { if (e.matches) setMenu(false); };
   // (addListener: Safari anterior a 14 no tiene addEventListener aquí.)
   if (mq.addEventListener) mq.addEventListener('change', alCambiar); else mq.addListener(alCambiar);
+
+  /* ---------- Menú compacto ------------------------------------------- */
+  // Si las opciones no caben junto a la marca, también en pantalla ancha se
+  // usa la hamburguesa (css/styles.css). Se mide al cargar, al cambiar el
+  // ancho y cuando llegan las fuentes. Misma medición que las plantillas y
+  // que la vista previa del editor.
+  var fila = header && header.querySelector('.cabecera__fila');
+  function medirMenu() {
+    if (!fila) return;
+    header.classList.remove('menu-compacto');
+    if (window.matchMedia('(max-width: 767px)').matches) return;
+    header.classList.add('menu-midiendo');
+    var css = getComputedStyle(fila);
+    var hijos = Array.prototype.filter.call(fila.children, function (h) { return getComputedStyle(h).display !== 'none'; });
+    var usado = hijos.reduce(function (t, h) {
+      var m = getComputedStyle(h);
+      return t + h.getBoundingClientRect().width + parseFloat(m.marginLeft) + parseFloat(m.marginRight);
+    }, 0) + (parseFloat(css.columnGap) || 0) * (hijos.length - 1);
+    var disponible = fila.clientWidth - parseFloat(css.paddingLeft) - parseFloat(css.paddingRight);
+    header.classList.remove('menu-midiendo');
+    var compacto = usado + 24 > disponible;
+    header.classList.toggle('menu-compacto', compacto);
+    if (!compacto) setMenu(false);
+  }
+  medirMenu();
+  var medida = 0;
+  window.addEventListener('resize', function () { cancelAnimationFrame(medida); medida = requestAnimationFrame(medirMenu); });
+  if (document.fonts) document.fonts.ready.then(medirMenu);
+  window.addEventListener('load', medirMenu);
 
   /* ---------- Smooth scroll a anchors (con offset del header) --------- */
   function headerOffset() {
@@ -78,30 +110,36 @@
   });
 
   /* ---------- Nav activo según sección visible ------------------------ */
-  // OJO: en ORDEN DE DOCUMENTO — updateActiveNav recorre el arreglo y hace
-  // break en la primera sección que aún no ha pasado la línea de referencia.
-  // Sólo secciones que TIENEN entrada en el menú. Si se incluye una que no la
-  // tiene —'intro' o 'cta'—, setActive apaga todos los enlaces y no enciende
-  // ninguno: el menú se queda en blanco mientras se recorre esa sección.
-  // Omitiéndolas, el enlace anterior permanece encendido, que es lo esperable:
-  // 'Ventajas' sigue activo mientras se pasa por la CTA.
-  var sections = ['hero', 'como-funciona', 'ventajas', 'precios', 'compara', 'faq', 'contacto']
-    .map(function (id) { return document.getElementById(id); })
-    .filter(Boolean);
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__link, .mobile-nav__link'));
+  // Las secciones salen de los #ancla del menú (contenido/sitio.json), en
+  // orden de documento. La opción activa lleva aria-current, como en las
+  // plantillas y en la vista previa del editor. Al elegir una opción se marca
+  // de inmediato, sin esperar el desplazamiento.
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.menu a, .menu-movil__lista a'));
+  var hrefs = navLinks.map(function (a) { return a.getAttribute('href') || ''; });
+  var sections = hrefs.filter(function (h, i) { return /^#[\w-]+$/.test(h) && hrefs.indexOf(h) === i; })
+    .map(function (h) { return document.getElementById(h.slice(1)); })
+    .filter(Boolean)
+    .sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
 
-  function linkFor(id) {
-    return navLinks.filter(function (a) { return a.getAttribute('href') === '#' + id; });
-  }
-  var currentActive = null;
+  // La opción de la página en la que se está (p. ej. /servicios.html).
+  var ruta = function (p) { return p.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/+$/, '') || '/'; };
+  navLinks.forEach(function (a) {
+    var h = a.getAttribute('href') || '';
+    if (h.charAt(0) === '/' && h.indexOf('#') === -1 && ruta(h) === ruta(location.pathname)) a.setAttribute('aria-current', 'page');
+  });
+
+  var currentActive = null, bloqueo = 0;
   function setActive(id) {
     if (id === currentActive) return;
     currentActive = id;
-    navLinks.forEach(function (a) { a.classList.remove('is-active'); });
-    if (id) linkFor(id).forEach(function (a) { a.classList.add('is-active'); });
+    navLinks.forEach(function (a) {
+      if (a.getAttribute('aria-current') === 'page') return;
+      if (id && a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
   }
   function updateActiveNav() {
-    if (!sections.length) return;
+    if (!sections.length || Date.now() < bloqueo) return;
     // Línea de referencia: justo debajo del header sticky
     var line = window.scrollY + headerOffset() + 4;
     // Si estamos al final de la página, activa la última sección
@@ -111,11 +149,16 @@
     }
     var active = sections[0].id;
     for (var i = 0; i < sections.length; i++) {
-      if (sections[i].offsetTop <= line) active = sections[i].id;
+      if (sections[i].getBoundingClientRect().top + window.scrollY <= line) active = sections[i].id;
       else break;
     }
     setActive(active);
   }
+  navLinks.forEach(function (a) {
+    var h = a.getAttribute('href') || '';
+    if (!/^#[\w-]+$/.test(h)) return;
+    a.addEventListener('click', function () { bloqueo = Date.now() + 900; setActive(h.slice(1)); setTimeout(updateActiveNav, 950); });
+  });
   updateActiveNav();
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   window.addEventListener('resize', updateActiveNav);

@@ -1,0 +1,14 @@
+{
+  "nombre": "GraphicaWeb",
+  "menu": [
+    { "texto": "Inicio", "enlace": "#hero" },
+    { "texto": "Cómo funciona", "enlace": "#como-funciona" },
+    { "texto": "Precios", "enlace": "#precios" },
+    { "texto": "Compara", "enlace": "#compara" },
+    { "texto": "FAQs", "enlace": "#faq" },
+    { "texto": "Contacto", "enlace": "#contacto" }
+  ],
+  "pie": {
+    "legal": "grfkweb.com - Todos los derechos reservados."
+  }
+}

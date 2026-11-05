@@ -119,6 +119,21 @@ const datosSitio = existsSync(join(dirContenido, 'sitio.json')) ? JSON.parse(rea
 // Un enlace a una sección de inicio que está apagada se quita mientras lo esté.
 const datosInicio = existsSync(join(dirContenido, 'inicio.json')) ? JSON.parse(readFileSync(join(dirContenido, 'inicio.json'), 'utf8')) : null;
 const sitioEnlazado = enlazar(datosSitio, nuevas, anclasOcultas(datosInicio));
+// Fuera de la página de inicio, el menú y el pie siguen siendo de todo el
+// sitio: sus #ancla son de inicio (/#precios), aunque la página tenga una
+// sección con la misma ancla.
+const aInicio = e => {
+  if (!e) return e;
+  const c = /^#[\w-]+$/.test(e.url || '') ? { ...e, url: `/${e.url}` } : { ...e };
+  if (Array.isArray(e.submenu)) c.submenu = e.submenu.map(aInicio);
+  return c;
+};
+const sitioInterior = sitioEnlazado && {
+  ...sitioEnlazado,
+  menu: Array.isArray(sitioEnlazado.menu) ? sitioEnlazado.menu.map(aInicio) : sitioEnlazado.menu,
+  boton: aInicio(sitioEnlazado.boton),
+  pie: sitioEnlazado.pie && { ...sitioEnlazado.pie, enlaces: Array.isArray(sitioEnlazado.pie.enlaces) ? sitioEnlazado.pie.enlaces.map(aInicio) : sitioEnlazado.pie.enlaces },
+};
 if (existsSync(dirContenido)) {
   for (const f of readdirSync(dirContenido).filter(f => f.endsWith('.json'))) {
     const nombre = f.slice(0, -5);
@@ -127,7 +142,8 @@ if (existsSync(dirContenido)) {
     if (!existsSync(join(SALIDA, pagina))) { console.warn(`[build] contenido/${f}: no existe ${pagina}, se omite`); continue; }
     // Si el JSON está mal formado el build falla: publicar textos viejos sin avisar sería peor.
     const datos = JSON.parse(readFileSync(join(dirContenido, f), 'utf8'));
-    if (datosSitio) datos.sitio = sitioEnlazado;
+    // (Otras páginas fijas, como servicios.html: el menú lleva a inicio.)
+    if (datosSitio) datos.sitio = nombre === 'inicio' ? sitioEnlazado : sitioInterior;
     const { html, avisos } = aplicarContenido(readFileSync(join(ROOT, pagina), 'utf8'), datos, { bloques });
     writeFileSync(join(SALIDA, pagina), html);
     for (const a of avisos) console.warn(`[build] ${pagina}: ${a}, se deja el texto del HTML`);
@@ -139,20 +155,6 @@ if (existsSync(dirContenido)) {
 // Páginas nuevas: /<nombre>/index.html con el molde de index.html.
 if (nuevas.length && existsSync(join(ROOT, 'index.html'))) {
   const molde = readFileSync(join(ROOT, 'index.html'), 'utf8');
-  // El menú y el pie son de todo el sitio: sus #ancla son de la página de
-  // inicio aunque esta página tenga un bloque con la misma ancla.
-  const aInicio = e => {
-    if (!e) return e;
-    const c = /^#[\w-]+$/.test(e.url || '') ? { ...e, url: `/${e.url}` } : { ...e };
-    if (Array.isArray(e.submenu)) c.submenu = e.submenu.map(aInicio);
-    return c;
-  };
-  const sitioInterior = sitioEnlazado && {
-    ...sitioEnlazado,
-    menu: Array.isArray(sitioEnlazado.menu) ? sitioEnlazado.menu.map(aInicio) : sitioEnlazado.menu,
-    boton: aInicio(sitioEnlazado.boton),
-    pie: sitioEnlazado.pie && { ...sitioEnlazado.pie, enlaces: Array.isArray(sitioEnlazado.pie.enlaces) ? sitioEnlazado.pie.enlaces.map(aInicio) : sitioEnlazado.pie.enlaces },
-  };
   for (const nombre of nuevas) {
     const datos = JSON.parse(readFileSync(join(dirPaginas, `${nombre}.json`), 'utf8'));
     if (datosSitio) datos.sitio = sitioInterior;
