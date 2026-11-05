@@ -9,7 +9,7 @@
     {
       "tipo": "hero",
       "titulo": "Tu sitio web en la nube, sin tanto rollo.",
-      "subtitulo": "Solo necesitas un nombre de dominio ==y elegir un diseño web que te rife.== Nosotros nos encargamos de todo lo demás.",
+      "subtitulo": "Solo necesitas un nombre de dominio ==y elegir una plantilla de tu proveedor favorito.== Nosotros nos encargamos de todo lo demás.",
       "boton_principal": "Cómo funciona",
       "boton_secundario": "Sin curva de aprendizaje",
       "ancla": "hero"
@@ -152,9 +152,9 @@
       "ancla": "precios"
     },
     {
-      "tipo": "compara",
-      "titulo": "¡Compara!",
       "texto": "GraphicaWeb | Opciones \"hágalo usted mismo\" (DIY) | Diseñador/a Web",
+      "fondo_gris": true,
+      "ancla": "compara",
       "col1": {
         "nombre": "GraphicaWeb",
         "etiqueta": "Te conviene"
@@ -165,6 +165,8 @@
       "col3": {
         "nombre": "Encargo por Diseño"
       },
+      "tipo": "compara",
+      "titulo": "¡Compara!",
       "filas": [
         {
           "caracteristica": "Sin curva de aprendizaje (DIY)",
@@ -262,9 +264,7 @@
           },
           "caracteristica": "Desembolso Inicial (MXN)"
         }
-      ],
-      "fondo_gris": true,
-      "ancla": "compara"
+      ]
     },
     {
       "tipo": "faq",
