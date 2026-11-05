@@ -11,15 +11,21 @@
       "titulo": "Tu sitio web en la nube, sin tanto rollo.",
       "subtitulo": "Solo necesitas un nombre de dominio ==y elegir una plantilla de tu proveedor favorito.== Nosotros nos encargamos de todo lo demás.",
       "boton_principal": "Cómo funciona",
-      "boton_principal_enlace": "#plataformas",
+      "boton_principal_enlace": "#intro",
       "boton_secundario": "Sin curva de aprendizaje",
       "boton_secundario_enlace": "#cta",
       "ancla": "hero"
     },
     {
+      "tipo": "intro",
+      "oculto": false,
+      "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En GraphicaWeb utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales…",
+      "ancla": "intro"
+    },
+    {
       "tipo": "plataformas",
       "oculto": false,
-      "titulo": "Adaptamos cualquier plantilla web de tu proveedor favorito.",
+      "titulo": "Adaptamos la plantilla web de cualquier proveedor comercial.",
       "texto": "Elige cualquier plantilla de las siguiente plataformas y en 24 hrs. ==la adaptamos a la imagen de tu empresa o negocio sin costo para ti.==^5^",
       "logos": [
         {
@@ -55,12 +61,6 @@
       ],
       "fondo_gris": false,
       "ancla": "plataformas"
-    },
-    {
-      "tipo": "intro",
-      "oculto": true,
-      "texto": "Una plantilla, o \"template\", es un diseño base genérico cuya finalidad es ser adaptado a las necesidades particulares del sitio web de tu empresa o negocio. En GraphicaWeb utilizamos WordPress como la plataforma de producción sobre de la cual construímos los sitios web de nuestros clientes/as. Luego entonces toda plantilla compartida, en principio, debe de ser compatible con el mencionado framework. Existen miles de plantillas para Wordpress, muchas de las cuales son gratuitas. La plantilla no está incluida en nuestros planes comerciales…",
-      "ancla": "intro"
     },
     {
       "tipo": "ventajas",
