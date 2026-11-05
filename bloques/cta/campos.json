@@ -22,35 +22,41 @@
       "label": "Botón principal",
       "name": "boton_principal",
       "widget": "string",
-      "default": "Quiero mi Sitio!"
+      "default": "Quiero mi Sitio!",
+      "required": false,
+      "hint": "Vacío = sin botón."
     },
     {
       "label": "Enlace del botón principal",
       "name": "boton_principal_enlace",
       "widget": "string",
       "default": "#precios",
-      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña). Vacío si el botón no lleva texto.",
       "pattern": [
-        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "^(|#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
         "Empieza con # (sección de esta página), / (página del sitio) o https://"
-      ]
+      ],
+      "required": false
     },
     {
       "label": "Botón secundario",
       "name": "boton_secundario",
       "widget": "string",
-      "default": "Compara"
+      "default": "Compara",
+      "required": false,
+      "hint": "Vacío = sin botón."
     },
     {
       "label": "Enlace del botón secundario",
       "name": "boton_secundario_enlace",
       "widget": "string",
       "default": "#compara",
-      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña). Vacío si el botón no lleva texto.",
       "pattern": [
-        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "^(|#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
         "Empieza con # (sección de esta página), / (página del sitio) o https://"
-      ]
+      ],
+      "required": false
     },
     {
       "label": "Nota inferior",

@@ -27,42 +27,48 @@
       "name": "boton_principal",
       "widget": "string",
       "pattern": [
-        "^.{1,30}$",
+        "^.{0,30}$",
         "Máximo 30 caracteres"
       ],
-      "default": "Cómo funciona"
+      "default": "Cómo funciona",
+      "required": false,
+      "hint": "Vacío = sin botón."
     },
     {
       "label": "Enlace del botón principal",
       "name": "boton_principal_enlace",
       "widget": "string",
       "default": "#como-funciona",
-      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña). Vacío si el botón no lleva texto.",
       "pattern": [
-        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "^(|#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
         "Empieza con # (sección de esta página), / (página del sitio) o https://"
-      ]
+      ],
+      "required": false
     },
     {
       "label": "Botón secundario",
       "name": "boton_secundario",
       "widget": "string",
       "pattern": [
-        "^.{1,30}$",
+        "^.{0,30}$",
         "Máximo 30 caracteres"
       ],
-      "default": "Sin curva de aprendizaje"
+      "default": "Sin curva de aprendizaje",
+      "required": false,
+      "hint": "Vacío = sin botón."
     },
     {
       "label": "Enlace del botón secundario",
       "name": "boton_secundario_enlace",
       "widget": "string",
       "default": "#cta",
-      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña). Vacío si el botón no lleva texto.",
       "pattern": [
-        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "^(|#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
         "Empieza con # (sección de esta página), / (página del sitio) o https://"
-      ]
+      ],
+      "required": false
     },
     {
       "label": "Ancla para el menú",

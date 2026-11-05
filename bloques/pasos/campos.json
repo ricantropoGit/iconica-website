@@ -112,21 +112,24 @@
       "name": "boton",
       "widget": "string",
       "pattern": [
-        "^.{1,40}$",
+        "^.{0,40}$",
         "Máximo 40 caracteres"
       ],
-      "default": "Tu sitio puede quedar hoy mismo"
+      "default": "Tu sitio puede quedar hoy mismo",
+      "required": false,
+      "hint": "Vacío = sin botón."
     },
     {
       "label": "Enlace del botón",
       "name": "boton_enlace",
       "widget": "string",
       "default": "#cta",
-      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña).",
+      "hint": "#ancla de una sección de esta página (p. ej. #precios), /servicios.html o /nombre/ (página del sitio) o https://… (otro sitio: abre en otra pestaña). Vacío si el botón no lleva texto.",
       "pattern": [
-        "^(#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
+        "^(|#[a-z0-9-]+|/.*|https?://.+|mailto:.+|tel:.+)$",
         "Empieza con # (sección de esta página), / (página del sitio) o https://"
-      ]
+      ],
+      "required": false
     },
     {
       "label": "Fondo gris",
