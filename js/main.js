@@ -113,7 +113,9 @@
       var target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      scrollToTarget(target, link.getAttribute('data-scroll-align'));
+      // La alineación la pone el enlace o, si no, la sección de destino
+      // (p. ej. la intro: data-scroll-align="bottom", completa al pie).
+      scrollToTarget(target, link.getAttribute('data-scroll-align') || target.getAttribute('data-scroll-align'));
       history.replaceState(null, '', id);
     });
   });

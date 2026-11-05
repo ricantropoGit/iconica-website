@@ -425,7 +425,9 @@ function irAAncla(doc, ancla) {
   if (!ancla || ancla === 'top') { doc.defaultView.scrollTo({ top: 0, behavior: 'smooth' }); return true; }
   const destino = doc.getElementById(ancla);
   if (!destino) return false;
-  destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Como en el sitio: una sección con data-scroll-align="bottom" queda
+  // completa al pie de la ventana; las demás, arriba.
+  destino.scrollIntoView({ behavior: 'smooth', block: destino.getAttribute('data-scroll-align') === 'bottom' ? 'end' : 'start' });
   return true;
 }
 
