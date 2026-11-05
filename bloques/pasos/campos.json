@@ -23,11 +23,48 @@
       "label": "Tarjetas",
       "name": "tarjetas",
       "widget": "list",
-      "allow_add": false,
-      "allow_remove": false,
-      "allow_reorder": false,
-      "summary": "{{fields.etiqueta}} — {{fields.titulo}}",
+      "summary": "{{fields.etiqueta}} — {{fields.titulo}}{{fields.oculto | ternary(' (oculta)', '')}}",
       "fields": [
+        {
+          "label": "Oculta (no se publica)",
+          "name": "oculto",
+          "widget": "boolean",
+          "required": false,
+          "default": false,
+          "hint": "Apaga la tarjeta sin borrarla."
+        },
+        {
+          "label": "Ícono",
+          "name": "icono",
+          "widget": "select",
+          "default": "globo",
+          "options": [
+            {
+              "label": "Globo (dominio)",
+              "value": "globo"
+            },
+            {
+              "label": "Lápiz (diseño)",
+              "value": "lapiz"
+            },
+            {
+              "label": "Cuadrícula (contenido)",
+              "value": "cuadricula"
+            },
+            {
+              "label": "Rayo",
+              "value": "rayo"
+            },
+            {
+              "label": "Reloj",
+              "value": "reloj"
+            },
+            {
+              "label": "Mensaje",
+              "value": "mensaje"
+            }
+          ]
+        },
         {
           "label": "Etiqueta",
           "name": "etiqueta",
@@ -51,19 +88,24 @@
         {
           "etiqueta": "01 Dominio",
           "titulo": "Apunta tu dominio a nuestros servidores",
-          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
+          "icono": "globo"
         },
         {
           "etiqueta": "02 Diseño",
           "titulo": "Elige un diseño web de referencia",
-          "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
+          "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía.",
+          "icono": "lapiz"
         },
         {
           "etiqueta": "03 Contenido",
           "titulo": "Comparte de qué trata tu negocio",
-          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
+          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web.",
+          "icono": "cuadricula"
         }
-      ]
+      ],
+      "label_singular": "tarjeta",
+      "hint": "Agrega, quita u ordena las tarjetas (arrastra para moverlas). «Oculta» la apaga sin borrarla."
     },
     {
       "label": "Botón",

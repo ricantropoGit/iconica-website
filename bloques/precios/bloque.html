@@ -6,24 +6,26 @@
             <p class="pricing__lead" data-cms=".texto">Sin costo de desarrollo. Sin contrato forzoso.</p>
         </div>
         <!-- Cada tarjeta se dibuja según su tipo (Precios → Planes): "fijo" o
-             "plazos". El orden de la lista es el orden en pantalla (y en celular). -->
+             "plazos". El orden de la lista es el orden en pantalla (y en celular).
+             Se agregan, quitan u ocultan en el editor; el selector de meses es de
+             cada tarjeta (js/main.js), así que puede haber más de una con plazos. -->
         <div class="pricing__grid" data-cms-list=".planes">
-            <article class="price-card" data-cms-class="price-card--featured: .tipo=plazos" data-cms-item>
+            <article class="price-card" data-cms-class="price-card--featured: .tipo=plazos" data-cms-item data-cms-if="!.oculto">
                 <span class="price-card__badge" data-cms=".insignia" data-cms-optional></span>
                 <header class="price-card__head">
                     <h3 class="price-card__name" data-cms=".nombre" data-cms-if=".tipo=fijo">Plan Mensual</h3>
                     <h3 class="price-card__name price-card__name--selector" data-cms-if=".tipo=plazos">
                     <!-- Los plazos se editan en el panel (Precios → tarjeta destacada → Plazos).
                          El <option> es el molde de cada plazo. Sale elegido el último de la lista. -->
-                    <select class="price-card__plazo" id="plazo-msi" data-total="$9,900" data-cms-data-total=".total" data-cms-list=".plazos" aria-label="Plazo de mensualidades sin intereses">
+                    <select class="price-card__plazo" data-total="$9,900" data-cms-data-total=".total" data-cms-list=".plazos" aria-label="Plazo de mensualidades sin intereses">
                         <option value="12" data-precio="$825" data-cms-item data-cms="{.meses} meses" data-cms-value=".meses" data-cms-data-precio=".precio" data-cms-selected="#ultimo" selected>12 meses</option>
                     </select>
                     </h3>
                 </header>
                 <p class="price-card__price" data-cms-if=".tipo=fijo"><span class="price-card__amount" data-cms=".precio">$499</span><span class="price-card__period" data-cms=".periodo">MX/mes</span></p>
                 <p class="price-card__billed" data-cms=".cobro" data-cms-if=".tipo=fijo">Paga mes a mes sin compromisos</p>
-                <p class="price-card__price" data-cms-if=".tipo=plazos"><span class="price-card__amount" id="precio-msi" data-cms=".plazos.-1.precio">$825</span><span class="price-card__period" data-cms=".periodo">MX/mes</span></p>
-                <p class="price-card__billed" id="cobro-msi" data-cms="{.plazos.-1.meses} pagos de {.plazos.-1.precio} — total {.total}" data-cms-if=".tipo=plazos">12 pagos de $825 — total $9,900</p>
+                <p class="price-card__price price-card__price--plazos" data-cms-if=".tipo=plazos"><span class="price-card__amount" data-cms=".plazos.-1.precio">$825</span><span class="price-card__period" data-cms=".periodo">MX/mes</span></p>
+                <p class="price-card__billed price-card__billed--plazos" data-cms="{.plazos.-1.meses} pagos de {.plazos.-1.precio} — total {.total}" data-cms-if=".tipo=plazos">12 pagos de $825 — total $9,900</p>
                 <ul class="price-card__features" data-cms-list=".caracteristicas">
                     <li data-cms-item data-cms=".">Sitio listo y en línea en 24hrs.</li>
                 </ul>

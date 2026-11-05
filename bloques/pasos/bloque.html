@@ -4,42 +4,40 @@
             <h2 class="steps__title"><span data-cms=".titulo">Subimos tu sitio web a la red en tres sencillos pasos</span></h2>
             <p class="steps__lead" data-cms=".texto">Solo tienes que <span class="hl">apuntar tu dominio a nuestros servidores, señalarnos un ejemplo de cualquier diseño web para basarnos en él</span> y compartir los textos e imágenes que van en tu sitio.</p>
         </div>
-        <div class="cards cards--trio">
-            <article class="card">
+        <!-- Tarjetas: se agregan, quitan, ordenan u ocultan en el editor. El
+             ícono se elige en cada tarjeta (uno de los dibujos de abajo). -->
+        <div class="cards cards--trio" data-cms-list=".tarjetas">
+            <article class="card" data-cms-item data-cms-if="!.oculto">
                 <div class="card__icon" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg data-cms-if=".icono=globo" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M2 12h20"></path>
                         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
-                </div>
-                <span class="card__num" data-cms=".tarjetas.0.etiqueta">01 Dominio</span>
-                <h3 class="card__title"><span data-cms=".tarjetas.0.titulo">Apunta tu dominio a nuestros servidores</span></h3>
-                <p class="card__text" data-cms=".tarjetas.0.texto">Si no cuentas con un nombre de dominio, te podemos asesorar también con ese tema.</p>
-            </article>
-            <article class="card">
-                <div class="card__icon" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg data-cms-if=".icono=lapiz" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                         <path d="M18.4 2.6a2.1 2.1 0 1 1 3 3L12 15l-4 1 1-4Z"></path>
                     </svg>
-                </div>
-                <span class="card__num" data-cms=".tarjetas.1.etiqueta">02 Diseño</span>
-                <h3 class="card__title"><span data-cms=".tarjetas.1.titulo">Elige un diseño base de internet</span></h3>
-                <p class="card__text" data-cms=".tarjetas.1.texto">Pásanos la URL del sitio web en el cual nos basaremos para crear el tuyo.</p>                            
-            </article>
-            <article class="card">
-                <div class="card__icon" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg data-cms-if=".icono=cuadricula" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect width="7" height="7" x="3" y="3" rx="1"></rect>
                         <rect width="7" height="7" x="14" y="3" rx="1"></rect>
                         <rect width="7" height="7" x="14" y="14" rx="1"></rect>
                         <rect width="7" height="7" x="3" y="14" rx="1"></rect>
                     </svg>
+                    <svg data-cms-if=".icono=rayo" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+                    </svg>
+                    <svg data-cms-if=".icono=reloj" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <svg data-cms-if=".icono=mensaje" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
                 </div>
-                <span class="card__num" data-cms=".tarjetas.2.etiqueta">03 Contenido</span>
-                <h3 class="card__title" data-cms=".tarjetas.2.titulo">Comparte de qué trata tu negocio</h3>
-                <p class="card__text" data-cms=".tarjetas.2.texto">Sube los textos e imágenes que quieres mostrar en tu página web.</p>
+                <span class="card__num" data-cms=".etiqueta">01 Dominio</span>
+                <h3 class="card__title"><span data-cms=".titulo">Apunta tu dominio a nuestros servidores</span></h3>
+                <p class="card__text" data-cms=".texto">Si no cuentas con un nombre de dominio, te podemos asesorar también con ese tema.</p>
             </article>
         </div>
         <div class="como-funciona__actions">
