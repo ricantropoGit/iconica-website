@@ -40,8 +40,8 @@
           "icono": "cuadricula"
         }
       ],
-      "boton": "Elige tu plantilla",
-      "boton_enlace": "#plataformas",
+      "boton": "Qué es una plantilla",
+      "boton_enlace": "#tema-plantillas",
       "fondo_gris": true,
       "ancla": "como-funciona"
     },
@@ -56,7 +56,7 @@
       "oculto": false,
       "boton_secundario": "",
       "boton_principal_enlace": "#precios",
-      "ancla": "cta",
+      "ancla": "tema-plantillas",
       "nota": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**",
       "tipo": "cta",
       "boton_principal": "Quiero mi Sitio!",
