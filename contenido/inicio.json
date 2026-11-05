@@ -10,7 +10,7 @@
       "tipo": "hero",
       "titulo": "Tu sitio web en la nube, sin tanto rollo.",
       "subtitulo": "Solo necesitas un nombre de dominio ==y elegir una plantilla de tu proveedor favorito.== Nosotros nos encargamos de todo lo demás.",
-      "boton_principal": "Página web sin costo",
+      "boton_principal": "Cómo funciona",
       "boton_principal_enlace": "#plataformas",
       "boton_secundario": "Sin curva de aprendizaje",
       "boton_secundario_enlace": "#cta",
@@ -19,8 +19,8 @@
     {
       "tipo": "plataformas",
       "oculto": false,
-      "titulo": "Trabajamos con la plataforma que prefieras",
-      "texto": "Adaptamos el diseño de cualquiera de estos constructores de sitios web.",
+      "titulo": "Adaptamos cualquier plantilla web de tu proveedor favorito.",
+      "texto": "Elige cualquier plantilla de las siguiente plataformas y en 24 hrs. ==la adaptamos a la imagen de tu empresa o negocio sin costo para ti.==^5^",
       "logos": [
         {
           "logo": "/images/cms/logos/webflow.svg",
