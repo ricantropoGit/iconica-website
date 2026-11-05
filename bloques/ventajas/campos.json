@@ -1,0 +1,103 @@
+{
+  "label": "Ventajas",
+  "name": "ventajas",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "Olvídate de la curva de aprendizaje."
+    },
+    {
+      "label": "Texto",
+      "name": "texto",
+      "widget": "text",
+      "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+      "default": "Aquí no tienes que aprender desde cero a hacer tu propia página web. ==Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio== en 72 hrs."
+    },
+    {
+      "label": "Tarjetas",
+      "name": "tarjetas",
+      "widget": "list",
+      "allow_add": false,
+      "allow_remove": false,
+      "allow_reorder": false,
+      "summary": "{{fields.etiqueta}} — {{fields.titulo}}",
+      "fields": [
+        {
+          "label": "Etiqueta",
+          "name": "etiqueta",
+          "widget": "string",
+          "default": "Inversión"
+        },
+        {
+          "label": "Título",
+          "name": "titulo",
+          "widget": "string",
+          "default": "Págalo en mensualidades"
+        },
+        {
+          "label": "Texto",
+          "name": "texto",
+          "widget": "text",
+          "default": "Hasta 12 pagos sin intereses. Sin desembolsar $9,900 de una sola vez."
+        }
+      ],
+      "default": [
+        {
+          "etiqueta": "Inversión",
+          "titulo": "Págalo en mensualidades",
+          "texto": "Hasta 12 pagos sin intereses. Sin desembolsar $9,900 de una sola vez."
+        },
+        {
+          "etiqueta": "Solución",
+          "titulo": "Tu sitio «llave-en-mano»",
+          "texto": "Se entrega listo para publicarse: en 72 horas, con tu propio contenido."
+        },
+        {
+          "etiqueta": "Diseño",
+          "titulo": "Configuración y set-up inicial",
+          "texto": "Integración del contenido e imagen de tu negocio al diseño de tu preferencia."
+        },
+        {
+          "etiqueta": "CMS",
+          "titulo": "Editas tu propio contenido",
+          "texto": "Para llevar a cabo aquellas modificaciones que solo los jefes pueden hacer."
+        },
+        {
+          "etiqueta": "Alojamiento",
+          "titulo": "Primer año incluido",
+          "texto": "Tu sitio vive en nuestros servidores. Su integridad y desempeño están garantizados."
+        },
+        {
+          "etiqueta": "Portabilidad",
+          "titulo": "No te casas con nosotros",
+          "texto": "Tienes la opción de bajar tu sitio y migrarlo con otro proveedor."
+        }
+      ]
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "ventajas",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

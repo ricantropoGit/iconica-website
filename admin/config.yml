@@ -32,11 +32,19 @@ logo_url: /apple-touch-icon.png
 site_url: https://grfkweb.com
 display_url: https://grfkweb.com
 
+# Direcciones de páginas nuevas sin acentos ni signos: «Página de prueba» → pagina-de-prueba
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
 media_folder: images/cms
 public_folder: /images/cms
 
 collections:
-  - name: paginas
+  # Páginas fijas del sitio (cada una con su .html). La de inicio se arma
+  # con bloques (bloques/<tipo>/); las demás tienen sus campos aquí.
+  - name: fijas
     label: Páginas
     delete: false
     files:
@@ -54,201 +62,15 @@ collections:
               - { label: "Título al compartir el enlace", name: titulo_compartir, widget: string }
               - { label: "Descripción al compartir el enlace", name: descripcion_compartir, widget: text }
 
-          - label: Portada
-            name: hero
-            widget: object
-            fields:
-              - { label: "Título principal", name: titulo, widget: string, pattern: ['^.{1,90}$', "Máximo 90 caracteres para que no se rompa la portada"] }
-              - { label: "Subtítulo", name: subtitulo, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-              - { label: "Botón principal", name: boton_principal, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
-              - { label: "Botón secundario", name: boton_secundario, widget: string, pattern: ['^.{1,30}$', "Máximo 30 caracteres"] }
-
-          - label: Cómo funciona
-            name: pasos
-            widget: object
+          - label: Bloques
+            name: bloques
+            label_singular: bloque
+            widget: list
+            typeKey: tipo
             collapsed: true
-            fields:
-              - { label: "Título", name: titulo, widget: string, hint: "La llamada a nota 1 va fija después del título" }
-              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-              - label: "Tarjetas"
-                name: tarjetas
-                widget: list
-                # Cada tarjeta tiene su ícono fijo en el diseño: se editan,
-                # pero no se agregan, quitan ni reordenan.
-                allow_add: false
-                allow_remove: false
-                allow_reorder: false
-                summary: "{{fields.etiqueta}} — {{fields.titulo}}"
-                fields:
-                  - { label: "Etiqueta", name: etiqueta, widget: string }
-                  - { label: "Título", name: titulo, widget: string }
-                  - { label: "Texto", name: texto, widget: text }
-              - { label: "Botón", name: boton, widget: string, pattern: ['^.{1,40}$', "Máximo 40 caracteres"] }
-
-          - label: Ventajas
-            name: ventajas
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Título", name: titulo, widget: string }
-              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-              - label: "Tarjetas"
-                name: tarjetas
-                widget: list
-                allow_add: false
-                allow_remove: false
-                allow_reorder: false
-                summary: "{{fields.etiqueta}} — {{fields.titulo}}"
-                fields:
-                  - { label: "Etiqueta", name: etiqueta, widget: string }
-                  - { label: "Título", name: titulo, widget: string }
-                  - { label: "Texto", name: texto, widget: text }
-
-          - label: Llamada a la acción (bloque oscuro)
-            name: cta
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Título", name: titulo, widget: string }
-              - { label: "Texto", name: texto, widget: text, hint: "Formato: `**negritas**` · `^1^` para una llamada a nota" }
-              - { label: "Botón principal", name: boton_principal, widget: string }
-              - { label: "Botón secundario", name: boton_secundario, widget: string }
-              - { label: "Nota inferior", name: nota, widget: string }
-
-          - label: Precios
-            name: precios
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Etiqueta superior", name: etiqueta, widget: string }
-              - { label: "Título", name: titulo, widget: string }
-              - { label: "Texto", name: texto, widget: string }
-              - label: "Planes"
-                name: planes
-                widget: list
-                # Cada tarjeta tiene su tipo: el diseño sale del tipo (no de la
-                # posición) y el formulario muestra sólo sus campos. Se pueden
-                # reacomodar: el orden de la lista es el orden en pantalla.
-                hint: "Arrastra las tarjetas para cambiar su orden (la primera va a la izquierda y arriba en celular)."
-                allow_add: false
-                allow_remove: false
-                typeKey: tipo
-                types:
-                  - label: "Tarjeta de contado"
-                    name: fijo
-                    widget: object
-                    summary: "{{fields.nombre}} — {{fields.precio}}"
-                    fields:
-                      - { label: "Insignia (vacío = sin insignia)", name: insignia, widget: string, required: false }
-                      - { label: "Nombre del plan", name: nombre, widget: string }
-                      - { label: "Precio", name: precio, widget: string, hint: "Ej. $499" }
-                      - { label: "Periodo", name: periodo, widget: string, hint: "Ej. MX/mes" }
-                      - { label: "Forma de cobro", name: cobro, widget: string }
-                      - { label: "Qué incluye", name: caracteristicas, widget: list, field: { label: "Punto", name: punto, widget: string }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-                      - { label: "Texto del botón", name: boton, widget: string }
-                      - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
-                  - label: "Tarjeta destacada (con plazos)"
-                    name: plazos
-                    widget: object
-                    summary: "Total {{fields.total}}"
-                    fields:
-                      - { label: "Insignia (vacío = sin insignia)", name: insignia, widget: string, required: false }
-                      - label: "Plazos"
-                        name: plazos
-                        widget: list
-                        min: 1
-                        summary: "{{fields.meses}} meses — {{fields.precio}}"
-                        hint: "Opciones del selector. Sale elegido el último de la lista."
-                        fields:
-                          - { label: "Meses", name: meses, widget: string, pattern: ['^\d+$', "Sólo el número, p. ej. 12"] }
-                          - { label: "Precio por mes", name: precio, widget: string, hint: "Ej. $825" }
-                      - { label: "Total", name: total, widget: string, hint: "Ej. $9,900. Debajo del precio se lee: «12 pagos de $825 — total $9,900»" }
-                      - { label: "Periodo", name: periodo, widget: string, hint: "Ej. MX/mes" }
-                      - { label: "Qué incluye", name: caracteristicas, widget: list, field: { label: "Punto", name: punto, widget: string }, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-                      - { label: "Texto del botón", name: boton, widget: string }
-                      - { label: "Enlace de pago", name: enlace, widget: string, pattern: ['^https://', "Debe empezar con https://"] }
-              - { label: "Nota al pie", name: nota, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-
-          - label: Tabla comparativa
-            name: compara
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Título", name: titulo, widget: string }
-              - { label: "Texto bajo el título", name: texto, widget: string }
-              - label: "Columna 1 (destacada)"
-                name: col1
-                widget: object
-                collapsed: true
-                fields:
-                  - { label: "Nombre", name: nombre, widget: string }
-                  - { label: "Etiqueta (vacío = sin etiqueta)", name: etiqueta, widget: string, required: false }
-              - { label: "Columna 2", name: col2, widget: object, collapsed: true, fields: [{ label: "Nombre", name: nombre, widget: string }] }
-              - { label: "Columna 3", name: col3, widget: object, collapsed: true, fields: [{ label: "Nombre", name: nombre, widget: string }] }
-              - label: "Filas"
-                name: filas
-                label_singular: fila
-                widget: list
-                summary: "{{fields.caracteristica}}"
-                hint: "Arrastra para ordenarlas. En cada celda eliges ✓, — o un texto."
-                fields:
-                  - { label: "Característica", name: caracteristica, widget: string, hint: "Formato: `**negritas**` · `^1^` superíndice" }
-                  - { label: "Fila de costo (resaltada)", name: costo, widget: boolean, default: false, required: false }
-                  - label: "Columna 1"
-                    name: col1
-                    widget: object
-                    collapsed: false
-                    summary: "{{fields.tipo}} {{fields.texto}}"
-                    fields:
-                      - { label: "Celda", name: tipo, widget: select, default: si, options: [{ label: "✓  Sí", value: si }, { label: "—  No", value: no }, { label: "Texto", value: texto }] }
-                      - { label: "Texto (si elegiste Texto)", name: texto, widget: string, required: false, hint: "Sale en negritas, p. ej. $9,000 a $27,000" }
-                  - label: "Columna 2"
-                    name: col2
-                    widget: object
-                    collapsed: false
-                    summary: "{{fields.tipo}} {{fields.texto}}"
-                    fields:
-                      - { label: "Celda", name: tipo, widget: select, default: si, options: [{ label: "✓  Sí", value: si }, { label: "—  No", value: no }, { label: "Texto", value: texto }] }
-                      - { label: "Texto (si elegiste Texto)", name: texto, widget: string, required: false, hint: "Sale en negritas, p. ej. $9,000 a $27,000" }
-                  - label: "Columna 3"
-                    name: col3
-                    widget: object
-                    collapsed: false
-                    summary: "{{fields.tipo}} {{fields.texto}}"
-                    fields:
-                      - { label: "Celda", name: tipo, widget: select, default: si, options: [{ label: "✓  Sí", value: si }, { label: "—  No", value: no }, { label: "Texto", value: texto }] }
-                      - { label: "Texto (si elegiste Texto)", name: texto, widget: string, required: false, hint: "Sale en negritas, p. ej. $9,000 a $27,000" }
-
-          - label: Preguntas frecuentes
-            name: faq
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Título", name: titulo, widget: string }
-              - label: "Preguntas"
-                name: preguntas
-                widget: list
-                summary: "{{fields.pregunta}}"
-                fields:
-                  - { label: "Pregunta", name: pregunta, widget: string }
-                  - { label: "Respuesta", name: respuesta, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-
-          - label: Contacto
-            name: contacto
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Título", name: titulo, widget: string }
-              - { label: "Texto", name: texto, widget: text, hint: "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
-              - { label: "WhatsApp (como se muestra)", name: whatsapp, widget: string }
-              - { label: "Ubicación", name: ubicacion, widget: string }
-
-          - label: Notas al pie
-            name: notas
-            widget: object
-            collapsed: true
-            fields:
-              - { label: "Notas", name: lista, widget: list, label_singular: nota, field: { label: "Nota", name: nota, widget: text }, hint: "Se numeran solas en el orden de la lista: la primera es la 1, y así. Los superíndices de la página (^1^, ^2^…) llevan a la nota con ese número; si cambias el orden, revísalos. Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`" }
+            hint: "Agrega, quita, ordena u oculta las secciones de la página. Cada bloque trae su diseño; sólo cambias el contenido."
+            # Los tipos de bloque salen de bloques/<tipo>/campos.json: el build los pone aquí.
+            types: "@bloques"
       - name: servicios
         label: "Servicios"
         file: contenido/servicios.json
@@ -475,6 +297,41 @@ collections:
               - { label: "Título", name: titulo, widget: string }
               - { label: "Correo", name: correo, widget: string }
               - { label: "Domicilio", name: domicilio, widget: string, hint: "Incluye la palabra «Domicilio:»." }
+
+  # Páginas nuevas que crea el cliente, armadas con los mismos bloques que
+  # inicio. Se publican en /<nombre>/ con el molde de index.html.
+  - name: paginas
+    label: Páginas nuevas
+    label_singular: página
+    description: "Páginas nuevas del sitio, armadas con los mismos bloques que inicio. Para que aparezcan en el menú, agrega en «Menú y sitio» una opción con su dirección (/nombre/)."
+    folder: contenido/paginas
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: titulo
+    slug: "{{slug}}"
+    summary: "{{titulo}}"
+    fields:
+      - { label: "Título de la página", name: titulo, widget: string, pattern: ['^.{1,60}$', "Máximo 60 caracteres"], hint: "Al crear la página, de aquí sale su dirección: «Nuestros servicios» → /nuestros-servicios/. Después la dirección ya no cambia." }
+      - label: Buscadores y redes sociales
+        name: seo
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Título de la pestaña", name: titulo, widget: string, required: false, hint: "Vacío = «Título de la página · GraphicaWeb».", pattern: ['^.{0,70}$', "Máximo 70 caracteres"] }
+          - { label: "Descripción en Google", name: descripcion, widget: text, required: false, pattern: ['^[\s\S]{0,170}$', "Máximo 170 caracteres"] }
+          - { label: "Título al compartir el enlace", name: titulo_compartir, widget: string, required: false, hint: "Vacío = el título de la pestaña." }
+          - { label: "Descripción al compartir el enlace", name: descripcion_compartir, widget: text, required: false, hint: "Vacío = la descripción en Google." }
+      - label: Bloques
+        name: bloques
+        label_singular: bloque
+        widget: list
+        typeKey: tipo
+        collapsed: true
+        hint: "Agrega, quita, ordena u oculta las secciones de la página. Cada bloque trae su diseño; sólo cambias el contenido."
+        types: "@bloques"
 
   # Menú y pie: los comparten todas las páginas (el build los pone en cada
   # una). Fuera de inicio, los #ancla del menú llevan a inicio (/#precios).

@@ -1,0 +1,90 @@
+{
+  "label": "Preguntas frecuentes",
+  "name": "faq",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "Preguntas frecuentes"
+    },
+    {
+      "label": "Preguntas",
+      "name": "preguntas",
+      "widget": "list",
+      "summary": "{{fields.pregunta}}",
+      "fields": [
+        {
+          "label": "Pregunta",
+          "name": "pregunta",
+          "widget": "string",
+          "default": "¿Cuál es la ventaja de hacer mi página con GraphicaWeb?"
+        },
+        {
+          "label": "Respuesta",
+          "name": "respuesta",
+          "widget": "text",
+          "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+          "default": "Cuando llega el momento de tener tu propia página web, usualmente tienes dos opciones: contratar a un diseñador/a (bajo el típico esquema del 50% de anticipo, 50% contra entrega) o entrarle a hacer tu propio diseño con alguna de las grandes plataformas del \"hágalo usted mismo\" ( DIY).\n\n**GraphicaWeb** se presenta como una opción más conveniente. Haces un primer pago, que puede ser hasta de $825 MXN (a 12 meses sin intereses). ==Con nosotros te olvidas de anticipos del 50%, obtienes tu sitio listo y en línea en 24 hrs.,== y te ahorras la curva de aprendizaje del «hágalo usted mismo»; que suele ser mucho más pronunciada —y dilatada— de lo que te parece."
+        }
+      ],
+      "default": [
+        {
+          "pregunta": "¿Cuál es la ventaja de hacer mi página con GraphicaWeb?",
+          "respuesta": "Cuando llega el momento de tener tu propia página web, usualmente tienes dos opciones: contratar a un diseñador/a (bajo el típico esquema del 50% de anticipo, 50% contra entrega) o entrarle a hacer tu propio diseño con alguna de las grandes plataformas del \"hágalo usted mismo\" ( DIY).\n\n**GraphicaWeb** se presenta como una opción más conveniente. Haces un primer pago, que puede ser hasta de $825 MXN (a 12 meses sin intereses). ==Con nosotros te olvidas de anticipos del 50%, obtienes tu sitio listo y en línea en 24 hrs.,== y te ahorras la curva de aprendizaje del «hágalo usted mismo»; que suele ser mucho más pronunciada —y dilatada— de lo que te parece."
+        },
+        {
+          "pregunta": "¿Que te entregamos?",
+          "respuesta": "**Tu sitio.** Inicialmente obtienes una landing page responsiva con menú de navegación interna. Adicionalmente es posible agregar tantas páginas subsecuentes como sea necesario, vinculadas éstas a sus respectivos ítems de menú.\n\n**El diseño.** Tu sitio se construye sobre nuestro sistema modular de diseño, configurado según la estrategia comercial de tu negocio. Es un sistema editable, capaz de crecer y adaptarse conforme lo necesites.\n\n**La integración.** Un diseñador adapta tus contenidos —textos e imágenes— a ese sistema, sobre el diseño que hayas aprobado.\n\n**La operación.** Publicación de tu sitio, 12 meses de alojamiento con respaldos y mantenimiento, y acceso a tu panel para editar textos e imágenes cuando quieras."
+        },
+        {
+          "pregunta": "¿Necesito un nombre de dominio?",
+          "respuesta": "Sí, es lo recomendable. Si ya tienes uno, lo apuntas a nuestros servidores desde la cuenta de tu proveedor. Es muy fácil. Si no cuentas con uno, te orientamos para registrarlo a tu nombre con el proveedor que tú nos indiques."
+        },
+        {
+          "pregunta": "¿Debo indicar algún ejemplo de diseño web?",
+          "respuesta": "Es lo más conveniente. Nos sirve para entender tu estilo y partir de una referencia concreta en lugar de una descripción. El resultado es un diseño propio, adaptado a tu negocio, no una copia del sitio que nos muestres."
+        },
+        {
+          "respuesta": "Sí. 24 horas desde que recibimos tu contenido completo —textos, imágenes, servicios, horarios, etc. Te mandamos un formulario guiado que te dice exactamente lo qué necesitamos.",
+          "pregunta": "¿De verdad en 24 horas?"
+        },
+        {
+          "pregunta": "¿Puedo editar textos y subir, cambiar o quitar imágenes?",
+          "respuesta": "Sí. Al entrar con tu usuario y contraseña al administrador del sitio, podrás cambiar textos, precios, fotos y horarios como lo haces en cualquier otro documento. Gracias a la arquitectura de nuestro sistema, no es posible alterar la estructura de la plantilla. De esta forma, puedes agregar los contenidos que tu quieras, sin romper el diseño."
+        },
+        {
+          "pregunta": "¿Puedo agregar reservaciones, suscripciones o pagos en línea?",
+          "respuesta": "Sí. Es posible integrar tu sitio con la plataforma que ya uses, o te ayudamos a elegir una. Estas herramientas las contratas por tu cuenta. [El costo de su integración es adicional a los precios aquí mostrados.](/servicios.html)"
+        },
+        {
+          "pregunta": "¿Puedo mudar mi sitio y llevarlo con otro proveedor?",
+          "respuesta": "Sí, tu sitio está construido sobre HTML, CSS y JavaScript, que son estándares de la industria, así que los archivos son transferibles y los puedes subir con el proveedor que elijas. Lo que no viaja es el panel de edición, que es parte de nuestra plataforma."
+        }
+      ]
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "faq",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "label": "Cómo funciona",
+  "name": "pasos",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "hint": "La llamada a nota 1 va fija después del título",
+      "default": "Subimos tu sitio web a la red en tres sencillos pasos:"
+    },
+    {
+      "label": "Texto",
+      "name": "texto",
+      "widget": "text",
+      "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+      "default": "Puedes comprar tu sitio web ==hasta en 12 mensualidades sin intereses, con alojamiento incluido el primer año.== Después, solo pagas $269 MXN/mes."
+    },
+    {
+      "label": "Tarjetas",
+      "name": "tarjetas",
+      "widget": "list",
+      "allow_add": false,
+      "allow_remove": false,
+      "allow_reorder": false,
+      "summary": "{{fields.etiqueta}} — {{fields.titulo}}",
+      "fields": [
+        {
+          "label": "Etiqueta",
+          "name": "etiqueta",
+          "widget": "string",
+          "default": "01 Dominio"
+        },
+        {
+          "label": "Título",
+          "name": "titulo",
+          "widget": "string",
+          "default": "Apunta tu dominio a nuestros servidores"
+        },
+        {
+          "label": "Texto",
+          "name": "texto",
+          "widget": "text",
+          "default": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
+        }
+      ],
+      "default": [
+        {
+          "etiqueta": "01 Dominio",
+          "titulo": "Apunta tu dominio a nuestros servidores",
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración."
+        },
+        {
+          "etiqueta": "02 Diseño",
+          "titulo": "Elige un diseño web de referencia",
+          "texto": "Pásanos una o dos URLs de algún sitio o página web que te guste para usarla como guía."
+        },
+        {
+          "etiqueta": "03 Contenido",
+          "titulo": "Comparte de qué trata tu negocio",
+          "texto": "Sube los textos e imágenes que quieres mostrar en tu página web."
+        }
+      ]
+    },
+    {
+      "label": "Botón",
+      "name": "boton",
+      "widget": "string",
+      "pattern": [
+        "^.{1,40}$",
+        "Máximo 40 caracteres"
+      ],
+      "default": "Tu sitio puede quedar hoy mismo"
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": true,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "como-funciona",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

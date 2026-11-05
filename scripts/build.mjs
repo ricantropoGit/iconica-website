@@ -108,7 +108,7 @@ const RESERVADOS = new Set(['admin', 'api', 'css', 'js', 'imagenes', 'images', '
 const dirPaginas = join(dirContenido, 'paginas');
 const nuevas = existsSync(dirPaginas)
   ? readdirSync(dirPaginas).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)).filter(n => {
-      const ok = /^[a-z0-9]+(-[a-z0-9]+)*$/.test(n) && !RESERVADOS.has(n);
+      const ok = /^[a-z0-9]+(-[a-z0-9]+)*$/.test(n) && !RESERVADOS.has(n) && !existsSync(join(dirContenido, `${n}.json`));
       if (!ok) console.warn(`[build] contenido/paginas/${n}.json: "${n}" no puede ser una dirección, se omite`);
       return ok;
     })
@@ -163,6 +163,10 @@ if (nuevas.length && existsSync(join(ROOT, 'index.html'))) {
       datos.seo = { ...(datos.seo || {}), titulo: [datos.titulo, datosSitio && datosSitio.nombre].filter(Boolean).join(' · ') };
     }
     if (datos.seo.descripcion == null) datos.seo.descripcion = '';
+    // Sitios que piden textos aparte para compartir el enlace (grfkweb.com):
+    // vacíos, son los de la pestaña (nunca los de la página de inicio).
+    if (!datos.seo.titulo_compartir) datos.seo.titulo_compartir = datos.seo.titulo;
+    if (!datos.seo.descripcion_compartir) datos.seo.descripcion_compartir = datos.seo.descripcion;
     let { html, avisos } = aplicarContenido(molde, datos, { bloques });
     // Está una carpeta más abajo: las rutas relativas (css/…, imagenes/…)
     // pasan a absolutas, y un #ancla que no está en esta página es de la

@@ -1,0 +1,250 @@
+{
+  "label": "Precios",
+  "name": "precios",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Etiqueta superior",
+      "name": "etiqueta",
+      "widget": "string",
+      "default": "Precios"
+    },
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "Elige tu plan:"
+    },
+    {
+      "label": "Texto",
+      "name": "texto",
+      "widget": "string",
+      "default": "Sin el desembolso inicial · Tu eliges tu mensualidad."
+    },
+    {
+      "label": "Planes",
+      "name": "planes",
+      "widget": "list",
+      "hint": "Arrastra las tarjetas para cambiar su orden (la primera va a la izquierda y arriba en celular).",
+      "allow_add": false,
+      "allow_remove": false,
+      "typeKey": "tipo",
+      "types": [
+        {
+          "label": "Tarjeta de contado",
+          "name": "fijo",
+          "widget": "object",
+          "summary": "{{fields.nombre}} — {{fields.precio}}",
+          "fields": [
+            {
+              "label": "Insignia (vacío = sin insignia)",
+              "name": "insignia",
+              "widget": "string",
+              "required": false
+            },
+            {
+              "label": "Nombre del plan",
+              "name": "nombre",
+              "widget": "string"
+            },
+            {
+              "label": "Precio",
+              "name": "precio",
+              "widget": "string",
+              "hint": "Ej. $499"
+            },
+            {
+              "label": "Periodo",
+              "name": "periodo",
+              "widget": "string",
+              "hint": "Ej. MX/mes"
+            },
+            {
+              "label": "Forma de cobro",
+              "name": "cobro",
+              "widget": "string"
+            },
+            {
+              "label": "Qué incluye",
+              "name": "caracteristicas",
+              "widget": "list",
+              "field": {
+                "label": "Punto",
+                "name": "punto",
+                "widget": "string"
+              },
+              "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`"
+            },
+            {
+              "label": "Texto del botón",
+              "name": "boton",
+              "widget": "string"
+            },
+            {
+              "label": "Enlace de pago",
+              "name": "enlace",
+              "widget": "string",
+              "pattern": [
+                "^https://",
+                "Debe empezar con https://"
+              ]
+            }
+          ]
+        },
+        {
+          "label": "Tarjeta destacada (con plazos)",
+          "name": "plazos",
+          "widget": "object",
+          "summary": "Total {{fields.total}}",
+          "fields": [
+            {
+              "label": "Insignia (vacío = sin insignia)",
+              "name": "insignia",
+              "widget": "string",
+              "required": false
+            },
+            {
+              "label": "Plazos",
+              "name": "plazos",
+              "widget": "list",
+              "min": 1,
+              "summary": "{{fields.meses}} meses — {{fields.precio}}",
+              "hint": "Opciones del selector. Sale elegido el último de la lista.",
+              "fields": [
+                {
+                  "label": "Meses",
+                  "name": "meses",
+                  "widget": "string",
+                  "pattern": [
+                    "^\\d+$",
+                    "Sólo el número, p. ej. 12"
+                  ]
+                },
+                {
+                  "label": "Precio por mes",
+                  "name": "precio",
+                  "widget": "string",
+                  "hint": "Ej. $825"
+                }
+              ]
+            },
+            {
+              "label": "Total",
+              "name": "total",
+              "widget": "string",
+              "hint": "Ej. $9,900. Debajo del precio se lee: «12 pagos de $825 — total $9,900»"
+            },
+            {
+              "label": "Periodo",
+              "name": "periodo",
+              "widget": "string",
+              "hint": "Ej. MX/mes"
+            },
+            {
+              "label": "Qué incluye",
+              "name": "caracteristicas",
+              "widget": "list",
+              "field": {
+                "label": "Punto",
+                "name": "punto",
+                "widget": "string"
+              },
+              "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`"
+            },
+            {
+              "label": "Texto del botón",
+              "name": "boton",
+              "widget": "string"
+            },
+            {
+              "label": "Enlace de pago",
+              "name": "enlace",
+              "widget": "string",
+              "pattern": [
+                "^https://",
+                "Debe empezar con https://"
+              ]
+            }
+          ]
+        }
+      ],
+      "default": [
+        {
+          "tipo": "plazos",
+          "insignia": "Más Solicitado",
+          "plazos": [
+            {
+              "meses": "3",
+              "precio": "$3,300"
+            },
+            {
+              "meses": "6",
+              "precio": "$1,650"
+            },
+            {
+              "meses": "9",
+              "precio": "$1,100"
+            },
+            {
+              "meses": "12",
+              "precio": "$825"
+            }
+          ],
+          "total": "$9,900",
+          "periodo": "MXN",
+          "caracteristicas": [
+            "Todo lo incluido en el plan de contado",
+            "==Mensualidades SIN intereses=="
+          ],
+          "boton": "Comprar",
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05"
+        },
+        {
+          "enlace": "https://buy.stripe.com/aFa9AT2Xr11BgO63bifUQ05",
+          "boton": "Comprar",
+          "precio": "$9,900",
+          "nombre": "Contado",
+          "caracteristicas": [
+            "Tu sitio web en 24 hrs.^5^",
+            "==Diseñador asignado==",
+            "Editor para textos e imágenes",
+            "12 meses de alojamiento incluido"
+          ],
+          "periodo": "MXN",
+          "cobro": "Precio de contado: $9,900^1^",
+          "tipo": "fijo",
+          "insignia": ""
+        }
+      ]
+    },
+    {
+      "label": "Nota al pie",
+      "name": "nota",
+      "widget": "text",
+      "hint": "Formato: `==resaltado==` · `**negritas**` · `[texto del enlace](https://…)`",
+      "default": "La integración de plataformas de terceros —reservas, citas, pagos, membresías— se cotiza por separado. [Consulta qué incluye tu plan y cuáles son servicios adicionales.](servicios.html)"
+    },
+    {
+      "label": "Fondo gris",
+      "name": "fondo_gris",
+      "widget": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Gris claro con filete arriba y abajo; sin marcar, fondo blanco."
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "precios",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "label": "Llamada a la acción (bloque oscuro)",
+  "name": "cta",
+  "widget": "object",
+  "summary": "{{fields.titulo}}",
+  "fondo": false,
+  "fields": [
+    {
+      "label": "Título",
+      "name": "titulo",
+      "widget": "string",
+      "default": "Olvídate de la curva de aprendizaje."
+    },
+    {
+      "label": "Texto",
+      "name": "texto",
+      "widget": "text",
+      "hint": "Formato: `**negritas**` · `^1^` para una llamada a nota",
+      "default": "Aquí no tienes que aprender desde cero a hacer tu propia página web. **Obtén un sitio web totalmente integrado a la imagen de tu empresa o negocio** en 24 hrs."
+    },
+    {
+      "label": "Botón principal",
+      "name": "boton_principal",
+      "widget": "string",
+      "default": "Quiero mi Sitio!"
+    },
+    {
+      "label": "Botón secundario",
+      "name": "boton_secundario",
+      "widget": "string",
+      "default": "Compara"
+    },
+    {
+      "label": "Nota inferior",
+      "name": "nota",
+      "widget": "string",
+      "default": "Compra tu sitio a 3, 6, 9 y hasta **12 mensualidades sin intereses.**"
+    },
+    {
+      "label": "Ancla para el menú",
+      "name": "ancla",
+      "widget": "string",
+      "required": false,
+      "default": "cta",
+      "hint": "Sin espacios (p. ej. precios): el menú la enlaza como #precios. Vacío = sin ancla.",
+      "pattern": [
+        "^[a-z0-9-]*$",
+        "Sólo minúsculas, números y guiones"
+      ]
+    }
+  ]
+}
