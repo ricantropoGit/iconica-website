@@ -1508,6 +1508,11 @@ html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
    (Antes eran 3 fijas en un solo renglón desde 640px.)
    ========================================================================== */
 
+/* Botones opcionales (portada, llamada a la acción, cómo funciona): un botón
+   sin texto no se publica; si no queda ninguno, tampoco el renglón que los
+   aloja (sin :has() el renglón vacío sólo deja su margen). */
+.hero__actions:not(:has(a)), .cta__actions:not(:has(a)), .como-funciona__actions:not(:has(a)) { display: none; }
+
 /* ---------- Logos de plataformas (bloque «Plataformas») ----------------
    Mismas tarjetas y retícula que «Cómo funciona». Cada logo es una máscara
    (--logo, la pone el build con la imagen de cada tarjeta): se pinta con
