@@ -66,8 +66,8 @@
     {
       "tipo": "plataformas",
       "oculto": false,
-      "titulo": "Adaptamos las plantillas de cualquier proveedor comercial a tu página web.",
-      "texto": "Elige cualquier plantilla de las siguiente plataformas ==y en 24 hrs. la adaptamos a la **imagen de tu empresa o negocio sin costo para ti.**== Si no cuentas con una, nosotros la podemos proveer.^5^",
+      "titulo": "Adaptamos plantillas de los proveedor más populares.",
+      "texto": "Elige cualquier plantilla de las siguiente plataformas ==y en 24 hrs. la adaptamos a la **imagen de tu empresa o negocio sin costo para ti.**== Si no cuentas con una, nosotros te la proporcionamos.^5^",
       "logos": [
         {
           "logo": "/images/cms/logos/webflow.svg",
