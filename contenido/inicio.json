@@ -40,8 +40,8 @@
           "icono": "cuadricula"
         }
       ],
-      "boton": "",
-      "boton_enlace": "#tema-plantillas",
+      "boton": "Tu sitio en 24 hrs.",
+      "boton_enlace": "#cta",
       "fondo_gris": true,
       "ancla": "como-funciona"
     },
