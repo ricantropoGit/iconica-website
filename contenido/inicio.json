@@ -18,7 +18,7 @@
     },
     {
       "tipo": "pasos",
-      "titulo": "Tu sitio web, sin la inversión inicial, en tres sencillos pasos:",
+      "titulo": "Tu sitio web sin la inversión inicial en tres sencillos pasos:",
       "texto": "==Tú solo pagas un servicio de suscripción mensual== (como lo harías con cualquier servicio de alojamiento web).",
       "tarjetas": [
         {
@@ -29,8 +29,8 @@
         },
         {
           "etiqueta": "02 Diseño",
-          "titulo": "Elige una plantilla de tu proveedor favorito",
-          "texto": "Reconstruimos un diseño web ==totalmente original a partir de la reinterpretación== y adaptación de cualquier plantilla comercial^5^.",
+          "titulo": "Elige un diseño de tu proveedor favorito",
+          "texto": "Reconstruimos una landing page web ==totalmente original a partir de la reinterpretación== y adaptación de cualquier plantilla comercial^5^.",
           "icono": "lapiz"
         },
         {
@@ -57,7 +57,7 @@
       "boton_secundario": "",
       "boton_principal_enlace": "#plataformas",
       "ancla": "tema-plantillas",
-      "nota": "En principio, trabajamos con **cualquier proveedor de plantillas.**",
+      "nota": "Trabajamos con plantillas de cualquier constructor de páginas web.",
       "tipo": "cta",
       "boton_principal": "Mejora tu Diseño",
       "boton_secundario_enlace": "#compara",
@@ -66,8 +66,8 @@
     {
       "tipo": "plataformas",
       "oculto": false,
-      "titulo": "Adaptamos plantillas de los proveedores más populares.",
-      "texto": "Elige cualquier plantilla de las siguiente plataformas ==y en 24 hrs. la reinterpretamos y adaptamos a la imagen de tu empresa o negocio sin costo para ti. == Si no cuentas con una, nosotros te la proporcionamos.^5^",
+      "titulo": "Reinterpretamos diseños de los proveedores más populares.",
+      "texto": "Elige cualquier plantilla de las siguiente plataformas ==y en 24 hrs. adaptamos a la imagen de tu empresa o negocio sin costo para ti. == Si no cuentas con una, nosotros te la proporcionamos.^5^",
       "logos": [
         {
           "logo": "/images/cms/logos/webflow.svg",
