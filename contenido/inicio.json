@@ -314,11 +314,11 @@
           "costo": true,
           "col1": {
             "tipo": "texto",
-            "texto": "$825^4^"
+            "texto": "$369^4^"
           },
           "col2": {
             "tipo": "texto",
-            "texto": "Tu tiempo + Suscripción^2^"
+            "texto": "Tu tiempo + la suscripción^2^"
           },
           "col3": {
             "tipo": "texto",
