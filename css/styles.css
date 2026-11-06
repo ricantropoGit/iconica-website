@@ -593,7 +593,17 @@ ul { list-style: none; padding: 0; }
   color: var(--accent-strong);
 }
 .card__title { margin-top: 4px; font-size: 1.18rem; font-weight: 700; letter-spacing: -.01em; line-height: normal; }
-.card__text { margin-top: 8px; color: var(--muted); font-size: .96rem; line-height: normal; }
+
+.card__text {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: .96rem;
+  line-height: normal; 
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  }
 .card__price { color: var(--ink); font-weight: 700; }
 
 /* ==========================================================================
