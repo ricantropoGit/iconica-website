@@ -1565,7 +1565,7 @@ html.fbx-lock body { position: fixed; width: 100%; overflow: hidden; }
    (Un navegador sin :has() simplemente no los dibuja.)
    Van en gris claro (--celda-vacia) para que se lean como espacio libre y no
    como una tarjeta sin texto. */
-.cards { --celda-vacia: var(--bg-alt); }
+.cards { --celda-vacia: var(--border); }
 .cards::before, .cards::after { order: 1; border-left: 1px solid var(--border); border-top: 1px solid var(--border); background: var(--celda-vacia); }
 @media (min-width: 640px) and (max-width: 1023px) {
   .cards:has(> .card:nth-child(2n+1):last-child)::after { content: ""; }
