@@ -9,7 +9,7 @@
     {
       "tipo": "hero",
       "titulo": "Convierte tu página web en un hub de ventas.",
-      "subtitulo": "Solo necesitas un nombre de dominio ==y elegir una plantilla de tu proveedor favorito.== Nosotros nos encargamos de todo lo demás.",
+      "subtitulo": "Solo necesitas un nombre de dominio ==y tener presencia en redes sociales.== Nosotros nos encargamos de todo lo demás.",
       "boton_principal": "Cómo funciona",
       "boton_principal_enlace": "#como-funciona",
       "boton_secundario": "Quiero mi sitio",
@@ -18,8 +18,8 @@
     },
     {
       "tipo": "pasos",
-      "titulo": "Tu sitio web sin la inversión inicial en tres sencillos pasos:",
-      "texto": "==Tú solo pagas un servicio de suscripción mensual== (como lo harías con cualquier servicio de alojamiento web).",
+      "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
+      "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, TikTok, etc.— sólo te falta conectarlas a una landing page vendedora. ==Si no tienes una, nosotros la creamos sin costo adicional.==",
       "tarjetas": [
         {
           "etiqueta": "01 Dominio",
