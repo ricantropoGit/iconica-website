@@ -18,7 +18,7 @@
     },
     {
       "tipo": "pasos",
-      "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
+      "titulo": "Dirige tráfico de tus redes sociales hacia tu página web.",
       "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, TikTok, etc.— ==sólo te falta conectarlas a una landing page vendedora.== Si no tienes una, nosotros la creamos sin costo adicional en tres sencillos pasos: ",
       "tarjetas": [
         {
@@ -40,7 +40,7 @@
           "icono": "cuadricula"
         }
       ],
-      "boton": "Tu sitio en 24 hrs.",
+      "boton": "Convierte tu sitio en 24 hrs.",
       "boton_enlace": "#cta",
       "fondo_gris": true,
       "ancla": "como-funciona"
