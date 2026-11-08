@@ -19,23 +19,23 @@
     {
       "tipo": "pasos",
       "titulo": "Lleva tráfico de tus redes sociales hacia tu página web.",
-      "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, TikTok, etc.— sólo te falta conectarlas a una landing page vendedora. ==Si no tienes una, nosotros la creamos sin costo adicional== en tres sencillos pasos: ",
+      "texto": "Si ya tienes una presencia respetable en redes sociales —Instagram, Facebook, TikTok, etc.— ==sólo te falta conectarlas a una landing page vendedora.== Si no tienes una, nosotros la creamos sin costo adicional en tres sencillos pasos: ",
       "tarjetas": [
         {
-          "etiqueta": "01 Dominio",
-          "titulo": "Apunta tu dominio a nuestros servidores",
-          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración.",
+          "etiqueta": "Dominio",
+          "titulo": "01. Apunta tu dominio a nuestros servidores",
+          "texto": "Si no cuentas con uno, te podemos asesorar para su registro y configuración con tu propio proveedor.",
           "icono": "globo"
         },
         {
-          "etiqueta": "02 Landing Page",
-          "titulo": "Elige un diseño web base",
+          "etiqueta": "Landing Page",
+          "titulo": "02. Elige un diseño web base",
           "texto": "Reconstruimos una página web ==totalmente original== a partir de la reinterpretación y adaptación de cualquier plantilla comercial^5^.",
           "icono": "lapiz"
         },
         {
-          "etiqueta": "03 Seguidores",
-          "titulo": "Conecta tus redes sociales",
+          "etiqueta": "Seguidores",
+          "titulo": "03. Conecta tus redes sociales",
           "texto": "Convierte a tus seguidores en compradores enviando la actividad de tus redes sociales a tu nueva landing-page.",
           "icono": "cuadricula"
         }
